@@ -16,8 +16,8 @@ member(id: ID!): Member
 
 **Arguments**
 
-| Name | Type  | Description                       |
-| ---- | ----- | --------------------------------- |
+| Name | Type | Description |
+| ---- | ---- | ----------- |
 | `id` | `ID!` | The ID of the member to retrieve. |
 
 **Output types:**
@@ -28,17 +28,16 @@ member(id: ID!): Member
 
 A user's membership in an organization.
 
-**Implements:** [Node](../common.md#node), [Customizable](../common.md#customizable), [Versioned](../common.md#versioned)
+**Implements:** [Node](../common.md#node), [Versioned](../common.md#versioned)
 
-| Field          | Type                             | Description                                                                                                                                 |
-| -------------- | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `id`           | `ID!`                            | A globally unique identifier. This ID is opaque and should not be parsed by clients.                                                        |
-| `version`      | `Int!`                           | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
-| `user`         | [User](../actors/users.md#user)! | The user.                                                                                                                                   |
-| `organization` | [Organization](./#organization)! | The organization the user belongs to.                                                                                                       |
-| `isActive`     | `Boolean!`                       | Whether this membership is active.                                                                                                          |
-| `assignedAt`   | `DateTime!`                      | The date and time when the user was assigned to this organization.                                                                          |
-| `customFields` | `JSON!`                          | Membership-specific custom fields such as position and department.                                                                          |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `user` | [User](../actors/users.md#user)! | The user. |
+| `organization` | [Organization](README.md#organization)! | The organization the user belongs to. |
+| `isActive` | `Boolean!` | Whether this membership is active. |
+| `assignedAt` | `DateTime!` | The date and time when the user was assigned to this organization. |
 
 </details>
 
@@ -48,25 +47,25 @@ A user's membership in an organization.
 
 A human user account authenticated via an identity provider.
 
-**Implements:** [Actor](../actors/#actor), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
+**Implements:** [Actor](../actors/README.md#actor), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
 
-| Field                | Type                                             | Description                                                                                                                                 |
-| -------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `id`                 | `ID!`                                            | A globally unique identifier.                                                                                                               |
-| `version`            | `Int!`                                           | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
-| `title`              | `String!`                                        | The display name for the user. This is the user's full name for display purposes.                                                           |
-| `name`               | [PersonName](../actors/#personname)!             | The structured name components from the identity provider.                                                                                  |
-| `identityProvider`   | `String!`                                        | The identity provider name (keycloak, auth0, okta, etc.).                                                                                   |
-| `identityProviderId` | `String!`                                        | The user's unique ID in the identity provider.                                                                                              |
-| `email`              | `EmailAddress!`                                  | The user's primary email address.                                                                                                           |
-| `locale`             | `Locale`                                         | The user's preferred locale.                                                                                                                |
-| `externalId`         | `String`                                         | An external system identifier for integration purposes.                                                                                     |
-| `isActive`           | `Boolean!`                                       | Whether this user account is active.                                                                                                        |
-| `memberships`        | [MemberConnection](members.md#memberconnection)! | The organization memberships for this user.                                                                                                 |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` | A globally unique identifier. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `title` | `String!` | The display name for the user. This is the user's full name for display purposes. |
+| `name` | [PersonName](../actors/README.md#personname)! | The structured name components from the identity provider. |
+| `identityProvider` | `String!` | The identity provider name (keycloak, auth0, okta, etc.). |
+| `identityProviderId` | `String!` | The user's unique ID in the identity provider. |
+| `email` | `EmailAddress!` | The user's primary email address. |
+| `locale` | `Locale` | The user's preferred locale. |
+| `externalId` | `String` | An external system identifier for integration purposes. |
+| `isActive` | `Boolean!` | Whether this user account is active. |
+| `memberships` | [MemberConnection](#memberconnection)! | The organization memberships for this user. |
 
 </details>
 
-***
+---
 
 ### members
 
@@ -86,15 +85,15 @@ members(
 
 **Arguments**
 
-| Name             | Type           | Description                                                                                   |
-| ---------------- | -------------- | --------------------------------------------------------------------------------------------- |
-| `organizationId` | `ID!`          | The organization to retrieve members for.                                                     |
-| `filter`         | `MemberFilter` | Filtering options for the returned members.                                                   |
-| `first`          | `Int`          | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination).     |
-| `after`          | `String`       | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination).  |
-| `last`           | `Int`          | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination).      |
-| `before`         | `String`       | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy`        | `MemberOrder`  | The ordering options for the returned members.                                                |
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `organizationId` | `ID!` | The organization to retrieve members for. |
+| `filter` | `MemberFilter` | Filtering options for the returned members. |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy` | `MemberOrder` | The ordering options for the returned members. |
 
 **Input types:**
 
@@ -104,10 +103,10 @@ members(
 
 Filtering options for members.
 
-| Field      | Type      | Description                        |
-| ---------- | --------- | ---------------------------------- |
-| `userIds`  | `[ID!]`   | Filter by users (OR within field). |
-| `isActive` | `Boolean` | Filter by active status.           |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `userIds` | `[ID!]` | Filter by users (OR within field). |
+| `isActive` | `Boolean` | Filter by active status. |
 
 </details>
 
@@ -117,10 +116,10 @@ Filtering options for members.
 
 Ordering options for members.
 
-| Field       | Type                                             | Description             |
-| ----------- | ------------------------------------------------ | ----------------------- |
-| `field`     | [MemberOrderField](members.md#memberorderfield)! | The field to order by.  |
-| `direction` | [OrderDirection](../common.md#orderdirection)!   | The direction to order. |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `field` | [MemberOrderField](#memberorderfield)! | The field to order by. |
+| `direction` | [OrderDirection](../common.md#orderdirection)! | The direction to order. |
 
 </details>
 
@@ -134,12 +133,12 @@ A paginated list of Member items.
 
 **Implements:** [Connection](../common.md#connection)
 
-| Field      | Type                                     | Description                                                |
-| ---------- | ---------------------------------------- | ---------------------------------------------------------- |
-| `edges`    | \[[MemberEdge](members.md#memberedge)!]! | A list of edges.                                           |
-| `nodes`    | \[[Member](members.md#member)!]!         | A list of nodes in the connection (without edge metadata). |
-| `pageInfo` | [PageInfo](../common.md#pageinfo)!       | Information about the current page.                        |
-| `total`    | [CountInfo](../common.md#countinfo)      | The total count of items matching the filter.              |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `edges` | [[MemberEdge](#memberedge)!]! | A list of edges. |
+| `nodes` | [[Member](#member)!]! | A list of nodes in the connection (without edge metadata). |
+| `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
+| `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
 
 </details>
 
@@ -149,16 +148,16 @@ A paginated list of Member items.
 
 Information about the current page in a paginated connection.
 
-| Field             | Type       | Description                                                |
-| ----------------- | ---------- | ---------------------------------------------------------- |
-| `hasNextPage`     | `Boolean!` | Whether more items exist after the current page.           |
-| `hasPreviousPage` | `Boolean!` | Whether more items exist before the current page.          |
-| `startCursor`     | `String`   | The cursor pointing to the first item in the current page. |
-| `endCursor`       | `String`   | The cursor pointing to the last item in the current page.  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `hasNextPage` | `Boolean!` | Whether more items exist after the current page. |
+| `hasPreviousPage` | `Boolean!` | Whether more items exist before the current page. |
+| `startCursor` | `String` | The cursor pointing to the first item in the current page. |
+| `endCursor` | `String` | The cursor pointing to the last item in the current page. |
 
 </details>
 
-***
+---
 
 ## Mutations
 
@@ -174,8 +173,8 @@ memberCreate(
 
 **Arguments**
 
-| Name    | Type                 | Description                                   |
-| ------- | -------------------- | --------------------------------------------- |
+| Name | Type | Description |
+| ---- | ---- | ----------- |
 | `input` | `MemberCreateInput!` | The input fields for creating the membership. |
 
 **Input types:**
@@ -186,24 +185,10 @@ memberCreate(
 
 Input for creating a membership.
 
-| Field            | Type                                                                 | Description                            |
-| ---------------- | -------------------------------------------------------------------- | -------------------------------------- |
-| `organizationId` | `ID!`                                                                | The organization ID.                   |
-| `userId`         | `ID!`                                                                | The user ID to add.                    |
-| `customFields`   | [CustomFieldsPatchInput](../custom-fields.md#customfieldspatchinput) | The membership-specific custom fields. |
-
-</details>
-
-<details>
-
-<summary>CustomFieldsPatchInput</summary>
-
-Input for updating custom field values using a patch model.
-
-| Field   | Type      | Description                                 |
-| ------- | --------- | ------------------------------------------- |
-| `set`   | `JSON`    | Fields to set or update as a key-value map. |
-| `unset` | `[Code!]` | Field codes to remove.                      |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `organizationId` | `ID!` | The organization ID. |
+| `userId` | `ID!` | The user ID to add. |
 
 </details>
 
@@ -215,9 +200,9 @@ Input for updating custom field values using a patch model.
 
 The result of a membership mutation.
 
-| Field    | Type                         | Description                        |
-| -------- | ---------------------------- | ---------------------------------- |
-| `member` | [Member](members.md#member)! | The created or updated membership. |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `member` | [Member](#member)! | The created or updated membership. |
 
 </details>
 
@@ -227,21 +212,20 @@ The result of a membership mutation.
 
 A user's membership in an organization.
 
-**Implements:** [Node](../common.md#node), [Customizable](../common.md#customizable), [Versioned](../common.md#versioned)
+**Implements:** [Node](../common.md#node), [Versioned](../common.md#versioned)
 
-| Field          | Type                             | Description                                                                                                                                 |
-| -------------- | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `id`           | `ID!`                            | A globally unique identifier. This ID is opaque and should not be parsed by clients.                                                        |
-| `version`      | `Int!`                           | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
-| `user`         | [User](../actors/users.md#user)! | The user.                                                                                                                                   |
-| `organization` | [Organization](./#organization)! | The organization the user belongs to.                                                                                                       |
-| `isActive`     | `Boolean!`                       | Whether this membership is active.                                                                                                          |
-| `assignedAt`   | `DateTime!`                      | The date and time when the user was assigned to this organization.                                                                          |
-| `customFields` | `JSON!`                          | Membership-specific custom fields such as position and department.                                                                          |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `user` | [User](../actors/users.md#user)! | The user. |
+| `organization` | [Organization](README.md#organization)! | The organization the user belongs to. |
+| `isActive` | `Boolean!` | Whether this membership is active. |
+| `assignedAt` | `DateTime!` | The date and time when the user was assigned to this organization. |
 
 </details>
 
-***
+---
 
 ### memberUpdate
 
@@ -255,8 +239,8 @@ memberUpdate(
 
 **Arguments**
 
-| Name    | Type                 | Description                                   |
-| ------- | -------------------- | --------------------------------------------- |
+| Name | Type | Description |
+| ---- | ---- | ----------- |
 | `input` | `MemberUpdateInput!` | The input fields for updating the membership. |
 
 **Input types:**
@@ -267,25 +251,11 @@ memberUpdate(
 
 Input for updating a membership.
 
-| Field          | Type                                                                 | Description                                 |
-| -------------- | -------------------------------------------------------------------- | ------------------------------------------- |
-| `id`           | `ID!`                                                                | The membership ID to update.                |
-| `version`      | `Int!`                                                               | The current version for optimistic locking. |
-| `isActive`     | `Boolean`                                                            | The new active status.                      |
-| `customFields` | [CustomFieldsPatchInput](../custom-fields.md#customfieldspatchinput) | The custom field changes.                   |
-
-</details>
-
-<details>
-
-<summary>CustomFieldsPatchInput</summary>
-
-Input for updating custom field values using a patch model.
-
-| Field   | Type      | Description                                 |
-| ------- | --------- | ------------------------------------------- |
-| `set`   | `JSON`    | Fields to set or update as a key-value map. |
-| `unset` | `[Code!]` | Field codes to remove.                      |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` | The membership ID to update. |
+| `version` | `Int!` | The current version for optimistic locking. |
+| `isActive` | `Boolean` | The new active status. |
 
 </details>
 
@@ -297,9 +267,9 @@ Input for updating custom field values using a patch model.
 
 The result of a membership mutation.
 
-| Field    | Type                         | Description                        |
-| -------- | ---------------------------- | ---------------------------------- |
-| `member` | [Member](members.md#member)! | The created or updated membership. |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `member` | [Member](#member)! | The created or updated membership. |
 
 </details>
 
@@ -309,21 +279,20 @@ The result of a membership mutation.
 
 A user's membership in an organization.
 
-**Implements:** [Node](../common.md#node), [Customizable](../common.md#customizable), [Versioned](../common.md#versioned)
+**Implements:** [Node](../common.md#node), [Versioned](../common.md#versioned)
 
-| Field          | Type                             | Description                                                                                                                                 |
-| -------------- | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `id`           | `ID!`                            | A globally unique identifier. This ID is opaque and should not be parsed by clients.                                                        |
-| `version`      | `Int!`                           | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
-| `user`         | [User](../actors/users.md#user)! | The user.                                                                                                                                   |
-| `organization` | [Organization](./#organization)! | The organization the user belongs to.                                                                                                       |
-| `isActive`     | `Boolean!`                       | Whether this membership is active.                                                                                                          |
-| `assignedAt`   | `DateTime!`                      | The date and time when the user was assigned to this organization.                                                                          |
-| `customFields` | `JSON!`                          | Membership-specific custom fields such as position and department.                                                                          |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `user` | [User](../actors/users.md#user)! | The user. |
+| `organization` | [Organization](README.md#organization)! | The organization the user belongs to. |
+| `isActive` | `Boolean!` | Whether this membership is active. |
+| `assignedAt` | `DateTime!` | The date and time when the user was assigned to this organization. |
 
 </details>
 
-***
+---
 
 ### memberRemove
 
@@ -337,8 +306,8 @@ memberRemove(
 
 **Arguments**
 
-| Name    | Type                 | Description                                   |
-| ------- | -------------------- | --------------------------------------------- |
+| Name | Type | Description |
+| ---- | ---- | ----------- |
 | `input` | `MemberRemoveInput!` | The input fields for removing the membership. |
 
 **Input types:**
@@ -349,9 +318,9 @@ memberRemove(
 
 Input for removing a membership.
 
-| Field     | Type   | Description                                 |
-| --------- | ------ | ------------------------------------------- |
-| `id`      | `ID!`  | The membership ID to remove.                |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` | The membership ID to remove. |
 | `version` | `Int!` | The current version for optimistic locking. |
 
 </details>
@@ -364,13 +333,13 @@ Input for removing a membership.
 
 The result of a delete mutation.
 
-| Field       | Type  | Description                   |
-| ----------- | ----- | ----------------------------- |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
 | `deletedId` | `ID!` | The ID of the deleted entity. |
 
 </details>
 
-***
+---
 
 ## Objects
 
@@ -378,29 +347,28 @@ The result of a delete mutation.
 
 A user's membership in an organization.
 
-**Implements:** [Node](../common.md#node), [Customizable](../common.md#customizable), [Versioned](../common.md#versioned)
+**Implements:** [Node](../common.md#node), [Versioned](../common.md#versioned)
 
-| Field          | Type                             | Description                                                                                                                                 |
-| -------------- | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `id`           | `ID!`                            | A globally unique identifier. This ID is opaque and should not be parsed by clients.                                                        |
-| `version`      | `Int!`                           | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
-| `user`         | [User](../actors/users.md#user)! | The user.                                                                                                                                   |
-| `organization` | [Organization](./#organization)! | The organization the user belongs to.                                                                                                       |
-| `isActive`     | `Boolean!`                       | Whether this membership is active.                                                                                                          |
-| `assignedAt`   | `DateTime!`                      | The date and time when the user was assigned to this organization.                                                                          |
-| `customFields` | `JSON!`                          | Membership-specific custom fields such as position and department.                                                                          |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `user` | [User](../actors/users.md#user)! | The user. |
+| `organization` | [Organization](README.md#organization)! | The organization the user belongs to. |
+| `isActive` | `Boolean!` | Whether this membership is active. |
+| `assignedAt` | `DateTime!` | The date and time when the user was assigned to this organization. |
 
-***
+---
 
 ### MemberPayload
 
 The result of a membership mutation.
 
-| Field    | Type                         | Description                        |
-| -------- | ---------------------------- | ---------------------------------- |
-| `member` | [Member](members.md#member)! | The created or updated membership. |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `member` | [Member](#member)! | The created or updated membership. |
 
-***
+---
 
 ## Inputs
 
@@ -408,59 +376,57 @@ The result of a membership mutation.
 
 Filtering options for members.
 
-| Field      | Type      | Description                        |
-| ---------- | --------- | ---------------------------------- |
-| `userIds`  | `[ID!]`   | Filter by users (OR within field). |
-| `isActive` | `Boolean` | Filter by active status.           |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `userIds` | `[ID!]` | Filter by users (OR within field). |
+| `isActive` | `Boolean` | Filter by active status. |
 
-***
+---
 
 ### MemberOrder
 
 Ordering options for members.
 
-| Field       | Type                                             | Description             |
-| ----------- | ------------------------------------------------ | ----------------------- |
-| `field`     | [MemberOrderField](members.md#memberorderfield)! | The field to order by.  |
-| `direction` | [OrderDirection](../common.md#orderdirection)!   | The direction to order. |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `field` | [MemberOrderField](#memberorderfield)! | The field to order by. |
+| `direction` | [OrderDirection](../common.md#orderdirection)! | The direction to order. |
 
-***
+---
 
 ### MemberCreateInput
 
 Input for creating a membership.
 
-| Field            | Type                                                                 | Description                            |
-| ---------------- | -------------------------------------------------------------------- | -------------------------------------- |
-| `organizationId` | `ID!`                                                                | The organization ID.                   |
-| `userId`         | `ID!`                                                                | The user ID to add.                    |
-| `customFields`   | [CustomFieldsPatchInput](../custom-fields.md#customfieldspatchinput) | The membership-specific custom fields. |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `organizationId` | `ID!` | The organization ID. |
+| `userId` | `ID!` | The user ID to add. |
 
-***
+---
 
 ### MemberUpdateInput
 
 Input for updating a membership.
 
-| Field          | Type                                                                 | Description                                 |
-| -------------- | -------------------------------------------------------------------- | ------------------------------------------- |
-| `id`           | `ID!`                                                                | The membership ID to update.                |
-| `version`      | `Int!`                                                               | The current version for optimistic locking. |
-| `isActive`     | `Boolean`                                                            | The new active status.                      |
-| `customFields` | [CustomFieldsPatchInput](../custom-fields.md#customfieldspatchinput) | The custom field changes.                   |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` | The membership ID to update. |
+| `version` | `Int!` | The current version for optimistic locking. |
+| `isActive` | `Boolean` | The new active status. |
 
-***
+---
 
 ### MemberRemoveInput
 
 Input for removing a membership.
 
-| Field     | Type   | Description                                 |
-| --------- | ------ | ------------------------------------------- |
-| `id`      | `ID!`  | The membership ID to remove.                |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` | The membership ID to remove. |
 | `version` | `Int!` | The current version for optimistic locking. |
 
-***
+---
 
 ## Enums
 
@@ -468,11 +434,11 @@ Input for removing a membership.
 
 Fields available for ordering members.
 
-| Value         | Description               |
-| ------------- | ------------------------- |
+| Value | Description |
+| ----- | ----------- |
 | `ASSIGNED_AT` | Order by assignment date. |
 
-***
+---
 
 ## Pagination types
 
@@ -482,14 +448,14 @@ A paginated list of Member items.
 
 **Implements:** [Connection](../common.md#connection)
 
-| Field      | Type                                     | Description                                                |
-| ---------- | ---------------------------------------- | ---------------------------------------------------------- |
-| `edges`    | \[[MemberEdge](members.md#memberedge)!]! | A list of edges.                                           |
-| `nodes`    | \[[Member](members.md#member)!]!         | A list of nodes in the connection (without edge metadata). |
-| `pageInfo` | [PageInfo](../common.md#pageinfo)!       | Information about the current page.                        |
-| `total`    | [CountInfo](../common.md#countinfo)      | The total count of items matching the filter.              |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `edges` | [[MemberEdge](#memberedge)!]! | A list of edges. |
+| `nodes` | [[Member](#member)!]! | A list of nodes in the connection (without edge metadata). |
+| `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
+| `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
 
-***
+---
 
 ### MemberEdge
 
@@ -497,9 +463,9 @@ An edge in the Member connection.
 
 **Implements:** [Edge](../common.md#edge)
 
-| Field    | Type                         | Description                        |
-| -------- | ---------------------------- | ---------------------------------- |
-| `cursor` | `String!`                    | An opaque cursor for this edge.    |
-| `node`   | [Member](members.md#member)! | The member at the end of the edge. |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `cursor` | `String!` | An opaque cursor for this edge. |
+| `node` | [Member](#member)! | The member at the end of the edge. |
 
-***
+---

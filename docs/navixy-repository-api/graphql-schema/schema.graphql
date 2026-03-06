@@ -667,6 +667,12 @@ Naming conventions:
 - System items: UPPER_SNAKE_CASE (e.g., DEVICE_TYPE, ACTIVE)
 - User items: any valid format (e.g., vehicle_car, sensor-v2)
 
+Uniqueness:
+- For catalog items: unique within the same catalog and organization scope
+- For custom field definitions: unique per owner catalog item and organization
+- For field options (OPTIONS type): unique within a single field definition
+- Additional uniqueness requirements may apply depending on context (see individual fields)
+
 Examples: DEVICE_TYPE, vehicle_car, status.active, sensor-v2, ABC123
 """
 scalar Code @specifiedBy(url: "https://api.navixy.com/spec/scalars/code")
@@ -689,7 +695,7 @@ enum OrderDirection {
   DESC
 }
 
-# @category: catalogs/catalog-item
+# @category: catalogs/catalog-items
 "The origin of a catalog item, indicating how it was created."
 enum CatalogItemOrigin {
   "Predefined by platform. Immutable and available to all organizations."
@@ -845,6 +851,20 @@ enum AuditEventType {
 }
 
 # @category: custom-fields
+"""
+Controls the behavior of `customFieldDefinitionDelete` when the field has existing values.
+
+Prefer `customFieldDefinitionArchive` for non-destructive deactivation.
+Use `CASCADE` only when permanent data removal is explicitly intended.
+"""
+enum CustomFieldDefinitionDeleteBehavior {
+  "Reject the deletion with an error if any entity has a value for this field. Default."
+  REJECT
+  "Delete the field definition and permanently remove all associated values."
+  CASCADE
+}
+
+# @category: custom-fields
 "Comparison operators for filtering by custom field values."
 enum FieldOperator {
   "Value equals the specified value."
@@ -969,7 +989,7 @@ interface Actor implements Node & Titled {
   title: String!
 }
 
-# @category: catalogs/catalog-item
+# @category: catalogs/catalog-items
 "A dictionary item that provides reference data for the system."
 interface CatalogItem implements Node & Versioned & Titled {
   "A globally unique identifier."
@@ -990,7 +1010,7 @@ interface CatalogItem implements Node & Versioned & Titled {
   meta: CatalogItemMeta!
 }
 
-# @category: catalogs/catalog-item
+# @category: catalogs/catalog-items
 "Metadata about a catalog item."
 type CatalogItemMeta {
   "A description of the catalog item. Can be localized."
@@ -1009,7 +1029,7 @@ type CatalogItemMeta {
   icon: String
 }
 
-# @category: catalogs/catalog-item
+# @category: catalogs/catalog-items
 "A catalog item that supports parent-child hierarchy."
 interface HierarchicalCatalogItem {
   "The parent item in the hierarchy. Null for root items."
@@ -1567,28 +1587,6 @@ type GeoObjectTypeEdge implements Edge {
   node: GeoObjectType!
 }
 
-# @category: schedules
-"A paginated list of ScheduleType items."
-type ScheduleTypeConnection implements Connection {
-  "A list of edges."
-  edges: [ScheduleTypeEdge!]!
-  "A list of nodes in the connection (without edge metadata)."
-  nodes: [ScheduleType!]!
-  "Information about the current page."
-  pageInfo: PageInfo!
-  "The total count of items matching the filter."
-  total: CountInfo
-}
-
-# @category: schedules
-"An edge in the ScheduleType connection."
-type ScheduleTypeEdge implements Edge {
-  "An opaque cursor for this edge."
-  cursor: String!
-  "The schedule type at the end of the edge."
-  node: ScheduleType!
-}
-
 # @category: access-control
 "A paginated list of Role items."
 type RoleConnection implements Connection {
@@ -1874,21 +1872,6 @@ type GeoObjectType implements CatalogItem & Node & Versioned & Titled {
   organization: Organization
   meta: CatalogItemMeta!
   "Custom field definitions specific to this geo object type, ordered by display order."
-  customFieldDefinitions: [CustomFieldDefinition!]!
-}
-
-# @category: schedules
-"A classification type for schedules."
-type ScheduleType implements CatalogItem & Node & Versioned & Titled {
-  id: ID!
-  version: Int!
-  title: String!
-  code: Code!
-  order: Int!
-  catalog: Catalog!
-  organization: Organization
-  meta: CatalogItemMeta!
-  "Custom field definitions specific to this schedule type, ordered by display order."
   customFieldDefinitions: [CustomFieldDefinition!]!
 }
 
@@ -2211,7 +2194,7 @@ type User implements Actor & Node & Versioned & Titled {
 
 # @category: organizations/members
 "A user's membership in an organization."
-type Member implements Node & Customizable & Versioned {
+type Member implements Node & Versioned {
   id: ID!
   version: Int!
   "The user."
@@ -2222,11 +2205,6 @@ type Member implements Node & Customizable & Versioned {
   isActive: Boolean!
   "The date and time when the user was assigned to this organization."
   assignedAt: DateTime!
-  "Membership-specific custom fields such as position and department."
-  customFields(
-    "Limit returned fields to these codes. Returns all fields if not specified."
-    codes: [Code!]
-  ): JSON!
 }
 
 # @category: actors/integrations
@@ -2330,7 +2308,7 @@ input GeoPointInput {
 
 # @category: devices
 "A tracking device such as a GPS tracker, sensor, or beacon."
-type Device implements Node & Titled & Customizable & Versioned & InventoryItem {
+type Device implements Node & Titled & Versioned & InventoryItem {
   id: ID!
   version: Int!
   title: String!
@@ -2342,10 +2320,6 @@ type Device implements Node & Titled & Customizable & Versioned & InventoryItem 
   model: DeviceModel!
   "The current operational status."
   status: DeviceStatus!
-  customFields(
-    "Limit returned fields to these codes. Returns all fields if not specified."
-    codes: [Code!]
-  ): JSON!
   "The hardware identifiers for this device (IMEI, serial number, MAC address, etc.)."
   identifiers: [DeviceIdentifier!]!
   "The inventory this device is currently assigned to."
@@ -2543,9 +2517,9 @@ type GeoObject implements Node & Titled & Customizable & Versioned {
   type: GeoObjectType!
   """
   The geographic shape of this object as GeoJSON geometry.
-  This is an alias for the `geojson` custom field.
+  This is an alias for the `geojson_data` custom field.
   """
-  geometry: GeoJSON!
+  geojsonData: GeoJSON!
   customFields(
     "Limit returned fields to these codes. Returns all fields if not specified."
     codes: [Code!]
@@ -2580,8 +2554,6 @@ type Schedule implements Node & Titled & Customizable & Versioned {
   title: String!
   "The organization that owns this schedule."
   organization: Organization!
-  "The schedule type classification."
-  type: ScheduleType!
   """
   The calendar and time interval definitions for this schedule.
   This is an alias for the `schedule_data` custom field.
@@ -2627,6 +2599,12 @@ type CustomFieldDefinition implements Node & Versioned & Titled {
   fieldType: FieldType!
   "The type-specific parameters for validation, defaults, and options."
   params: FieldParams!
+  """
+  Whether this field definition is archived.
+  Archived fields preserve existing values but no longer appear in forms and accept no new input.
+  Use `customFieldDefinitionArchive` / `customFieldDefinitionRestore` to toggle this state.
+  """
+  isArchived: Boolean!
 }
 
 # @category: custom-fields
@@ -2740,16 +2718,14 @@ type FieldOption {
 
 # @category: custom-fields
 "Parameters for DEVICE field type."
-type FieldParamsDevice implements FieldParams & MultiValue {
+type FieldParamsDevice implements FieldParams {
   isRequired: Boolean!
-  isMulti: Boolean!
 }
 
 # @category: custom-fields
 "Parameters for REFERENCE field type."
-type FieldParamsReference implements FieldParams & MultiValue {
+type FieldParamsReference implements FieldParams {
   isRequired: Boolean!
-  isMulti: Boolean!
   "The entity type code that can be referenced."
   refEntityTypeCode: Code!
 }
@@ -2975,17 +2951,13 @@ input DeviceFilter {
   inventoryIds: [ID!]
   "Partial match on title (case-insensitive contains)."
   titleContains: String @trim
-  "Filter by custom field values."
-  customFields: [CustomFieldFilter!]
 }
 
 # @category: devices
 "Ordering options for devices."
 input DeviceOrder {
-  "The standard field to order by. Mutually exclusive with `customFieldCode`."
+  "The field to order by."
   field: DeviceOrderField
-  "The custom field code to order by. Mutually exclusive with `field`."
-  customFieldCode: Code
   "The direction to order."
   direction: OrderDirection!
 }
@@ -3161,8 +3133,6 @@ enum GeoObjectOrderField {
 # @category: schedules
 "Filtering options for schedules."
 input ScheduleFilter {
-  "Filter by schedule types (OR within field)."
-  typeIds: [ID!]
   "Partial match on title (case-insensitive contains)."
   titleContains: String @trim
   "Filter by custom field values."
@@ -3407,8 +3377,6 @@ input DeviceCreateInput {
   title: String! @trim
   "The hardware identifiers."
   identifiers: [DeviceIdentifierInput!]
-  "The custom field values."
-  customFields: CustomFieldsPatchInput
 }
 
 # @category: devices
@@ -3424,8 +3392,6 @@ input DeviceUpdateInput {
   statusId: ID
   "The new display name."
   title: String @trim
-  "The custom field changes."
-  customFields: CustomFieldsPatchInput
 }
 
 # @category: devices
@@ -3568,7 +3534,7 @@ input GeoObjectCreateInput {
   "The geo object display name."
   title: String! @trim
   "The GeoJSON geometry."
-  geometry: GeoJSON!
+  geojsonData: GeoJSON!
   "The custom field values."
   customFields: CustomFieldsPatchInput
 }
@@ -3583,7 +3549,7 @@ input GeoObjectUpdateInput {
   "The new display name."
   title: String @trim
   "The new geometry."
-  geometry: GeoJSON
+  geojsonData: GeoJSON
   "The custom field changes."
   customFields: CustomFieldsPatchInput
 }
@@ -3604,8 +3570,6 @@ input GeoObjectDeleteInput {
 input ScheduleCreateInput {
   "The organization that will own the schedule."
   organizationId: ID!
-  "The schedule type ID."
-  typeId: ID!
   "The schedule display name."
   title: String! @trim
   "The schedule data."
@@ -3739,8 +3703,6 @@ input MemberCreateInput {
   organizationId: ID!
   "The user ID to add."
   userId: ID!
-  "The membership-specific custom fields."
-  customFields: CustomFieldsPatchInput
 }
 
 # @category: organizations/members
@@ -3752,8 +3714,6 @@ input MemberUpdateInput {
   version: Int!
   "The new active status."
   isActive: Boolean
-  "The custom field changes."
-  customFields: CustomFieldsPatchInput
 }
 
 # @category: organizations/members
@@ -3941,9 +3901,40 @@ input CustomFieldDefinitionUpdateInput {
 }
 
 # @category: custom-fields
-"Input for deleting a custom field definition."
+"""
+Input for permanently deleting a custom field definition.
+
+If entities have values for this field, the default behavior is to reject the deletion.
+Use `onValues: CASCADE` to explicitly allow deletion with all associated values.
+
+Prefer `customFieldDefinitionArchive` for non-destructive deactivation.
+"""
 input CustomFieldDefinitionDeleteInput {
   "The definition ID to delete."
+  id: ID!
+  "The current version for optimistic locking."
+  version: Int!
+  """
+  What to do when existing entities have values for this field.
+  Defaults to `REJECT` to prevent accidental data loss.
+  """
+  onValues: CustomFieldDefinitionDeleteBehavior = REJECT
+}
+
+# @category: custom-fields
+"""
+Input for archiving a custom field definition.
+
+Archiving deactivates the field without data loss:
+- The field definition and all its values are preserved.
+- The field no longer appears in forms and accepts no new values.
+- Existing values remain readable and visible in history/exports.
+- An archived field can be restored via `customFieldDefinitionRestore`.
+
+Use this instead of hard deletion when historical data must be retained.
+"""
+input CustomFieldDefinitionArchiveInput {
+  "The definition ID to archive."
   id: ID!
   "The current version for optimistic locking."
   version: Int!
@@ -4097,8 +4088,6 @@ input FieldOptionInput {
 input DeviceFieldParamsInput {
   "Whether a value is required."
   isRequired: Boolean!
-  "Whether multiple devices can be selected."
-  isMulti: Boolean = false
 }
 
 # @category: custom-fields
@@ -4106,8 +4095,6 @@ input DeviceFieldParamsInput {
 input ReferenceFieldParamsInput {
   "Whether a value is required."
   isRequired: Boolean!
-  "Whether multiple references can be selected."
-  isMulti: Boolean = false
   "The entity type code that can be referenced."
   refEntityTypeCode: Code!
 }
@@ -4352,36 +4339,6 @@ input GeoObjectTypeUpdateInput {
   meta: CatalogItemMetaInput
 }
 
-# @category: schedules
-"Input for creating a schedule type."
-input ScheduleTypeCreateInput {
-  "The organization that will own the item."
-  organizationId: ID!
-  "The machine-readable code."
-  code: Code!
-  "The display name."
-  title: String! @trim
-  "The display order."
-  order: Int = 0
-  "The display properties."
-  meta: CatalogItemMetaInput
-}
-
-# @category: schedules
-"Input for updating a schedule type."
-input ScheduleTypeUpdateInput {
-  "The item ID to update."
-  id: ID!
-  "The current version for optimistic locking."
-  version: Int!
-  "The new display name."
-  title: String @trim
-  "The new display order."
-  order: Int
-  "The display properties."
-  meta: CatalogItemMetaInput
-}
-
 # @category: catalogs/tags
 "Input for creating a tag."
 input TagCreateInput {
@@ -4608,25 +4565,6 @@ type Query {
     "The ordering options for the returned geo object types."
     orderBy: CatalogItemOrder = { field: ORDER, direction: ASC }
   ): GeoObjectTypeConnection!
-
-  # @category: schedules
-  "Lists schedule types for an organization."
-  scheduleTypes(
-    "The organization to retrieve schedule types for."
-    organizationId: ID!
-    "Filtering options for the returned schedule types."
-    filter: CatalogItemFilter
-    "The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
-    first: Int
-    "The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination)."
-    after: String
-    "The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
-    last: Int
-    "The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination)."
-    before: String
-    "The ordering options for the returned schedule types."
-    orderBy: CatalogItemOrder = { field: ORDER, direction: ASC }
-  ): ScheduleTypeConnection!
 
   # @category: access-control
   "Lists roles for an organization."
@@ -5156,13 +5094,6 @@ type GeoObjectTypePayload {
   geoObjectType: GeoObjectType!
 }
 
-# @category: schedules
-"The result of a schedule type mutation."
-type ScheduleTypePayload {
-  "The created or updated schedule type."
-  scheduleType: ScheduleType!
-}
-
 # @category: catalogs/tags
 "The result of a tag mutation."
 type TagPayload {
@@ -5529,6 +5460,26 @@ type Mutation {
     input: CustomFieldDefinitionDeleteInput!
   ): DeletePayload
 
+  # @category: custom-fields
+  """
+  Archives a custom field definition.
+
+  Archiving is a non-destructive alternative to deletion:
+  the field is deactivated but all data is preserved.
+  Archived fields can be restored via `customFieldDefinitionRestore`.
+  """
+  customFieldDefinitionArchive(
+    "The input fields for archiving the definition."
+    input: CustomFieldDefinitionArchiveInput!
+  ): CustomFieldDefinitionPayload
+
+  # @category: custom-fields
+  "Restores a previously archived custom field definition, making it active again."
+  customFieldDefinitionRestore(
+    "The definition ID to restore."
+    input: CustomFieldDefinitionArchiveInput!
+  ): CustomFieldDefinitionPayload
+
   # --- Catalog Item CRUD ---
 
   # @category: devices
@@ -5633,27 +5584,6 @@ type Mutation {
   "Deletes a geo object type."
   geoObjectTypeDelete(
     "The input fields for deleting the geo object type."
-    input: CatalogItemDeleteInput!
-  ): DeletePayload
-
-  # @category: schedules
-  "Creates a new schedule type."
-  scheduleTypeCreate(
-    "The input fields for creating the schedule type."
-    input: ScheduleTypeCreateInput!
-  ): ScheduleTypePayload
-
-  # @category: schedules
-  "Updates a schedule type."
-  scheduleTypeUpdate(
-    "The input fields for updating the schedule type."
-    input: ScheduleTypeUpdateInput!
-  ): ScheduleTypePayload
-
-  # @category: schedules
-  "Deletes a schedule type."
-  scheduleTypeDelete(
-    "The input fields for deleting the schedule type."
     input: CatalogItemDeleteInput!
   ): DeletePayload
 

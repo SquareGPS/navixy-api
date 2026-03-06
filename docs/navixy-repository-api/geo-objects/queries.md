@@ -125,7 +125,7 @@ A geographic object such as a geofence, point of interest, or route.
 | `title` | `String!` | The human-readable display name. |
 | `organization` | [Organization](../organizations/README.md#organization)! | The organization that owns this geo object. |
 | `type` | [GeoObjectType](types.md#geoobjecttype)! | The geo object type classification. |
-| `geometry` | `GeoJSON!` | The geographic shape of this object as GeoJSON geometry. This is an alias for the `geojson` custom field. |
+| `geojsonData` | `GeoJSON!` | The geographic shape of this object as GeoJSON geometry. This is an alias for the `geojson_data` custom field. |
 | `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. |
 | `containsPoints` | [[PointContainmentResult](types.md#pointcontainmentresult)!]! | Checks if the given points are contained within this geo object's geometry. Returns the containment status for each point. Only applicable to Polygon and MultiPolygon geometries. |
 
@@ -153,7 +153,7 @@ An organization in the hierarchy that owns entities and users.
 | `devices` | [DeviceConnection](../devices/types.md#deviceconnection)! | The devices owned by this organization. |
 | `assets` | [AssetConnection](../assets/types.md#assetconnection)! | The assets owned by this organization. |
 | `geoObjects` | [GeoObjectConnection](types.md#geoobjectconnection)! | The geographic objects owned by this organization. |
-| `schedules` | [ScheduleConnection](../schedules/types.md#scheduleconnection)! | The schedules owned by this organization. |
+| `schedules` | [ScheduleConnection](../schedules.md#scheduleconnection)! | The schedules owned by this organization. |
 
 </details>
 

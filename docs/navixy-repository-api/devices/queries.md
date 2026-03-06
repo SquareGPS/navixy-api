@@ -301,7 +301,7 @@ device(id: ID!): Device
 
 A tracking device such as a GPS tracker, sensor, or beacon.
 
-**Implements:** [Node](../common.md#node), [Titled](../common.md#titled), [Customizable](../common.md#customizable), [Versioned](../common.md#versioned), [InventoryItem](inventory.md#inventoryitem)
+**Implements:** [Node](../common.md#node), [Titled](../common.md#titled), [Versioned](../common.md#versioned), [InventoryItem](inventory.md#inventoryitem)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -312,7 +312,6 @@ A tracking device such as a GPS tracker, sensor, or beacon.
 | `type` | [DeviceType](types.md#devicetype)! | The device type classification. |
 | `model` | [DeviceModel](types.md#devicemodel)! | The specific device model. |
 | `status` | [DeviceStatus](types.md#devicestatus)! | The current operational status. |
-| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. |
 | `identifiers` | [[DeviceIdentifier](types.md#deviceidentifier)!]! | The hardware identifiers for this device (IMEI, serial number, MAC address, etc.). |
 | `inventory` | [Inventory](inventory.md#inventory) | The inventory this device is currently assigned to. |
 | `relationsFrom` | [[DeviceRelation](types.md#devicerelation)!]! | The outgoing relationships from this device to other devices. |
@@ -343,7 +342,7 @@ An organization in the hierarchy that owns entities and users.
 | `devices` | [DeviceConnection](types.md#deviceconnection)! | The devices owned by this organization. |
 | `assets` | [AssetConnection](../assets/types.md#assetconnection)! | The assets owned by this organization. |
 | `geoObjects` | [GeoObjectConnection](../geo-objects/types.md#geoobjectconnection)! | The geographic objects owned by this organization. |
-| `schedules` | [ScheduleConnection](../schedules/types.md#scheduleconnection)! | The schedules owned by this organization. |
+| `schedules` | [ScheduleConnection](../schedules.md#scheduleconnection)! | The schedules owned by this organization. |
 
 </details>
 
@@ -394,21 +393,6 @@ Filtering options for devices.
 | `identifierContains` | `String` | Partial match on device identifier value (case-sensitive contains). |
 | `inventoryIds` | `[ID!]` | Filter by inventories (OR within field). |
 | `titleContains` | `String` | Partial match on title (case-insensitive contains). |
-| `customFields` | [[CustomFieldFilter](../custom-fields.md#customfieldfilter)!] | Filter by custom field values. |
-
-</details>
-
-<details>
-
-<summary>CustomFieldFilter</summary>
-
-A filter condition for a custom field value.
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `code` | `Code!` | The custom field code to filter by. |
-| `operator` | [FieldOperator](../custom-fields.md#fieldoperator)! | The comparison operator. |
-| `value` | `JSON` | The value to compare against. Null for `IS_NULL` and `IS_NOT_NULL` operators. |
 
 </details>
 
@@ -420,8 +404,7 @@ Ordering options for devices.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [DeviceOrderField](types.md#deviceorderfield) | The standard field to order by. Mutually exclusive with `customFieldCode`. |
-| `customFieldCode` | `Code` | The custom field code to order by. Mutually exclusive with `field`. |
+| `field` | [DeviceOrderField](types.md#deviceorderfield) | The field to order by. |
 | `direction` | [OrderDirection](../common.md#orderdirection)! | The direction to order. |
 
 </details>

@@ -34,7 +34,6 @@ Input for creating a new device.
 | `statusId` | `ID!` | The initial device status ID. |
 | `title` | `String!` | The device display name. |
 | `identifiers` | [[DeviceIdentifierInput](types.md#deviceidentifierinput)!] | The hardware identifiers. |
-| `customFields` | [CustomFieldsPatchInput](../custom-fields.md#customfieldspatchinput) | The custom field values. |
 
 </details>
 
@@ -49,19 +48,6 @@ Input for a device identifier.
 | `type` | [DeviceIdType](types.md#deviceidtype)! | The type of identifier. |
 | `value` | `String!` | The identifier value. |
 | `namespace` | `Code` | The namespace for uniqueness scope. Null means globally unique. |
-
-</details>
-
-<details>
-
-<summary>CustomFieldsPatchInput</summary>
-
-Input for updating custom field values using a patch model.
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `set` | `JSON` | Fields to set or update as a key-value map. |
-| `unset` | `[Code!]` | Field codes to remove. |
 
 </details>
 
@@ -85,7 +71,7 @@ The result of a device mutation.
 
 A tracking device such as a GPS tracker, sensor, or beacon.
 
-**Implements:** [Node](../common.md#node), [Titled](../common.md#titled), [Customizable](../common.md#customizable), [Versioned](../common.md#versioned), [InventoryItem](inventory.md#inventoryitem)
+**Implements:** [Node](../common.md#node), [Titled](../common.md#titled), [Versioned](../common.md#versioned), [InventoryItem](inventory.md#inventoryitem)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -96,7 +82,6 @@ A tracking device such as a GPS tracker, sensor, or beacon.
 | `type` | [DeviceType](types.md#devicetype)! | The device type classification. |
 | `model` | [DeviceModel](types.md#devicemodel)! | The specific device model. |
 | `status` | [DeviceStatus](types.md#devicestatus)! | The current operational status. |
-| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. |
 | `identifiers` | [[DeviceIdentifier](types.md#deviceidentifier)!]! | The hardware identifiers for this device (IMEI, serial number, MAC address, etc.). |
 | `inventory` | [Inventory](inventory.md#inventory) | The inventory this device is currently assigned to. |
 | `relationsFrom` | [[DeviceRelation](types.md#devicerelation)!]! | The outgoing relationships from this device to other devices. |
@@ -138,20 +123,6 @@ Input for updating an existing device.
 | `modelId` | `ID` | The new device model. |
 | `statusId` | `ID` | The new device status. |
 | `title` | `String` | The new display name. |
-| `customFields` | [CustomFieldsPatchInput](../custom-fields.md#customfieldspatchinput) | The custom field changes. |
-
-</details>
-
-<details>
-
-<summary>CustomFieldsPatchInput</summary>
-
-Input for updating custom field values using a patch model.
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `set` | `JSON` | Fields to set or update as a key-value map. |
-| `unset` | `[Code!]` | Field codes to remove. |
 
 </details>
 
@@ -175,7 +146,7 @@ The result of a device mutation.
 
 A tracking device such as a GPS tracker, sensor, or beacon.
 
-**Implements:** [Node](../common.md#node), [Titled](../common.md#titled), [Customizable](../common.md#customizable), [Versioned](../common.md#versioned), [InventoryItem](inventory.md#inventoryitem)
+**Implements:** [Node](../common.md#node), [Titled](../common.md#titled), [Versioned](../common.md#versioned), [InventoryItem](inventory.md#inventoryitem)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -186,7 +157,6 @@ A tracking device such as a GPS tracker, sensor, or beacon.
 | `type` | [DeviceType](types.md#devicetype)! | The device type classification. |
 | `model` | [DeviceModel](types.md#devicemodel)! | The specific device model. |
 | `status` | [DeviceStatus](types.md#devicestatus)! | The current operational status. |
-| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. |
 | `identifiers` | [[DeviceIdentifier](types.md#deviceidentifier)!]! | The hardware identifiers for this device (IMEI, serial number, MAC address, etc.). |
 | `inventory` | [Inventory](inventory.md#inventory) | The inventory this device is currently assigned to. |
 | `relationsFrom` | [[DeviceRelation](types.md#devicerelation)!]! | The outgoing relationships from this device to other devices. |
@@ -550,7 +520,7 @@ The result of a device type mutation.
 
 A classification type for devices.
 
-**Implements:** [CatalogItem](../catalogs/README.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
+**Implements:** [CatalogItem](../catalogs/catalog-items.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -561,7 +531,7 @@ A classification type for devices.
 | `order` | `Int!` | The display order within the same level or category. |
 | `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
 | `organization` | [Organization](../organizations/README.md#organization) | The organization that owns this item. Null for system items. |
-| `meta` | [CatalogItemMeta](../catalogs/README.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
+| `meta` | [CatalogItemMeta](../catalogs/catalog-items.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 | `customFieldDefinitions` | [[CustomFieldDefinition](../custom-fields.md#customfielddefinition)!]! | Custom field definitions specific to this device type, ordered by display order. |
 
 </details>
@@ -638,7 +608,7 @@ The result of a device type mutation.
 
 A classification type for devices.
 
-**Implements:** [CatalogItem](../catalogs/README.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
+**Implements:** [CatalogItem](../catalogs/catalog-items.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -649,7 +619,7 @@ A classification type for devices.
 | `order` | `Int!` | The display order within the same level or category. |
 | `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
 | `organization` | [Organization](../organizations/README.md#organization) | The organization that owns this item. Null for system items. |
-| `meta` | [CatalogItemMeta](../catalogs/README.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
+| `meta` | [CatalogItemMeta](../catalogs/catalog-items.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 | `customFieldDefinitions` | [[CustomFieldDefinition](../custom-fields.md#customfielddefinition)!]! | Custom field definitions specific to this device type, ordered by display order. |
 
 </details>
@@ -773,7 +743,7 @@ The result of a device status mutation.
 
 An operational status for devices.
 
-**Implements:** [CatalogItem](../catalogs/README.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
+**Implements:** [CatalogItem](../catalogs/catalog-items.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -784,7 +754,7 @@ An operational status for devices.
 | `order` | `Int!` | The display order within the same level or category. |
 | `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
 | `organization` | [Organization](../organizations/README.md#organization) | The organization that owns this item. Null for system items. |
-| `meta` | [CatalogItemMeta](../catalogs/README.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
+| `meta` | [CatalogItemMeta](../catalogs/catalog-items.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 
 </details>
 
@@ -860,7 +830,7 @@ The result of a device status mutation.
 
 An operational status for devices.
 
-**Implements:** [CatalogItem](../catalogs/README.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
+**Implements:** [CatalogItem](../catalogs/catalog-items.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -871,7 +841,7 @@ An operational status for devices.
 | `order` | `Int!` | The display order within the same level or category. |
 | `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
 | `organization` | [Organization](../organizations/README.md#organization) | The organization that owns this item. Null for system items. |
-| `meta` | [CatalogItemMeta](../catalogs/README.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
+| `meta` | [CatalogItemMeta](../catalogs/catalog-items.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 
 </details>
 
