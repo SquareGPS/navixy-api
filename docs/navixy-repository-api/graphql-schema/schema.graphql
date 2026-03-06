@@ -689,7 +689,7 @@ enum OrderDirection {
   DESC
 }
 
-# @category: catalogs/catalog-items
+# @category: catalogs/catalog-item
 "The origin of a catalog item, indicating how it was created."
 enum CatalogItemOrigin {
   "Predefined by platform. Immutable and available to all organizations."
@@ -969,7 +969,7 @@ interface Actor implements Node & Titled {
   title: String!
 }
 
-# @category: catalogs/catalog-items
+# @category: catalogs/catalog-item
 "A dictionary item that provides reference data for the system."
 interface CatalogItem implements Node & Versioned & Titled {
   "A globally unique identifier."
@@ -990,7 +990,7 @@ interface CatalogItem implements Node & Versioned & Titled {
   meta: CatalogItemMeta!
 }
 
-# @category: catalogs/catalog-items
+# @category: catalogs/catalog-item
 "Metadata about a catalog item."
 type CatalogItemMeta {
   "A description of the catalog item. Can be localized."
@@ -1009,7 +1009,7 @@ type CatalogItemMeta {
   icon: String
 }
 
-# @category: catalogs/catalog-items
+# @category: catalogs/catalog-item
 "A catalog item that supports parent-child hierarchy."
 interface HierarchicalCatalogItem {
   "The parent item in the hierarchy. Null for root items."
