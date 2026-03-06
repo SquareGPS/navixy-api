@@ -6,14 +6,14 @@ description: Define and use custom fields to attach domain-specific data to enti
 
 {% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}
 
-In Navixy Repository API, devices, assets, geo objects, and schedules each come with a set of built-in fields such as `title`, `organization`, and `type`. Custom fields let you extend these entities with additional data specific to your operation — a VIN number, a fuel type, an inspection date, an access level — without any changes to the platform schema.
+In Navixy Repository API, devices, assets, geo objects, and schedules each come with a set of built-in fields such as `title`, `organization`, and `type`. Custom fields let you extend these entities with additional data specific to your operation, such as a VIN number, a fuel type, an inspection date, or access level, without any changes to the platform schema.
 
 ## How custom fields work
 
 Custom fields can be user-defined or predefined. User-defined fields are created by you and scoped to a specific entity type — for example, a `vin` field that only appears in vehicles. Predefined fields are built into the platform for certain entity types, such as `geojson` in geo objects.
 
 {% hint style="warning" %}
-This guide covers user-defined fields; avoid using predefined field codes (`geojson`, `device`, and `schedule_data`) for creating your own fields.
+This guide covers user-defined fields. Avoid using predefined field codes (`geojson`, `device`, and `schedule_data`) for creating your own fields.
 {% endhint %}
 
 Every custom field has a [FieldType](../custom-fields.md#fieldtype) that determines what kind of data it stores and what validation options are available. You can add any number of fields with different types to a given entity type.
@@ -28,7 +28,7 @@ Each field is described by [CustomFieldDefinition](../custom-fields.md#customfie
 
 `customFields` in any create or update mutation accepts a [CustomFieldsPatchInput](../custom-fields.md#customfieldspatchinput) with two sub-fields:
 
-<table><thead><tr><th width="169">Field</th><th width="125.44451904296875">Type</th><th>Description</th></tr></thead><tbody><tr><td><code>set</code></td><td><a href="../common.md#json">JSON</a></td><td>Key-value map of fields to create or overwrite.</td></tr><tr><td><code>unset</code></td><td><a href="../common.md#code">[Code!]</a></td><td>List of field codes to remove entirely.</td></tr></tbody></table>
+<table><thead><tr><th width="169">Field</th><th width="125.44451904296875">Type</th><th>Description</th></tr></thead><tbody><tr><td><code>set</code></td><td><a href="../common.md#json">JSON</a></td><td>Key-value map of fields to create or overwrite.</td></tr><tr><td><code>unset</code></td><td>[<a href="../common.md#code">Code</a>!]</td><td>List of field codes to remove entirely.</td></tr></tbody></table>
 
 This is the **patch model**: fields you don't mention are left unchanged. You can `set` and `unset` in the same mutation. For example, to update a license plate and remove an assigned driver in one call, add this code:
 
@@ -49,7 +49,7 @@ Adding this metadata requires the following steps:
 
 {% stepper %}
 {% step %}
-#### Choose a field type
+### **Choose a field type**
 
 Before creating a definition, pick the `fieldType` that best matches your data. See the [field type reference](implementing-custom-fields.md#field-type-reference) above.
 
@@ -59,7 +59,7 @@ Before creating a definition, pick the `fieldType` that best matches your data. 
 {% endstep %}
 
 {% step %}
-#### Create field definitions
+### **Create field definitions**
 
 To create a definition, you need three IDs:
 
@@ -67,7 +67,7 @@ To create a definition, you need three IDs:
 * `ownerCatalogItemId`: the specific type the field belongs to (e.g., `AssetType` for "vehicle")
 * `targetEntityTypeId` : the broader entity type category (e.g., `EntityType` for "asset")
 
-**2.1 Check the existing definitions**
+#### **2.1 Check the existing definitions**
 
 Before adding new fields, check what's already defined in a type by querying `customFieldDefinitions` on the type object:
 
@@ -110,13 +110,13 @@ Response (if the fields already exist):
 
 If no custom fields have been created yet, `customFieldDefinitions` is an empty array. The query works the same way for `deviceType`, `geoObjectType`, and `scheduleType`.
 
-**2.2 Choose codes for your fields**
+#### **2.2 Choose codes for your fields**
 
 Choose a [code](../common.md#code) for each field before creating its definition. The code becomes the key used to read and write values in all entity mutations and queries, so treat it as stable once records carry values under it — changing it later means recreating the definition and losing existing data.
 
 Codes can contain ASCII letters, digits, underscores, dots, and hyphens, and must start with a letter or digit (max 64 characters). Predefined system items use UPPER\_SNAKE\_CASE, but user-defined fields accept any valid format.
 
-**2.3 Create a STRING field (VIN)**
+#### **2.3 Create a STRING field (VIN)**
 
 Run the following mutation:
 
@@ -171,7 +171,7 @@ The `params` input uses the [@oneOf directive](../core-api-reference/directives.
 Each field type has its own named params block that you must use. The mutations in this step demonstrate this: the VIN field uses `params: { string: { ... } }`, the fuel type field uses `params: { options: { ... } }`, and the service date field uses `params: { date: { ... } }`. Providing the wrong variant returns a [validation error](../error-handling.md#validation-error-400).
 {% endhint %}
 
-**2.4 Create an OPTIONS field (fuel type)**
+#### **2.4 Create an OPTIONS field (fuel type)**
 
 Run the following mutation:
 
@@ -210,7 +210,7 @@ On success, the response returns the new definition's `id` and `code`.
 
 Set `isMulti: true` if an entity can support more than one option. See [multi-value fields and filtering](implementing-custom-fields.md#constraints-and-considerations) for how this affects queries.
 
-**2.5 Create a DATE field (next service date)**
+#### **2.5 Create a DATE field (next service date)**
 
 Run the following mutation:
 
@@ -244,7 +244,7 @@ The same mutation ([customFieldDefinitionCreate](../custom-fields.md#customfield
 {% endstep %}
 
 {% step %}
-#### Set and update values
+### **Set and update values**
 
 Pass `customFields` in the create mutation with the initial values under `set`. The following example creates a vehicle asset with all three fields populated:
 
@@ -299,7 +299,7 @@ The same pattern applies to `deviceCreate`, `geoObjectCreate`, and `scheduleCrea
 {% endstep %}
 
 {% step %}
-#### Update custom field values
+### **Update custom field values**
 
 Use `set` to overwrite specific fields and `unset` to remove them. Fields omitted from both are left unchanged.
 
@@ -348,7 +348,7 @@ All entity update mutations require the current `version` for [optimistic lockin
 {% endstep %}
 
 {% step %}
-#### Read custom field values
+### **Read custom field values**
 
 `customFields` on any entity returns a JSON object keyed by field code. By default, all fields are returned. Run the following query:
 
@@ -407,13 +407,13 @@ The response contains only the requested fields:
 {% endstep %}
 
 {% step %}
-#### Filter entities by custom field value
+### **Filter entities by custom field value**
 
 All entity list queries support filtering by custom field values through [CustomFieldFilter](../custom-fields.md#customfieldfilter). Add one or more conditions to the `customFields` filter array. Multiple conditions are applied as AND.
 
 For the full operator list and value formats by field type, see [Filtering and sorting](../filtering-and-sorting.md#operators).
 
-**How to filter by an OPTIONS value**
+#### **How to filter by an OPTIONS value**
 
 Find all electric vehicle assets:
 
@@ -458,7 +458,7 @@ Response:
 }
 ```
 
-**How to filter by a DATE value**
+#### **How to filter by a DATE value**
 
 Find vehicles with a service date before a deadline:
 
@@ -502,7 +502,7 @@ Response:
 }
 ```
 
-**How to combine multiple conditions**
+#### **How to combine multiple conditions**
 
 Find devices with a specific SIM card prefix that don't yet have installation notes:
 
