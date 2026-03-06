@@ -52,7 +52,7 @@ The API reference provides complete technical specifications for all GraphQL typ
 * [**Devices**](devices/)
 * [**Assets**](assets/)
 * [**Geo objects**](geo-objects/)
-* [**Schedules**](schedules/)
+* [**Schedules**](schedules.md)
 * [**Access control**](access-control/)
 * [**Custom fields**](custom-fields.md)
 * [**Audit**](audit.md)

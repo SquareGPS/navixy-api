@@ -32,12 +32,6 @@ This page provides a cross-reference of all catalog types organized by their par
 | ---- | ----------- |
 | [GeoObjectType](../geo-objects/types.md#geoobjecttype) | A classification type for geographic objects. |
 
-## Schedule
-
-| Name | Description |
-| ---- | ----------- |
-| [ScheduleType](../schedules/types.md#scheduletype) | A classification type for schedules. |
-
 ## Access
 
 | Name | Description |

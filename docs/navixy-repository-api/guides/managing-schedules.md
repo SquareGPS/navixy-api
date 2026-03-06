@@ -58,7 +58,7 @@ Use the `id` of the organization you want to work with for all subsequent geo ob
 
 ## Understanding schedule data
 
-A schedule consists of metadata (title, type, organization) and calendar data stored in the `scheduleData` field, which accepts a value of [ScheduleData](../schedules/types.md#scheduledata), a custom scalar containing a JSON value.
+A schedule consists of metadata (title, type, organization) and calendar data stored in the `scheduleData` field, which accepts a value of [ScheduleData](../schedules.md#scheduledata), a custom scalar containing a JSON value.
 
 {% hint style="info" %}
 The `scheduleData` field is a convenience alias for the `schedule_data` system custom field. You can also access the same data through the `customFields` field if needed. See [Implementing custom fields](implementing-custom-fields.md) for details.
@@ -575,4 +575,4 @@ Non-recurring schedule for specific rental dates:
 
 ## See also
 
-* [Schedules types and operations](../schedules/): A complete list of all operations and types related to schedules
+* [Schedules types and operations](../schedules.md): A complete list of all operations and types related to schedules

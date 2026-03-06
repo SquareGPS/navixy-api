@@ -153,7 +153,7 @@ An organization in the hierarchy that owns entities and users.
 | `devices` | [DeviceConnection](../../devices/types.md#deviceconnection)! | The devices owned by this organization. |
 | `assets` | [AssetConnection](../types.md#assetconnection)! | The assets owned by this organization. |
 | `geoObjects` | [GeoObjectConnection](../../geo-objects/types.md#geoobjectconnection)! | The geographic objects owned by this organization. |
-| `schedules` | [ScheduleConnection](../../schedules/types.md#scheduleconnection)! | The schedules owned by this organization. |
+| `schedules` | [ScheduleConnection](../../schedules.md#scheduleconnection)! | The schedules owned by this organization. |
 
 </details>
 
