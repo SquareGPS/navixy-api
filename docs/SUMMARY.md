@@ -105,6 +105,7 @@
         * [Stats](user-api/backend-api/resources/tracking/tracker/stats/README.md)
           * [Engine hours](user-api/backend-api/resources/tracking/tracker/stats/stats_engine_hours.md)
           * [Mileage](user-api/backend-api/resources/tracking/tracker/stats/stats_mileage.md)
+        * [Output control](user-api/backend-api/resources/tracking/tracker/output-control.md)
       * [Zone](user-api/backend-api/resources/tracking/zone/README.md)
         * [Geofence point](user-api/backend-api/resources/tracking/zone/zone_point.md)
       * [Asset](user-api/backend-api/resources/tracking/asset/README.md)
