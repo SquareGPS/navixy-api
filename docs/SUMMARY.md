@@ -80,7 +80,7 @@
         * [Group](user-api/backend-api/resources/tracking/tracker/group.md)
         * [LED](user-api/backend-api/resources/tracking/tracker/led.md)
         * [Mobile app register](user-api/backend-api/resources/tracking/tracker/mobile.md)
-        * [Output control](user-api/backend-api/resources/tracking/tracker/output.md)
+        * [Digital output](user-api/backend-api/resources/tracking/tracker/output.md)
         * [Sensor readings](user-api/backend-api/resources/tracking/tracker/readings.md)
         * [Retranslator](user-api/backend-api/resources/tracking/tracker/retranslator.md)
         * [Trusted number](user-api/backend-api/resources/tracking/tracker/trusted_number.md)
