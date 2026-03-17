@@ -1,22 +1,25 @@
 ---
-description: Create, manage, and execute custom device commands and HTTP POST webhooks for individual trackers.
-icon: terminal
+description: >-
+  Create, manage, and execute custom device commands and HTTP POST webhooks for
+  individual trackers.
 ---
 
 # Output control
+
+## Output control
 
 Output control lets you define reusable commands for a tracker and execute them on demand. Two command types are supported:
 
 * **Hardware** — sends a protocol-level command string directly to the device (e.g. to reboot firmware or toggle a relay).
 * **Software** — sends an HTTP POST request with a JSON body to any URL, optionally embedding live device attributes in the payload.
 
-Commands are stored per tracker and can be executed at any time from the [Output control widget](../../../../../user/guide/devices-and-settings/output-control-widget.md) in the platform UI.
+Commands are stored per tracker and can be executed at any time from the [Output control widget](https://app.gitbook.com/s/446mKak1zDrGv70ahuYZ/guide/devices-and-settings/object-management/output-control-widget) in the platform UI.
 
 {% hint style="info" %}
-Output control is designed for manual, on-demand actions targeting a single tracker. For automated, rule-based command sending across multiple devices, use [IoT Logic](../../../../../iot-logic/) with the **Device action** or **Webhook** nodes.
+Output control is designed for manual, on-demand actions targeting a single tracker. For automated, rule-based command sending across multiple devices, use [IoT Logic](https://app.gitbook.com/o/YVLWhgAwCZPoU5vlRsCs/s/tx3J5BxnWyPV0nP2xr0z/) with the **Device action** or **Webhook** nodes.
 {% endhint %}
 
-## Object structure
+### Object structure
 
 Each output control entry has a common set of fields. The `config` object differs by `type`.
 
@@ -81,7 +84,7 @@ Each output control entry has a common set of fields. The `config` object differ
 Hardware command strings are device-specific. Always refer to your device manufacturer's documentation for valid values. Sending an incorrect command string may have unintended effects on the device.
 {% endhint %}
 
-# API actions
+## API actions
 
 API base path: `/tracker/output_control`.
 
@@ -89,21 +92,21 @@ API base path: `/tracker/output_control`.
 All API calls require authentication. Pass your **API key** or **user session hash** as the `hash` parameter in the request body, as a query string parameter, or in the `Authorization: NVX <value>` header. API keys are recommended for integrations — they don't expire and can be managed independently. See [Authentication](../../authentication.md) for details.
 {% endhint %}
 
-## create
+### create
 
 Creates a new output control for a tracker.
 
 **Required sub-user rights:** `tracker_update`.
 
-### Parameters
+#### Parameters
 
-| name | description | type | format |
-| --- | --- | --- | --- |
-| hash | API key or user session hash. | string | `"your_api_key"` |
-| tracker_id | ID of the tracker to create the output control for. | int | `70074765` |
-| output_control | Output control object without `id`. See [object structure](#object-structure). | object | See examples |
+| name            | description                                                                                     | type   | format           |
+| --------------- | ----------------------------------------------------------------------------------------------- | ------ | ---------------- |
+| hash            | API key or user session hash.                                                                   | string | `"your_api_key"` |
+| tracker\_id     | ID of the tracker to create the output control for.                                             | int    | `70074765`       |
+| output\_control | Output control object without `id`. See [object structure](output-control.md#object-structure). | object | See examples     |
 
-### Examples
+#### Examples
 
 {% tabs %}
 {% tab title="cURL — hardware" %}
@@ -155,7 +158,7 @@ curl -X POST 'https://api.eu.navixy.com/v2/tracker/output_control/create' \
 {% endtab %}
 {% endtabs %}
 
-### Response
+#### Response
 
 Returns the created output control object, including the server-assigned `id`.
 
@@ -175,32 +178,32 @@ Returns the created output control object, including the server-assigned `id`.
 ```
 
 * `success` - boolean. Always `true` for successful responses.
-* `value` - object. The created output control. See [object structure](#object-structure).
+* `value` - object. The created output control. See [object structure](output-control.md#object-structure).
 
-### Errors
+#### Errors
 
 * 7 - Invalid parameters – if required fields are missing or malformed.
 * 201 - Not found in the database – if no tracker with the given `tracker_id` belongs to the current user.
 
-[General error codes](../../errors.md)
+[General error codes](../../../errors.md)
 
----
+***
 
-## update
+### update
 
 Updates an existing output control. The full object including `id` must be provided.
 
 **Required sub-user rights:** `tracker_update`.
 
-### Parameters
+#### Parameters
 
-| name | description | type | format |
-| --- | --- | --- | --- |
-| hash | API key or user session hash. | string | `"your_api_key"` |
-| tracker_id | ID of the tracker that owns the output control. | int | `70074765` |
-| output_control | Updated output control object including `id`. See [object structure](#object-structure). | object | See example |
+| name            | description                                                                                               | type   | format           |
+| --------------- | --------------------------------------------------------------------------------------------------------- | ------ | ---------------- |
+| hash            | API key or user session hash.                                                                             | string | `"your_api_key"` |
+| tracker\_id     | ID of the tracker that owns the output control.                                                           | int    | `70074765`       |
+| output\_control | Updated output control object including `id`. See [object structure](output-control.md#object-structure). | object | See example      |
 
-### Examples
+#### Examples
 
 {% tabs %}
 {% tab title="cURL" %}
@@ -224,7 +227,7 @@ curl -X POST 'https://api.eu.navixy.com/v2/tracker/output_control/update' \
 {% endtab %}
 {% endtabs %}
 
-### Response
+#### Response
 
 Returns the updated output control object.
 
@@ -244,32 +247,32 @@ Returns the updated output control object.
 ```
 
 * `success` - boolean. Always `true` for successful responses.
-* `value` - object. The updated output control. See [object structure](#object-structure).
+* `value` - object. The updated output control. See [object structure](output-control.md#object-structure).
 
-### Errors
+#### Errors
 
 * 7 - Invalid parameters – if required fields are missing or malformed.
 * 201 - Not found in the database – if the output control or tracker does not exist.
 
-[General error codes](../../errors.md)
+[General error codes](../../../errors.md)
 
----
+***
 
-## execute
+### execute
 
 Executes an output control immediately. For hardware commands, the command string is sent to the device. For software commands, an HTTP POST request is dispatched to the configured URL with the current device attribute values substituted into the body.
 
 **Required sub-user rights:** `tracker_update`.
 
-### Parameters
+#### Parameters
 
-| name | description | type | format |
-| --- | --- | --- | --- |
-| hash | API key or user session hash. | string | `"your_api_key"` |
-| tracker_id | ID of the tracker that owns the output control. | int | `70074765` |
-| id | ID of the output control to execute. | int | `3` |
+| name        | description                                     | type   | format           |
+| ----------- | ----------------------------------------------- | ------ | ---------------- |
+| hash        | API key or user session hash.                   | string | `"your_api_key"` |
+| tracker\_id | ID of the tracker that owns the output control. | int    | `70074765`       |
+| id          | ID of the output control to execute.            | int    | `3`              |
 
-### Examples
+#### Examples
 
 {% tabs %}
 {% tab title="cURL" %}
@@ -285,7 +288,7 @@ curl -X POST 'https://api.eu.navixy.com/v2/tracker/output_control/execute' \
 {% endtab %}
 {% endtabs %}
 
-### Response
+#### Response
 
 ```json
 {
@@ -295,30 +298,30 @@ curl -X POST 'https://api.eu.navixy.com/v2/tracker/output_control/execute' \
 
 * `success` - boolean. Always `true` for successful responses.
 
-### Errors
+#### Errors
 
 * 7 - Invalid parameters – if required fields are missing or malformed.
 * 201 - Not found in the database – if the output control or tracker does not exist.
 
-[General error codes](../../errors.md)
+[General error codes](../../../errors.md)
 
----
+***
 
-## delete
+### delete
 
 Deletes an output control.
 
 **Required sub-user rights:** `tracker_update`.
 
-### Parameters
+#### Parameters
 
-| name | description | type | format |
-| --- | --- | --- | --- |
-| hash | API key or user session hash. | string | `"your_api_key"` |
-| tracker_id | ID of the tracker that owns the output control. | int | `70074765` |
-| id | ID of the output control to delete. | int | `5` |
+| name        | description                                     | type   | format           |
+| ----------- | ----------------------------------------------- | ------ | ---------------- |
+| hash        | API key or user session hash.                   | string | `"your_api_key"` |
+| tracker\_id | ID of the tracker that owns the output control. | int    | `70074765`       |
+| id          | ID of the output control to delete.             | int    | `5`              |
 
-### Examples
+#### Examples
 
 {% tabs %}
 {% tab title="cURL" %}
@@ -334,7 +337,7 @@ curl -X POST 'https://api.eu.navixy.com/v2/tracker/output_control/delete' \
 {% endtab %}
 {% endtabs %}
 
-### Response
+#### Response
 
 ```json
 {
@@ -344,33 +347,33 @@ curl -X POST 'https://api.eu.navixy.com/v2/tracker/output_control/delete' \
 
 * `success` - boolean. Always `true` for successful responses.
 
-### Errors
+#### Errors
 
 * 7 - Invalid parameters – if required fields are missing or malformed.
 * 201 - Not found in the database – if the output control or tracker does not exist.
 
-[General error codes](../../errors.md)
+[General error codes](../../../errors.md)
 
----
+***
 
-# Batch operations
+## Batch operations
 
 API path: `/tracker/batch_get_output_controls`.
 
-## batch\_get\_output\_controls
+### batch\_get\_output\_controls
 
 Returns all output controls for the specified trackers, grouped by tracker ID. If `trackers` is omitted or empty, returns controls for all trackers accessible to the current user.
 
 **Required sub-user rights:** `tracker_update`.
 
-### Parameters
+#### Parameters
 
-| name | description | type | format |
-| --- | --- | --- | --- |
-| hash | API key or user session hash. | string | `"your_api_key"` |
+| name     | description                                                                                                      | type      | format                 |
+| -------- | ---------------------------------------------------------------------------------------------------------------- | --------- | ---------------------- |
+| hash     | API key or user session hash.                                                                                    | string    | `"your_api_key"`       |
 | trackers | Optional. List of tracker IDs to retrieve output controls for. If omitted, all accessible trackers are included. | int array | `[70074765, 70074766]` |
 
-### Examples
+#### Examples
 
 {% tabs %}
 {% tab title="cURL — specific trackers" %}
@@ -395,7 +398,7 @@ curl -X POST 'https://api.eu.navixy.com/v2/tracker/batch_get_output_controls' \
 {% endtab %}
 {% endtabs %}
 
-### Response
+#### Response
 
 Returns a `result` object whose keys are tracker IDs (as strings) and values are arrays of output control objects for that tracker. Trackers with no configured controls return an empty array.
 
@@ -431,10 +434,10 @@ Returns a `result` object whose keys are tracker IDs (as strings) and values are
 ```
 
 * `success` - boolean. Always `true` for successful responses.
-* `result` - object. Keys are tracker IDs (string). Values are arrays of output control objects. See [object structure](#object-structure).
+* `result` - object. Keys are tracker IDs (string). Values are arrays of output control objects. See [object structure](output-control.md#object-structure).
 
-### Errors
+#### Errors
 
 * 7 - Invalid parameters – if the `trackers` array contains invalid values.
 
-[General error codes](../../errors.md)
+[General error codes](../../../errors.md)
