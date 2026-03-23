@@ -6,7 +6,7 @@ description: Preventing lost updates with version-based concurrency control
 
 {% include ".gitbook/includes/navixy-repository-api-is-a-....md" %}
 
-Navixy Repository API uses a `version` field for optimistic concurrency control, preventing lost updates when multiple clients simultaneously edit the same entity.
+Navixy Repository API uses the optional `version` field for optimistic concurrency control, preventing lost updates when multiple clients simultaneously edit the same entity.
 
 ### How optimistic locking works
 
@@ -27,15 +27,15 @@ Update and delete mutations require the current version:
 
 ```graphql
 input UpdateDeviceInput {
-  id: UUID!
-  version: Int!   # Required
+  id: ID!
+  version: Int!   # Optional parameter. Include to enable conflict detection.
   title: String
   # ...
 }
 
 input DeleteDeviceInput {
-  id: UUID!
-  version: Int!   # Required
+  id: ID!
+  version: Int!   # Optional parameter. Include to enable conflict detection.
 }
 ```
 
@@ -43,11 +43,15 @@ input DeleteDeviceInput {
 
 Optimistic locking applies to:
 
-<table><thead><tr><th width="180">Entity</th><th>Description</th></tr></thead><tbody><tr><td><a href="devices/types.md#device">Device</a></td><td>GPS trackers, sensors, beacons</td></tr><tr><td><a href="assets/types.md#asset">Asset</a></td><td>Vehicles, equipment, employees</td></tr><tr><td><a href="assets/groups/types.md#assetgroup">AssetGroup</a></td><td>Asset collections</td></tr><tr><td><a href="geo-objects/types.md#geoobject">Geo object</a></td><td>Geofences, POIs, routes</td></tr><tr><td><a href="schedules.md#schedule">Schedule</a></td><td>Work hours, maintenance windows</td></tr><tr><td><a href="devices/inventory.md#inventory-2">Inventory</a></td><td>Warehouse records</td></tr><tr><td><a href="organizations/#organization-2">Organization</a></td><td>Organization hierarchy nodes</td></tr><tr><td><a href="actors/users.md#user">User</a></td><td>User accounts</td></tr><tr><td><a href="organizations/members.md#member-2">Member</a></td><td>Organization memberships</td></tr><tr><td><a href="actors/integrations.md#integration-2">Integration</a></td><td>External system integrations</td></tr><tr><td><a href="custom-fields.md#customfielddefinition">CustomFieldDefinition</a></td><td>Custom field metadata</td></tr><tr><td><a href="catalogs/catalog-items.md#catalogitem">CatalogItem</a></td><td>All catalog items (device types, asset types, roles, tags, etc.)</td></tr></tbody></table>
+<table><thead><tr><th width="180">Entity</th><th>Description</th></tr></thead><tbody><tr><td><a href="devices/types.md#device">Device</a></td><td>GPS trackers, sensors, beacons</td></tr><tr><td><a href="assets/types.md#asset">Asset</a></td><td>Vehicles, equipment, employees</td></tr><tr><td><a href="assets/groups/types.md#assetgroup">AssetGroup</a></td><td>Asset collections</td></tr><tr><td><a href="geo-objects/types.md#geoobject">Geo object</a></td><td>Geofences, POIs, routes</td></tr><tr><td><a href="schedules.md#schedule">Schedule</a></td><td>Work hours, maintenance windows</td></tr><tr><td><a href="devices/inventory.md#inventory-2">Inventory</a></td><td>Warehouse records</td></tr><tr><td><a href="organizations/#organization-2">Organization</a></td><td>Organization hierarchy nodes</td></tr><tr><td><a href="actors/users.md#user">User</a></td><td>User accounts</td></tr><tr><td><a href="organizations/members.md#member-2">Member</a></td><td>Organization memberships</td></tr><tr><td><a href="actors/integrations.md#integration-2">Integration</a></td><td>External system integrations</td></tr><tr><td><a href="catalogs/catalog-items.md#catalogitem">CatalogItem</a></td><td>All catalog items (device types, asset types, roles, tags, etc.)</td></tr></tbody></table>
 
 ### Operations by type
 
-<table><thead><tr><th width="116">Operation</th><th width="213.60003662109375">Version in input</th><th>Behavior</th></tr></thead><tbody><tr><td>Create</td><td>Not required</td><td>Returns version: 1</td></tr><tr><td>Update</td><td>Required</td><td>Returns CONFLICT error on mismatch</td></tr><tr><td>Delete</td><td>Required</td><td>Returns CONFLICT error on mismatch</td></tr></tbody></table>
+<table><thead><tr><th width="207.5556640625">Operation</th><th>Behavior</th></tr></thead><tbody><tr><td>Create</td><td>Version not applicable. Returns <code>version: 1</code></td></tr><tr><td>Update with <code>version</code></td><td>Returns <a href="error-handling.md#version-conflict-409">409 Conflict</a> if the entity was modified since your last fetch</td></tr><tr><td>Update without <code>version</code></td><td>Applies unconditionally. Silently overwrites concurrent changes</td></tr><tr><td>Delete with <code>version</code></td><td>Returns <a href="error-handling.md#version-conflict-409">409 Conflict</a> if the entity was modified since your last fetch</td></tr><tr><td>Delete without <code>version</code></td><td>Deletes unconditionally, regardless of any concurrent changes</td></tr></tbody></table>
+
+{% hint style="warning" %}
+Omitting `version` on a delete-type operation is particularly risky, as the operation proceeds unconditionally regardless of what happened to the entity since you last fetched it. Always include `version` when deleting unless you have a specific reason not to.
+{% endhint %}
 
 ### Workflow
 
@@ -85,7 +89,7 @@ mutation {
 
 ### Handling conflicts
 
-If the entity was modified since you fetched it, the API returns a CONFLICT error. The HTTP status code will be 200 because the request was successfully received and processed — the "conflict" is a business logic outcome, not a transport failure. This follows the [GraphQL-over-HTTP specification](https://graphql.github.io/graphql-over-http/draft/), which reserves HTTP error codes (4xx, 5xx) for transport-level problems like authentication failures or malformed requests.
+If you provided `version` and the entity was modified since you fetched it, the API returns a [409 Conflict](error-handling.md#version-conflict-409) error. The HTTP status code will be 200 because the request was successfully received and processed — this is a business logic issue, not a transport failure. This follows the [GraphQL-over-HTTP specification](https://graphql.github.io/graphql-over-http/draft/), which reserves HTTP error codes (4xx, 5xx) for transport-level problems like authentication failures or malformed requests.
 
 The actual error details are in the response body:
 
@@ -129,22 +133,22 @@ User A's update succeeds first. User B's update fails because the version change
 
 ### Idempotent commands
 
-Mutations that manage relationships and assignments are called **idempotent commands**. They do not require or check the `version` field.
+Mutations that manage relationships and assignments are called idempotent commands. They don't require or check the `version` field.
 
-| Mutation                                                                | Purpose                       |
-| ----------------------------------------------------------------------- | ----------------------------- |
-| [deviceInventoryLink](devices/inventory.md#deviceinventorylink)         | Link device to inventory      |
-| [deviceInventoryUnlink](devices/inventory.md#deviceinventoryunlink)     | Unlink device from inventory  |
-| [deviceIdentifierAdd](devices/mutations.md#deviceidentifieradd)         | Add identifier to device      |
-| [deviceIdentifierRemove](devices/mutations.md#deviceidentifierremove)   | Remove identifier from device |
-| [assetGroupItemAdd](assets/groups/mutations.md#assetgroupitemadd)       | Add asset to group            |
-| [assetGroupItemRemove](assets/groups/mutations.md#assetgroupitemremove) | Remove asset from group       |
-| [roleAssign](access-control/mutations.md#roleassign)                    | Assign role to actor          |
-| [roleRevoke](access-control/mutations.md#rolerevoke)                    | Revoke role from actor        |
-| [permissionGrant](access-control/mutations.md#permissiongrant)          | Grant permission to role      |
-| [permissionRevoke](access-control/mutations.md#permissionrevoke)        | Revoke permission from role   |
-| [userScopeSet](access-control/mutations.md#userscopeset)                | Set user scope restriction    |
-| [userScopeRemove](access-control/mutations.md#userscoperemove)          | Remove user scope restriction |
+| Mutation                                                                 | Purpose                       |
+| ------------------------------------------------------------------------ | ----------------------------- |
+| [deviceInventoryLink](devices/inventory.md#deviceinventorylink)          | Link device to inventory      |
+| [deviceInventoryUnlink](devices/inventory.md#deviceinventoryunlink)      | Unlink device from inventory  |
+| [deviceIdentifierAdd](devices/mutations.md#deviceidentifieradd)          | Add identifier to device      |
+| [deviceIdentifierRemove](devices/mutations.md#deviceidentifierremove)    | Remove identifier from device |
+| [assetGroupItemsAdd](assets/groups/mutations.md#assetgroupitemadd)       | Add asset to group            |
+| [assetGroupItemsRemove](assets/groups/mutations.md#assetgroupitemremove) | Remove asset from group       |
+| [roleAssign](access-control/mutations.md#roleassign)                     | Assign role to actor          |
+| [roleRevoke](access-control/mutations.md#rolerevoke)                     | Revoke role from actor        |
+| [permissionGrant](access-control/mutations.md#permissiongrant)           | Grant permission to role      |
+| [permissionRevoke](access-control/mutations.md#permissionrevoke)         | Revoke permission from role   |
+| [userScopeSet](access-control/mutations.md#userscopeset)                 | Set user scope restriction    |
+| [userScopeRemove](access-control/mutations.md#userscoperemove)           | Remove user scope restriction |
 
 These operations behave as follows:
 
@@ -155,7 +159,8 @@ This design simplifies client code. You can safely retry these operations withou
 
 ### Best practices
 
-1. **Always include the version in your queries.** When fetching entities you plan to modify, request the `version` field so you have it ready for mutations.
-2. **Handle conflicts gracefully.** In collaborative applications, version conflicts are expected. Implement retry logic or prompt users to review changes.
-3. **Don't cache versions long-term.** Versions can change at any time. Always use the version from your most recent fetch of the entity.
-4. **Consider user experience.** When a conflict occurs, show users what changed and let them decide how to proceed rather than silently retrying.
+1. Always include `version` in your queries. When fetching entities you plan to modify, request the `version` field so you have it ready for mutations.
+2. Always include `version` in updates and deletes. The field is optional, but omitting it removes your protection against overwriting changes made by other users since your last fetch. Omit it only for programmatic bulk operations where stale-read conflicts are not a concern.
+3. Be especially careful when deleting without `version`. Unlike unprotected updates, which still write a valid version to the database, unprotected deletes can be irreversible.
+4. Handle conflicts gracefully. In collaborative applications, version conflicts are expected. Implement retry logic or prompt users to review changes.
+5. Don't cache versions long-term. Versions can change at any time. Always use the version from your most recent fetch of the entity.

@@ -106,15 +106,15 @@ The API does not support complex boolean expressions with nested AND/OR/NOT oper
 
 ## Custom field filtering
 
-Entities that support custom fields (devices, assets, geo objects, schedules) can be filtered by custom field values:
+Entities that support custom fields (assets, geo objects, and schedules) can be filtered by custom field values:
 
 ```graphql
 query {
   assets(
-    organizationId: "your-organization-uuid"
+    organizationId: "your-organization-id"
     filter: {
       customFields: [
-        { code: "fuel_type", operator: EQ, value: "diesel" }
+        { code: "fuel_type", operator: EQ, value: { string: "diesel" } }
       ]
     }
   ) {
@@ -128,7 +128,7 @@ query {
 
 Each condition in the `customFields` array has three parts:
 
-<table><thead><tr><th width="200.39996337890625">Field</th><th>Description</th></tr></thead><tbody><tr><td>code</td><td>The custom field's code, as defined in its <a href="custom-fields.md#customfielddefinition">CustomFieldDefinition</a></td></tr><tr><td>operator</td><td>How to compare the value</td></tr><tr><td>value</td><td>The value to compare against, formatted as JSON</td></tr></tbody></table>
+<table><thead><tr><th width="200.39996337890625">Field</th><th>Description</th></tr></thead><tbody><tr><td>code</td><td>The custom field's code, as defined in its <a href="custom-fields.md#customfielddefinition">CustomFieldDefinition</a></td></tr><tr><td>operator</td><td>How to compare the value</td></tr><tr><td>value</td><td>The value to compare against, using a typed variant matching the <a href="filtering-and-sorting.md#value-formats">field's type</a></td></tr></tbody></table>
 
 ### Operators
 
@@ -147,20 +147,22 @@ Each condition in the `customFields` array has three parts:
 
 ### Value formats
 
-The `value` field accepts JSON. Match the format to your field type:
+The `value` field uses a typed [@oneOf](core-api-reference/directives.md#oneof) input. Provide exactly one variant matching your field's type:
 
-| Field type        | JSON format          | Example                  |
-| ----------------- | -------------------- | ------------------------ |
-| STRING, TEXT      | string               | `"hello"`                |
-| NUMBER            | number               | `42` or `3.14`           |
-| BOOLEAN           | boolean              | `true`                   |
-| DATE              | string (YYYY-MM-DD)  | `"2024-01-15"`           |
-| DATETIME          | string (RFC 3339)    | `"2024-01-15T10:30:00Z"` |
-| OPTIONS           | string (option code) | `"option_a"`             |
-| DEVICE, REFERENCE | string (entity ID)   | `"019a6a3f-..."`         |
-| CATALOG, TAG      | string (item code)   | `"ITEM_CODE"`            |
+| Variant      | Field types                            | Example                                    |
+| ------------ | -------------------------------------- | ------------------------------------------ |
+| `string`     | STRING, TEXT, OPTIONS, CATALOG, TAG    | `{ string: "diesel" }`                     |
+| `number`     | NUMBER                                 | `{ number: 42.0 }`                         |
+| `boolean`    | BOOLEAN                                | `{ boolean: true }`                        |
+| `date`       | DATE                                   | `{ date: "2024-01-15" }`                   |
+| `datetime`   | DATETIME                               | `{ datetime: "2024-01-15T10:30:00Z" }`     |
+| `id`         | DEVICE, REFERENCE                      | `{ id: "019a6a3f-..." }`                   |
+| `stringList` | IN operator on string-based fields     | `{ stringList: ["option_a", "option_b"] }` |
+| `idList`     | IN operator on DEVICE/REFERENCE fields | `{ idList: ["uuid1", "uuid2"] }`           |
 
-For IS\_NULL and IS\_NOT\_NULL operators, omit the `value` field or set it to `null`.
+For `IS_NULL` and `IS_NOT_NULL` operators, omit `value` or set it to `null`.
+
+
 
 ### Multiple conditions
 
@@ -169,8 +171,8 @@ Multiple custom field conditions are combined with AND logic:
 ```graphql
 filter: {
   customFields: [
-    { code: "fuel_type", operator: EQ, value: "diesel" },
-    { code: "year", operator: GTE, value: 2020 }
+    { code: "fuel_type", operator: EQ, value: { string: "diesel" } },
+    { code: "year", operator: GTE, value: { number: 2020 } }
   ]
 }
 ```
@@ -185,7 +187,7 @@ For custom fields configured to hold multiple values (`isMulti: true`), the filt
 # Asset has colors: ["red", "blue", "white"]
 filter: {
   customFields: [
-    { code: "colors", operator: EQ, value: "red" }
+    { code: "colors", operator: EQ, value: { string: "red" } }
   ]
 }
 # Matches — "red" is one of the values
@@ -197,14 +199,13 @@ You can use standard filter fields and custom field conditions together:
 
 ```graphql
 query {
-  devices(
+  assets(
     organizationId: "your-organization-uuid"
     filter: {
       typeIds: ["type-truck-uuid"]
-      statusIds: ["status-active-uuid", "status-maintenance-uuid"]
       titleContains: "north"
       customFields: [
-        { code: "region", operator: EQ, value: "northwest" }
+        { code: "region", operator: EQ, value: { string: "northwest" } }
       ]
     }
   ) {
@@ -216,7 +217,7 @@ query {
 }
 ```
 
-This returns trucks that are active or in maintenance, have "north" in their title, and are assigned to the northwest region.
+This returns trucks with "north" in their title that are assigned to the northwest region.
 
 ## Sorting
 
@@ -252,11 +253,11 @@ NULL values appear last when sorting ASC, and first when sorting DESC.
 
 ### Sorting by custom fields
 
-Some entity types (devices, assets, geo objects, schedules) support sorting by custom field values:
+Some entity types (assets, geo objects, schedules) support sorting by custom field values:
 
 ```graphql
 query {
-  devices(
+  assets(
     organizationId: "your-organization-uuid"
     orderBy: { customFieldCode: "priority", direction: DESC }
   ) {
