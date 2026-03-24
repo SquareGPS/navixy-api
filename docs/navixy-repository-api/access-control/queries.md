@@ -53,8 +53,8 @@ Ordering options for catalog items.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [CatalogItemOrderField](../catalogs/catalog-items.md#catalogitemorderfield)! | The field to order by. |
-| `direction` | [OrderDirection](../common.md#orderdirection)! | The direction to order. |
+| `field` | [CatalogItemOrderField](../catalogs/catalog-items.md#type-catalogitemorderfield)! | The field to order by. |
+| `direction` | [OrderDirection](../common.md#type-orderdirection)! | The direction to order. |
 
 </details>
 
@@ -66,14 +66,14 @@ Ordering options for catalog items.
 
 A paginated list of Role items.
 
-**Implements:** [Connection](../common.md#connection)
+**Implements:** [Connection](../common.md#type-connection)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[RoleEdge](types.md#roleedge)!]! | A list of edges. |
-| `nodes` | [[Role](types.md#role)!]! | A list of nodes in the connection (without edge metadata). |
-| `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
-| `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
+| `edges` | [[RoleEdge](types.md#type-roleedge)!]! | A list of edges. |
+| `nodes` | [[Role](types.md#type-role)!]! | A list of nodes in the connection (without edge metadata). |
+| `pageInfo` | [PageInfo](../common.md#type-pageinfo)! | Information about the current page. |
+| `total` | [CountInfo](../common.md#type-countinfo) | The total count of items matching the filter. |
 
 </details>
 
@@ -146,8 +146,8 @@ Ordering options for actor roles.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [ActorRoleOrderField](types.md#actorroleorderfield)! | The field to order by. |
-| `direction` | [OrderDirection](../common.md#orderdirection)! | The direction to order. |
+| `field` | [ActorRoleOrderField](types.md#type-actorroleorderfield)! | The field to order by. |
+| `direction` | [OrderDirection](../common.md#type-orderdirection)! | The direction to order. |
 
 </details>
 
@@ -159,14 +159,14 @@ Ordering options for actor roles.
 
 A paginated list of ActorRole items.
 
-**Implements:** [Connection](../common.md#connection)
+**Implements:** [Connection](../common.md#type-connection)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[ActorRoleEdge](types.md#actorroleedge)!]! | A list of edges. |
-| `nodes` | [[ActorRole](types.md#actorrole)!]! | A list of nodes in the connection (without edge metadata). |
-| `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
-| `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
+| `edges` | [[ActorRoleEdge](types.md#type-actorroleedge)!]! | A list of edges. |
+| `nodes` | [[ActorRole](types.md#type-actorrole)!]! | A list of nodes in the connection (without edge metadata). |
+| `pageInfo` | [PageInfo](../common.md#type-pageinfo)! | Information about the current page. |
+| `total` | [CountInfo](../common.md#type-countinfo) | The total count of items matching the filter. |
 
 </details>
 
@@ -239,8 +239,8 @@ Ordering options for role permissions.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [RolePermissionOrderField](types.md#rolepermissionorderfield)! | The field to order by. |
-| `direction` | [OrderDirection](../common.md#orderdirection)! | The direction to order. |
+| `field` | [RolePermissionOrderField](types.md#type-rolepermissionorderfield)! | The field to order by. |
+| `direction` | [OrderDirection](../common.md#type-orderdirection)! | The direction to order. |
 
 </details>
 
@@ -252,14 +252,14 @@ Ordering options for role permissions.
 
 A paginated list of RolePermission items.
 
-**Implements:** [Connection](../common.md#connection)
+**Implements:** [Connection](../common.md#type-connection)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[RolePermissionEdge](types.md#rolepermissionedge)!]! | A list of edges. |
-| `nodes` | [[RolePermission](types.md#rolepermission)!]! | A list of nodes in the connection (without edge metadata). |
-| `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
-| `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
+| `edges` | [[RolePermissionEdge](types.md#type-rolepermissionedge)!]! | A list of edges. |
+| `nodes` | [[RolePermission](types.md#type-rolepermission)!]! | A list of nodes in the connection (without edge metadata). |
+| `pageInfo` | [PageInfo](../common.md#type-pageinfo)! | Information about the current page. |
+| `total` | [CountInfo](../common.md#type-countinfo) | The total count of items matching the filter. |
 
 </details>
 
@@ -332,8 +332,8 @@ Ordering options for user scopes.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [UserScopeOrderField](types.md#userscopeorderfield)! | The field to order by. |
-| `direction` | [OrderDirection](../common.md#orderdirection)! | The direction to order. |
+| `field` | [UserScopeOrderField](types.md#type-userscopeorderfield)! | The field to order by. |
+| `direction` | [OrderDirection](../common.md#type-orderdirection)! | The direction to order. |
 
 </details>
 
@@ -345,14 +345,14 @@ Ordering options for user scopes.
 
 A paginated list of UserScope items.
 
-**Implements:** [Connection](../common.md#connection)
+**Implements:** [Connection](../common.md#type-connection)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[UserScopeEdge](types.md#userscopeedge)!]! | A list of edges. |
-| `nodes` | [[UserScope](types.md#userscope)!]! | A list of nodes in the connection (without edge metadata). |
-| `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
-| `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
+| `edges` | [[UserScopeEdge](types.md#type-userscopeedge)!]! | A list of edges. |
+| `nodes` | [[UserScope](types.md#type-userscope)!]! | A list of nodes in the connection (without edge metadata). |
+| `pageInfo` | [PageInfo](../common.md#type-pageinfo)! | Information about the current page. |
+| `total` | [CountInfo](../common.md#type-countinfo) | The total count of items matching the filter. |
 
 </details>
 

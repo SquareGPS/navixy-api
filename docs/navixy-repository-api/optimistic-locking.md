@@ -141,8 +141,8 @@ Mutations that manage relationships and assignments are called idempotent comman
 | [deviceInventoryUnlink](devices/inventory.md#deviceinventoryunlink)      | Unlink device from inventory  |
 | [deviceIdentifierAdd](devices/mutations.md#deviceidentifieradd)          | Add identifier to device      |
 | [deviceIdentifierRemove](devices/mutations.md#deviceidentifierremove)    | Remove identifier from device |
-| [assetGroupItemsAdd](assets/groups/mutations.md#assetgroupitemadd)       | Add asset to group            |
-| [assetGroupItemsRemove](assets/groups/mutations.md#assetgroupitemremove) | Remove asset from group       |
+| [assetGroupItemsAdd](assets/groups/mutations.md#assetgroupitemsadd)       | Add asset to group            |
+| [assetGroupItemsRemove](assets/groups/mutations.md#assetgroupitemsremove) | Remove asset from group       |
 | [roleAssign](access-control/mutations.md#roleassign)                     | Assign role to actor          |
 | [roleRevoke](access-control/mutations.md#rolerevoke)                     | Revoke role from actor        |
 | [permissionGrant](access-control/mutations.md#permissiongrant)           | Grant permission to role      |

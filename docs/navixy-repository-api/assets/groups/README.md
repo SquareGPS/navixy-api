@@ -8,4 +8,4 @@ Asset groups allow organizing assets into logical collections for easier managem
 
 - [Queries](queries.md) — 3 operations
 - [Mutations](mutations.md) — 8 operations
-- [Types](types.md) — 27 types
+- [Types](types.md) — 26 types

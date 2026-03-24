@@ -29,9 +29,10 @@ Input for creating a new asset group.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization that will own the group. |
-| `typeId` | `ID!` | The group type ID. |
+| `typeId` | `ID` | The group type ID. |
 | `title` | `String!` | The group display name. |
 | `color` | `HexColorCode` | The color for UI display. |
+| `assetIds` | `[ID!]` | Initial list of asset IDs to add to the group. |
 
 </details>
 
@@ -45,7 +46,7 @@ The result of an asset group mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `assetGroup` | [AssetGroup](types.md#assetgroup)! | The created or updated asset group. |
+| `assetGroup` | [AssetGroup](types.md#type-assetgroup)! | The created or updated asset group. |
 
 </details>
 
@@ -55,18 +56,18 @@ The result of an asset group mutation.
 
 A group of assets.
 
-**Implements:** [Node](../../common.md#node), [Versioned](../../common.md#versioned), [Titled](../../common.md#titled)
+**Implements:** [Node](../../common.md#type-node), [Versioned](../../common.md#type-versioned), [Titled](../../common.md#type-titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Can be provided in update/delete mutations to prevent lost updates. If omitted, the update proceeds without stale-read protection. |
 | `title` | `String!` | The human-readable display name. |
-| `organization` | [Organization](../../organizations/README.md#organization)! | The organization that owns this group. |
-| `type` | [AssetGroupType](types.md#assetgrouptype)! | The group type with membership constraints. |
+| `organization` | [Organization](../../organizations/README.md#type-organization)! | The organization that owns this group. |
+| `type` | [AssetGroupType](types.md#type-assetgrouptype) | The group type with membership constraints. |
 | `color` | `HexColorCode` | The color for UI display in hexadecimal format. |
-| `currentAssets` | [AssetConnection](../types.md#assetconnection)! | The assets currently in this group. |
-| `history` | [AssetGroupItemConnection](types.md#assetgroupitemconnection)! | The full membership history for this group. |
+| `currentAssets` | [AssetConnection](../types.md#type-assetconnection)! | The assets currently in this group. |
+| `history` | [AssetGroupItemConnection](types.md#type-assetgroupitemconnection)! | The full membership history for this group. |
 
 </details>
 
@@ -99,9 +100,10 @@ Input for updating an existing asset group.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | The asset group ID to update. |
-| `version` | `Int!` | The current version for optimistic locking. |
+| `version` | `Int` | The current version for optimistic locking. If omitted, auto-increments without conflict check. |
 | `title` | `String` | The new display name. |
 | `color` | `HexColorCode` | The new color. |
+| `assetIds` | `[ID!]` | Full replacement list of asset IDs in the group. If provided, replaces all current memberships. |
 
 </details>
 
@@ -115,7 +117,7 @@ The result of an asset group mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `assetGroup` | [AssetGroup](types.md#assetgroup)! | The created or updated asset group. |
+| `assetGroup` | [AssetGroup](types.md#type-assetgroup)! | The created or updated asset group. |
 
 </details>
 
@@ -125,18 +127,18 @@ The result of an asset group mutation.
 
 A group of assets.
 
-**Implements:** [Node](../../common.md#node), [Versioned](../../common.md#versioned), [Titled](../../common.md#titled)
+**Implements:** [Node](../../common.md#type-node), [Versioned](../../common.md#type-versioned), [Titled](../../common.md#type-titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Can be provided in update/delete mutations to prevent lost updates. If omitted, the update proceeds without stale-read protection. |
 | `title` | `String!` | The human-readable display name. |
-| `organization` | [Organization](../../organizations/README.md#organization)! | The organization that owns this group. |
-| `type` | [AssetGroupType](types.md#assetgrouptype)! | The group type with membership constraints. |
+| `organization` | [Organization](../../organizations/README.md#type-organization)! | The organization that owns this group. |
+| `type` | [AssetGroupType](types.md#type-assetgrouptype) | The group type with membership constraints. |
 | `color` | `HexColorCode` | The color for UI display in hexadecimal format. |
-| `currentAssets` | [AssetConnection](../types.md#assetconnection)! | The assets currently in this group. |
-| `history` | [AssetGroupItemConnection](types.md#assetgroupitemconnection)! | The full membership history for this group. |
+| `currentAssets` | [AssetConnection](../types.md#type-assetconnection)! | The assets currently in this group. |
+| `history` | [AssetGroupItemConnection](types.md#type-assetgroupitemconnection)! | The full membership history for this group. |
 
 </details>
 
@@ -169,7 +171,7 @@ Input for deleting an asset group.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | The asset group ID to delete. |
-| `version` | `Int!` | The current version for optimistic locking. |
+| `version` | `Int` | The current version for optimistic locking. If omitted, auto-increments without conflict check. |
 
 </details>
 
@@ -189,34 +191,34 @@ The result of a delete mutation.
 
 ---
 
-### assetGroupItemAdd
+### assetGroupItemsAdd
 
-Adds an asset to a group.
+Adds assets to a group.
 
 ```graphql
-assetGroupItemAdd(
-    input: AssetGroupItemAddInput!
-  ): AssetGroupItemPayload
+assetGroupItemsAdd(
+    input: AssetGroupItemsAddInput!
+  ): AssetGroupPayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `AssetGroupItemAddInput!` | The input fields for adding the asset to the group. |
+| `input` | `AssetGroupItemsAddInput!` | The input fields for adding assets to the group. |
 
 **Input types:**
 
 <details>
 
-<summary>AssetGroupItemAddInput</summary>
+<summary>AssetGroupItemsAddInput</summary>
 
-Input for adding an asset to a group.
+Input for adding assets to a group.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `groupId` | `ID!` | The group ID. |
-| `assetId` | `ID!` | The asset ID to add. |
+| `assetIds` | `[ID!]!` | The asset IDs to add. |
 
 </details>
 
@@ -224,64 +226,67 @@ Input for adding an asset to a group.
 
 <details>
 
-<summary>AssetGroupItemPayload</summary>
+<summary>AssetGroupPayload</summary>
 
-The result of an asset group item mutation.
+The result of an asset group mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `assetGroupItem` | [AssetGroupItem](types.md#assetgroupitem)! | The created group membership record. |
+| `assetGroup` | [AssetGroup](types.md#type-assetgroup)! | The created or updated asset group. |
 
 </details>
 
 <details>
 
-<summary>AssetGroupItem (entity)</summary>
+<summary>AssetGroup (entity)</summary>
 
-A record of an asset's membership in a group.
+A group of assets.
 
-**Implements:** [Node](../../common.md#node)
+**Implements:** [Node](../../common.md#type-node), [Versioned](../../common.md#type-versioned), [Titled](../../common.md#type-titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `group` | [AssetGroup](types.md#assetgroup)! | The group containing the asset. |
-| `asset` | [Asset](../types.md#asset)! | The asset in the group. |
-| `attachedAt` | `DateTime!` | The date and time when the asset was added to the group. |
-| `detachedAt` | `DateTime` | The date and time when the asset was removed from the group. Null means the asset is currently attached. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Can be provided in update/delete mutations to prevent lost updates. If omitted, the update proceeds without stale-read protection. |
+| `title` | `String!` | The human-readable display name. |
+| `organization` | [Organization](../../organizations/README.md#type-organization)! | The organization that owns this group. |
+| `type` | [AssetGroupType](types.md#type-assetgrouptype) | The group type with membership constraints. |
+| `color` | `HexColorCode` | The color for UI display in hexadecimal format. |
+| `currentAssets` | [AssetConnection](../types.md#type-assetconnection)! | The assets currently in this group. |
+| `history` | [AssetGroupItemConnection](types.md#type-assetgroupitemconnection)! | The full membership history for this group. |
 
 </details>
 
 ---
 
-### assetGroupItemRemove
+### assetGroupItemsRemove
 
-Removes an asset from a group.
+Removes assets from a group.
 
 ```graphql
-assetGroupItemRemove(
-    input: AssetGroupItemRemoveInput!
-  ): DeletePayload
+assetGroupItemsRemove(
+    input: AssetGroupItemsRemoveInput!
+  ): AssetGroupPayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `AssetGroupItemRemoveInput!` | The input fields for removing the asset from the group. |
+| `input` | `AssetGroupItemsRemoveInput!` | The input fields for removing assets from the group. |
 
 **Input types:**
 
 <details>
 
-<summary>AssetGroupItemRemoveInput</summary>
+<summary>AssetGroupItemsRemoveInput</summary>
 
-Input for removing an asset from a group.
+Input for removing assets from a group.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `groupId` | `ID!` | The group ID. |
-| `assetId` | `ID!` | The asset ID to remove. |
+| `assetIds` | `[ID!]!` | The asset IDs to remove. |
 
 </details>
 
@@ -289,13 +294,34 @@ Input for removing an asset from a group.
 
 <details>
 
-<summary>DeletePayload</summary>
+<summary>AssetGroupPayload</summary>
 
-The result of a delete mutation.
+The result of an asset group mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `deletedId` | `ID!` | The ID of the deleted entity. |
+| `assetGroup` | [AssetGroup](types.md#type-assetgroup)! | The created or updated asset group. |
+
+</details>
+
+<details>
+
+<summary>AssetGroup (entity)</summary>
+
+A group of assets.
+
+**Implements:** [Node](../../common.md#type-node), [Versioned](../../common.md#type-versioned), [Titled](../../common.md#type-titled)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Can be provided in update/delete mutations to prevent lost updates. If omitted, the update proceeds without stale-read protection. |
+| `title` | `String!` | The human-readable display name. |
+| `organization` | [Organization](../../organizations/README.md#type-organization)! | The organization that owns this group. |
+| `type` | [AssetGroupType](types.md#type-assetgrouptype) | The group type with membership constraints. |
+| `color` | `HexColorCode` | The color for UI display in hexadecimal format. |
+| `currentAssets` | [AssetConnection](../types.md#type-assetconnection)! | The assets currently in this group. |
+| `history` | [AssetGroupItemConnection](types.md#type-assetgroupitemconnection)! | The full membership history for this group. |
 
 </details>
 
@@ -328,11 +354,11 @@ Input for creating an asset group type.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization that will own the item. |
-| `code` | `Code!` | The machine-readable code. |
+| `code` | `Code` | The machine-readable code. Auto-generated from title if omitted. |
 | `title` | `String!` | The display name. |
-| `order` | `Int` | The display order. |
-| `allowedAssetTypes` | [[AssetGroupTypeConstraintInput](types.md#assetgrouptypeconstraintinput)!] | The allowed asset types with optional limits. |
-| `meta` | [CatalogItemMetaInput](../../catalogs/catalog-items.md#catalogitemmetainput) | The display properties. |
+| `order` | `Int` | The display order. Auto-calculated as last position if omitted. |
+| `allowedAssetTypes` | [[AssetGroupTypeConstraintInput](types.md#type-assetgrouptypeconstraintinput)!] | The allowed asset types with optional limits. |
+| `meta` | [CatalogItemMetaInput](../../catalogs/catalog-items.md#type-catalogitemmetainput) | The display properties. |
 
 </details>
 
@@ -359,9 +385,6 @@ Display properties for catalog items.
 | ----- | ---- | ----------- |
 | `description` | `String` | The description. |
 | `hidden` | `Boolean` | Whether the item is hidden from regular UI lists. |
-| `textColor` | `HexColorCode` | The text color for UI display. |
-| `backgroundColor` | `HexColorCode` | The background color for UI display. |
-| `icon` | `String` | A relative URL to the icon. |
 
 </details>
 
@@ -375,7 +398,7 @@ The result of an asset group type mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `assetGroupType` | [AssetGroupType](types.md#assetgrouptype)! | The created or updated asset group type. |
+| `assetGroupType` | [AssetGroupType](types.md#type-assetgrouptype)! | The created or updated asset group type. |
 
 </details>
 
@@ -385,7 +408,7 @@ The result of an asset group type mutation.
 
 A type for asset groups with membership constraints.
 
-**Implements:** [CatalogItem](../../catalogs/README.md#catalogitem), [Node](../../common.md#node), [Versioned](../../common.md#versioned), [Titled](../../common.md#titled)
+**Implements:** [CatalogItem](../../catalogs/catalog-items.md#type-catalogitem), [Node](../../common.md#type-node), [Versioned](../../common.md#type-versioned), [Titled](../../common.md#type-titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -394,10 +417,10 @@ A type for asset groups with membership constraints.
 | `title` | `String!` | The human-readable display name. Can be localized. |
 | `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
 | `order` | `Int!` | The display order within the same level or category. |
-| `catalog` | [Catalog](../../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
-| `organization` | [Organization](../../organizations/README.md#organization) | The organization that owns this item. Null for system items. |
-| `meta` | [CatalogItemMeta](../../catalogs/README.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
-| `allowedAssetTypes` | [[AssetGroupTypeConstraint](types.md#assetgrouptypeconstraint)!]! | The asset types allowed in groups of this type, with optional quantity limits. |
+| `catalog` | [Catalog](../../catalogs/catalog-items.md#type-catalog)! | The catalog this item belongs to. |
+| `organization` | [Organization](../../organizations/README.md#type-organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../../catalogs/catalog-items.md#type-catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
+| `allowedAssetTypes` | [[AssetGroupTypeConstraint](types.md#type-assetgrouptypeconstraint)!]! | The asset types allowed in groups of this type, with optional quantity limits. |
 
 </details>
 
@@ -430,11 +453,11 @@ Input for updating an asset group type.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | The item ID to update. |
-| `version` | `Int!` | The current version for optimistic locking. |
+| `version` | `Int` | The current version for optimistic locking. If omitted, auto-increments without conflict check. |
 | `title` | `String` | The new display name. |
 | `order` | `Int` | The new display order. |
-| `allowedAssetTypes` | [[AssetGroupTypeConstraintInput](types.md#assetgrouptypeconstraintinput)!] | Replace allowed asset types. Null means no change. |
-| `meta` | [CatalogItemMetaInput](../../catalogs/catalog-items.md#catalogitemmetainput) | The display properties. |
+| `allowedAssetTypes` | [[AssetGroupTypeConstraintInput](types.md#type-assetgrouptypeconstraintinput)!] | Replace allowed asset types. Null means no change. |
+| `meta` | [CatalogItemMetaInput](../../catalogs/catalog-items.md#type-catalogitemmetainput) | The display properties. |
 
 </details>
 
@@ -461,9 +484,6 @@ Display properties for catalog items.
 | ----- | ---- | ----------- |
 | `description` | `String` | The description. |
 | `hidden` | `Boolean` | Whether the item is hidden from regular UI lists. |
-| `textColor` | `HexColorCode` | The text color for UI display. |
-| `backgroundColor` | `HexColorCode` | The background color for UI display. |
-| `icon` | `String` | A relative URL to the icon. |
 
 </details>
 
@@ -477,7 +497,7 @@ The result of an asset group type mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `assetGroupType` | [AssetGroupType](types.md#assetgrouptype)! | The created or updated asset group type. |
+| `assetGroupType` | [AssetGroupType](types.md#type-assetgrouptype)! | The created or updated asset group type. |
 
 </details>
 
@@ -487,7 +507,7 @@ The result of an asset group type mutation.
 
 A type for asset groups with membership constraints.
 
-**Implements:** [CatalogItem](../../catalogs/README.md#catalogitem), [Node](../../common.md#node), [Versioned](../../common.md#versioned), [Titled](../../common.md#titled)
+**Implements:** [CatalogItem](../../catalogs/catalog-items.md#type-catalogitem), [Node](../../common.md#type-node), [Versioned](../../common.md#type-versioned), [Titled](../../common.md#type-titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -496,10 +516,10 @@ A type for asset groups with membership constraints.
 | `title` | `String!` | The human-readable display name. Can be localized. |
 | `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
 | `order` | `Int!` | The display order within the same level or category. |
-| `catalog` | [Catalog](../../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
-| `organization` | [Organization](../../organizations/README.md#organization) | The organization that owns this item. Null for system items. |
-| `meta` | [CatalogItemMeta](../../catalogs/README.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
-| `allowedAssetTypes` | [[AssetGroupTypeConstraint](types.md#assetgrouptypeconstraint)!]! | The asset types allowed in groups of this type, with optional quantity limits. |
+| `catalog` | [Catalog](../../catalogs/catalog-items.md#type-catalog)! | The catalog this item belongs to. |
+| `organization` | [Organization](../../organizations/README.md#type-organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../../catalogs/catalog-items.md#type-catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
+| `allowedAssetTypes` | [[AssetGroupTypeConstraint](types.md#type-assetgrouptypeconstraint)!]! | The asset types allowed in groups of this type, with optional quantity limits. |
 
 </details>
 
@@ -532,7 +552,7 @@ Input for deleting a catalog item.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | The catalog item ID to delete. |
-| `version` | `Int!` | The current version for optimistic locking. |
+| `version` | `Int` | The current version for optimistic locking. If omitted, auto-increments without conflict check. |
 
 </details>
 

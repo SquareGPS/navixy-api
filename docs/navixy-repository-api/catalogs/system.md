@@ -6,6 +6,8 @@ System-defined catalog items that cannot be modified by users.
 
 ## Objects
 
+<a id="type-module"></a>
+
 ### Module
 
 A system module that groups related functionality and permission scopes.
@@ -25,6 +27,8 @@ Examples: repo (core), fleet_management (FSM), iot (devices), reports, billing.
 | `meta` | [CatalogItemMeta](README.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 
 ---
+
+<a id="type-entitytype"></a>
 
 ### EntityType
 
@@ -47,6 +51,8 @@ A definition of an entity type in the system.
 | `customFieldDefinitions` | [[CustomFieldDefinition](../custom-fields.md#customfielddefinition)!]! | Custom field definitions for entities of this type, ordered by display order. |
 
 ---
+
+<a id="type-country"></a>
 
 ### Country
 

@@ -35,6 +35,8 @@ An entity that can perform actions and have permissions assigned.
 
 ## Objects
 
+<a id="type-personname"></a>
+
 ### PersonName
 
 Structured person name components following W3C Personal Names guidance.
@@ -70,6 +72,8 @@ The built-in system actor used for automated operations.
 ---
 
 ## Interfaces
+
+<a id="type-actor"></a>
 
 ### Actor
 
