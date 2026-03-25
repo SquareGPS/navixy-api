@@ -58,7 +58,7 @@ You'll receive a response:
 }
 ```
 
-Use the `id` of the organization you want to work with for all subsequent geo object operations.
+Use the `id` of the organization you want to work with for all subsequent asset operations.
 
 ### Check available asset types
 
@@ -111,7 +111,7 @@ query GetTruckTypeFields {
       title
       customFieldDefinitions {
         code
-        label
+        title
         fieldType
         params {
           isRequired
@@ -135,7 +135,7 @@ Response:
           "customFieldDefinitions": [
             {
               "code": "license_plate",
-              "label": "License Plate",
+              "title": "License Plate",
               "fieldType": "STRING",
               "params": {
                 "isRequired": true
@@ -143,7 +143,7 @@ Response:
             },
             {
               "code": "fuel_capacity_l",
-              "label": "Fuel Capacity (L)",
+              "title": "Fuel Capacity (L)",
               "fieldType": "NUMBER",
               "params": {
                 "isRequired": false
@@ -230,8 +230,6 @@ mutation CreateTruckType {
     order: 10
     meta: {
       description: "Long-haul and last-mile delivery vehicles"
-      backgroundColor: "#1E40AF"
-      textColor: "#FFFFFF"
     }
   }) {
     assetType {
@@ -264,7 +262,7 @@ Response:
 Save the `id` and `version` — you'll need the `id` to create assets of this type, and `version` if you later need to update or delete the type.
 
 {% hint style="info" %}
-The `order` field controls how types appear in UI lists. Lower numbers appear first. If display order doesn't matter for your use case, you can omit it — it defaults to `0`.
+The `order` field controls how types appear in UI lists. Lower numbers appear first. If display order doesn't matter for your use case, you can omit it to calculate the position automatically.
 {% endhint %}
 {% endstep %}
 
@@ -483,7 +481,7 @@ Response:
 }
 ```
 
-The `version` field ensures you don't accidentally delete an asset that someone else has modified since you last fetched it.
+Including `version` ensures you don't accidentally delete an asset that someone else has modified. It's optional, but recommended. For more information on versioning, see [Optimistic locking](../optimistic-locking.md).
 {% endstep %}
 {% endstepper %}
 
@@ -567,7 +565,7 @@ query FindTruckByPlate {
     filter: {
       typeIds: ["b1ffcd00-0d1c-5fg9-cc7e-7cc0ce491b22"]
       customFields: [
-        { code: "license_plate", operator: EQ, value: "HH-TL 4421" }
+        { code: "license_plate", operator: EQ, value: { string: "HH-TL 4421" } }
       ]
     }
     first: 5
