@@ -133,10 +133,10 @@ Save the type ID — you'll need it when creating geo objects.
 
 ## Understanding GeoJSON geometry
 
-Geo objects store their geographic shape in the `geometry` field, which uses GeoJSON format as defined in [RFC 7946](https://www.rfc-editor.org/rfc/rfc7946). This format represents geographic features with coordinate-based geometries.
+Geo objects store their geographic shape in the `geojsonData` field, which uses GeoJSON format as defined in [RFC 7946](https://www.rfc-editor.org/rfc/rfc7946). This format represents geographic features with coordinate-based geometries.
 
 {% hint style="info" %}
-The `geometry` field is a convenience alias for the `geojson` system custom field. You can also access the same data through the `customFields` field.
+The `geojsonData` field is a convenience alias for the `geojson_data` system custom field. You can also access the same data through the `customFields` field.
 {% endhint %}
 
 A complete GeoJSON is always a `FeatureCollection` wrapping one or more `Feature` objects, each of which holds a geometry and optional properties:
@@ -218,7 +218,7 @@ mutation CreateWarehouseZone {
     organizationId: "7c9e6679-7425-40de-944b-e07fc1f90ae7"
     typeId: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"
     title: "Main Warehouse - Mitte"
-    geometry: {
+    geojsonData: {
       type: "FeatureCollection"
       features: [{
         type: "Feature"
@@ -242,7 +242,7 @@ mutation CreateWarehouseZone {
       id
       version
       title
-      geometry
+      geojsonData
     }
   }
 }
@@ -260,7 +260,7 @@ The response confirms creation:
         "id": "019a6b2f-793e-807b-8001-555345529b44",
         "version": 1,
         "title": "Main Warehouse - Mitte",
-        "geometry": {
+        "geojsonData": {
           "type": "FeatureCollection",
           "features": [
             {
@@ -305,7 +305,7 @@ query GetWarehouseZone {
       code
       title
     }
-    geometry
+    geojsonData
   }
 }
 ```
@@ -323,7 +323,7 @@ The response returns the full geo object:
         "code": "poi",
         "title": "Point of Interest"
       },
-      "geometry": {
+      "geojsonData": {
         "type": "FeatureCollection",
         "features": [
           {
@@ -349,7 +349,7 @@ The response returns the full geo object:
 }
 ```
 
-The `geometry` field contains the full GeoJSON structure you provided, which you can use to verify the configuration or display on a map in your application.
+The `geojsonData` field contains the full GeoJSON structure you provided, which you can use to verify the configuration or display on a map in your application.
 {% endstep %}
 
 {% step %}
@@ -363,7 +363,7 @@ mutation CreateDeliveryZone {
     organizationId: "7c9e6679-7425-40de-944b-e07fc1f90ae7"
     typeId: "b1ffcd00-0d1c-5fg9-cc7e-7cc0ce491b22"
     title: "Central Berlin Zone"
-    geometry: {
+    geojsonData: {
       type: "FeatureCollection"
       features: [{
         type: "Feature"
@@ -387,7 +387,7 @@ mutation CreateDeliveryZone {
       id
       version
       title
-      geometry
+      geojsonData
     }
   }
 }
@@ -409,7 +409,7 @@ The response returns:
         "id": "019a6b30-8a4f-807b-8001-666456630c55",
         "version": 1,
         "title": "Central Berlin Zone",
-        "geometry": {
+        "geojsonData": {
           "type": "FeatureCollection",
           "features": [
             {
@@ -446,7 +446,7 @@ Check if specific delivery addresses fall within your zone using the `containsPo
 query CheckDeliveryAddresses {
   geoObject(id: "019a6b30-8a4f-807b-8001-666456630c55") {
     title
-    geometry
+    geojsonData
     containsPoints(points: [
       { lat: 52.520008, lng: 13.404954 }
       { lat: 52.500000, lng: 13.400000 }
@@ -470,7 +470,7 @@ The response shows which points are inside the zone:
   "data": {
     "geoObject": {
       "title": "Central Berlin Zone",
-      "geometry": {
+      "geojsonData": {
         "type": "FeatureCollection",
         "features": [
           {
@@ -530,7 +530,7 @@ mutation ExpandDeliveryZone {
   geoObjectUpdate(input: {
     id: "019a6b30-8a4f-807b-8001-666456630c55"
     version: 1
-    geometry: {
+    geojsonData: {
       type: "FeatureCollection"
       features: [{
         type: "Feature"
@@ -553,13 +553,15 @@ mutation ExpandDeliveryZone {
     geoObject {
       id
       version
-      geometry
+      geojsonData
     }
   }
 }
 ```
 
-The `version` parameter ensures you don't accidentally overwrite changes made by someone else. If the version doesn't match, you'll receive a [conflict error](../error-handling.md#version-conflict-409).
+{% hint style="info" %}
+`version` is optional — omitting it applies the update unconditionally without conflict detection. Include it whenever you want to guard against overwriting concurrent changes. See [Optimistic locking](../optimistic-locking.md) for details.
+{% endhint %}
 
 The response shows the incremented version:
 
@@ -570,7 +572,7 @@ The response shows the incremented version:
       "geoObject": {
         "id": "019a6b30-8a4f-807b-8001-666456630c55",
         "version": 2,
-        "geometry": {
+        "geojsonData": {
           "type": "FeatureCollection",
           "features": [
             {
@@ -796,7 +798,7 @@ query ListGeoObjects {
         code
         title
       }
-      geometry
+      geojsonData
     }
     pageInfo {
       hasNextPage
@@ -820,7 +822,7 @@ The response returns a paginated list:
             "code": "poi",
             "title": "Point of Interest"
           },
-          "geometry": {
+          "geojsonData": {
             "type": "FeatureCollection",
             "features": [
               {
@@ -849,7 +851,7 @@ The response returns a paginated list:
             "code": "geofence",
             "title": "Geofence"
           },
-          "geometry": {
+          "geojsonData": {
             "type": "FeatureCollection",
             "features": [
               {
