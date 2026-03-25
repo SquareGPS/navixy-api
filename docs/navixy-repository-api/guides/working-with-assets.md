@@ -611,7 +611,7 @@ For details on pagination, see [Pagination](../pagination.md).
 
 ## Handling version conflicts
 
-If another client updates an asset between when you fetched it and when you submit your mutation, the API returns a conflict error:
+If you include `version` in your mutation and the entity has been modified since you last fetched it, the API returns a [conflict error](../error-handling.md#version-conflict-409):
 
 ```json
 {

@@ -58,7 +58,7 @@ Use the `id` of the organization you want to work with for all subsequent geo ob
 
 ## Understanding schedule data
 
-A schedule consists of metadata (title, type, organization) and calendar data stored in the `scheduleData` field, which accepts a value of [ScheduleData](../schedules.md#scheduledata), a custom scalar containing a JSON value.
+A schedule consists of metadata (title and organization) and calendar data stored in the `scheduleData` field, which accepts a value of [ScheduleData](../schedules.md#scheduledata), a custom scalar containing a JSON value.
 
 {% hint style="info" %}
 The `scheduleData` field is a convenience alias for the `schedule_data` system custom field. You can also access the same data through the `customFields` field if needed. See [Implementing custom fields](implementing-custom-fields.md) for details.
@@ -81,7 +81,7 @@ For example, with `"timezone": "Europe/Berlin"`:
 
 Each event in the `events` array can include:
 
-<table><thead><tr><th width="95.39990234375">Field</th><th width="128.2000732421875">iCalendar equivalent</th><th>Description</th></tr></thead><tbody><tr><td><code>dtstart</code></td><td>DTSTART</td><td><strong>Required.</strong> Start time. Use ISO 8601 UTC format for regular events (<code>2025-01-06T05:00:00Z</code>). For all-day events, use DATE format without time component (<code>2025-01-06</code>).</td></tr><tr><td><code>dtend</code></td><td>DTEND</td><td>End time. Mutually exclusive with <code>duration</code>. Must match <code>dtstart</code> value type: DATE-TIME for regular events, DATE for all-day events.</td></tr><tr><td><code>duration</code></td><td>DURATION</td><td>Duration in ISO 8601 format. Mutually exclusive with <code>dtend</code>. Examples: <code>PT30M</code> (30 minutes), <code>PT3H</code> (3 hours), <code>P1D</code> (1 day). For all-day events, use day or week format only (<code>P1D</code>, <code>P1W</code>).</td></tr><tr><td><code>allDay</code></td><td>VALUE=DATE</td><td>When <code>true</code>, the event spans entire days. Requires <code>dtstart</code>, <code>dtend</code>, and <code>exdate</code> to use DATE format (no time component).</td></tr><tr><td><code>rrule</code></td><td>RRULE</td><td>Recurrence rule defining repeat patterns. See the <code>rrule</code> reference below.</td></tr><tr><td><code>exdate</code></td><td>EXDATE</td><td>Array of dates to exclude from recurrence. Values must exactly match generated occurrences. Use DATE-TIME format for regular events, DATE format for all-day events.</td></tr><tr><td><code>rdate</code></td><td>RDATE</td><td>Array of additional dates to include in recurrence. Must match <code>dtstart</code> value type: DATE-TIME for regular events, DATE for all-day events.</td></tr></tbody></table>
+<table><thead><tr><th width="98.9554443359375">Field</th><th width="128.2000732421875">iCalendar equivalent</th><th>Description</th></tr></thead><tbody><tr><td><code>dtstart</code></td><td>DTSTART</td><td><strong>Required.</strong> Start time. Use ISO 8601 UTC format for regular events (<code>2025-01-06T05:00:00Z</code>). For all-day events, use DATE format without time component (<code>2025-01-06</code>).</td></tr><tr><td><code>dtend</code></td><td>DTEND</td><td>End time. Mutually exclusive with <code>duration</code>. Must match <code>dtstart</code> value type: DATE-TIME for regular events, DATE for all-day events.</td></tr><tr><td><code>duration</code></td><td>DURATION</td><td>Duration in ISO 8601 format. Mutually exclusive with <code>dtend</code>. Examples: <code>PT30M</code> (30 minutes), <code>PT3H</code> (3 hours), <code>P1D</code> (1 day). For all-day events, use day or week format only (<code>P1D</code>, <code>P1W</code>).</td></tr><tr><td><code>allDay</code></td><td>VALUE=DATE</td><td>When <code>true</code>, the event spans entire days. Requires <code>dtstart</code>, <code>dtend</code>, and <code>exdate</code> to use DATE format (no time component).</td></tr><tr><td><code>rrule</code></td><td>RRULE</td><td>Recurrence rule defining repeat patterns. See the <code>rrule</code> reference below.</td></tr><tr><td><code>exdate</code></td><td>EXDATE</td><td>Array of dates to exclude from recurrence. Values must exactly match generated occurrences. Use DATE-TIME format for regular events, DATE format for all-day events.</td></tr><tr><td><code>rdate</code></td><td>RDATE</td><td>Array of additional dates to include in recurrence. Must match <code>dtstart</code> value type: DATE-TIME for regular events, DATE for all-day events.</td></tr></tbody></table>
 
 ### Recurrence rule fields
 
@@ -103,7 +103,7 @@ A logistics company needs to schedule weekly maintenance for their vehicle fleet
 
 {% stepper %}
 {% step %}
-### **Create the schedule**
+#### **Create the schedule**
 
 Start with a weekly schedule. The `scheduleData` field accepts a JSON structure with a timezone and an array of events. Each event has a start time, end time (or duration), and an optional recurrence rule.
 
@@ -111,7 +111,6 @@ Start with a weekly schedule. The `scheduleData` field accepts a JSON structure 
 mutation CreateMaintenanceSchedule {
   scheduleCreate(input: {
     organizationId: "7c9e6679-7425-40de-944b-e07fc1f90ae7"
-    typeId: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"
     title: "Weekly fleet maintenance"
     scheduleData: {
       timezone: "Europe/Berlin"
@@ -162,7 +161,7 @@ Save the `id` and `version` — you'll need them for updating the schedule.
 {% endstep %}
 
 {% step %}
-### **Verify the schedule**
+#### **Verify the schedule**
 
 Query the schedule to confirm it was created correctly:
 
@@ -172,10 +171,6 @@ query GetMaintenanceSchedule {
     id
     version
     title
-    type {
-      code
-      title
-    }
     scheduleData
   }
 }
@@ -185,9 +180,11 @@ The `scheduleData` field returns the full JSON structure you provided, which you
 {% endstep %}
 
 {% step %}
-### **Exclude holidays**
+#### **Exclude holidays**
 
 The maintenance provider doesn't work on public holidays. Several holidays in the year fall on Mondays. Add these as exception dates using `exdate`. This requires updating the schedule with `scheduleUpdate`.
+
+The `version` parameter is optional: omitting it applies the update unconditionally without conflict detection. Include it whenever you want to guard against overwriting concurrent changes. See [Optimistic locking](../optimistic-locking.md) for details.
 
 {% hint style="danger" %}
 When updating `scheduleData`, you must provide the complete value — the API replaces the entire field. Include all existing configuration plus your changes.
@@ -251,7 +248,7 @@ The response shows the incremented version:
 {% endstep %}
 
 {% step %}
-### **Set an end date**
+#### **Set an end date**
 
 The maintenance contract runs through December 31, 2025. Add an `until` date to the recurrence rule so the schedule stops repeating after that date.
 
@@ -293,7 +290,7 @@ The `until` value is inclusive — the last occurrence can happen on this date. 
 {% endstep %}
 
 {% step %}
-### **Split the schedule into two windows**
+#### **Split the schedule into two windows**
 
 The maintenance team requests a break from 8:00 to 8:30. Instead of one 4-hour window, you now need two windows: 6:00–8:00 and 8:30–10:00.
 
@@ -352,7 +349,7 @@ Note that each event has its own `exdate` array with times matching that event's
 {% endstep %}
 
 {% step %}
-### **Delete the schedule**
+#### **Delete the schedule**
 
 When the contract ends and you no longer need the schedule, delete it:
 
@@ -379,7 +376,7 @@ Response:
 }
 ```
 
-The `version` parameter ensures you don't accidentally delete a schedule that someone else has modified. If the version doesn't match, you'll receive a [conflict error](../error-handling.md#version-conflict-409).
+Including `version` ensures you don't accidentally delete a schedule that someone else has modified. If the version doesn't match, you'll receive a [conflict error](../error-handling.md#version-conflict-409). See [Optimistic locking](../optimistic-locking.md) for details on when to omit it.
 {% endstep %}
 {% endstepper %}
 
@@ -396,9 +393,6 @@ query ListSchedules {
     nodes {
       id
       title
-      type {
-        title
-      }
       scheduleData
     }
     pageInfo {
@@ -413,7 +407,7 @@ For details on pagination, see [Pagination](../pagination.md).
 
 ## Handling version conflicts
 
-If someone else updates the schedule while you're working on it, your mutation will fail with a conflict error:
+If you include `version` in your mutation and the entity has been modified since you last fetched it, the API returns a [conflict error](../error-handling.md#version-conflict-409):
 
 ```json
 {

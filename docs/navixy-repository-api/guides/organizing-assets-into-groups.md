@@ -685,7 +685,7 @@ For details on pagination, see [Pagination](../pagination.md).
 
 ### Handling version conflicts
 
-Asset groups use optimistic locking. If another client updates a group between when you fetched it and when you submit your mutation, the API returns a `CONFLICT` (409) error:
+If you include `version` in your mutation and the entity has been modified since you last fetched it, the API returns a [conflict error](../error-handling.md#version-conflict-409):
 
 ```json
 {

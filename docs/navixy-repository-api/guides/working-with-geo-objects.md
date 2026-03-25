@@ -922,7 +922,7 @@ For more on filtering and pagination, see [Filtering and sorting](../filtering-a
 
 ## Handling version conflicts
 
-If someone else updates the geo object while you're working on it, your mutation will fail with a conflict error:
+If you include `version` in your mutation and the entity has been modified since you last fetched it, the API returns a conflict error:
 
 ```json
 {

@@ -329,7 +329,7 @@ The response returns the created asset's `id`, `version`, and `customFields`:
 If any custom field value fails validation, the entire mutation is rejected with a [validation error](../error-handling.md#validation-error-400). Common causes include a value that violates the field's `params` constraints (for example, a VIN shorter than 17 characters), an unrecognized field code, or a value of the wrong type. The error response includes a `field` path and a `detail` message identifying the problem. See [Error handling](../error-handling.md) for the full error format.
 {% endhint %}
 
-The same pattern applies to `deviceCreate`, `geoObjectCreate`, and `scheduleCreate` fields.
+The same pattern applies to `geoObjectCreate` and `scheduleCreate` fields.
 {% endstep %}
 
 {% step %}
@@ -753,12 +753,12 @@ If you create a new definition with the same `code` later, existing records will
 
 Keep in mind the following:
 
-* Validation errors reject the entire mutation: Mutations that include invalid custom field values are rejected in full. See [Error handling](../error-handling.md) for the error format.
-* `fieldType` is immutable: To change a field's type, delete its definition and create a new one. Deleting the definition removes its values from all entity records.
-* `code` is stable once in use: `code` must be unique within the owner type and organization. As this is the key used to read and write values across all entity mutations and queries, avoid recreating it under a different name if records contain values paired with it. If you rely on auto-generation, verify the generated code before any records are written under it.
-* `params` requires exactly one variant: `FieldParamsInput` uses the [@oneOf](../core-api-reference/directives.md#oneof) directive, so you must provide exactly the variant that matches your `fieldType`. Providing `string: { ... }` when `fieldType` is `NUMBER` returns a validation error.
-* Multi-value fields and filtering: For OPTIONS, CATALOG, and TAG fields configured with `isMulti: true`, a filter matches if _any_ value in the array satisfies the condition. For example, if an asset has `fuel_type: ["diesel", "hybrid"]`, filtering with `EQ: "diesel"` will match it.
-* Predefined fields: Predefined definitions (like `geojson_data` and `schedule_data`) are platform-managed and appear in `customFields` responses alongside your definitions. Don't use codes that conflict with predefined field codes.
+* **Validation errors reject the entire mutation:** Mutations that include invalid custom field values are rejected in full. See [Error handling](../error-handling.md) for the error format.
+* **`fieldType` is immutable:** To change a field's type, delete its definition and create a new one. Deleting the definition removes its values from all entity records.
+* **`code` is stable once in use:** `code` must be unique within the owner type and organization. As this is the key used to read and write values across all entity mutations and queries, avoid recreating it under a different name if records contain values paired with it. If you rely on auto-generation, verify the generated code before any records are written under it.
+* **`params` requires exactly one variant:** `FieldParamsInput` uses the [@oneOf](../core-api-reference/directives.md#oneof) directive, so you must provide exactly the variant that matches your `fieldType`. Providing `string: { ... }` when `fieldType` is `NUMBER` returns a validation error.
+* **Multi-value fields and filtering:** For OPTIONS, CATALOG, and TAG fields configured with `isMulti: true`, a filter matches if _any_ value in the array satisfies the condition. For example, if an asset has `fuel_type: ["diesel", "hybrid"]`, filtering with `EQ: "diesel"` will match it.
+* **Predefined fields:** Predefined definitions (like `geojson_data` and `schedule_data`) are platform-managed and appear in `customFields` responses alongside your definitions. Don't use codes that conflict with predefined field codes.
 
 ### See also
 

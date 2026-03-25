@@ -135,20 +135,20 @@ User A's update succeeds first. User B's update fails because the version change
 
 Mutations that manage relationships and assignments are called idempotent commands. They don't require or check the `version` field.
 
-| Mutation                                                                 | Purpose                       |
-| ------------------------------------------------------------------------ | ----------------------------- |
-| [deviceInventoryLink](devices/inventory.md#deviceinventorylink)          | Link device to inventory      |
-| [deviceInventoryUnlink](devices/inventory.md#deviceinventoryunlink)      | Unlink device from inventory  |
-| [deviceIdentifierAdd](devices/mutations.md#deviceidentifieradd)          | Add identifier to device      |
-| [deviceIdentifierRemove](devices/mutations.md#deviceidentifierremove)    | Remove identifier from device |
+| Mutation                                                                  | Purpose                       |
+| ------------------------------------------------------------------------- | ----------------------------- |
+| [deviceInventoryLink](devices/inventory.md#deviceinventorylink)           | Link device to inventory      |
+| [deviceInventoryUnlink](devices/inventory.md#deviceinventoryunlink)       | Unlink device from inventory  |
+| [deviceIdentifierAdd](devices/mutations.md#deviceidentifieradd)           | Add identifier to device      |
+| [deviceIdentifierRemove](devices/mutations.md#deviceidentifierremove)     | Remove identifier from device |
 | [assetGroupItemsAdd](assets/groups/mutations.md#assetgroupitemsadd)       | Add asset to group            |
 | [assetGroupItemsRemove](assets/groups/mutations.md#assetgroupitemsremove) | Remove asset from group       |
-| [roleAssign](access-control/mutations.md#roleassign)                     | Assign role to actor          |
-| [roleRevoke](access-control/mutations.md#rolerevoke)                     | Revoke role from actor        |
-| [permissionGrant](access-control/mutations.md#permissiongrant)           | Grant permission to role      |
-| [permissionRevoke](access-control/mutations.md#permissionrevoke)         | Revoke permission from role   |
-| [userScopeSet](access-control/mutations.md#userscopeset)                 | Set user scope restriction    |
-| [userScopeRemove](access-control/mutations.md#userscoperemove)           | Remove user scope restriction |
+| [roleAssign](access-control/mutations.md#roleassign)                      | Assign role to actor          |
+| [roleRevoke](access-control/mutations.md#rolerevoke)                      | Revoke role from actor        |
+| [permissionGrant](access-control/mutations.md#permissiongrant)            | Grant permission to role      |
+| [permissionRevoke](access-control/mutations.md#permissionrevoke)          | Revoke permission from role   |
+| [userScopeSet](access-control/mutations.md#userscopeset)                  | Set user scope restriction    |
+| [userScopeRemove](access-control/mutations.md#userscoperemove)            | Remove user scope restriction |
 
 These operations behave as follows:
 
@@ -159,8 +159,8 @@ This design simplifies client code. You can safely retry these operations withou
 
 ### Best practices
 
-1. Always include `version` in your queries. When fetching entities you plan to modify, request the `version` field so you have it ready for mutations.
-2. Always include `version` in updates and deletes. The field is optional, but omitting it removes your protection against overwriting changes made by other users since your last fetch. Omit it only for programmatic bulk operations where stale-read conflicts are not a concern.
-3. Be especially careful when deleting without `version`. Unlike unprotected updates, which still write a valid version to the database, unprotected deletes can be irreversible.
-4. Handle conflicts gracefully. In collaborative applications, version conflicts are expected. Implement retry logic or prompt users to review changes.
-5. Don't cache versions long-term. Versions can change at any time. Always use the version from your most recent fetch of the entity.
+1. **Always include `version` in your queries.** When fetching entities you plan to modify, request the `version` field so you have it ready for mutations.
+2. **Always include `version` in updates and deletes.** The field is optional, but omitting it removes your protection against overwriting changes made by other users since your last fetch. Omit it only for programmatic bulk operations where stale-read conflicts are not a concern.
+3. **Be especially careful when deleting without `version`.** Unlike unprotected updates, which still write a valid version to the database, unprotected deletes can be irreversible.
+4. **Handle conflicts gracefully.** In collaborative applications, version conflicts are expected. Implement retry logic or prompt users to review changes.
+5. **Don't cache versions long-term.** Versions can change at any time. Always use the version from your most recent fetch of the entity.
