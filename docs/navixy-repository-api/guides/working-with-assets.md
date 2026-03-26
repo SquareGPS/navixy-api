@@ -195,7 +195,7 @@ See [Implementing custom fields](implementing-custom-fields.md) for details on d
 
 ### The device field
 
-The `device` field on an asset is a first-class alias for a system-level custom field that stores a reference to a GPS device. The underlying custom field key is `device`, and its value is the device's ID as a plain string. The `device` field resolves that ID into a full [Device object](../devices/types.md#device), so you can query device details directly from the asset without a separate lookup.
+The `device` field on an asset links to the GPS device assigned to track it. It resolves to a full [Device object](../devices/types.md#device), so you can query device details directly from the asset without a separate lookup.
 
 To link a device when creating or updating an asset, pass the device ID under `set` in `customFields`:
 

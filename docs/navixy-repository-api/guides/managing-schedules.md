@@ -60,10 +60,6 @@ Use the `id` of the organization you want to work with for all subsequent geo ob
 
 A schedule consists of metadata (title and organization) and calendar data stored in the `scheduleData` field, which accepts a value of [ScheduleData](../schedules.md#scheduledata), a custom scalar containing a JSON value.
 
-{% hint style="info" %}
-The `scheduleData` field is a convenience alias for the `schedule_data` system custom field. You can also access the same data through the `customFields` field if needed. See [Implementing custom fields](implementing-custom-fields.md) for details.
-{% endhint %}
-
 The JSON structure follows the RFC 5545 conventions:
 
 <table><thead><tr><th width="115.60003662109375">Field</th><th>Description</th></tr></thead><tbody><tr><td><code>timezone</code></td><td>IANA timezone identifier (e.g., <code>Europe/Berlin</code>, <code>America/New_York</code>, <code>UTC</code>). Defines how the system interprets all datetime values in events.</td></tr><tr><td><code>events</code></td><td>Array of time slots, each with start/end times and optional recurrence rules.</td></tr></tbody></table>

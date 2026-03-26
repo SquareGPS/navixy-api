@@ -135,10 +135,6 @@ Save the type ID — you'll need it when creating geo objects.
 
 Geo objects store their geographic shape in the `geojsonData` field, which uses GeoJSON format as defined in [RFC 7946](https://www.rfc-editor.org/rfc/rfc7946). This format represents geographic features with coordinate-based geometries.
 
-{% hint style="info" %}
-The `geojsonData` field is a convenience alias for the `geojson_data` system custom field. You can also access the same data through the `customFields` field.
-{% endhint %}
-
 A complete GeoJSON is always a `FeatureCollection` wrapping one or more `Feature` objects, each of which holds a geometry and optional properties:
 
 ```json
@@ -208,7 +204,7 @@ A delivery company needs to define service areas and mark important locations. T
 
 {% stepper %}
 {% step %}
-### **Create the arrival zone**
+#### **Create the arrival zone**
 
 Rather than a `Point`, model the warehouse as a small `Polygon` buffer centered on the building. This lets you use `containsPoints` later to detect vehicle arrivals and departures.
 
@@ -291,7 +287,7 @@ Save the `id` and `version` — you'll need them for updates.
 {% endstep %}
 
 {% step %}
-### **Verify the geo object**
+#### **Verify the geo object**
 
 Query the geo object to confirm it was created correctly:
 
@@ -353,7 +349,7 @@ The `geojsonData` field contains the full GeoJSON structure you provided, which 
 {% endstep %}
 
 {% step %}
-### **Create a polygon-shaped delivery zone**
+#### **Create a polygon-shaped delivery zone**
 
 Create a rectangular delivery zone covering central Berlin:
 
@@ -438,7 +434,7 @@ The response returns:
 {% endstep %}
 
 {% step %}
-### **Check test point containment**
+#### **Check test point containment**
 
 Check if specific delivery addresses fall within your zone using the `containsPoints` field:
 
@@ -521,7 +517,7 @@ The `containsPoints` method is only available for `Polygon` and `MultiPolygon` g
 {% endstep %}
 
 {% step %}
-### **Update the zone boundary**
+#### **Update the zone boundary**
 
 As your delivery business expands, you need to cover a larger area. Update the zone geometry to extend the boundaries:
 
@@ -593,7 +589,7 @@ The response shows the incremented version:
 {% endstep %}
 
 {% step %}
-### **Delete the geo object**
+#### **Delete the geo object**
 
 When you restructure your delivery zones and no longer need this geo object, you can delete it:
 
