@@ -617,3 +617,67 @@ An edge in the DeviceModel connection.
 | `node` | [DeviceModel](#type-devicemodel)! | The device model at the end of the edge. |
 
 ---
+
+<a id="type-devicevendorconnection"></a>
+
+### DeviceVendorConnection
+
+A paginated list of DeviceVendor items.
+
+**Implements:** [Connection](../common.md#type-connection)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `edges` | [[DeviceVendorEdge](#type-devicevendoredge)!]! | A list of edges. |
+| `nodes` | [[DeviceVendor](#type-devicevendor)!]! | A list of nodes in the connection (without edge metadata). |
+| `pageInfo` | [PageInfo](../common.md#type-pageinfo)! | Information about the current page. |
+| `total` | [CountInfo](../common.md#type-countinfo) | The total count of items matching the filter. |
+
+---
+
+<a id="type-devicevendoredge"></a>
+
+### DeviceVendorEdge
+
+An edge in the DeviceVendor connection.
+
+**Implements:** [Edge](../common.md#type-edge)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `cursor` | `String!` | An opaque cursor for this edge. |
+| `node` | [DeviceVendor](#type-devicevendor)! | The device vendor at the end of the edge. |
+
+---
+
+<a id="type-devicerelationtypeconnection"></a>
+
+### DeviceRelationTypeConnection
+
+A paginated list of DeviceRelationType items.
+
+**Implements:** [Connection](../common.md#type-connection)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `edges` | [[DeviceRelationTypeEdge](#type-devicerelationtypeedge)!]! | A list of edges. |
+| `nodes` | [[DeviceRelationType](#type-devicerelationtype)!]! | A list of nodes in the connection (without edge metadata). |
+| `pageInfo` | [PageInfo](../common.md#type-pageinfo)! | Information about the current page. |
+| `total` | [CountInfo](../common.md#type-countinfo) | The total count of items matching the filter. |
+
+---
+
+<a id="type-devicerelationtypeedge"></a>
+
+### DeviceRelationTypeEdge
+
+An edge in the DeviceRelationType connection.
+
+**Implements:** [Edge](../common.md#type-edge)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `cursor` | `String!` | An opaque cursor for this edge. |
+| `node` | [DeviceRelationType](#type-devicerelationtype)! | The device relation type at the end of the edge. |
+
+---

@@ -525,7 +525,7 @@ Data for creating a custom field definition within its parent catalog item.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `code` | `Code` | The machine-readable code. Auto-generated from title if omitted. |
+| `code` | `Code` | The machine-readable code. Auto-generated from title if omitted. Codes `geojson_data`, `schedule_data`, and `device` are reserved by the platform. |
 | `title` | `String!` | The display name. |
 | `description` | `String` | The description. |
 | `fieldType` | [FieldType](../custom-fields.md#type-fieldtype)! | The data type. Immutable after creation. |
@@ -752,7 +752,6 @@ Parameters for TAG field type.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` | Whether a value is required. |
-| `isMulti` | `Boolean` | Whether multiple tags can be selected. |
 | `defaultValue` | `Code` | The default tag code. |
 
 </details>
@@ -933,7 +932,7 @@ Data for creating a custom field definition within its parent catalog item.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `code` | `Code` | The machine-readable code. Auto-generated from title if omitted. |
+| `code` | `Code` | The machine-readable code. Auto-generated from title if omitted. Codes `geojson_data`, `schedule_data`, and `device` are reserved by the platform. |
 | `title` | `String!` | The display name. |
 | `description` | `String` | The description. |
 | `fieldType` | [FieldType](../custom-fields.md#type-fieldtype)! | The data type. Immutable after creation. |
@@ -1160,7 +1159,6 @@ Parameters for TAG field type.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` | Whether a value is required. |
-| `isMulti` | `Boolean` | Whether multiple tags can be selected. |
 | `defaultValue` | `Code` | The default tag code. |
 
 </details>

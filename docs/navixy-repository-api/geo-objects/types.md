@@ -56,8 +56,8 @@ A geographic object such as a geofence, point of interest, or route.
 | `title` | `String!` | The human-readable display name. |
 | `organization` | [Organization](../organizations/README.md#type-organization)! | The organization that owns this geo object. |
 | `type` | [GeoObjectType](#type-geoobjecttype)! | The geo object type classification. |
-| `geojsonData` | `GeoJSON!` | The geographic shape of this object as GeoJSON geometry. This is an alias for the `geojson_data` custom field. |
-| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. |
+| `geojsonData` | `GeoJSON!` | The geographic shape of this object as GeoJSON geometry. |
+| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. System-reserved codes (`geojson_data`, `schedule_data`, `device`) are excluded from this map and exposed through dedicated typed fields on the entity instead. |
 | `containsPoints` | [[PointContainmentResult](#type-pointcontainmentresult)!]! | Checks if the given points are contained within this geo object's geometry. Returns the containment status for each point. Only applicable to Polygon and MultiPolygon geometries. |
 
 ---

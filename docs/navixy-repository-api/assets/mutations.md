@@ -77,8 +77,8 @@ A physical or logical asset being tracked.
 | `title` | `String!` | The human-readable display name. |
 | `organization` | [Organization](../organizations/README.md#type-organization)! | The organization that owns this asset. |
 | `type` | [AssetType](types.md#type-assettype)! | The asset type classification. |
-| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. |
-| `device` | [Device](../devices/types.md#type-device) | The primary tracking device linked to this asset. This is an alias for the `device` custom field. |
+| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. System-reserved codes (`geojson_data`, `schedule_data`, `device`) are excluded from this map and exposed through dedicated typed fields on the entity instead. |
+| `device` | [Device](../devices/types.md#type-device) | The primary tracking device linked to this asset. |
 | `groups` | [AssetGroupConnection](groups/types.md#type-assetgroupconnection)! | The groups this asset belongs to. |
 
 </details>
@@ -160,8 +160,8 @@ A physical or logical asset being tracked.
 | `title` | `String!` | The human-readable display name. |
 | `organization` | [Organization](../organizations/README.md#type-organization)! | The organization that owns this asset. |
 | `type` | [AssetType](types.md#type-assettype)! | The asset type classification. |
-| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. |
-| `device` | [Device](../devices/types.md#type-device) | The primary tracking device linked to this asset. This is an alias for the `device` custom field. |
+| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. System-reserved codes (`geojson_data`, `schedule_data`, `device`) are excluded from this map and exposed through dedicated typed fields on the entity instead. |
+| `device` | [Device](../devices/types.md#type-device) | The primary tracking device linked to this asset. |
 | `groups` | [AssetGroupConnection](groups/types.md#type-assetgroupconnection)! | The groups this asset belongs to. |
 
 </details>
@@ -290,7 +290,7 @@ Data for creating a custom field definition within its parent catalog item.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `code` | `Code` | The machine-readable code. Auto-generated from title if omitted. |
+| `code` | `Code` | The machine-readable code. Auto-generated from title if omitted. Codes `geojson_data`, `schedule_data`, and `device` are reserved by the platform. |
 | `title` | `String!` | The display name. |
 | `description` | `String` | The description. |
 | `fieldType` | [FieldType](../custom-fields.md#type-fieldtype)! | The data type. Immutable after creation. |
@@ -517,7 +517,6 @@ Parameters for TAG field type.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` | Whether a value is required. |
-| `isMulti` | `Boolean` | Whether multiple tags can be selected. |
 | `defaultValue` | `Code` | The default tag code. |
 
 </details>
@@ -698,7 +697,7 @@ Data for creating a custom field definition within its parent catalog item.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `code` | `Code` | The machine-readable code. Auto-generated from title if omitted. |
+| `code` | `Code` | The machine-readable code. Auto-generated from title if omitted. Codes `geojson_data`, `schedule_data`, and `device` are reserved by the platform. |
 | `title` | `String!` | The display name. |
 | `description` | `String` | The description. |
 | `fieldType` | [FieldType](../custom-fields.md#type-fieldtype)! | The data type. Immutable after creation. |
@@ -925,7 +924,6 @@ Parameters for TAG field type.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` | Whether a value is required. |
-| `isMulti` | `Boolean` | Whether multiple tags can be selected. |
 | `defaultValue` | `Code` | The default tag code. |
 
 </details>

@@ -36,8 +36,8 @@ A schedule definition for work hours, maintenance windows, or other time-based r
 | `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Can be provided in update/delete mutations to prevent lost updates. If omitted, the update proceeds without stale-read protection. |
 | `title` | `String!` | The human-readable display name. |
 | `organization` | [Organization](organizations/README.md#type-organization)! | The organization that owns this schedule. |
-| `scheduleData` | `ScheduleData!` | The calendar and time interval definitions for this schedule. This is an alias for the `schedule_data` custom field. |
-| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. |
+| `scheduleData` | `ScheduleData!` | The calendar and time interval definitions for this schedule. |
+| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. System-reserved codes (`geojson_data`, `schedule_data`, `device`) are excluded from this map and exposed through dedicated typed fields on the entity instead. |
 
 </details>
 
@@ -286,8 +286,8 @@ A schedule definition for work hours, maintenance windows, or other time-based r
 | `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Can be provided in update/delete mutations to prevent lost updates. If omitted, the update proceeds without stale-read protection. |
 | `title` | `String!` | The human-readable display name. |
 | `organization` | [Organization](organizations/README.md#type-organization)! | The organization that owns this schedule. |
-| `scheduleData` | `ScheduleData!` | The calendar and time interval definitions for this schedule. This is an alias for the `schedule_data` custom field. |
-| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. |
+| `scheduleData` | `ScheduleData!` | The calendar and time interval definitions for this schedule. |
+| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. System-reserved codes (`geojson_data`, `schedule_data`, `device`) are excluded from this map and exposed through dedicated typed fields on the entity instead. |
 
 </details>
 
@@ -368,8 +368,8 @@ A schedule definition for work hours, maintenance windows, or other time-based r
 | `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Can be provided in update/delete mutations to prevent lost updates. If omitted, the update proceeds without stale-read protection. |
 | `title` | `String!` | The human-readable display name. |
 | `organization` | [Organization](organizations/README.md#type-organization)! | The organization that owns this schedule. |
-| `scheduleData` | `ScheduleData!` | The calendar and time interval definitions for this schedule. This is an alias for the `schedule_data` custom field. |
-| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. |
+| `scheduleData` | `ScheduleData!` | The calendar and time interval definitions for this schedule. |
+| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. System-reserved codes (`geojson_data`, `schedule_data`, `device`) are excluded from this map and exposed through dedicated typed fields on the entity instead. |
 
 </details>
 
@@ -438,8 +438,8 @@ A schedule definition for work hours, maintenance windows, or other time-based r
 | `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Can be provided in update/delete mutations to prevent lost updates. If omitted, the update proceeds without stale-read protection. |
 | `title` | `String!` | The human-readable display name. |
 | `organization` | [Organization](organizations/README.md#type-organization)! | The organization that owns this schedule. |
-| `scheduleData` | `ScheduleData!` | The calendar and time interval definitions for this schedule. This is an alias for the `schedule_data` custom field. |
-| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. |
+| `scheduleData` | `ScheduleData!` | The calendar and time interval definitions for this schedule. |
+| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. System-reserved codes (`geojson_data`, `schedule_data`, `device`) are excluded from this map and exposed through dedicated typed fields on the entity instead. |
 
 ---
 

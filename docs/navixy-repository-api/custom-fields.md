@@ -25,7 +25,6 @@ The `fieldType` property is immutable after creation. To change the field type, 
 | `fieldType` | [FieldType](#type-fieldtype)! | The data type determining validation rules and UI rendering. This property is immutable and cannot be changed after creation. |
 | `params` | [FieldParams](#type-fieldparams)! | The type-specific parameters for validation, defaults, and options. |
 | `isArchived` | `Boolean!` | Whether this field definition is archived. Archived fields preserve existing values but no longer appear in forms and accept no new input. Use the `archive` / `restore` actions in the parent catalog item's `customFieldDefinitions` input to toggle this state. |
-| `isSystem` | `Boolean!` | Whether this is a system-defined field. System fields are created and managed by the platform (e.g. `geojson_data`, `schedule_data`) and cannot be modified, archived, or deleted via mutations. |
 
 ---
 
@@ -240,12 +239,11 @@ Parameters for CATALOG field type.
 
 Parameters for TAG field type.
 
-**Implements:** [FieldParams](#type-fieldparams), [MultiValue](common.md#type-multivalue)
+**Implements:** [FieldParams](#type-fieldparams)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` | Whether a value is required for this field. |
-| `isMulti` | `Boolean!` | Whether multiple values can be selected for this field. |
 | `defaultValue` | `Code` | The default tag code. |
 
 ---
@@ -340,7 +338,7 @@ Data for creating a custom field definition within its parent catalog item.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `code` | `Code` | The machine-readable code. Auto-generated from title if omitted. |
+| `code` | `Code` | The machine-readable code. Auto-generated from title if omitted. Codes `geojson_data`, `schedule_data`, and `device` are reserved by the platform. |
 | `title` | `String!` | The display name. |
 | `description` | `String` | The description. |
 | `fieldType` | [FieldType](#type-fieldtype)! | The data type. Immutable after creation. |
@@ -632,7 +630,6 @@ Parameters for TAG field type.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` | Whether a value is required. |
-| `isMulti` | `Boolean` | Whether multiple tags can be selected. |
 | `defaultValue` | `Code` | The default tag code. |
 
 ---

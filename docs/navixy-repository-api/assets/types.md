@@ -41,8 +41,8 @@ A physical or logical asset being tracked.
 | `title` | `String!` | The human-readable display name. |
 | `organization` | [Organization](../organizations/README.md#type-organization)! | The organization that owns this asset. |
 | `type` | [AssetType](#type-assettype)! | The asset type classification. |
-| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. |
-| `device` | [Device](../devices/types.md#type-device) | The primary tracking device linked to this asset. This is an alias for the `device` custom field. |
+| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. System-reserved codes (`geojson_data`, `schedule_data`, `device`) are excluded from this map and exposed through dedicated typed fields on the entity instead. |
+| `device` | [Device](../devices/types.md#type-device) | The primary tracking device linked to this asset. |
 | `groups` | [AssetGroupConnection](groups/types.md#type-assetgroupconnection)! | The groups this asset belongs to. |
 
 ---

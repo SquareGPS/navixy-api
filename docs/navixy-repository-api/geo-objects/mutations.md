@@ -78,8 +78,8 @@ A geographic object such as a geofence, point of interest, or route.
 | `title` | `String!` | The human-readable display name. |
 | `organization` | [Organization](../organizations/README.md#type-organization)! | The organization that owns this geo object. |
 | `type` | [GeoObjectType](types.md#type-geoobjecttype)! | The geo object type classification. |
-| `geojsonData` | `GeoJSON!` | The geographic shape of this object as GeoJSON geometry. This is an alias for the `geojson_data` custom field. |
-| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. |
+| `geojsonData` | `GeoJSON!` | The geographic shape of this object as GeoJSON geometry. |
+| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. System-reserved codes (`geojson_data`, `schedule_data`, `device`) are excluded from this map and exposed through dedicated typed fields on the entity instead. |
 | `containsPoints` | [[PointContainmentResult](types.md#type-pointcontainmentresult)!]! | Checks if the given points are contained within this geo object's geometry. Returns the containment status for each point. Only applicable to Polygon and MultiPolygon geometries. |
 
 </details>
@@ -162,8 +162,8 @@ A geographic object such as a geofence, point of interest, or route.
 | `title` | `String!` | The human-readable display name. |
 | `organization` | [Organization](../organizations/README.md#type-organization)! | The organization that owns this geo object. |
 | `type` | [GeoObjectType](types.md#type-geoobjecttype)! | The geo object type classification. |
-| `geojsonData` | `GeoJSON!` | The geographic shape of this object as GeoJSON geometry. This is an alias for the `geojson_data` custom field. |
-| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. |
+| `geojsonData` | `GeoJSON!` | The geographic shape of this object as GeoJSON geometry. |
+| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. System-reserved codes (`geojson_data`, `schedule_data`, `device`) are excluded from this map and exposed through dedicated typed fields on the entity instead. |
 | `containsPoints` | [[PointContainmentResult](types.md#type-pointcontainmentresult)!]! | Checks if the given points are contained within this geo object's geometry. Returns the containment status for each point. Only applicable to Polygon and MultiPolygon geometries. |
 
 </details>
@@ -292,7 +292,7 @@ Data for creating a custom field definition within its parent catalog item.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `code` | `Code` | The machine-readable code. Auto-generated from title if omitted. |
+| `code` | `Code` | The machine-readable code. Auto-generated from title if omitted. Codes `geojson_data`, `schedule_data`, and `device` are reserved by the platform. |
 | `title` | `String!` | The display name. |
 | `description` | `String` | The description. |
 | `fieldType` | [FieldType](../custom-fields.md#type-fieldtype)! | The data type. Immutable after creation. |
@@ -519,7 +519,6 @@ Parameters for TAG field type.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` | Whether a value is required. |
-| `isMulti` | `Boolean` | Whether multiple tags can be selected. |
 | `defaultValue` | `Code` | The default tag code. |
 
 </details>
@@ -700,7 +699,7 @@ Data for creating a custom field definition within its parent catalog item.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `code` | `Code` | The machine-readable code. Auto-generated from title if omitted. |
+| `code` | `Code` | The machine-readable code. Auto-generated from title if omitted. Codes `geojson_data`, `schedule_data`, and `device` are reserved by the platform. |
 | `title` | `String!` | The display name. |
 | `description` | `String` | The description. |
 | `fieldType` | [FieldType](../custom-fields.md#type-fieldtype)! | The data type. Immutable after creation. |
@@ -927,7 +926,6 @@ Parameters for TAG field type.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` | Whether a value is required. |
-| `isMulti` | `Boolean` | Whether multiple tags can be selected. |
 | `defaultValue` | `Code` | The default tag code. |
 
 </details>

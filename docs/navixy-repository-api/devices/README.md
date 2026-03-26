@@ -6,6 +6,6 @@ Devices are GPS trackers, sensors, and other hardware that collect and transmit 
 
 ## Contents
 
-- [Queries](queries.md) — 5 operations
+- [Queries](queries.md) — 7 operations
 - [Mutations](mutations.md) — 13 operations
-- [Types](types.md) — 38 types
+- [Types](types.md) — 42 types

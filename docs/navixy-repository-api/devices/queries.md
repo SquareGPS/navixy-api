@@ -279,6 +279,190 @@ Information about the current page in a paginated connection.
 
 ---
 
+### deviceVendors
+
+Lists device vendors for an organization.
+
+```graphql
+deviceVendors(
+    organizationId: ID!
+    filter: CatalogItemFilter
+    first: Int
+    after: String
+    last: Int
+    before: String
+    orderBy: CatalogItemOrder = { field: ORDER, direction: ASC }
+  ): DeviceVendorConnection!
+```
+
+**Arguments**
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `organizationId` | `ID!` | The organization to retrieve device vendors for. |
+| `filter` | `CatalogItemFilter` | Filtering options for the returned device vendors. |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy` | `CatalogItemOrder` | The ordering options for the returned device vendors. |
+
+**Input types:**
+
+<details>
+
+<summary>CatalogItemFilter</summary>
+
+Filtering options for catalog items.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `titleContains` | `String` | Partial match on title (case-insensitive contains). |
+| `codes` | `[Code!]` | Match any of these codes. |
+
+</details>
+
+<details>
+
+<summary>CatalogItemOrder</summary>
+
+Ordering options for catalog items.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `field` | [CatalogItemOrderField](../catalogs/catalog-items.md#type-catalogitemorderfield)! | The field to order by. |
+| `direction` | [OrderDirection](../common.md#type-orderdirection)! | The direction to order. |
+
+</details>
+
+**Output types:**
+
+<details>
+
+<summary>DeviceVendorConnection</summary>
+
+A paginated list of DeviceVendor items.
+
+**Implements:** [Connection](../common.md#type-connection)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `edges` | [[DeviceVendorEdge](types.md#type-devicevendoredge)!]! | A list of edges. |
+| `nodes` | [[DeviceVendor](types.md#type-devicevendor)!]! | A list of nodes in the connection (without edge metadata). |
+| `pageInfo` | [PageInfo](../common.md#type-pageinfo)! | Information about the current page. |
+| `total` | [CountInfo](../common.md#type-countinfo) | The total count of items matching the filter. |
+
+</details>
+
+<details>
+
+<summary>PageInfo (entity)</summary>
+
+Information about the current page in a paginated connection.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `hasNextPage` | `Boolean!` | Whether more items exist after the current page. |
+| `hasPreviousPage` | `Boolean!` | Whether more items exist before the current page. |
+| `startCursor` | `String` | The cursor pointing to the first item in the current page. |
+| `endCursor` | `String` | The cursor pointing to the last item in the current page. |
+
+</details>
+
+---
+
+### deviceRelationTypes
+
+Lists device relation types for an organization.
+
+```graphql
+deviceRelationTypes(
+    organizationId: ID!
+    filter: CatalogItemFilter
+    first: Int
+    after: String
+    last: Int
+    before: String
+    orderBy: CatalogItemOrder = { field: ORDER, direction: ASC }
+  ): DeviceRelationTypeConnection!
+```
+
+**Arguments**
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `organizationId` | `ID!` | The organization to retrieve device relation types for. |
+| `filter` | `CatalogItemFilter` | Filtering options for the returned device relation types. |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy` | `CatalogItemOrder` | The ordering options for the returned device relation types. |
+
+**Input types:**
+
+<details>
+
+<summary>CatalogItemFilter</summary>
+
+Filtering options for catalog items.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `titleContains` | `String` | Partial match on title (case-insensitive contains). |
+| `codes` | `[Code!]` | Match any of these codes. |
+
+</details>
+
+<details>
+
+<summary>CatalogItemOrder</summary>
+
+Ordering options for catalog items.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `field` | [CatalogItemOrderField](../catalogs/catalog-items.md#type-catalogitemorderfield)! | The field to order by. |
+| `direction` | [OrderDirection](../common.md#type-orderdirection)! | The direction to order. |
+
+</details>
+
+**Output types:**
+
+<details>
+
+<summary>DeviceRelationTypeConnection</summary>
+
+A paginated list of DeviceRelationType items.
+
+**Implements:** [Connection](../common.md#type-connection)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `edges` | [[DeviceRelationTypeEdge](types.md#type-devicerelationtypeedge)!]! | A list of edges. |
+| `nodes` | [[DeviceRelationType](types.md#type-devicerelationtype)!]! | A list of nodes in the connection (without edge metadata). |
+| `pageInfo` | [PageInfo](../common.md#type-pageinfo)! | Information about the current page. |
+| `total` | [CountInfo](../common.md#type-countinfo) | The total count of items matching the filter. |
+
+</details>
+
+<details>
+
+<summary>PageInfo (entity)</summary>
+
+Information about the current page in a paginated connection.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `hasNextPage` | `Boolean!` | Whether more items exist after the current page. |
+| `hasPreviousPage` | `Boolean!` | Whether more items exist before the current page. |
+| `startCursor` | `String` | The cursor pointing to the first item in the current page. |
+| `endCursor` | `String` | The cursor pointing to the last item in the current page. |
+
+</details>
+
+---
+
 ### device
 
 Retrieves a device by its ID.
