@@ -1,6 +1,6 @@
 # =============================================================================
 # NAVIXY 4 - GraphQL Schema
-# Version: 0.6.3
+# Version: 0.6.4
 # =============================================================================
 #
 # TABLE OF CONTENTS
@@ -932,6 +932,9 @@ interface Customizable {
   """
   Custom field values as a key-value map.
   Keys are `CustomFieldDefinition` codes.
+
+  System-reserved codes (`geojson_data`, `schedule_data`, `device`) are excluded
+  from this map and exposed through dedicated typed fields on the entity instead.
   """
   customFields(
     "Limit returned fields to these codes. Returns all fields if not specified."
@@ -1515,6 +1518,50 @@ type DeviceModelEdge implements Edge {
   cursor: String!
   "The device model at the end of the edge."
   node: DeviceModel!
+}
+
+# @category: devices
+"A paginated list of DeviceVendor items."
+type DeviceVendorConnection implements Connection {
+  "A list of edges."
+  edges: [DeviceVendorEdge!]!
+  "A list of nodes in the connection (without edge metadata)."
+  nodes: [DeviceVendor!]!
+  "Information about the current page."
+  pageInfo: PageInfo!
+  "The total count of items matching the filter."
+  total: CountInfo
+}
+
+# @category: devices
+"An edge in the DeviceVendor connection."
+type DeviceVendorEdge implements Edge {
+  "An opaque cursor for this edge."
+  cursor: String!
+  "The device vendor at the end of the edge."
+  node: DeviceVendor!
+}
+
+# @category: devices
+"A paginated list of DeviceRelationType items."
+type DeviceRelationTypeConnection implements Connection {
+  "A list of edges."
+  edges: [DeviceRelationTypeEdge!]!
+  "A list of nodes in the connection (without edge metadata)."
+  nodes: [DeviceRelationType!]!
+  "Information about the current page."
+  pageInfo: PageInfo!
+  "The total count of items matching the filter."
+  total: CountInfo
+}
+
+# @category: devices
+"An edge in the DeviceRelationType connection."
+type DeviceRelationTypeEdge implements Edge {
+  "An opaque cursor for this edge."
+  cursor: String!
+  "The device relation type at the end of the edge."
+  node: DeviceRelationType!
 }
 
 # @category: assets
@@ -2396,10 +2443,7 @@ type Asset implements Node & Titled & Customizable & Versioned {
     "Limit returned fields to these codes. Returns all fields if not specified."
     codes: [Code!]
   ): JSON!
-  """
-  The primary tracking device linked to this asset.
-  This is an alias for the `device` custom field.
-  """
+  "The primary tracking device linked to this asset."
   device: Device
   "The groups this asset belongs to."
   groups(
@@ -2511,10 +2555,7 @@ type GeoObject implements Node & Titled & Customizable & Versioned {
   organization: Organization!
   "The geo object type classification."
   type: GeoObjectType!
-  """
-  The geographic shape of this object as GeoJSON geometry.
-  This is an alias for the `geojson_data` custom field.
-  """
+  "The geographic shape of this object as GeoJSON geometry."
   geojsonData: GeoJSON!
   customFields(
     "Limit returned fields to these codes. Returns all fields if not specified."
@@ -2550,10 +2591,7 @@ type Schedule implements Node & Titled & Customizable & Versioned {
   title: String!
   "The organization that owns this schedule."
   organization: Organization!
-  """
-  The calendar and time interval definitions for this schedule.
-  This is an alias for the `schedule_data` custom field.
-  """
+  "The calendar and time interval definitions for this schedule."
   scheduleData: ScheduleData!
   customFields(
     "Limit returned fields to these codes. Returns all fields if not specified."
@@ -2593,12 +2631,6 @@ type CustomFieldDefinition {
   Use the `archive` / `restore` actions in the parent catalog item's `customFieldDefinitions` input to toggle this state.
   """
   isArchived: Boolean!
-  """
-  Whether this is a system-defined field.
-  System fields are created and managed by the platform (e.g. `geojson_data`, `schedule_data`)
-  and cannot be modified, archived, or deleted via mutations.
-  """
-  isSystem: Boolean!
 }
 
 # @category: custom-fields
@@ -2737,9 +2769,8 @@ type FieldParamsCatalog implements FieldParams & MultiValue {
 
 # @category: custom-fields
 "Parameters for TAG field type."
-type FieldParamsTag implements FieldParams & MultiValue {
+type FieldParamsTag implements FieldParams {
   isRequired: Boolean!
-  isMulti: Boolean!
   "The default tag code."
   defaultValue: Code
 }
@@ -3350,7 +3381,7 @@ input CustomFieldFilter {
 #   - IN: `value` must use `stringList` or `idList` variant
 #   - All other operators: `value` is a single-value variant
 #
-# MULTI-VALUE FIELDS (isMulti=true):
+# MULTI-VALUE FIELDS (isMulti=true for OPTIONS/CATALOG, always for TAG):
 #   Filter matches if ANY value in the array satisfies the condition.
 #   Example: field=["red","blue"], filter={operator:EQ, value:{string:"red"}} → match
 #
@@ -3895,7 +3926,10 @@ input CustomFieldDefinitionInput @oneOf {
 # @category: custom-fields
 "Data for creating a custom field definition within its parent catalog item."
 input CustomFieldDefinitionCreateData {
-  "The machine-readable code. Auto-generated from title if omitted."
+  """
+  The machine-readable code. Auto-generated from title if omitted.
+  Codes `geojson_data`, `schedule_data`, and `device` are reserved by the platform.
+  """
   code: Code
   "The display name."
   title: String! @trim
@@ -4145,8 +4179,6 @@ input CatalogFieldParamsInput {
 input TagFieldParamsInput {
   "Whether a value is required."
   isRequired: Boolean!
-  "Whether multiple tags can be selected."
-  isMulti: Boolean = false
   "The default tag code."
   defaultValue: Code
 }
@@ -4551,6 +4583,44 @@ type Query {
     "The ordering options for the returned device models."
     orderBy: CatalogItemOrder = { field: TITLE, direction: ASC }
   ): DeviceModelConnection!
+
+  # @category: devices
+  "Lists device vendors for an organization."
+  deviceVendors(
+    "The organization to retrieve device vendors for."
+    organizationId: ID!
+    "Filtering options for the returned device vendors."
+    filter: CatalogItemFilter
+    "The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    first: Int
+    "The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination)."
+    after: String
+    "The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    last: Int
+    "The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination)."
+    before: String
+    "The ordering options for the returned device vendors."
+    orderBy: CatalogItemOrder = { field: ORDER, direction: ASC }
+  ): DeviceVendorConnection!
+
+  # @category: devices
+  "Lists device relation types for an organization."
+  deviceRelationTypes(
+    "The organization to retrieve device relation types for."
+    organizationId: ID!
+    "Filtering options for the returned device relation types."
+    filter: CatalogItemFilter
+    "The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    first: Int
+    "The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination)."
+    after: String
+    "The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    last: Int
+    "The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination)."
+    before: String
+    "The ordering options for the returned device relation types."
+    orderBy: CatalogItemOrder = { field: ORDER, direction: ASC }
+  ): DeviceRelationTypeConnection!
 
   # @category: assets
   "Lists asset types for an organization."
