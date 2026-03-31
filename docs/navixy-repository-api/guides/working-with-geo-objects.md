@@ -161,6 +161,32 @@ A complete GeoJSON is always a `FeatureCollection` wrapping one or more `Feature
 }
 ```
 
+Inside GraphQL operations, this JSON is transformed in the following way:
+
+```graphql
+{
+  type: "FeatureCollection",
+  features: [
+    {
+      type: "Feature",
+      geometry: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [13.35, 52.48],
+            [13.45, 52.48],
+            [13.45, 52.56],
+            [13.35, 52.56],
+            [13.35, 52.48]
+          ]
+        ]
+      },
+      properties: {}
+    }
+  ]
+}
+```
+
 More examples of different geometry types wrapped in `FeatureCollection` can be found in the [Common GeoJSON patterns](working-with-geo-objects.md#common-geojson-patterns) section.
 
 ### Supported geometry types
@@ -208,11 +234,15 @@ A delivery company needs to define service areas and mark important locations. T
 
 Rather than a `Point`, model the warehouse as a small `Polygon` buffer centered on the building. This lets you use `containsPoints` later to detect vehicle arrivals and departures.
 
+{% hint style="info" %}
+`version` is optional — omitting it applies the update unconditionally without conflict detection. Include it whenever you want to guard against overwriting concurrent changes. See [Optimistic locking](../optimistic-locking.md) for details. In this example, we'll be using this field.
+{% endhint %}
+
 ```graphql
 mutation CreateWarehouseZone {
   geoObjectCreate(input: {
     organizationId: "7c9e6679-7425-40de-944b-e07fc1f90ae7"
-    typeId: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"
+    typeId: "019ce6d5-ff98-8000-801f-43474f542312"
     title: "Main Warehouse - Mitte"
     geojsonData: {
       type: "FeatureCollection"
@@ -283,7 +313,7 @@ The response confirms creation:
 }
 ```
 
-Save the `id` and `version` — you'll need them for updates.
+Save the `id`. You'll need it for updates.
 {% endstep %}
 
 {% step %}
@@ -555,10 +585,6 @@ mutation ExpandDeliveryZone {
 }
 ```
 
-{% hint style="info" %}
-`version` is optional — omitting it applies the update unconditionally without conflict detection. Include it whenever you want to guard against overwriting concurrent changes. See [Optimistic locking](../optimistic-locking.md) for details.
-{% endhint %}
-
 The response shows the incremented version:
 
 ```json
@@ -624,17 +650,17 @@ All geometry values in the API are wrapped in a `FeatureCollection`. The example
 
 ### Single location marker (warehouse, customer address)
 
-```json
+```graphql
 {
-  "type": "FeatureCollection",
-  "features": [
+  type: "FeatureCollection",
+  features: [
     {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [13.404954, 52.520008]
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.404954, 52.520008]
       },
-      "properties": {}
+      properties: {}
     }
   ]
 }
@@ -642,15 +668,15 @@ All geometry values in the API are wrapped in a `FeatureCollection`. The example
 
 ### Rectangular area (simple geofence)
 
-```json
+```graphql
 {
-  "type": "FeatureCollection",
-  "features": [
+  type: "FeatureCollection",
+  features: [
     {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      type: "Feature",
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [13.35, 52.48],
             [13.45, 52.48],
@@ -660,7 +686,7 @@ All geometry values in the API are wrapped in a `FeatureCollection`. The example
           ]
         ]
       },
-      "properties": {}
+      properties: {}
     }
   ]
 }
@@ -668,15 +694,15 @@ All geometry values in the API are wrapped in a `FeatureCollection`. The example
 
 ### Polygon with exclusion zone (donut-shaped)
 
-```json
+```graphql
 {
-  "type": "FeatureCollection",
-  "features": [
+  type: "FeatureCollection",
+  features: [
     {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      type: "Feature",
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [13.30, 52.45],
             [13.50, 52.45],
@@ -693,7 +719,7 @@ All geometry values in the API are wrapped in a `FeatureCollection`. The example
           ]
         ]
       },
-      "properties": {}
+      properties: {}
     }
   ]
 }
@@ -707,13 +733,13 @@ In fleet management, routes are modeled as `Polygon` corridors rather than `Line
 
 ```json
 {
-  "type": "FeatureCollection",
-  "features": [
+  type: "FeatureCollection",
+  features: [
     {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      type: "Feature",
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [13.376, 52.515],
             [13.406, 52.519],
@@ -723,7 +749,7 @@ In fleet management, routes are modeled as `Polygon` corridors rather than `Line
           ]
         ]
       },
-      "properties": {}
+      properties: {}
     }
   ]
 }
@@ -737,19 +763,19 @@ Use `LineString` when you need to draw a line on a map for display purposes — 
 
 ```json
 {
-  "type": "FeatureCollection",
-  "features": [
+  type: "FeatureCollection",
+  features: [
     {
-      "type": "Feature",
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
+      type: "Feature",
+      geometry: {
+        type: "LineString",
+        coordinates: [
           [13.377704, 52.516275],
           [13.404954, 52.520008],
           [13.388175, 52.519444]
         ]
       },
-      "properties": {}
+      properties: {}
     }
   ]
 }
@@ -759,19 +785,19 @@ Use `LineString` when you need to draw a line on a map for display purposes — 
 
 ```json
 {
-  "type": "FeatureCollection",
-  "features": [
+  type: "FeatureCollection",
+  features: [
     {
-      "type": "Feature",
-      "geometry": {
-        "type": "MultiPoint",
-        "coordinates": [
+      type: "Feature",
+      geometry: {
+        type: "MultiPoint",
+        coordinates: [
           [13.404954, 52.520008],
           [13.410000, 52.515000],
           [13.395000, 52.525000]
         ]
       },
-      "properties": {}
+      properties: {}
     }
   ]
 }
