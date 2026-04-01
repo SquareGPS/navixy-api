@@ -103,6 +103,12 @@ A logistics company needs to schedule weekly maintenance for their vehicle fleet
 
 Start with a weekly schedule. The `scheduleData` field accepts a JSON structure with a timezone and an array of events. Each event has a start time, end time (or duration), and an optional recurrence rule.
 
+{% hint style="info" %}
+`version` is optional — omitting it applies the update unconditionally without conflict detection. Include it whenever you want to guard against overwriting concurrent changes. See [Optimistic locking](../optimistic-locking.md) for details. In this example, we'll be using this field.
+{% endhint %}
+
+Run this mutation:
+
 ```graphql
 mutation CreateMaintenanceSchedule {
   scheduleCreate(input: {

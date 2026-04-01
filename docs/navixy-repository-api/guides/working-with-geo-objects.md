@@ -131,6 +131,10 @@ The response confirms the new type:
 
 Save the type ID — you'll need it when creating geo objects.
 
+{% hint style="info" %}
+Geo object types are organizational categories — they don't constrain the geometry shape. A geo object with type "Place" can use any geometry, including a `Polygon`.
+{% endhint %}
+
 ## Understanding GeoJSON geometry
 
 Geo objects store their geographic shape in the `geojsonData` field, which uses GeoJSON format as defined in [RFC 7946](https://www.rfc-editor.org/rfc/rfc7946). This format represents geographic features with coordinate-based geometries.
