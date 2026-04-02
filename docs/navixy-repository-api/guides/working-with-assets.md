@@ -219,6 +219,10 @@ TransLog GmbH is setting up their asset registry. They need to track both their 
 
 Start by creating a "Delivery Truck" asset type for your organization. Be careful when choosing the `code` — it's immutable after creation and will be used to reference this type in integrations and filters.
 
+{% hint style="info" %}
+`version` is optional — omitting it applies the update unconditionally without conflict detection. Include it whenever you want to guard against overwriting concurrent changes. See [Optimistic locking](../optimistic-locking.md) for details. In this example, we'll be using this field.
+{% endhint %}
+
 Run this mutation:
 
 ```graphql
@@ -259,11 +263,72 @@ Response:
 }
 ```
 
-Save the `id` and `version` — you'll need the `id` to create assets of this type, and `version` if you later need to update or delete the type.
+Save the `id` — you'll need it in the next step. You can also save `version` if you later need to update or delete the type.
 
 {% hint style="info" %}
 The `order` field controls how types appear in UI lists. Lower numbers appear first. If display order doesn't matter for your use case, you can omit it to calculate the position automatically.
 {% endhint %}
+{% endstep %}
+
+{% step %}
+### Define custom fields
+
+With the type created, add the custom fields that assets of this type will use. Each delivery truck needs a `license_plate` field, so add it using assetTypeUpdate:
+
+```graphql
+mutation AddLicensePlateField {
+  assetTypeUpdate(input: {
+    id: "b1ffcd00-0d1c-5fg9-cc7e-7cc0ce491b22"
+    version: 1
+    customFieldDefinitions: [
+      {
+        create: {
+          code: "license_plate"
+          title: "License Plate"
+          fieldType: STRING
+          params: { string: { isRequired: true } }
+        }
+      }
+    ]
+  }) {
+    assetType {
+      id
+      version
+      customFieldDefinitions {
+        code
+        title
+        fieldType
+      }
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "data": {
+    "assetTypeUpdate": {
+      "assetType": {
+        "id": "b1ffcd00-0d1c-5fg9-cc7e-7cc0ce491b22",
+        "version": 2,
+        "customFieldDefinitions": [
+          {
+            "code": "license_plate",
+            "title": "License Plate",
+            "fieldType": "STRING"
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+Save the `version` — you'll need it if you later update or delete the type. The `code` values in `customFieldDefinitions` are exactly what you'll use as keys in `customFields.set` when creating or updating assets of this type.
+
+For the full list of supported field types and their parameters, see [Implementing custom fields](implementing-custom-fields.md).
 {% endstep %}
 
 {% step %}
@@ -378,6 +443,8 @@ query GetTruckLicensePlate {
 
 A GPS unit has been installed in the truck. Assign it using [assetUpdate](../assets/mutations.md#assetupdate) with the device ID in `customFields.set`. The operation is identical whether you're making an initial assignment or replacing an existing one.
 
+To create a device of find its id, see [Working with devices](activating-a-device.md).
+
 Run this mutation:
 
 ```graphql
@@ -446,7 +513,7 @@ mutation UnlinkForkliftDevice {
 }
 ```
 
-After unlinking, `device` returns `null`.
+After unlinking,  `device` returns `null`.
 {% endstep %}
 
 {% step %}

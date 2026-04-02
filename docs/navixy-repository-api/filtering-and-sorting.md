@@ -19,7 +19,7 @@ Pass a `filter` argument to any list query to narrow down results:
 ```graphql
 query {
   devices(
-    organizationId: "your-organization-uuid"
+    organizationId: "019d48ea-0752-8000-801f-444556437ab1" ## your organization id
     filter: {
       statusIds: ["status-active-uuid"]
     }
@@ -83,7 +83,7 @@ Most filters include a `titleContains` field for partial text matching:
 ```graphql
 query {
   devices(
-    organizationId: "your-organization-uuid"
+    organizationId: "019d48ea-0752-8000-801f-444556437ab1"
     filter: {
       titleContains: "delivery"
     }
@@ -111,7 +111,7 @@ Entities that support custom fields (assets, geo objects, and schedules) can be 
 ```graphql
 query {
   assets(
-    organizationId: "your-organization-id"
+    organizationId: "019d48ea-0752-8000-801f-444556437ab1"
     filter: {
       customFields: [
         { code: "fuel_type", operator: EQ, value: { string: "diesel" } }
@@ -200,7 +200,7 @@ You can use standard filter fields and custom field conditions together:
 ```graphql
 query {
   assets(
-    organizationId: "your-organization-uuid"
+    organizationId: "019d48ea-0752-8000-801f-444556437ab1"
     filter: {
       typeIds: ["type-truck-uuid"]
       titleContains: "north"
@@ -226,7 +226,7 @@ Use the `orderBy` argument to control the order of results:
 ```graphql
 query {
   devices(
-    organizationId: "your-organization-uuid"
+    organizationId: "019d48ea-0752-8000-801f-444556437ab1"
     orderBy: { field: TITLE, direction: ASC }
   ) {
     nodes {
@@ -258,7 +258,7 @@ Some entity types (assets, geo objects, schedules) support sorting by custom fie
 ```graphql
 query {
   assets(
-    organizationId: "your-organization-uuid"
+    organizationId: "019d48ea-0752-8000-801f-444556437ab1"
     orderBy: { customFieldCode: "priority", direction: DESC }
   ) {
     nodes {

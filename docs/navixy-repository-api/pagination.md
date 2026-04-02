@@ -76,12 +76,7 @@ Check `pageInfo.hasNextPage` to determine if more data is available.
 
 Pagination arguments are passed directly to the query:
 
-| Parameter | Type   | Description                                                     |
-| --------- | ------ | --------------------------------------------------------------- |
-| `first`   | Int    | Number of items to fetch from the start (default: 20, max: 100) |
-| `after`   | String | Cursor — fetch items after this position                        |
-| `last`    | Int    | Number of items to fetch from the end                           |
-| `before`  | String | Cursor — fetch items before this position                       |
+<table><thead><tr><th width="175.4444580078125">Parameter</th><th width="165.4444580078125">Type</th><th>Description</th></tr></thead><tbody><tr><td><code>first</code></td><td>Int</td><td>Number of items to fetch from the start (default: 20, max: 100)</td></tr><tr><td><code>after</code></td><td>String</td><td>Cursor — fetch items after this position</td></tr><tr><td><code>last</code></td><td>Int</td><td>Number of items to fetch from the end</td></tr><tr><td><code>before</code></td><td>String</td><td>Cursor — fetch items before this position</td></tr></tbody></table>
 
 Use `first`/`after` for forward pagination (most common). Use `last`/`before` for backward pagination.
 
@@ -94,7 +89,7 @@ Start by requesting the first page, then use `endCursor` to get subsequent pages
 ```graphql
 query {
   devices(
-    organizationId: "your-organization-uuid"
+    organizationId: "019d48ea-0752-8000-801f-444556437ab1" ## your organization id
     first: 20
   ) {
     nodes {
@@ -121,7 +116,7 @@ To fetch the next page, pass `endCursor` from the previous response as the `afte
 ```graphql
 query {
   devices(
-    organizationId: "your-organization-uuid"
+    organizationId: "019d48ea-0752-8000-801f-444556437ab1"
     first: 20
     after: "cursor-from-previous-response"
   ) {
@@ -146,7 +141,7 @@ Use `last` and `before` to paginate from the end of the result set. This is usef
 ```graphql
 query {
   auditEvents(
-    organizationId: "your-organization-uuid"
+    organizationId: "019d48ea-0752-8000-801f-444556437ab1"
     last: 20
   ) {
     nodes {
@@ -166,7 +161,7 @@ To get the previous page, use `startCursor` as the `before` argument:
 ```graphql
 query {
   auditEvents(
-    organizationId: "your-organization-uuid"
+    organizationId: "019d48ea-0752-8000-801f-444556437ab1
     last: 20
     before: "cursor-from-previous-response"
   ) {
@@ -195,7 +190,7 @@ The `total` field returns information about how many items match your query. Bec
 ```graphql
 query {
   devices(
-    organizationId: "your-organization-uuid"
+    organizationId: "019d48ea-0752-8000-801f-444556437ab1"
     first: 50
   ) {
     nodes {
