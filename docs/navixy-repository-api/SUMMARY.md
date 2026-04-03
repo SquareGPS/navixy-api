@@ -64,7 +64,7 @@
 
 ## GraphQL Schema
 
-* [Public GraphQL schema](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/nvx4-clean/docs/navixy-repository-api/graphql-schema/schema.graphql)
+* [Public GraphQL schema](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/master/docs/navixy-repository-api/graphql-schema/schema.graphql)
 
 ## GraphQL reference
 
