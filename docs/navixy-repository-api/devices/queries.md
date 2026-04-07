@@ -497,6 +497,7 @@ A tracking device such as a GPS tracker, sensor, or beacon.
 | `model` | [DeviceModel](types.md#type-devicemodel)! | The specific device model. |
 | `status` | [DeviceStatus](types.md#type-devicestatus)! | The current operational status. |
 | `identifiers` | [[DeviceIdentifier](types.md#type-deviceidentifier)!]! | The hardware identifiers for this device (IMEI, serial number, MAC address, etc.). |
+| `asset` | [Asset](../assets/types.md#type-asset) | The asset this device is currently linked to. |
 | `inventory` | [Inventory](inventory.md#type-inventory) | The inventory this device is currently assigned to. |
 | `relationsFrom` | [[DeviceRelation](types.md#type-devicerelation)!]! | The outgoing relationships from this device to other devices. |
 | `relationsTo` | [[DeviceRelation](types.md#type-devicerelation)!]! | The incoming relationships from other devices to this device. |

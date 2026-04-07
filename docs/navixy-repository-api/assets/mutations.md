@@ -45,6 +45,8 @@ Input for updating custom field values using a patch model.
 | ----- | ---- | ----------- |
 | `set` | `JSON` | Fields to set or update as a key-value map. |
 | `unset` | `[Code!]` | Field codes to remove. |
+| `setPrimary` | `[Code!]` | Field codes to mark as primary (replaces previous primary of the same field type). |
+| `unsetPrimary` | `[Code!]` | Field codes to unmark as primary. |
 
 </details>
 
@@ -77,8 +79,9 @@ A physical or logical asset being tracked.
 | `title` | `String!` | The human-readable display name. |
 | `organization` | [Organization](../organizations/README.md#type-organization)! | The organization that owns this asset. |
 | `type` | [AssetType](types.md#type-assettype)! | The asset type classification. |
-| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. System-reserved codes (`geojson_data`, `schedule_data`, `device`) are excluded from this map and exposed through dedicated typed fields on the entity instead. |
-| `device` | [Device](../devices/types.md#type-device) | The primary tracking device linked to this asset. |
+| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. System-reserved codes (`geojson_data`, `schedule_data`) are excluded from this map and exposed through dedicated typed fields on the entity instead. |
+| `primaryDevice` | [Device](../devices/types.md#type-device) | The primary device (isPrimary=true among DEVICE-type custom fields). |
+| `devices` | [[Device](../devices/types.md#type-device)!]! | All devices linked via DEVICE-type custom fields. |
 | `groups` | [AssetGroupConnection](groups/types.md#type-assetgroupconnection)! | The groups this asset belongs to. |
 
 </details>
@@ -128,6 +131,8 @@ Input for updating custom field values using a patch model.
 | ----- | ---- | ----------- |
 | `set` | `JSON` | Fields to set or update as a key-value map. |
 | `unset` | `[Code!]` | Field codes to remove. |
+| `setPrimary` | `[Code!]` | Field codes to mark as primary (replaces previous primary of the same field type). |
+| `unsetPrimary` | `[Code!]` | Field codes to unmark as primary. |
 
 </details>
 
@@ -160,8 +165,9 @@ A physical or logical asset being tracked.
 | `title` | `String!` | The human-readable display name. |
 | `organization` | [Organization](../organizations/README.md#type-organization)! | The organization that owns this asset. |
 | `type` | [AssetType](types.md#type-assettype)! | The asset type classification. |
-| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. System-reserved codes (`geojson_data`, `schedule_data`, `device`) are excluded from this map and exposed through dedicated typed fields on the entity instead. |
-| `device` | [Device](../devices/types.md#type-device) | The primary tracking device linked to this asset. |
+| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. System-reserved codes (`geojson_data`, `schedule_data`) are excluded from this map and exposed through dedicated typed fields on the entity instead. |
+| `primaryDevice` | [Device](../devices/types.md#type-device) | The primary device (isPrimary=true among DEVICE-type custom fields). |
+| `devices` | [[Device](../devices/types.md#type-device)!]! | All devices linked via DEVICE-type custom fields. |
 | `groups` | [AssetGroupConnection](groups/types.md#type-assetgroupconnection)! | The groups this asset belongs to. |
 
 </details>
@@ -290,7 +296,7 @@ Data for creating a custom field definition within its parent catalog item.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `code` | `Code` | The machine-readable code. Auto-generated from title if omitted. Codes `geojson_data`, `schedule_data`, and `device` are reserved by the platform. |
+| `code` | `Code` | The machine-readable code. Auto-generated from title if omitted. Codes `geojson_data` and `schedule_data` are reserved by the platform. |
 | `title` | `String!` | The display name. |
 | `description` | `String` | The description. |
 | `fieldType` | [FieldType](../custom-fields.md#type-fieldtype)! | The data type. Immutable after creation. |
@@ -697,7 +703,7 @@ Data for creating a custom field definition within its parent catalog item.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `code` | `Code` | The machine-readable code. Auto-generated from title if omitted. Codes `geojson_data`, `schedule_data`, and `device` are reserved by the platform. |
+| `code` | `Code` | The machine-readable code. Auto-generated from title if omitted. Codes `geojson_data` and `schedule_data` are reserved by the platform. |
 | `title` | `String!` | The display name. |
 | `description` | `String` | The description. |
 | `fieldType` | [FieldType](../custom-fields.md#type-fieldtype)! | The data type. Immutable after creation. |

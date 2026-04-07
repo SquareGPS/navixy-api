@@ -171,7 +171,7 @@ An object that supports custom field values.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. System-reserved codes (`geojson_data`, `schedule_data`, `device`) are excluded from this map and exposed through dedicated typed fields on the entity instead. |
+| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. System-reserved codes (`geojson_data`, `schedule_data`) are excluded from this map and exposed through dedicated typed fields on the entity instead. |
 
 ---
 
@@ -370,7 +370,8 @@ A machine-readable identifier code.
 Constraints:
 - Allowed characters: ASCII letters (a-z, A-Z), digits (0-9), underscore (_), dot (.), hyphen (-)
 - Must start with a letter or digit
-- Case-insensitive for uniqueness checks
+- Case-preserving: the original casing is stored as provided
+- Case-insensitive for uniqueness checks and comparisons
 - Maximum length: 64 characters
 
 Uniqueness:

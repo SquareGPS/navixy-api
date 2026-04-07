@@ -1,6 +1,6 @@
 # =============================================================================
 # NAVIXY 4 - GraphQL Schema
-# Version: 0.6.4
+# Version: 0.6.5
 # =============================================================================
 #
 # TABLE OF CONTENTS
@@ -644,6 +644,10 @@ scalar EmailAddress
     url: "https://the-guild.dev/graphql/scalars/docs/scalars/email-address"
   )
 
+# TODO: TimeZone scalar — will be used in UserSettings.timezone and schedule entities.
+# scalar TimeZone
+#   @specifiedBy(url: "https://the-guild.dev/graphql/scalars/docs/scalars/time-zone")
+
 # @category: common
 "A hexadecimal color code. Supports 3-digit (`#RGB`) or 6-digit (`#RRGGBB`) format."
 scalar HexColorCode
@@ -665,7 +669,8 @@ A machine-readable identifier code.
 Constraints:
 - Allowed characters: ASCII letters (a-z, A-Z), digits (0-9), underscore (_), dot (.), hyphen (-)
 - Must start with a letter or digit
-- Case-insensitive for uniqueness checks
+- Case-preserving: the original casing is stored as provided
+- Case-insensitive for uniqueness checks and comparisons
 - Maximum length: 64 characters
 
 Uniqueness:
@@ -933,8 +938,8 @@ interface Customizable {
   Custom field values as a key-value map.
   Keys are `CustomFieldDefinition` codes.
 
-  System-reserved codes (`geojson_data`, `schedule_data`, `device`) are excluded
-  from this map and exposed through dedicated typed fields on the entity instead.
+  System-reserved codes (`geojson_data`, `schedule_data`) are excluded from this
+  map and exposed through dedicated typed fields on the entity instead.
   """
   customFields(
     "Limit returned fields to these codes. Returns all fields if not specified."
@@ -1834,8 +1839,7 @@ type DeviceType implements CatalogItem & Node & Versioned & Titled {
   catalog: Catalog!
   organization: Organization
   meta: CatalogItemMeta!
-  "Custom field definitions specific to this device type, ordered by display order."
-  customFieldDefinitions: [CustomFieldDefinition!]!
+  # TODO: customFieldDefinitions temporarily hidden from SDL; backend support preserved — re-add when needed
 }
 
 # @category: devices
@@ -2212,8 +2216,6 @@ type User implements Actor & Node & Versioned & Titled {
   identityProviderId: String!
   "The user's primary email address."
   email: EmailAddress!
-  "The user's preferred locale."
-  locale: Locale
   "An external system identifier for integration purposes."
   externalId: String
   "Whether this user account is active."
@@ -2365,6 +2367,8 @@ type Device implements Node & Titled & Versioned & InventoryItem {
   status: DeviceStatus!
   "The hardware identifiers for this device (IMEI, serial number, MAC address, etc.)."
   identifiers: [DeviceIdentifier!]!
+  "The asset this device is currently linked to."
+  asset: Asset
   "The inventory this device is currently assigned to."
   inventory: Inventory
   "The outgoing relationships from this device to other devices."
@@ -2443,8 +2447,10 @@ type Asset implements Node & Titled & Customizable & Versioned {
     "Limit returned fields to these codes. Returns all fields if not specified."
     codes: [Code!]
   ): JSON!
-  "The primary tracking device linked to this asset."
-  device: Device
+  "The primary device (isPrimary=true among DEVICE-type custom fields)."
+  primaryDevice: Device
+  "All devices linked via DEVICE-type custom fields."
+  devices: [Device!]!
   "The groups this asset belongs to."
   groups(
     "Filtering options for the returned groups."
@@ -3399,6 +3405,10 @@ input CustomFieldsPatchInput {
   set: JSON
   "Field codes to remove."
   unset: [Code!]
+  "Field codes to mark as primary (replaces previous primary of the same field type)."
+  setPrimary: [Code!]
+  "Field codes to unmark as primary."
+  unsetPrimary: [Code!]
 }
 
 # --- Device ---
@@ -3928,7 +3938,7 @@ input CustomFieldDefinitionInput @oneOf {
 input CustomFieldDefinitionCreateData {
   """
   The machine-readable code. Auto-generated from title if omitted.
-  Codes `geojson_data`, `schedule_data`, and `device` are reserved by the platform.
+  Codes `geojson_data` and `schedule_data` are reserved by the platform.
   """
   code: Code
   "The display name."
@@ -4194,6 +4204,47 @@ input CatalogItemMetaInput {
   hidden: Boolean
 }
 
+# @category: catalogs/catalog-items
+"Input for creating a user-defined catalog (a container for user catalog items)."
+input CatalogCreateInput {
+  "The organization that will own the catalog."
+  organizationId: ID!
+  "The module this catalog belongs to. Defaults to CORE if omitted."
+  moduleId: ID
+  "The machine-readable code, unique within the organization. Auto-generated from title if omitted."
+  code: Code
+  "The display name."
+  title: String! @trim
+  "The display order. Auto-calculated as last position if omitted."
+  order: Int
+  "The display properties."
+  meta: CatalogItemMetaInput
+}
+
+# @category: catalogs/catalog-items
+"Input for updating a user-defined catalog."
+input CatalogUpdateInput {
+  "The catalog ID to update."
+  id: ID!
+  "The current version for optimistic locking. If omitted, auto-increments without conflict check."
+  version: Int
+  "The new display name."
+  title: String @trim
+  "The new display order."
+  order: Int
+  "The display properties."
+  meta: CatalogItemMetaInput
+}
+
+# @category: catalogs/catalog-items
+"Input for deleting a user-defined catalog."
+input CatalogDeleteInput {
+  "The catalog ID to delete."
+  id: ID!
+  "The current version for optimistic locking. If omitted, deletes regardless of version."
+  version: Int
+}
+
 # @category: actors/users
 "Input for creating a user catalog item."
 input UserCatalogItemCreateInput {
@@ -4243,11 +4294,7 @@ input DeviceTypeCreateInput {
   order: Int
   "The display properties."
   meta: CatalogItemMetaInput
-  """
-  Operations on custom field definitions for this device type.
-  Only `create` is allowed when creating a new catalog item.
-  """
-  customFieldDefinitions: [CustomFieldDefinitionInput!]
+  # TODO: customFieldDefinitions temporarily hidden from SDL; backend support preserved — re-add when needed
 }
 
 # @category: devices
@@ -4263,8 +4310,7 @@ input DeviceTypeUpdateInput {
   order: Int
   "The display properties."
   meta: CatalogItemMetaInput
-  "Operations on custom field definitions belonging to this device type."
-  customFieldDefinitions: [CustomFieldDefinitionInput!]
+  # TODO: customFieldDefinitions temporarily hidden from SDL; backend support preserved — re-add when needed
 }
 
 # @category: devices
@@ -4954,8 +5000,10 @@ type Query {
   ): AuditEventConnection!
 
   # @category: audit
-  "Retrieves the change history for any entity."
+  "Retrieves the change history for any entity within an organization."
   entityHistory(
+    "The organization that owns the entity."
+    organizationId: ID!
     "The ID of the entity to retrieve history for."
     entityId: ID!
     "Filtering options for the returned audit events."
@@ -5206,6 +5254,13 @@ type TagPayload {
 type RolePayload {
   "The created or updated role."
   role: Role!
+}
+
+# @category: catalogs/catalog-items
+"The result of a catalog mutation."
+type CatalogPayload {
+  "The created or updated catalog."
+  catalog: Catalog!
 }
 
 # @category: actors/users
@@ -5684,6 +5739,27 @@ type Mutation {
   roleDelete(
     "The input fields for deleting the role."
     input: CatalogItemDeleteInput!
+  ): DeletePayload
+
+  # @category: catalogs/catalog-items
+  "Creates a new user-defined catalog."
+  catalogCreate(
+    "The input fields for creating the catalog."
+    input: CatalogCreateInput!
+  ): CatalogPayload
+
+  # @category: catalogs/catalog-items
+  "Updates a user-defined catalog."
+  catalogUpdate(
+    "The input fields for updating the catalog."
+    input: CatalogUpdateInput!
+  ): CatalogPayload
+
+  # @category: catalogs/catalog-items
+  "Deletes a user-defined catalog."
+  catalogDelete(
+    "The input fields for deleting the catalog."
+    input: CatalogDeleteInput!
   ): DeletePayload
 
   # @category: actors/users

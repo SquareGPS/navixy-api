@@ -308,6 +308,8 @@ Input for updating custom field values using a patch model.
 | ----- | ---- | ----------- |
 | `set` | `JSON` | Fields to set or update as a key-value map. |
 | `unset` | `[Code!]` | Field codes to remove. |
+| `setPrimary` | `[Code!]` | Field codes to mark as primary (replaces previous primary of the same field type). |
+| `unsetPrimary` | `[Code!]` | Field codes to unmark as primary. |
 
 ---
 
@@ -338,7 +340,7 @@ Data for creating a custom field definition within its parent catalog item.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `code` | `Code` | The machine-readable code. Auto-generated from title if omitted. Codes `geojson_data`, `schedule_data`, and `device` are reserved by the platform. |
+| `code` | `Code` | The machine-readable code. Auto-generated from title if omitted. Codes `geojson_data` and `schedule_data` are reserved by the platform. |
 | `title` | `String!` | The display name. |
 | `description` | `String` | The description. |
 | `fieldType` | [FieldType](#type-fieldtype)! | The data type. Immutable after creation. |

@@ -165,6 +165,228 @@ Information about the current page in a paginated connection.
 
 ---
 
+## Mutations
+
+### catalogCreate
+
+Creates a new user-defined catalog.
+
+```graphql
+catalogCreate(
+    input: CatalogCreateInput!
+  ): CatalogPayload
+```
+
+**Arguments**
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `input` | `CatalogCreateInput!` | The input fields for creating the catalog. |
+
+**Input types:**
+
+<details>
+
+<summary>CatalogCreateInput</summary>
+
+Input for creating a user-defined catalog (a container for user catalog items).
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `organizationId` | `ID!` | The organization that will own the catalog. |
+| `moduleId` | `ID` | The module this catalog belongs to. Defaults to CORE if omitted. |
+| `code` | `Code` | The machine-readable code, unique within the organization. Auto-generated from title if omitted. |
+| `title` | `String!` | The display name. |
+| `order` | `Int` | The display order. Auto-calculated as last position if omitted. |
+| `meta` | [CatalogItemMetaInput](#type-catalogitemmetainput) | The display properties. |
+
+</details>
+
+<details>
+
+<summary>CatalogItemMetaInput</summary>
+
+Display properties for catalog items.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `description` | `String` | The description. |
+| `hidden` | `Boolean` | Whether the item is hidden from regular UI lists. |
+
+</details>
+
+**Output types:**
+
+<details>
+
+<summary>CatalogPayload</summary>
+
+The result of a catalog mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `catalog` | [Catalog](#type-catalog)! | The created or updated catalog. |
+
+</details>
+
+<details>
+
+<summary>Catalog (entity)</summary>
+
+A catalog definition that contains catalog items. Catalogs are themselves catalog items.
+
+**Implements:** [CatalogItem](#type-catalogitem), [Node](../common.md#type-node), [Versioned](../common.md#type-versioned), [Titled](../common.md#type-titled)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` | A globally unique identifier. |
+| `version` | `Int!` | The version number for optimistic locking. |
+| `title` | `String!` | The human-readable display name. Can be localized. |
+| `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
+| `order` | `Int!` | The display order within the same level or category. |
+| `catalog` | [Catalog](#type-catalog)! | Self-reference for the meta-catalog. |
+| `organization` | [Organization](../organizations/README.md#type-organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](#type-catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
+| `module` | [Module](system.md#type-module)! | The module this catalog is associated with. |
+| `items` | [CatalogItemConnection](#type-catalogitemconnection)! | The items in this catalog. |
+
+</details>
+
+---
+
+### catalogUpdate
+
+Updates a user-defined catalog.
+
+```graphql
+catalogUpdate(
+    input: CatalogUpdateInput!
+  ): CatalogPayload
+```
+
+**Arguments**
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `input` | `CatalogUpdateInput!` | The input fields for updating the catalog. |
+
+**Input types:**
+
+<details>
+
+<summary>CatalogUpdateInput</summary>
+
+Input for updating a user-defined catalog.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` | The catalog ID to update. |
+| `version` | `Int` | The current version for optimistic locking. If omitted, auto-increments without conflict check. |
+| `title` | `String` | The new display name. |
+| `order` | `Int` | The new display order. |
+| `meta` | [CatalogItemMetaInput](#type-catalogitemmetainput) | The display properties. |
+
+</details>
+
+<details>
+
+<summary>CatalogItemMetaInput</summary>
+
+Display properties for catalog items.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `description` | `String` | The description. |
+| `hidden` | `Boolean` | Whether the item is hidden from regular UI lists. |
+
+</details>
+
+**Output types:**
+
+<details>
+
+<summary>CatalogPayload</summary>
+
+The result of a catalog mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `catalog` | [Catalog](#type-catalog)! | The created or updated catalog. |
+
+</details>
+
+<details>
+
+<summary>Catalog (entity)</summary>
+
+A catalog definition that contains catalog items. Catalogs are themselves catalog items.
+
+**Implements:** [CatalogItem](#type-catalogitem), [Node](../common.md#type-node), [Versioned](../common.md#type-versioned), [Titled](../common.md#type-titled)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` | A globally unique identifier. |
+| `version` | `Int!` | The version number for optimistic locking. |
+| `title` | `String!` | The human-readable display name. Can be localized. |
+| `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
+| `order` | `Int!` | The display order within the same level or category. |
+| `catalog` | [Catalog](#type-catalog)! | Self-reference for the meta-catalog. |
+| `organization` | [Organization](../organizations/README.md#type-organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](#type-catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
+| `module` | [Module](system.md#type-module)! | The module this catalog is associated with. |
+| `items` | [CatalogItemConnection](#type-catalogitemconnection)! | The items in this catalog. |
+
+</details>
+
+---
+
+### catalogDelete
+
+Deletes a user-defined catalog.
+
+```graphql
+catalogDelete(
+    input: CatalogDeleteInput!
+  ): DeletePayload
+```
+
+**Arguments**
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `input` | `CatalogDeleteInput!` | The input fields for deleting the catalog. |
+
+**Input types:**
+
+<details>
+
+<summary>CatalogDeleteInput</summary>
+
+Input for deleting a user-defined catalog.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` | The catalog ID to delete. |
+| `version` | `Int` | The current version for optimistic locking. If omitted, deletes regardless of version. |
+
+</details>
+
+**Output types:**
+
+<details>
+
+<summary>DeletePayload</summary>
+
+The result of a delete mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `deletedId` | `ID!` | The ID of the deleted entity. |
+
+</details>
+
+---
+
 ## Objects
 
 <a id="type-catalogitemmeta"></a>
@@ -202,6 +424,18 @@ A catalog definition that contains catalog items. Catalogs are themselves catalo
 | `meta` | [CatalogItemMeta](#type-catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 | `module` | [Module](system.md#type-module)! | The module this catalog is associated with. |
 | `items` | [CatalogItemConnection](#type-catalogitemconnection)! | The items in this catalog. |
+
+---
+
+<a id="type-catalogpayload"></a>
+
+### CatalogPayload
+
+The result of a catalog mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `catalog` | [Catalog](#type-catalog)! | The created or updated catalog. |
 
 ---
 
@@ -255,6 +489,52 @@ Display properties for catalog items.
 | ----- | ---- | ----------- |
 | `description` | `String` | The description. |
 | `hidden` | `Boolean` | Whether the item is hidden from regular UI lists. |
+
+---
+
+<a id="type-catalogcreateinput"></a>
+
+### CatalogCreateInput
+
+Input for creating a user-defined catalog (a container for user catalog items).
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `organizationId` | `ID!` | The organization that will own the catalog. |
+| `moduleId` | `ID` | The module this catalog belongs to. Defaults to CORE if omitted. |
+| `code` | `Code` | The machine-readable code, unique within the organization. Auto-generated from title if omitted. |
+| `title` | `String!` | The display name. |
+| `order` | `Int` | The display order. Auto-calculated as last position if omitted. |
+| `meta` | [CatalogItemMetaInput](#type-catalogitemmetainput) | The display properties. |
+
+---
+
+<a id="type-catalogupdateinput"></a>
+
+### CatalogUpdateInput
+
+Input for updating a user-defined catalog.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` | The catalog ID to update. |
+| `version` | `Int` | The current version for optimistic locking. If omitted, auto-increments without conflict check. |
+| `title` | `String` | The new display name. |
+| `order` | `Int` | The new display order. |
+| `meta` | [CatalogItemMetaInput](#type-catalogitemmetainput) | The display properties. |
+
+---
+
+<a id="type-catalogdeleteinput"></a>
+
+### CatalogDeleteInput
+
+Input for deleting a user-defined catalog.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` | The catalog ID to delete. |
+| `version` | `Int` | The current version for optimistic locking. If omitted, deletes regardless of version. |
 
 ---
 

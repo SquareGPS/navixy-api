@@ -66,7 +66,6 @@ A classification type for devices.
 | `catalog` | [Catalog](../catalogs/catalog-items.md#type-catalog)! | The catalog this item belongs to. |
 | `organization` | [Organization](../organizations/README.md#type-organization) | The organization that owns this item. Null for system items. |
 | `meta` | [CatalogItemMeta](../catalogs/catalog-items.md#type-catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
-| `customFieldDefinitions` | [[CustomFieldDefinition](../custom-fields.md#type-customfielddefinition)!]! | Custom field definitions specific to this device type, ordered by display order. |
 
 ---
 
@@ -130,6 +129,7 @@ A tracking device such as a GPS tracker, sensor, or beacon.
 | `model` | [DeviceModel](#type-devicemodel)! | The specific device model. |
 | `status` | [DeviceStatus](#type-devicestatus)! | The current operational status. |
 | `identifiers` | [[DeviceIdentifier](#type-deviceidentifier)!]! | The hardware identifiers for this device (IMEI, serial number, MAC address, etc.). |
+| `asset` | [Asset](../assets/types.md#type-asset) | The asset this device is currently linked to. |
 | `inventory` | [Inventory](inventory.md#type-inventory) | The inventory this device is currently assigned to. |
 | `relationsFrom` | [[DeviceRelation](#type-devicerelation)!]! | The outgoing relationships from this device to other devices. |
 | `relationsTo` | [[DeviceRelation](#type-devicerelation)!]! | The incoming relationships from other devices to this device. |
@@ -403,7 +403,6 @@ Input for creating a device type.
 | `title` | `String!` | The display name. |
 | `order` | `Int` | The display order. Auto-calculated as last position if omitted. |
 | `meta` | [CatalogItemMetaInput](../catalogs/catalog-items.md#type-catalogitemmetainput) | The display properties. |
-| `customFieldDefinitions` | [[CustomFieldDefinitionInput](../custom-fields.md#type-customfielddefinitioninput)!] | Operations on custom field definitions for this device type. Only `create` is allowed when creating a new catalog item. |
 
 ---
 
@@ -420,7 +419,6 @@ Input for updating a device type.
 | `title` | `String` | The new display name. |
 | `order` | `Int` | The new display order. |
 | `meta` | [CatalogItemMetaInput](../catalogs/catalog-items.md#type-catalogitemmetainput) | The display properties. |
-| `customFieldDefinitions` | [[CustomFieldDefinitionInput](../custom-fields.md#type-customfielddefinitioninput)!] | Operations on custom field definitions belonging to this device type. |
 
 ---
 

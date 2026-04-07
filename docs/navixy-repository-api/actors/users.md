@@ -81,7 +81,6 @@ A human user account authenticated via an identity provider.
 | `identityProvider` | `String!` | The identity provider name (keycloak, auth0, okta, etc.). |
 | `identityProviderId` | `String!` | The user's unique ID in the identity provider. |
 | `email` | `EmailAddress!` | The user's primary email address. |
-| `locale` | `Locale` | The user's preferred locale. |
 | `externalId` | `String` | An external system identifier for integration purposes. |
 | `isActive` | `Boolean!` | Whether this user account is active. |
 | `memberships` | [MemberConnection](../organizations/members.md#type-memberconnection)! | The organization memberships for this user. |
@@ -354,7 +353,6 @@ A human user account authenticated via an identity provider.
 | `identityProvider` | `String!` | The identity provider name (keycloak, auth0, okta, etc.). |
 | `identityProviderId` | `String!` | The user's unique ID in the identity provider. |
 | `email` | `EmailAddress!` | The user's primary email address. |
-| `locale` | `Locale` | The user's preferred locale. |
 | `externalId` | `String` | An external system identifier for integration purposes. |
 | `isActive` | `Boolean!` | Whether this user account is active. |
 | `memberships` | [MemberConnection](../organizations/members.md#type-memberconnection)! | The organization memberships for this user. |
