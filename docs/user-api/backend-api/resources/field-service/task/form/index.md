@@ -68,7 +68,7 @@ https://api.eu.navixy.com/v2/task/form/create?hash=a6aa75587e5c59c32d347da438505
 
 * 201 – Not found in the database - if there is no task or template with such an ID, or task has the "route" type.
 * 247 – Entity already exists - if task already has form attached to it.
-* 255 – Invalid task state - if current task state is not `unassigned`, `assigned` or `arrived`.
+* 255 – Invalid task state - if current task state is not `unassigned`, `assigned` or `arrived` (plus `done`, `failed`, and `delayed`  for users with `completed_form_update` right).
 
 ### delete
 
@@ -126,10 +126,10 @@ Retrieves attached form as file.
 
 #### Parameters
 
-| name     | description                                                | type                            |
-| -------- | ---------------------------------------------------------- | ------------------------------- |
-| task\_id | An ID of the task.                                         | int                             |
-| format   | Format of the download file. Can be "xls", "csv" or "pdf". | [enum](../../../../#data-types) |
+| name     | description                                          | type                            |
+| -------- | ---------------------------------------------------- | ------------------------------- |
+| task\_id | An ID of the task.                                   | int                             |
+| format   | Format of the download file. Can be `xlsx` or `pdf`. | [enum](../../../../#data-types) |
 
 #### Examples
 
