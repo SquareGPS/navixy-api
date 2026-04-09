@@ -6,7 +6,7 @@ description: Register and manage GPS trackers, sensors, and other hardware devic
 
 {% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}
 
-A device in Navixy Repository API represents a physical hardware unit — a GPS tracker, sensor, beacon, or any other piece of trackable hardware. Devices carry the identifying information, such as IMEI numbers and serial numbers, that connects physical hardware to the rest of your platform data. When linked to an asset via the asset's `device` field, a device enables tracking data to flow from the field into the platform.
+A device in Navixy Repository API represents a physical hardware unit — a GPS tracker, sensor, beacon, or any other piece of trackable hardware. Devices carry the identifying information, such as IMEI numbers and serial numbers, that connects physical hardware to the rest of your platform data. When linked to an asset through a DEVICE-type custom field, a device enables tracking data to flow from the field into the platform. You can traverse this link from either direction: the asset exposes its linked devices via `primaryDevice` and `devices`, while the device exposes its parent asset via the `asset` field.
 
 This guide covers the full device lifecycle: looking up catalog prerequisites, registering a device, managing its identifiers, creating device relations, updating device properties, and decommissioning it.
 
@@ -64,7 +64,7 @@ To check what types and statuses already exist in your organization:
 
 ```graphql
 query GetDeviceCatalog {
-  deviceTypes(organizationId: ) {
+  deviceTypes(organizationId: "7c9e6679-7425-40de-944b-e07fc1f90ae7") {
     nodes { id title code }
   }
   deviceStatuses(organizationId: "7c9e6679-7425-40de-944b-e07fc1f90ae7") {
@@ -117,25 +117,21 @@ Save the returned IDs — you'll need all three to create a device.
 
 Each device can carry one or more hardware identifiers that serve as the bridge between the platform record and the physical hardware. Telematics servers and provisioning systems use these identifiers to look up a device.
 
-The available identifier types are defined by the `DeviceIdType` enum:
+The available identifier types are defined by the [DeviceIdType](../devices/types.md#enums) enum:
 
-| Type            | Description                                      |
-| --------------- | ------------------------------------------------ |
-| `IMEI`          | 15-digit International Mobile Equipment Identity |
-| `SERIAL_NUMBER` | Manufacturer-assigned serial number              |
-| `MAC_ADDRESS`   | Network interface MAC address                    |
-| `GUID`          | GUID/UUID identifier                             |
-| `MEID_HEX`      | Mobile Equipment Identifier, hexadecimal format  |
-| `MEID_DEC`      | Mobile Equipment Identifier, decimal format      |
-| `CUSTOM`        | Organization-defined identifier                  |
+<table><thead><tr><th width="198">Type</th><th>Description</th></tr></thead><tbody><tr><td><code>IMEI</code></td><td>15-digit International Mobile Equipment Identity</td></tr><tr><td><code>SERIAL_NUMBER</code></td><td>Manufacturer-assigned serial number</td></tr><tr><td><code>MAC_ADDRESS</code></td><td>Network interface MAC address</td></tr><tr><td><code>GUID</code></td><td>GUID/UUID identifier</td></tr><tr><td><code>MEID_HEX</code></td><td>Mobile Equipment Identifier, hexadecimal format</td></tr><tr><td><code>MEID_DEC</code></td><td>Mobile Equipment Identifier, decimal format</td></tr><tr><td><code>CUSTOM</code></td><td>Organization-defined identifier</td></tr></tbody></table>
 
-Identifier uniqueness is enforced globally on the combination of `(type, value, namespace)`. For standard hardware identifier types — `IMEI`, `SERIAL_NUMBER`, `MAC_ADDRESS`, and others — `namespace` is always `null`, meaning the value must be unique across the entire platform. For `CUSTOM` identifiers, you can set a `namespace` string to scope the uniqueness constraint: two devices can share the same custom value as long as they carry different namespaces. This is useful when integrating with external systems that have their own ID schemes and whose values may overlap.
+Identifier uniqueness is enforced globally on the combination of `type`, `value`, and `namespace`. For standard hardware identifier types (`IMEI`, `SERIAL_NUMBER`, `MAC_ADDRESS`, etc.), `namespace` is always `null`, meaning the value must be unique across the entire platform. For `CUSTOM` identifiers, you can set a `namespace` string to scope the uniqueness constraint: two devices can share the same custom value as long as they carry different namespaces. This is useful when integrating with external systems that have their own ID schemes and whose values may overlap.
 
 ### Device status and properties
 
-Devices do not support custom fields. The mutable properties are `title`, `modelId`, and `statusId`. Status is the primary way to represent a device's operational state — in stock, deployed, under repair, or decommissioned. You define the statuses that fit your workflow.
+Devices don't support custom fields. The mutable properties are `title`, `modelId`, and `statusId`. Status is the primary way to represent a device's operational state — in stock, deployed, under repair, or decommissioned. You define the statuses that fit your workflow.
 
 The device type is set at creation and cannot be changed afterwards.
+
+#### Asset link
+
+The `asset` field returns the asset this device is currently linked to, or `null` if the device isn't assigned to any asset. This is the reverse of the asset-to-device relationship — assets link to devices through custom fields of type DEVICE, and `Device.asset` resolves that link from the other direction. The link is managed entirely from the asset side. See [Working with assets](working-with-assets.md) for details.
 
 ### Device relations
 
@@ -185,6 +181,7 @@ mutation RegisterDevice {
       type { title }
       model { title vendor { title } }
       status { title }
+      asset { id title }
     }
   }
 }
@@ -202,7 +199,8 @@ Response:
         "title": "FMB003 — Unit 001",
         "type": { "title": "GPS Tracker" },
         "model": { "title": "FMB003", "vendor": { "title": "Teltonika" } },
-        "status": { "title": "In Stock" }
+        "status": { "title": "In Stock" },
+        "asset": null
       }
     }
   }
@@ -280,6 +278,84 @@ mutation RemoveIdentifier {
   }) {
     deletedId
   }
+}
+```
+{% endstep %}
+
+{% step %}
+### Assign device to an asset
+
+FMB003 Unit 001 will track delivery truck DE-1049. To link the device, update the asset's DEVICE-type custom field. We'll assume the asset's type already has a custom field definition of `DEVICE` type. See [Implementing custom fields](implementing-custom-fields.md) for instructions on setting it up.
+
+```graphql
+mutation AssignDeviceToAsset {
+  assetUpdate(input: {
+    id: "a4c9d5e6-6d8f-4a1b-b234-777888999000"
+    version: 1
+    customFields: {
+      set: { "tracker": "e1b6f4a3-4a5d-7b8e-cf10-444555666777" }
+      setPrimary: ["tracker"]
+    }
+  }) {
+    asset {
+      id
+      title
+      primaryDevice { id title }
+      devices { id title }
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "data": {
+    "assetUpdate": {
+      "asset": {
+        "id": "a4c9d5e6-6d8f-4a1b-b234-777888999000",
+        "title": "Truck DE-1049",
+        "primaryDevice": {
+          "id": "e1b6f4a3-4a5d-7b8e-cf10-444555666777",
+          "title": "FMB003 — Unit 001"
+        },
+        "devices": [
+          {
+            "id": "e1b6f4a3-4a5d-7b8e-cf10-444555666777",
+            "title": "FMB003 — Unit 001"
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+{% hint style="warning" %}
+The `tracker` key in `set` is the code of the `DEVICE`-type custom field defined on the asset type, not a fixed keyword. `setPrimary` marks that field as the primary device for the asset, which makes it available through `Asset.primaryDevice`.
+{% endhint %}
+
+You can verify the link from the device side:
+
+```graphql
+query CheckAssetLink {
+  device(id: "e1b6f4a3-4a5d-7b8e-cf10-444555666777") {
+    id
+    title
+    asset { id title }
+  }
+}
+```
+
+Each device can be linked to only one asset. Attempting to assign a device that is already linked to a different asset returns a [409 Duplicate](../error-handling.md#duplicate-409) error.
+
+To unlink the device later without deleting it, use `unset` and `unsetPrimary` on the asset:
+
+```graphql
+customFields: {
+  unset: ["tracker"]
+  unsetPrimary: ["tracker"]
 }
 ```
 {% endstep %}
@@ -374,6 +450,7 @@ mutation DeployDevice {
       version
       title
       status { title }
+      asset { id title }
     }
   }
 }
@@ -389,7 +466,11 @@ Response:
         "id": "e1b6f4a3-4a5d-7b8e-cf10-444555666777",
         "version": 2,
         "title": "FMB003 — Unit 001 (Truck 14)",
-        "status": { "title": "Active" }
+        "status": { "title": "Active" },
+         "asset": {
+          "id": "a4c9d5e6-6d8f-4a1b-b234-777888999000",
+          "title": "Truck DE-1049"
+        }
       }
     }
   }
@@ -397,14 +478,33 @@ Response:
 ```
 
 {% hint style="info" %}
-Providing `version` enables optimistic locking: if the device has been modified since you last fetched it, the API returns a `409 CONFLICT` error instead of silently overwriting the change. Omitting `version` applies the update unconditionally. See [Handling version conflicts](https://claude.ai/chat/6095d343-b927-45b6-9d85-e36725bb212d#handling-version-conflicts) for details.&#x20;
+Providing `version` enables optimistic locking: if the device has been modified since you last fetched it, the API returns a [409 Conflict](../error-handling.md#version-conflict-409) error instead of silently overwriting the change. Omitting `version` applies the update unconditionally. See [Handling version conflicts](https://claude.ai/chat/6095d343-b927-45b6-9d85-e36725bb212d#handling-version-conflicts) for details.&#x20;
 {% endhint %}
 {% endstep %}
 
 {% step %}
 ### Delete a device
 
-When a tracker reaches end of life and needs to be permanently removed, use `deviceDelete`.
+When a tracker reaches end of life and needs to be permanently removed, use `deviceDelete`.&#x20;
+
+If the device is still linked to an asset, consider unlinking it first by updating the asset's custom fields. Otherwise, the `DEVICE`-type field value is automatically cleared on deletion, but the asset type retains the field definition. To unlink the asset, run this mutation:
+
+```graphql
+mutation UnlinkBeforeDelete {
+assetUpdate(input: {
+id: "a4c9d5e6-6d8f-4a1b-b234-777888999000"
+version: 2
+customFields: {
+unset: ["tracker"]
+unsetPrimary: ["tracker"]
+}
+}) {
+asset { id primaryDevice { id } devices { id } }
+}
+}
+```
+
+Then delete the device:
 
 ```graphql
 mutation DecommissionDevice {
@@ -417,7 +517,9 @@ mutation DecommissionDevice {
 }
 ```
 
-Deleting a device removes all its identifiers and associated device relations. If the device was linked to an asset, that link is also cleared. Inventory assignment history is preserved for audit purposes.&#x20;
+{% hint style="warning" %}
+If the device is still linked to an asset, unlink it first by updating the asset's custom fields. Deleting a device doesn't clear the reference from the asset: the `DEVICE`-type field retains the deleted device's ID, but `primaryDevice` and `devices` resolve to `null` and empty, respectively.
+{% endhint %}
 {% endstep %}
 {% endstepper %}
 
@@ -438,6 +540,7 @@ query ListDevices {
       model { title vendor { title } }
       status { title }
       identifiers { type value namespace }
+      asset { id title }
     }
     pageInfo {
       hasNextPage
@@ -527,6 +630,6 @@ For a full explanation of how versioning works, see [Optimistic locking](https:/
 
 ### See also
 
-* [Managing device inventory](https://claude.ai/chat/managing-device-inventory.md): Assign devices to inventories and track assignment history
+* [Managing device inventory](https://claude.ai/chat/managing-device-inventory.md): Assign devices to inventories and track assignment history, designate a primary device
 * [Working with assets](https://claude.ai/chat/working-with-assets.md): Link devices to tracked assets
 * [Devices reference](https://claude.ai/chat/6095d343-b927-45b6-9d85-e36725bb212d): Complete reference for all device operations and types

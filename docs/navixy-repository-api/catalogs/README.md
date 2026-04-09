@@ -20,7 +20,7 @@ Catalogs solve both problems at once. All reference data, whether platform-defin
 
 ## The CatalogItem interface
 
-Every catalog entry, regardless of its type, implements the `CatalogItem` interface. This common structure means you work with catalog items the same way across the entire API.
+Every catalog entry, regardless of its type, implements the [CatalogItem](catalog-items.md#catalogitem) interface. This common structure means you work with catalog items the same way across the entire API.
 
 <table><thead><tr><th width="129.88897705078125">Field</th><th width="166.55560302734375">Type</th><th>Description</th></tr></thead><tbody><tr><td><code>id</code></td><td><code>ID!</code></td><td>A globally unique identifier.</td></tr><tr><td><code>version</code></td><td><code>Int!</code></td><td>The version number for <a href="../optimistic-locking.md">optimistic locking</a>.</td></tr><tr><td><code>title</code></td><td><code>String!</code></td><td>The human-readable display name. Can be localized.</td></tr><tr><td><code>code</code></td><td><a href="../common.md#code">Code</a>!</td><td>A machine-readable identifier, unique within the catalog scope.</td></tr><tr><td><code>order</code></td><td><code>Int!</code></td><td>The display order within the same level or category.</td></tr><tr><td><code>catalog</code></td><td><a href="catalog-items.md#catalog-2">Catalog</a>!</td><td>The catalog this item belongs to.</td></tr><tr><td><code>organization</code></td><td><a href="../organizations/#organization-2">Organization</a></td><td>The organization that owns this item. <code>null</code> for system items.</td></tr><tr><td><code>meta</code></td><td><a href="catalog-items.md#catalogitemmeta">CatalogItemMeta</a>!</td><td>Metadata, including origin, display properties, and deletion eligibility.</td></tr></tbody></table>
 
@@ -28,7 +28,7 @@ The `code` field uses the [Code](../common.md#code) scalar, a case-insensitive a
 
 ### Catalogs are catalog items
 
-The [Catalog](catalog-items.md#catalog-2) type itself implements [CatalogItem](catalog-items.md#catalogitem). A catalog is a named container that groups related items and is associated with a system module (such as `repo`, `fleet_management`, or `iot`). This self-referential design means the API's meta-catalog, "the catalog of catalogs," is itself a catalog item.
+The [Catalog](catalog-items.md#catalog-2) type itself implements `CatalogItem`. A catalog is a named container that groups related items and is associated with a system module (such as `repo`, `fleet_management`, or `iot`). This self-referential design means the API's meta-catalog, "the catalog of catalogs," is itself a catalog item.
 
 ### Item origins
 
@@ -42,7 +42,7 @@ Note that origin applies at the **item** level, not the catalog level. Some syst
 
 ### **User-created catalogs**
 
-Organizations can also create entirely custom catalogs for domain-specific lookup data that the platform doesn't provide — for example, fuel types, concrete grades, or cargo classifications. Items in a user-created catalog belong exclusively to the organization that created them. Use `catalogCreate` to create a catalog, then `userCatalogItemCreate` to populate it with items.
+Organizations can also create entirely custom catalogs for domain-specific lookup data that the platform doesn't provide — for example, fuel types, concrete grades, or cargo classifications. Items in a user-created catalog belong exclusively to the organization that created them. Use [catalogCreate](catalog-items.md#catalogcreate) to create a catalog, then [userCatalogItemCreate](../actors/users.md#usercatalogitemcreate) to populate it with items.
 
 ### Display properties
 
@@ -52,7 +52,7 @@ All catalog items carry optional display metadata in [CatalogItemMeta](catalog-i
 
 ### Hierarchical catalog items
 
-Some catalog types support parent-child relationships via the [HierarchicalCatalogItem](catalog-items.md#hierarchicalcatalogitem) interface, which adds a `parent` field pointing to the item's parent in the hierarchy. This allows building tree-structured lookup tables, such as a multi-level classification scheme for assets or devices. The specific type that implements this interface is `UserCatalogItem`, which also exposes a paginated `children` field for traversing the tree downward.
+Some catalog types support parent-child relationships via the [HierarchicalCatalogItem](catalog-items.md#hierarchicalcatalogitem) interface, which adds a `parent` field pointing to the item's parent in the hierarchy. This allows building tree-structured lookup tables, such as a multi-level classification scheme for assets or devices. The specific type that implements this interface is [UserCatalogItem](../actors/users.md#usercatalogitem), which also exposes a paginated `children` field for traversing the tree downward.
 
 ## See also
 

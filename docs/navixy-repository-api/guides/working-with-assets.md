@@ -179,7 +179,7 @@ For the full field reference, see [AssetType](../assets/types.md#assettype).
 
 ### Asset fields
 
-An asset has a `title`, belongs to an organization, and is classified by an asset type. Its dynamic attributes are listed in `customFields`, and it uses the `device` field as a shortcut to the linked GPS device. Assets also have a `groups` connection field that returns the asset groups they belong to, with optional filtering, ordering, and pagination arguments.
+An asset has a `title`, belongs to an organization, and is classified by an asset type. Its dynamic attributes are listed in `customFields`. Devices are linked to assets through custom fields the `DEVICE` type: the `primaryDevice` field returns the one marked as primary, while `devices` returns all linked devices. Assets also have a `groups` connection field that returns the asset groups they belong to, with optional filtering, ordering, and pagination arguments.
 
 For the full field reference, see [Asset object](../assets/types.md#asset).
 
@@ -187,27 +187,41 @@ For the full field reference, see [Asset object](../assets/types.md#asset).
 
 Assets store their domain-specific attributes in the `customFields` field. When creating or updating an asset, you pass custom field changes using [CustomFieldsPatchInput](../custom-fields.md#customfieldspatchinput), which has two sub-fields:
 
-<table><thead><tr><th width="129">Field</th><th width="131.44439697265625">Type</th><th>Description</th></tr></thead><tbody><tr><td><code>set</code></td><td><a href="../common.md#json">JSON</a></td><td>Key-value map of fields to create or overwrite.</td></tr><tr><td><code>unset</code></td><td>[<a href="../common.md#code">Code</a>!]</td><td>List of field codes to clear.</td></tr></tbody></table>
+<table><thead><tr><th width="136.111083984375">Field</th><th width="105.66668701171875">Type</th><th>Description</th></tr></thead><tbody><tr><td><code>set</code></td><td><a href="../common.md#json">JSON</a></td><td>Key-value map of fields to create or overwrite.</td></tr><tr><td><code>unset</code></td><td>[<a href="../common.md#code">Code</a>!]</td><td>List of field codes to clear.</td></tr><tr><td><code>setPrimary</code></td><td>[<a href="../common.md#code">Code</a>!]</td><td>Field codes to mark as primary (for <code>DEVICE</code>-type fields).</td></tr><tr><td><code>unsetPrimary</code></td><td>[<a href="../common.md#code">Code</a>!]</td><td>Field codes to unmark as primary.</td></tr></tbody></table>
 
 `customFields` is always a patch operation: fields you don't mention are left unchanged. To update one field without touching others, include only that field in `set`. To remove a value entirely, list its code in `unset`.
 
 See [Implementing custom fields](implementing-custom-fields.md) for details on defining field definitions and the supported field types.
 
-### The device field
+### Linking devices
 
-The `device` field on an asset links to the GPS device assigned to track it. It resolves to a full [Device object](../devices/types.md#device), so you can query device details directly from the asset without a separate lookup.
+Assets connect to devices through custom fields of `DEVICE` type. Unlike the built-in fields (`geojson_data`, `schedule_data`), device fields are user-defined: you create them as custom field definitions for the asset type, which means you control the field code, can have multiple device fields per type, and can designate one as primary.
 
-To link a device when creating or updating an asset, pass the device ID under `set` in `customFields`:
+The `Asset` type exposes two convenience fields that resolve these links:
 
-```graphql
-customFields: { set: { device: "<device-id>" } }
-```
+<table><thead><tr><th width="169.88885498046875">Field</th><th width="126.333251953125">Type</th><th>Description</th></tr></thead><tbody><tr><td><code>primaryDevice</code></td><td><a href="../devices/types.md#device">Device</a></td><td>The device whose <code>DEVICE</code>-type field is marked as primary. <code>null</code> if no primary device is set.</td></tr><tr><td><code>devices</code></td><td>[<a href="../devices/types.md#device">Device</a>!]!</td><td>All devices linked through <code>DEVICE</code>-type custom fields.</td></tr></tbody></table>
 
-To unlink a device without touching other fields:
+To link a device, set the value of your `DEVICE`-type custom field. You can also mark it as primary if you wish:
 
 ```graphql
-customFields: { unset: ["device"] }
+customFields: {
+  set: { tracker: "<device-id>" }
+  setPrimary: ["tracker"]
+}
 ```
+
+To unlink a device and clear its primary status:
+
+```graphql
+customFields: {
+  unset: ["tracker"]
+  unsetPrimary: ["tracker"]
+}
+```
+
+Here, `tracker` is the code you chose when creating the DEVICE-type custom field definition for the asset type, not a fixed keyword. Each device can be linked to only one asset; attempting to assign a device that is already linked elsewhere returns a [409 Duplicate](../error-handling.md#duplicate-409) error.
+
+The reverse lookup is also available: `Device.asset` returns the asset a device is linked to. See [Working with devices](activating-a-device.md) for details.
 
 ## Example scenario: Registering a logistics fleet
 
@@ -273,7 +287,7 @@ The `order` field controls how types appear in UI lists. Lower numbers appear fi
 {% step %}
 ### Define custom fields
 
-With the type created, add the custom fields that assets of this type will use. Each delivery truck needs a `license_plate` field, so add it using assetTypeUpdate:
+With the type created, add custom fields to be used by the assets of this type. Each delivery truck needs a license plate and a linked GPS device. Add both definitions in a single [assetTypeUpdate](../assets/mutations.md#assettypeupdate) call:
 
 ```graphql
 mutation AddLicensePlateField {
@@ -326,7 +340,7 @@ Response:
 }
 ```
 
-Save the `version` — you'll need it if you later update or delete the type. The `code` values in `customFieldDefinitions` are exactly what you'll use as keys in `customFields.set` when creating or updating assets of this type.
+Save the `version` — you'll need it if you later update or delete the type. The `code` values in `customFieldDefinitions` are exactly what you'll use as keys in `customFields.set` when creating or updating assets of this type. The `tracker` field is the one you'll use later to link a GPS device to the truck.
 
 For the full list of supported field types and their parameters, see [Implementing custom fields](implementing-custom-fields.md).
 {% endstep %}
@@ -394,7 +408,11 @@ query GetTruck {
       title
     }
     customFields
-    device {
+    primaryDevice {
+      id
+      title
+    }
+    devices {
       id
       title
     }
@@ -418,15 +436,16 @@ Response:
       "customFields": {
         "license_plate": "HH-TL 4421"
       },
-      "device": null
+      "primaryDevice": null,
+      "devices": []
     }
   }
 }
 ```
 
-`device` is `null` because no GPS unit has been assigned yet. `customFields` returns a raw JSON object keyed by field code — the same keys you use in `set` and `unset`.
+`primaryDevice` is `null` and `devices` is empty because no GPS unit has been assigned yet. `customFields` returns a raw JSON object keyed by field code — the same keys you use in `set` and `unset`.
 
-To keep the response lean, you can request only specific custom field codes:
+To keep the response clean, you can request only specific custom field codes:
 
 ```graphql
 query GetTruckLicensePlate {
@@ -441,11 +460,11 @@ query GetTruckLicensePlate {
 {% step %}
 ### Assign a device
 
-A GPS unit has been installed in the truck. Assign it using [assetUpdate](../assets/mutations.md#assetupdate) with the device ID in `customFields.set`. The operation is identical whether you're making an initial assignment or replacing an existing one.
+A GPS unit has been installed in the truck. To link it, you need a `DEVICE`-type custom field on the asset type. If you haven't created one yet, add it via `assetTypeUpdate` (see Implementing[ custom fields](implementing-custom-fields.md)). In this example, the "Delivery Truck" type has a field with the code `tracker`.
 
-To create a device of find its id, see [Working with devices](activating-a-device.md).
+To create a device or find its id, see [Working with devices](activating-a-device.md).
 
-Run this mutation:
+Assign the device using `assetUpdate` with the device ID in `customFields.set`, and mark the field as primary with `setPrimary`:
 
 ```graphql
 mutation AssignTruckDevice {
@@ -454,14 +473,19 @@ mutation AssignTruckDevice {
     version: 1
     customFields: {
       set: {
-        device: "c3hhef22-2f3e-6hj1-ee9g-9ee2eg713d44"
+        tracker: "c3hhef22-2f3e-6hj1-ee9g-9ee2eg713d44"
       }
+      setPrimary: ["tracker"]
     }
   }) {
     asset {
       id
       version
-      device {
+      primaryDevice {
+        id
+        title
+      }
+      devices {
         id
         title
       }
@@ -479,10 +503,16 @@ Response:
       "asset": {
         "id": "019a6b2f-793e-807b-8001-555345529b44",
         "version": 2,
-        "device": {
+        "primaryDevice": {
           "id": "c3hhef22-2f3e-6hj1-ee9g-9ee2eg713d44",
           "title": "GPS Unit #117"
-        }
+        },
+        "devices": [
+          {
+            "id": "c3hhef22-2f3e-6hj1-ee9g-9ee2eg713d44",
+            "title": "GPS Unit #117"
+          }
+        ]
       }
     }
   }
@@ -499,21 +529,21 @@ mutation UnlinkForkliftDevice {
     id: "029b7c40-804f-918c-9112-666456630d55"
     version: 2
     customFields: {
-      unset: ["device"]
+      unset: ["tracker"]
+      unsetPrimary: ["tracker"]
     }
   }) {
     asset {
       id
       version
-      device {
-        id
-      }
+      primaryDevice { id }
+      devices { id }
     }
   }
 }
 ```
 
-After unlinking,  `device` returns `null`.
+After unlinking, `primaryDevice` returns `null` and `devices` returns an empty array.
 {% endstep %}
 
 {% step %}
@@ -614,7 +644,11 @@ query FindAssetByDevice {
     nodes {
       id
       title
-      device {
+      primaryDevice {
+        id
+        title
+      }
+      devices {
         id
         title
       }
