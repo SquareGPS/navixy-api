@@ -144,7 +144,7 @@ Response:
             {
               "code": "fuel_capacity_l",
               "title": "Fuel Capacity (L)",
-              "fieldType": "NUMBER",
+              "fieldType": "DECIMAL",
               "params": {
                 "isRequired": false
               }
@@ -221,7 +221,7 @@ customFields: {
 
 Here, `tracker` is the code you chose when creating the DEVICE-type custom field definition for the asset type, not a fixed keyword. Each device can be linked to only one asset; attempting to assign a device that is already linked elsewhere returns a [409 Duplicate](../error-handling.md#duplicate-409) error.
 
-The reverse lookup is also available: `Device.asset` returns the asset a device is linked to. See [Working with devices](activating-a-device.md) for details.
+The reverse lookup is also available: `Device.asset` returns the asset a device is linked to. See [Working with devices](working-with-devices.md) for details.
 
 ## Example scenario: Registering a logistics fleet
 
@@ -462,7 +462,7 @@ query GetTruckLicensePlate {
 
 A GPS unit has been installed in the truck. To link it, you need a `DEVICE`-type custom field on the asset type. If you haven't created one yet, add it via `assetTypeUpdate` (see Implementing[ custom fields](implementing-custom-fields.md)). In this example, the "Delivery Truck" type has a field with the code `tracker`.
 
-To create a device or find its id, see [Working with devices](activating-a-device.md).
+To create a device or find its id, see [Working with devices](working-with-devices.md).
 
 Assign the device using `assetUpdate` with the device ID in `customFields.set`, and mark the field as primary with `setPrimary`:
 

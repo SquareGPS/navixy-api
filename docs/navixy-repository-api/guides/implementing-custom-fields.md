@@ -6,21 +6,21 @@ description: Define and use custom fields to attach domain-specific data to enti
 
 {% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}
 
-In Navixy Repository API, devices, assets, geo objects, and schedules each come with a set of built-in fields such as `title`, `organization`, and `type`. Custom fields let you extend these entities with additional data specific to your operation, such as a VIN number, a fuel type, an inspection date, or access level, without any changes to the platform schema.
+In Navixy Repository API, assets and geo objects each come with a set of built-in fields such as `title`, `organization`, and `type`. Custom fields let you extend these entities with additional data specific to your operation, such as a VIN number, a fuel type, an inspection date, or access level, without any changes to the platform schema.
 
 ## How custom fields work
 
 Custom fields can be user-defined or predefined. User-defined fields are created by you and scoped to a specific entity type — for example, a `vin` field that only appears in vehicles. Predefined fields are built into the platform for certain entity types, such as `geojson_data` in geo objects.
 
 {% hint style="warning" %}
-This guide covers user-defined fields. The codes `geojson_data`, `device`, and `schedule_data` are reserved by the platform — attempting to create a field with one of these codes returns a [validation error](../error-handling.md#validation-error-400).
+This guide covers user-defined fields. The codes `geojson_data` and `schedule_data` are reserved by the platform — attempting to create a field with one of these codes returns a [validation error](../error-handling.md#validation-error-400).
 {% endhint %}
 
 Every custom field has a [FieldType](../custom-fields.md#fieldtype) that determines what kind of data it stores and what validation options are available. You can add any number of fields with different types to a given entity type.
 
 ### Field type reference
 
-<table><thead><tr><th width="135.4444580078125">Field type</th><th>Use for</th><th>Key params</th><th>Example value</th></tr></thead><tbody><tr><td><code>STRING</code></td><td>Short text, codes, identifiers</td><td><code>isRequired</code>, <code>minLength</code>, <code>maxLength</code>, <code>defaultValue</code>, <code>trim</code></td><td><code>"1HGBH41JXMN109186"</code></td></tr><tr><td><code>TEXT</code></td><td>Long descriptions, notes</td><td><code>isRequired</code>, <code>maxLength</code>, <code>defaultValue</code>, <code>trim</code></td><td><code>"Installed under dashboard, driver side"</code></td></tr><tr><td><code>NUMBER</code></td><td>Quantities, measurements</td><td><code>isRequired</code>, <code>min</code>, <code>max</code>, <code>precision</code>, <code>defaultValue</code></td><td><code>42</code>, <code>3.14</code></td></tr><tr><td><code>BOOLEAN</code></td><td>Flags, yes/no attributes</td><td><code>isRequired</code>, <code>defaultValue</code></td><td><code>true</code></td></tr><tr><td><code>DATE</code></td><td>Calendar dates</td><td><code>isRequired</code>, <code>defaultValue</code></td><td><code>"2025-06-01"</code></td></tr><tr><td><code>DATETIME</code></td><td>Timestamps</td><td><code>isRequired</code>, <code>defaultValue</code></td><td><code>"2025-06-01T09:00:00Z"</code></td></tr><tr><td><code>OPTIONS</code></td><td>Predefined choices (single or multi)</td><td><code>isRequired</code>, <code>isMulti</code>, <code>options[]</code>, <code>defaultValue</code></td><td><code>"diesel"</code></td></tr><tr><td><code>GEOJSON</code></td><td>Geometry data</td><td><code>isRequired</code>, <code>allowedTypes</code> (<a href="../geo-objects/types.md#geojsongeometrytype">GeoJsonGeometryType</a>)</td><td><code>{"type":"Point","coordinates":[...]}</code></td></tr><tr><td><code>SCHEDULE</code></td><td>References to schedule definitions</td><td><code>isRequired</code></td><td><a href="../schedules.md#schedule">Schedule object</a></td></tr><tr><td><code>DEVICE</code></td><td>Links to device records</td><td><code>isRequired</code>, <code>isMulti</code></td><td><code>"019a6a3f-..."</code></td></tr><tr><td><code>REFERENCE</code></td><td>Links to other entity records</td><td><code>isRequired</code>, <code>isMulti</code>, <code>refEntityTypeCode</code></td><td><code>"019a6a3f-..."</code></td></tr><tr><td><code>CATALOG</code></td><td>Links to catalog items</td><td><code>isRequired</code>, <code>isMulti</code>, <code>refCatalogCode</code></td><td><code>"ITEM_CODE"</code></td></tr><tr><td><code>TAG</code></td><td>Tags from a tag catalog</td><td><code>isRequired</code>, <code>defaultValue</code></td><td><code>"TAG_CODE"</code></td></tr></tbody></table>
+<table><thead><tr><th width="135.4444580078125">Field type</th><th width="185">Use for</th><th width="247">Key params</th><th>Example value</th></tr></thead><tbody><tr><td><code>STRING</code></td><td>Short text, codes, identifiers</td><td><code>isRequired</code>, <code>minLength</code>, <code>maxLength</code>, <code>defaultString</code>, <code>trim</code></td><td><code>"1HGBH41JXMN109186"</code></td></tr><tr><td><code>TEXT</code></td><td>Long descriptions, notes</td><td><code>isRequired</code>, <code>maxLength</code>, <code>defaultText</code>, <code>trim</code></td><td><code>"Installed under dashboard, driver side"</code></td></tr><tr><td><code>DECIMAL</code></td><td>Precise measurements, currency, weights</td><td><code>isRequired</code>, <code>minDecimal</code>, <code>maxDecimal</code>, <code>scale</code>, <code>defaultDecimal</code></td><td><code>42.50</code></td></tr><tr><td><code>INTEGER</code></td><td>Whole-number quantities, counts</td><td><code>isRequired</code>, <code>minInteger</code>, <code>maxInteger</code>, <code>defaultInteger</code></td><td><code>42</code></td></tr><tr><td><code>BOOLEAN</code></td><td>Flags, yes/no attributes</td><td><code>isRequired</code>, <code>defaultBoolean</code></td><td><code>true</code></td></tr><tr><td><code>DATE</code></td><td>Calendar dates</td><td><code>isRequired</code>, <code>defaultDate</code></td><td><code>"2025-06-01"</code></td></tr><tr><td><code>DATETIME</code></td><td>Timestamps</td><td><code>isRequired</code>, <code>defaultDatetime</code></td><td><code>"2025-06-01T09:00:00Z"</code></td></tr><tr><td><code>OPTIONS</code></td><td>Predefined choices (single or multi)</td><td><code>isRequired</code>, <code>isMulti</code>, <code>options[]</code>, <code>defaultOptions</code></td><td><code>"diesel"</code></td></tr><tr><td><code>GEOJSON</code></td><td>Geometry data</td><td><code>isRequired</code>, <code>allowedTypes</code> (<a href="../geo-objects/types.md#geojsongeometrytype">GeoJsonGeometryType</a>)</td><td><code>{"type":"Point","coordinates":[...]}</code></td></tr><tr><td><code>SCHEDULE</code></td><td>References to schedule definitions</td><td><code>isRequired</code></td><td><a href="../schedules.md#schedule">Schedule object</a></td></tr><tr><td><code>DEVICE</code></td><td>Links to device records</td><td><code>isRequired</code>, <code>isMulti</code></td><td><code>"019a6a3f-..."</code></td></tr><tr><td><code>REFERENCE</code></td><td>Links to other entity records</td><td><code>isRequired</code>, <code>isMulti</code>, <code>refEntityTypeCode</code></td><td><code>"019a6a3f-..."</code></td></tr><tr><td><code>CATALOG</code></td><td>Links to catalog items</td><td><code>isRequired</code>, <code>isMulti</code>, <code>refCatalogCode</code>, <code>defaultCatalog</code></td><td><code>"ITEM_CODE"</code></td></tr><tr><td><code>TAG</code></td><td>Tags from a tag catalog</td><td><code>isRequired</code>, <code>defaultTag</code></td><td><code>"TAG_CODE"</code></td></tr></tbody></table>
 
 Each field is defined by [CustomFieldDefinition](../custom-fields.md#customfielddefinition), a metadata record that specifies the field's code, display title, type, and validation rules. When you create or update an entity, you supply field values through the `customFields` field in the mutation input, and the API validates each value against the corresponding definition.
 
@@ -159,7 +159,7 @@ mutation AddVehicleFields {
             options: {
               isRequired:   true
               isMulti:      false
-              defaultValue: "diesel"
+              defaultOptions: "diesel"
               options: [
                 { code: "diesel",   label: "Diesel" }
                 { code: "electric", label: "Electric" }
@@ -221,60 +221,7 @@ The `params` input uses the [@oneOf](../core-api-reference/directives.md#oneof) 
 Each field type has its own named params block. The example above demonstrates this: the VIN field uses `params: { string: { ... } }`, the fuel type field uses `params: { options: { ... } }`, and the service date field uses `params: { date: { ... } }`. Providing the wrong variant returns a [validation error](../error-handling.md#validation-error-400).&#x20;
 {% endhint %}
 
-The same pattern applies to [geoObjectTypeUpdate](../geo-objects/mutations.md#geoobjecttypeupdate) — only the parent type's input changes. Only `create` is allowed for a catalog item creation mutation such as [assetTypeCreate](../assets/mutations.md#assettypecreate). The full set of operations (`update`, `delete`, `archive`, `restore`) is available for [assetTypeUpdate](../assets/mutations.md#assettypeupdate).&#x20;
-
-#### **Set and update values**
-
-Pass `customFields` in the create mutation with the initial values under `set`. The following example creates a vehicle asset with all three fields populated:
-
-```graphql
-mutation CreateVehicleAsset {
-  assetCreate(input: {
-    organizationId: "7c9e6679-7425-40de-944b-e07fc1f90ae7"
-    typeId: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"
-    title: "Truck 12"
-    customFields: {
-      set: {
-        "vin":               "1HGBH41JXMN109186"
-        "fuel_type":         "diesel"
-        "next_service_date": "2025-09-01"
-      }
-    }
-  }) {
-    asset {
-      id
-      version
-      customFields
-    }
-  }
-}
-```
-
-The response returns the created asset's `id`, `version`, and `customFields`:
-
-```json
-{
-  "data": {
-    "assetCreate": {
-      "asset": {
-        "id": "019a6b2f-793e-807b-8001-555345529b44",
-        "version": 1,
-        "customFields": {
-          "vin": "1HGBH41JXMN109186",
-          "fuel_type": "diesel",
-          "next_service_date": "2025-09-01"
-        }
-      }
-    }
-  }
-}
-```
-
-{% hint style="warning" %}
-If any custom field value fails validation, the entire mutation is rejected with a [validation error](../error-handling.md#validation-error-400). Common causes include a value that violates the field's params constraints (for example, a VIN shorter than 17 characters), an unrecognized field code, or a value of the wrong type. The error response includes a field path and a detail message identifying the problem. See [Error handling](../error-handling.md) for the full error format.
-{% endhint %}
-
-The same pattern applies to `geoObjectCreate` and `scheduleCreate`.
+The same pattern applies to [geoObjectTypeUpdate](../geo-objects/mutations.md#geoobjecttypeupdate) — only the parent type's input changes. Only `create` is allowed for a catalog item creation mutation such as [assetTypeCreate](../assets/mutations.md#assettypecreate). The full set of operations (`update`, `delete`, `archive`, `restore`) is available for [assetTypeUpdate](../assets/mutations.md#assettypeupdate).
 {% endstep %}
 
 {% step %}
@@ -329,7 +276,7 @@ The response returns the created asset's `id`, `version`, and `customFields`:
 If any custom field value fails validation, the entire mutation is rejected with a [validation error](../error-handling.md#validation-error-400). Common causes include a value that violates the field's `params` constraints (for example, a VIN shorter than 17 characters), an unrecognized field code, or a value of the wrong type. The error response includes a `field` path and a `detail` message identifying the problem. See [Error handling](../error-handling.md) for the full error format.
 {% endhint %}
 
-The same pattern applies to `geoObjectCreate` and `scheduleCreate` fields.
+The same pattern applies to [geoObjectCreate](../geo-objects/mutations.md#geoobjectcreate).
 {% endstep %}
 
 {% step %}
@@ -567,7 +514,7 @@ Response:
 ```json
 {
   "data": {
-    "devices": {
+    "assets": {
       "nodes": [
         {
           "id": "019a6c3f-894e-817b-8002-666456630c55",
@@ -756,9 +703,9 @@ Keep in mind the following:
 * **Validation errors reject the entire mutation:** Mutations that include invalid custom field values are rejected in full. See [Error handling](../error-handling.md) for the error format.
 * **`fieldType` is immutable:** To change a field's type, delete its definition and create a new one. Deleting the definition removes its values from all entity records.
 * **`code` is stable once in use:** `code` must be unique within the owner type and organization. As this is the key used to read and write values across all entity mutations and queries, avoid recreating it under a different name if records contain values paired with it. If you rely on auto-generation, verify the generated code before any records are written under it.
-* **`params` requires exactly one variant:** `FieldParamsInput` uses the [@oneOf](../core-api-reference/directives.md#oneof) directive, so you must provide exactly the variant that matches your `fieldType`. Providing `string: { ... }` when `fieldType` is `NUMBER` returns a validation error.
+* **`params` requires exactly one variant:** `FieldParamsInput` uses the [@oneOf](../core-api-reference/directives.md#oneof) directive, so you must provide exactly the variant that matches your `fieldType`. Providing `string: { ... }` when `fieldType` is `DECIMAL` returns a validation error.
 * **Multi-value fields and filtering:** For OPTIONS and CATALOG fields configured with `isMulti: true` and TAG fields (which are always multi-value), a filter matches if _any_ value in the array satisfies the condition. For example, if an asset has `fuel_type: ["diesel", "hybrid"]`, filtering with `EQ: "diesel"` will match it.
-* **Predefined fields:** The platform manages a set of predefined fields (`geojson_data`, `schedule_data`, `device`) that are excluded from `customFields` responses and exposed through dedicated typed fields on each entity instead (`geojsonData`, `scheduleData`, `device`). Their codes are reserved and cannot be used for user-defined fields.
+* **Predefined fields:** The platform manages a set of predefined fields (`geojson_data` and `schedule_data`) that are excluded from `customFields` responses and exposed through dedicated typed fields on each entity instead (`geojsonData`, `scheduleData`, `device`). Their codes are reserved and cannot be used for user-defined fields.
 
 ### See also
 

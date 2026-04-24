@@ -74,7 +74,7 @@ You'll receive a response:
 }
 ```
 
-Use the `id` of the organization you want to work with for all subsequent geo object operations.
+Use the `id` of the organization you want to work with for all subsequent asset group operations.
 
 ### Check available asset group types
 

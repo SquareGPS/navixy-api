@@ -10,7 +10,7 @@
 * [Error handling](error-handling.md)
 * [Optimistic locking](optimistic-locking.md)
 * [Guides](guides/README.md)
-  * [Working with devices](guides/activating-a-device.md)
+  * [Working with devices](guides/working-with-devices.md)
   * [Managing device inventory](guides/managing-device-inventory.md)
   * [Working with assets](guides/working-with-assets.md)
   * [Organizing assets into groups](guides/organizing-assets-into-groups.md)

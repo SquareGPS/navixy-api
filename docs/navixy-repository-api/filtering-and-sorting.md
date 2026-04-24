@@ -152,7 +152,8 @@ The `value` field uses a typed [@oneOf](core-api-reference/directives.md#oneof) 
 | Variant      | Field types                            | Example                                    |
 | ------------ | -------------------------------------- | ------------------------------------------ |
 | `string`     | STRING, TEXT, OPTIONS, CATALOG, TAG    | `{ string: "diesel" }`                     |
-| `number`     | NUMBER                                 | `{ number: 42.0 }`                         |
+| `decimal`    | DECIMAL                                | `{ decimal: 42.50 }`                       |
+| `integer`    | INTEGER                                | `{ integer: 42 }`                          |
 | `boolean`    | BOOLEAN                                | `{ boolean: true }`                        |
 | `date`       | DATE                                   | `{ date: "2024-01-15" }`                   |
 | `datetime`   | DATETIME                               | `{ datetime: "2024-01-15T10:30:00Z" }`     |
@@ -253,7 +254,7 @@ NULL values appear last when sorting ASC, and first when sorting DESC.
 
 ### Sorting by custom fields
 
-Some entity types (assets, geo objects, schedules) support sorting by custom field values:
+Assets and geo objects support sorting by custom field values. Only the following field types are sortable: `STRING`, `TEXT`, `DECIMAL`, `INTEGER`, `DATE`, `DATETIME`.
 
 ```graphql
 query {

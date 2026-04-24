@@ -173,6 +173,9 @@ mutation RegisterDevice {
     modelId: "c9f4d2e1-2e3b-5f6c-ad9e-222333444555"
     statusId: "d0a5e3f2-3f4c-6a7d-be0f-333444555666"
     title: "FMB003 — Unit 001"
+    identifiers: [
+      { type: IMEI, value: "356307042772396" }
+    ]
   }) {
     device {
       id
@@ -181,11 +184,19 @@ mutation RegisterDevice {
       type { title }
       model { title vendor { title } }
       status { title }
+      identifiers { type value namespace }
       asset { id title }
     }
   }
 }
+
 ```
+
+At least one identifier is required. Place the most important identifier first — if `title` is omitted, the server generates one using the first identifier's value (e.g., `"Teltonika FMB003 356307042772396"`).
+
+{% hint style="info" %}
+`title` is optional. When omitted or blank, the server auto-generates a title in the following format: `"<vendor> <model> <first identifier value>"`. Provide an explicit title when the default isn't descriptive enough for your workflow.
+{% endhint %}
 
 Response:
 
@@ -200,6 +211,9 @@ Response:
         "type": { "title": "GPS Tracker" },
         "model": { "title": "FMB003", "vendor": { "title": "Teltonika" } },
         "status": { "title": "In Stock" },
+        "identifiers": [
+          { "type": "IMEI", "value": "356307042772396", "namespace": null }
+        ],
         "asset": null
       }
     }
@@ -208,29 +222,20 @@ Response:
 ```
 
 Save the `id` and `version` — you'll need both for subsequent operations.
+
+{% hint style="info" %}
+Identifier uniqueness is enforced globally on the combination of `type`, `value`, and `namespace`. If any identifier already exists on another device, [deviceCreate](../devices/mutations.md#devicecreate) fails and the device is not created.
+{% endhint %}
 {% endstep %}
 
 {% step %}
-### Add identifiers
+### Add additional identifiers
 
-Add the hardware identifiers for the device. Each identifier is added in a separate `deviceIdentifierAdd` call, though you can batch multiple calls in a single request using aliases.
-
-{% hint style="info" %}
-Identifiers passed to `deviceCreate` via the `identifiers` input field do not persist in the current implementation. Add them using `deviceIdentifierAdd` after creating the device.
-{% endhint %}
+The IMEI was provided at creation. To register additional identifiers, such as a serial number, use [deviceIdentifierAdd](../devices/mutations.md#deviceidentifieradd):
 
 ```graphql
-mutation AddDeviceIdentifiers {
-  imei: deviceIdentifierAdd(input: {
-    deviceId: "e1b6f4a3-4a5d-7b8e-cf10-444555666777"
-    identifier: {
-      type: IMEI
-      value: "356307042772396"
-    }
-  }) {
-    deviceIdentifier { id type value namespace }
-  }
-  serial: deviceIdentifierAdd(input: {
+mutation AddSerialNumber {
+  deviceIdentifierAdd(input: {
     deviceId: "e1b6f4a3-4a5d-7b8e-cf10-444555666777"
     identifier: {
       type: SERIAL_NUMBER
@@ -247,15 +252,7 @@ Response:
 ```json
 {
   "data": {
-    "imei": {
-      "deviceIdentifier": {
-        "id": "f2c7a5b4-5b6e-8c9f-d011-555666777888",
-        "type": "IMEI",
-        "value": "356307042772396",
-        "namespace": null
-      }
-    },
-    "serial": {
+    "deviceIdentifierAdd": {
       "deviceIdentifier": {
         "id": "a3d8b6c5-6c7f-9d0a-e122-666777888999",
         "type": "SERIAL_NUMBER",

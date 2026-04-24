@@ -12,7 +12,7 @@ An inventory in Navixy Repository API is a named container that represents a phy
 
 A device can be assigned to at most one inventory at a time. Assigning it to a new inventory automatically implies it has left the previous one, which must be explicitly unlinked first. The full history of all past assignments is preserved on the device regardless of current status.
 
-This guide continues the FleetOps Ltd scenario from [Working with devices](activating-a-device.md). The company has registered a batch of Teltonika FMB003 trackers. Now the hardware operations team needs to track which warehouse holds each device as units move from central stock to regional depots ahead of installation.
+This guide continues the FleetOps Ltd scenario from [Working with devices](working-with-devices.md). The company has registered a batch of Teltonika FMB003 trackers. Now the hardware operations team needs to track which warehouse holds each device as units move from central stock to regional depots ahead of installation.
 
 ## Before you start
 
@@ -56,7 +56,7 @@ You'll receive a response:
 }
 ```
 
-Use the `id` of the organization you want to work with for all subsequent asset operations.
+Use the `id` of the organization you want to work with for all subsequent device operations.
 
 ## Example scenario: Managing warehouse stock
 

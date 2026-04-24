@@ -99,7 +99,8 @@ Indicates that an input object requires exactly one of its fields to be provided
 input FieldParamsInput @oneOf {
   string: StringFieldParamsInput
   text: TextFieldParamsInput
-  number: NumberFieldParamsInput
+  decimal: DecimalFieldParamsInput
+  integer: IntegerFieldParamsInput
 }
 ```
 

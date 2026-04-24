@@ -54,7 +54,7 @@ You'll receive a response:
 }
 ```
 
-Use the `id` of the organization you want to work with for all subsequent geo object operations.
+Use the `id` of the organization you want to work with for all subsequent schedule operations.
 
 ## Understanding schedule data
 
