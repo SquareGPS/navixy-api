@@ -53,7 +53,7 @@ A group of assets.
 | `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Can be provided in update/delete mutations to prevent lost updates. If omitted, the update proceeds without stale-read protection. |
 | `title` | `String!` | The human-readable display name. |
 | `organization` | [Organization](../../organizations/README.md#type-organization)! | The organization that owns this group. |
-| `type` | [AssetGroupType](#type-assetgrouptype) | The group type with membership constraints. |
+| `type` | [AssetGroupType](#type-assetgrouptype) | The group type with membership constraints. Immutable after creation. |
 | `color` | `HexColorCode` | The color for UI display in hexadecimal format. |
 | `currentAssets` | [AssetConnection](../types.md#type-assetconnection)! | The assets currently in this group. |
 | `history` | [AssetGroupItemConnection](#type-assetgroupitemconnection)! | The full membership history for this group. |
@@ -164,7 +164,7 @@ Input for creating a new asset group.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization that will own the group. |
-| `typeId` | `ID` | The group type ID. |
+| `typeId` | `ID` | The group type ID. Immutable after creation. |
 | `title` | `String!` | The group display name. |
 | `color` | `HexColorCode` | The color for UI display. |
 | `assetIds` | `[ID!]` | Initial list of asset IDs to add to the group. |

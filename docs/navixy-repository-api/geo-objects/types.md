@@ -57,7 +57,7 @@ A geographic object such as a geofence, point of interest, or route.
 | `organization` | [Organization](../organizations/README.md#type-organization)! | The organization that owns this geo object. |
 | `type` | [GeoObjectType](#type-geoobjecttype)! | The geo object type classification. |
 | `geojsonData` | `GeoJSON!` | The geographic shape of this object as GeoJSON geometry. |
-| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. System-reserved codes (`geojson_data`, `schedule_data`, `device`) are excluded from this map and exposed through dedicated typed fields on the entity instead. |
+| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. System-reserved codes (`geojson_data`, `schedule_data`) are excluded from this map and exposed through dedicated typed fields on the entity instead. |
 | `containsPoints` | [[PointContainmentResult](#type-pointcontainmentresult)!]! | Checks if the given points are contained within this geo object's geometry. Returns the containment status for each point. Only applicable to Polygon and MultiPolygon geometries. |
 
 ---
@@ -140,7 +140,7 @@ Ordering options for geo objects.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `field` | [GeoObjectOrderField](#type-geoobjectorderfield) | The standard field to order by. Mutually exclusive with `customFieldCode`. |
-| `customFieldCode` | `Code` | The custom field code to order by. Mutually exclusive with `field`. |
+| `customFieldCode` | `Code` | The custom field code to order by. Mutually exclusive with `field`. Supported field types: STRING, TEXT, DECIMAL, INTEGER, DATE, DATETIME. OPTIONS, TAG, BOOLEAN, GEOJSON, SCHEDULE, DEVICE, REFERENCE, CATALOG are not supported for sorting. |
 | `direction` | [OrderDirection](../common.md#type-orderdirection)! | The direction to order. |
 
 ---

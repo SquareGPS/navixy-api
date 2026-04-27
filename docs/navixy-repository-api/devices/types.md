@@ -291,8 +291,8 @@ Input for creating a new device.
 | `typeId` | `ID!` | The device type ID. |
 | `modelId` | `ID!` | The device model ID. |
 | `statusId` | `ID!` | The initial device status ID. |
-| `title` | `String!` | The device display name. |
-| `identifiers` | [[DeviceIdentifierInput](#type-deviceidentifierinput)!] | The hardware identifiers. |
+| `title` | `String` | The device display name. If omitted or blank, the server generates "<vendorTitleEn> <modelTitleEn> <identifier.value>" where the identifier is chosen by type priority: IMEI > SERIAL_NUMBER > MAC_ADDRESS, with fallback to identifiers[0] when none of the priority types are present. |
+| `identifiers` | [[DeviceIdentifierInput](#type-deviceidentifierinput)!]! | The hardware identifiers. At least one entry is required. |
 
 ---
 

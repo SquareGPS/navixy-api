@@ -389,3 +389,44 @@ Examples: DEVICE_TYPE, vehicle_car, status.active, sensor-v2, ABC123
 | Specification | [https://api.navixy.com/spec/scalars/code](https://api.navixy.com/spec/scalars/code) |
 
 ---
+
+<a id="type-decimal"></a>
+
+### Decimal
+
+Arbitrary-precision decimal value encoded as a JSON string (e.g. `"5.25"`).
+String encoding avoids the precision loss inherent in JSON `Float`.
+
+Values exceeding the declared `scale` of a decimal custom field are rounded
+server-side using HALF_UP (round half away from zero for positive values,
+round half toward zero for negative — matches Java `RoundingMode.HALF_UP`).
+The rounded value is persisted in both the CFV table and the
+`custom_fields_data` JSONB blob; raw un-rounded input is never stored.
+
+Storage is `numeric(28, 10)` — up to 28 significant digits, of which at
+most 10 follow the decimal point (so up to 18 digits before). Values
+exceeding this envelope (e.g. more than 18 integer digits) are rejected
+as `VALIDATION_ERROR` at the API layer.
+
+| Property | Value |
+| -------- | ----- |
+| Format | `String-encoded decimal number` |
+| Example | `"123.456"` |
+| Specification | [https://www.navixy.com/docs/navixy-repository-api/core-api-reference/common#decimal](https://www.navixy.com/docs/navixy-repository-api/core-api-reference/common#decimal) |
+
+---
+
+<a id="type-long"></a>
+
+### Long
+
+Signed 64-bit integer in the range [-9223372036854775808, 9223372036854775807].
+Encoded as a JSON number.
+
+| Property | Value |
+| -------- | ----- |
+| Format | `64-bit signed integer` |
+| Example | `1234567890123456789` |
+| Specification | [https://www.navixy.com/docs/navixy-repository-api/core-api-reference/common#long](https://www.navixy.com/docs/navixy-repository-api/core-api-reference/common#long) |
+
+---

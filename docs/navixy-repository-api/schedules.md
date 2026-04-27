@@ -28,7 +28,7 @@ schedule(id: ID!): Schedule
 
 A schedule definition for work hours, maintenance windows, or other time-based rules.
 
-**Implements:** [Node](common.md#type-node), [Titled](common.md#type-titled), [Customizable](common.md#type-customizable), [Versioned](common.md#type-versioned)
+**Implements:** [Node](common.md#type-node), [Titled](common.md#type-titled), [Versioned](common.md#type-versioned)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -37,7 +37,6 @@ A schedule definition for work hours, maintenance windows, or other time-based r
 | `title` | `String!` | The human-readable display name. |
 | `organization` | [Organization](organizations/README.md#type-organization)! | The organization that owns this schedule. |
 | `scheduleData` | `ScheduleData!` | The calendar and time interval definitions for this schedule. |
-| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. System-reserved codes (`geojson_data`, `schedule_data`, `device`) are excluded from this map and exposed through dedicated typed fields on the entity instead. |
 
 </details>
 
@@ -108,55 +107,6 @@ Filtering options for schedules.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `titleContains` | `String` | Partial match on title (case-insensitive contains). |
-| `customFields` | [[CustomFieldFilter](custom-fields.md#type-customfieldfilter)!] | Filter by custom field values. |
-
-</details>
-
-<details>
-
-<summary>CustomFieldFilter</summary>
-
-A filter condition for a custom field value.
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `code` | `Code!` | The custom field code to filter by. |
-| `operator` | [FieldOperator](custom-fields.md#type-fieldoperator)! | The comparison operator. |
-| `value` | [CustomFieldFilterValue](custom-fields.md#type-customfieldfiltervalue) | The value to compare against. Null for `IS_NULL` and `IS_NOT_NULL` operators. |
-
-</details>
-
-<details>
-
-<summary>CustomFieldFilterValue</summary>
-
-Typed filter value for custom fields. Exactly one field must be set (`@oneOf`).
-Choose the variant that matches the custom field's data type:
-
-| FieldType         | Variant      | Example                                |
-|-------------------|--------------|----------------------------------------|
-| STRING, TEXT      | `string`     | `{ string: "hello" }`                  |
-| NUMBER            | `number`     | `{ number: 42.0 }`                     |
-| BOOLEAN           | `boolean`    | `{ boolean: true }`                    |
-| DATE              | `date`       | `{ date: "2024-01-15" }`              |
-| DATETIME          | `datetime`   | `{ datetime: "2024-01-15T10:30:00Z" }`|
-| OPTIONS, CATALOG, TAG | `string` | `{ string: "option_code" }`            |
-| DEVICE, REFERENCE | `id`         | `{ id: "019a6a3f-..." }`              |
-| (IN operator)     | `stringList` | `{ stringList: ["a", "b"] }`           |
-| (IN operator)     | `idList`     | `{ idList: ["uuid1", "uuid2"] }`       |
-
-*This input type uses `@oneOf` - exactly one field must be provided.*
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `string` | `String` | String value — for STRING, TEXT, OPTIONS, CATALOG, TAG fields. |
-| `number` | `Float` | Numeric value — for NUMBER fields. |
-| `boolean` | `Boolean` | Boolean value — for BOOLEAN fields. |
-| `date` | `Date` | Date value — for DATE fields. |
-| `datetime` | `DateTime` | Date-time value — for DATETIME fields. |
-| `id` | `ID` | ID value — for DEVICE, REFERENCE fields. |
-| `stringList` | `[String!]` | List of strings — for IN operator on string-based fields. |
-| `idList` | `[ID!]` | List of IDs — for IN operator on reference fields. |
 
 </details>
 
@@ -168,8 +118,7 @@ Ordering options for schedules.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [ScheduleOrderField](#type-scheduleorderfield) | The standard field to order by. Mutually exclusive with `customFieldCode`. |
-| `customFieldCode` | `Code` | The custom field code to order by. Mutually exclusive with `field`. |
+| `field` | [ScheduleOrderField](#type-scheduleorderfield) | The standard field to order by. |
 | `direction` | [OrderDirection](common.md#type-orderdirection)! | The direction to order. |
 
 </details>
@@ -241,20 +190,6 @@ Input for creating a new schedule.
 | `organizationId` | `ID!` | The organization that will own the schedule. |
 | `title` | `String!` | The schedule display name. |
 | `scheduleData` | `ScheduleData!` | The schedule data. |
-| `customFields` | [CustomFieldsPatchInput](custom-fields.md#type-customfieldspatchinput) | The custom field values. |
-
-</details>
-
-<details>
-
-<summary>CustomFieldsPatchInput</summary>
-
-Input for updating custom field values using a patch model.
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `set` | `JSON` | Fields to set or update as a key-value map. |
-| `unset` | `[Code!]` | Field codes to remove. |
 
 </details>
 
@@ -278,7 +213,7 @@ The result of a schedule mutation.
 
 A schedule definition for work hours, maintenance windows, or other time-based rules.
 
-**Implements:** [Node](common.md#type-node), [Titled](common.md#type-titled), [Customizable](common.md#type-customizable), [Versioned](common.md#type-versioned)
+**Implements:** [Node](common.md#type-node), [Titled](common.md#type-titled), [Versioned](common.md#type-versioned)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -287,7 +222,6 @@ A schedule definition for work hours, maintenance windows, or other time-based r
 | `title` | `String!` | The human-readable display name. |
 | `organization` | [Organization](organizations/README.md#type-organization)! | The organization that owns this schedule. |
 | `scheduleData` | `ScheduleData!` | The calendar and time interval definitions for this schedule. |
-| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. System-reserved codes (`geojson_data`, `schedule_data`, `device`) are excluded from this map and exposed through dedicated typed fields on the entity instead. |
 
 </details>
 
@@ -323,20 +257,6 @@ Input for updating an existing schedule.
 | `version` | `Int` | The current version for optimistic locking. If omitted, auto-increments without conflict check. |
 | `title` | `String` | The new display name. |
 | `scheduleData` | `ScheduleData` | The new schedule data. |
-| `customFields` | [CustomFieldsPatchInput](custom-fields.md#type-customfieldspatchinput) | The custom field changes. |
-
-</details>
-
-<details>
-
-<summary>CustomFieldsPatchInput</summary>
-
-Input for updating custom field values using a patch model.
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `set` | `JSON` | Fields to set or update as a key-value map. |
-| `unset` | `[Code!]` | Field codes to remove. |
 
 </details>
 
@@ -360,7 +280,7 @@ The result of a schedule mutation.
 
 A schedule definition for work hours, maintenance windows, or other time-based rules.
 
-**Implements:** [Node](common.md#type-node), [Titled](common.md#type-titled), [Customizable](common.md#type-customizable), [Versioned](common.md#type-versioned)
+**Implements:** [Node](common.md#type-node), [Titled](common.md#type-titled), [Versioned](common.md#type-versioned)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -369,7 +289,6 @@ A schedule definition for work hours, maintenance windows, or other time-based r
 | `title` | `String!` | The human-readable display name. |
 | `organization` | [Organization](organizations/README.md#type-organization)! | The organization that owns this schedule. |
 | `scheduleData` | `ScheduleData!` | The calendar and time interval definitions for this schedule. |
-| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. System-reserved codes (`geojson_data`, `schedule_data`, `device`) are excluded from this map and exposed through dedicated typed fields on the entity instead. |
 
 </details>
 
@@ -430,7 +349,7 @@ The result of a delete mutation.
 
 A schedule definition for work hours, maintenance windows, or other time-based rules.
 
-**Implements:** [Node](common.md#type-node), [Titled](common.md#type-titled), [Customizable](common.md#type-customizable), [Versioned](common.md#type-versioned)
+**Implements:** [Node](common.md#type-node), [Titled](common.md#type-titled), [Versioned](common.md#type-versioned)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -439,7 +358,6 @@ A schedule definition for work hours, maintenance windows, or other time-based r
 | `title` | `String!` | The human-readable display name. |
 | `organization` | [Organization](organizations/README.md#type-organization)! | The organization that owns this schedule. |
 | `scheduleData` | `ScheduleData!` | The calendar and time interval definitions for this schedule. |
-| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. System-reserved codes (`geojson_data`, `schedule_data`, `device`) are excluded from this map and exposed through dedicated typed fields on the entity instead. |
 
 ---
 
@@ -466,7 +384,6 @@ Filtering options for schedules.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `titleContains` | `String` | Partial match on title (case-insensitive contains). |
-| `customFields` | [[CustomFieldFilter](custom-fields.md#type-customfieldfilter)!] | Filter by custom field values. |
 
 ---
 
@@ -478,8 +395,7 @@ Ordering options for schedules.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [ScheduleOrderField](#type-scheduleorderfield) | The standard field to order by. Mutually exclusive with `customFieldCode`. |
-| `customFieldCode` | `Code` | The custom field code to order by. Mutually exclusive with `field`. |
+| `field` | [ScheduleOrderField](#type-scheduleorderfield) | The standard field to order by. |
 | `direction` | [OrderDirection](common.md#type-orderdirection)! | The direction to order. |
 
 ---
@@ -495,7 +411,6 @@ Input for creating a new schedule.
 | `organizationId` | `ID!` | The organization that will own the schedule. |
 | `title` | `String!` | The schedule display name. |
 | `scheduleData` | `ScheduleData!` | The schedule data. |
-| `customFields` | [CustomFieldsPatchInput](custom-fields.md#type-customfieldspatchinput) | The custom field values. |
 
 ---
 
@@ -511,7 +426,6 @@ Input for updating an existing schedule.
 | `version` | `Int` | The current version for optimistic locking. If omitted, auto-increments without conflict check. |
 | `title` | `String` | The new display name. |
 | `scheduleData` | `ScheduleData` | The new schedule data. |
-| `customFields` | [CustomFieldsPatchInput](custom-fields.md#type-customfieldspatchinput) | The custom field changes. |
 
 ---
 

@@ -229,7 +229,8 @@ Choose the variant that matches the custom field's data type:
 | FieldType         | Variant      | Example                                |
 |-------------------|--------------|----------------------------------------|
 | STRING, TEXT      | `string`     | `{ string: "hello" }`                  |
-| NUMBER            | `number`     | `{ number: 42.0 }`                     |
+| DECIMAL           | `decimal`    | `{ decimal: "42.50" }`                 |
+| INTEGER           | `integer`    | `{ integer: 42 }`                      |
 | BOOLEAN           | `boolean`    | `{ boolean: true }`                    |
 | DATE              | `date`       | `{ date: "2024-01-15" }`              |
 | DATETIME          | `datetime`   | `{ datetime: "2024-01-15T10:30:00Z" }`|
@@ -243,7 +244,8 @@ Choose the variant that matches the custom field's data type:
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `string` | `String` | String value — for STRING, TEXT, OPTIONS, CATALOG, TAG fields. |
-| `number` | `Float` | Numeric value — for NUMBER fields. |
+| `decimal` | `Decimal` | Arbitrary-precision decimal value — for DECIMAL fields. |
+| `integer` | `Long` | Signed 64-bit integer value — for INTEGER fields. |
 | `boolean` | `Boolean` | Boolean value — for BOOLEAN fields. |
 | `date` | `Date` | Date value — for DATE fields. |
 | `datetime` | `DateTime` | Date-time value — for DATETIME fields. |
@@ -262,7 +264,7 @@ Ordering options for assets.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `field` | [AssetOrderField](types.md#type-assetorderfield) | The standard field to order by. Mutually exclusive with `customFieldCode`. |
-| `customFieldCode` | `Code` | The custom field code to order by. Mutually exclusive with `field`. |
+| `customFieldCode` | `Code` | The custom field code to order by. Mutually exclusive with `field`. Supported field types: STRING, TEXT, DECIMAL, INTEGER, DATE, DATETIME. OPTIONS, TAG, BOOLEAN, GEOJSON, SCHEDULE, DEVICE, REFERENCE, CATALOG are not supported for sorting. |
 | `direction` | [OrderDirection](../common.md#type-orderdirection)! | The direction to order. |
 
 </details>

@@ -46,6 +46,8 @@ Input for updating custom field values using a patch model.
 | ----- | ---- | ----------- |
 | `set` | `JSON` | Fields to set or update as a key-value map. |
 | `unset` | `[Code!]` | Field codes to remove. |
+| `setPrimary` | `[Code!]` | Field codes to mark as primary (replaces previous primary of the same field type). |
+| `unsetPrimary` | `[Code!]` | Field codes to unmark as primary. |
 
 </details>
 
@@ -79,7 +81,7 @@ A geographic object such as a geofence, point of interest, or route.
 | `organization` | [Organization](../organizations/README.md#type-organization)! | The organization that owns this geo object. |
 | `type` | [GeoObjectType](types.md#type-geoobjecttype)! | The geo object type classification. |
 | `geojsonData` | `GeoJSON!` | The geographic shape of this object as GeoJSON geometry. |
-| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. System-reserved codes (`geojson_data`, `schedule_data`, `device`) are excluded from this map and exposed through dedicated typed fields on the entity instead. |
+| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. System-reserved codes (`geojson_data`, `schedule_data`) are excluded from this map and exposed through dedicated typed fields on the entity instead. |
 | `containsPoints` | [[PointContainmentResult](types.md#type-pointcontainmentresult)!]! | Checks if the given points are contained within this geo object's geometry. Returns the containment status for each point. Only applicable to Polygon and MultiPolygon geometries. |
 
 </details>
@@ -130,6 +132,8 @@ Input for updating custom field values using a patch model.
 | ----- | ---- | ----------- |
 | `set` | `JSON` | Fields to set or update as a key-value map. |
 | `unset` | `[Code!]` | Field codes to remove. |
+| `setPrimary` | `[Code!]` | Field codes to mark as primary (replaces previous primary of the same field type). |
+| `unsetPrimary` | `[Code!]` | Field codes to unmark as primary. |
 
 </details>
 
@@ -163,7 +167,7 @@ A geographic object such as a geofence, point of interest, or route.
 | `organization` | [Organization](../organizations/README.md#type-organization)! | The organization that owns this geo object. |
 | `type` | [GeoObjectType](types.md#type-geoobjecttype)! | The geo object type classification. |
 | `geojsonData` | `GeoJSON!` | The geographic shape of this object as GeoJSON geometry. |
-| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. System-reserved codes (`geojson_data`, `schedule_data`, `device`) are excluded from this map and exposed through dedicated typed fields on the entity instead. |
+| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. System-reserved codes (`geojson_data`, `schedule_data`) are excluded from this map and exposed through dedicated typed fields on the entity instead. |
 | `containsPoints` | [[PointContainmentResult](types.md#type-pointcontainmentresult)!]! | Checks if the given points are contained within this geo object's geometry. Returns the containment status for each point. Only applicable to Polygon and MultiPolygon geometries. |
 
 </details>
@@ -292,7 +296,7 @@ Data for creating a custom field definition within its parent catalog item.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `code` | `Code` | The machine-readable code. Auto-generated from title if omitted. Codes `geojson_data`, `schedule_data`, and `device` are reserved by the platform. |
+| `code` | `Code` | The machine-readable code. Auto-generated from title if omitted. Codes `geojson_data` and `schedule_data` are reserved by the platform. |
 | `title` | `String!` | The display name. |
 | `description` | `String` | The description. |
 | `fieldType` | [FieldType](../custom-fields.md#type-fieldtype)! | The data type. Immutable after creation. |
@@ -313,7 +317,8 @@ Field parameters input. Exactly one field must be provided.
 | ----- | ---- | ----------- |
 | `string` | [StringFieldParamsInput](../custom-fields.md#type-stringfieldparamsinput) | Parameters for STRING field type. |
 | `text` | [TextFieldParamsInput](../custom-fields.md#type-textfieldparamsinput) | Parameters for TEXT field type. |
-| `number` | [NumberFieldParamsInput](../custom-fields.md#type-numberfieldparamsinput) | Parameters for NUMBER field type. |
+| `decimal` | [DecimalFieldParamsInput](../custom-fields.md#type-decimalfieldparamsinput) | Parameters for DECIMAL field type. |
+| `integer` | [IntegerFieldParamsInput](../custom-fields.md#type-integerfieldparamsinput) | Parameters for INTEGER field type. |
 | `boolean` | [BooleanFieldParamsInput](../custom-fields.md#type-booleanfieldparamsinput) | Parameters for BOOLEAN field type. |
 | `date` | [DateFieldParamsInput](../custom-fields.md#type-datefieldparamsinput) | Parameters for DATE field type. |
 | `datetime` | [DateTimeFieldParamsInput](../custom-fields.md#type-datetimefieldparamsinput) | Parameters for DATETIME field type. |
@@ -338,7 +343,7 @@ Parameters for STRING field type.
 | `isRequired` | `Boolean!` | Whether a value is required. |
 | `minLength` | `Int` | The minimum character length. |
 | `maxLength` | `Int` | The maximum character length. |
-| `defaultValue` | `String` | The default value. |
+| `defaultString` | `String` | The default value. |
 | `trim` | `Boolean` | Whether to trim whitespace. |
 
 </details>
@@ -353,24 +358,39 @@ Parameters for TEXT field type.
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` | Whether a value is required. |
 | `maxLength` | `Int` | The maximum character length. |
-| `defaultValue` | `String` | The default value. |
+| `defaultText` | `String` | The default value. |
 | `trim` | `Boolean` | Whether to trim whitespace. |
 
 </details>
 
 <details>
 
-<summary>NumberFieldParamsInput</summary>
+<summary>DecimalFieldParamsInput</summary>
 
-Parameters for NUMBER field type.
+Parameters for DECIMAL field type.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` | Whether a value is required. |
-| `min` | `Float` | The minimum allowed value. |
-| `max` | `Float` | The maximum allowed value. |
-| `precision` | `Int` | The decimal precision. |
-| `defaultValue` | `Float` | The default value. |
+| `minDecimal` | `Decimal` | The minimum allowed value. |
+| `maxDecimal` | `Decimal` | The maximum allowed value. |
+| `scale` | `Int!` | Digits after the decimal point. Must be >= 0. Values sent with more fractional digits than `scale` are rounded using HALF_UP before storage. |
+| `defaultDecimal` | `Decimal` | The default value. |
+
+</details>
+
+<details>
+
+<summary>IntegerFieldParamsInput</summary>
+
+Parameters for INTEGER field type.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` | Whether a value is required. |
+| `minInteger` | `Long` | The minimum allowed value. |
+| `maxInteger` | `Long` | The maximum allowed value. |
+| `defaultInteger` | `Long` | The default value. |
 
 </details>
 
@@ -383,7 +403,7 @@ Parameters for BOOLEAN field type.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` | Whether a value is required. |
-| `defaultValue` | `Boolean` | The default value. |
+| `defaultBoolean` | `Boolean` | The default value. |
 
 </details>
 
@@ -396,7 +416,7 @@ Parameters for DATE field type.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` | Whether a value is required. |
-| `defaultValue` | `Date` | The default value. |
+| `defaultDate` | `Date` | The default value. |
 
 </details>
 
@@ -409,7 +429,7 @@ Parameters for DATETIME field type.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` | Whether a value is required. |
-| `defaultValue` | `DateTime` | The default value. |
+| `defaultDatetime` | `DateTime` | The default value. |
 
 </details>
 
@@ -449,7 +469,7 @@ Parameters for OPTIONS field type.
 | `isRequired` | `Boolean!` | Whether a value is required. |
 | `isMulti` | `Boolean` | Whether multiple options can be selected. |
 | `options` | [[FieldOptionInput](../custom-fields.md#type-fieldoptioninput)!]! | The available options. |
-| `defaultValue` | `Code` | The default option code. |
+| `defaultOptions` | `Code` | The default option code. |
 
 </details>
 
@@ -506,7 +526,7 @@ Parameters for CATALOG field type.
 | `isRequired` | `Boolean!` | Whether a value is required. |
 | `isMulti` | `Boolean` | Whether multiple items can be selected. |
 | `refCatalogCode` | `Code!` | The catalog code that items can be selected from. |
-| `defaultValue` | `Code` | The default item code. |
+| `defaultCatalog` | `Code` | The default item code. |
 
 </details>
 
@@ -519,7 +539,7 @@ Parameters for TAG field type.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` | Whether a value is required. |
-| `defaultValue` | `Code` | The default tag code. |
+| `defaultTag` | `Code` | The default tag code. |
 
 </details>
 
@@ -699,7 +719,7 @@ Data for creating a custom field definition within its parent catalog item.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `code` | `Code` | The machine-readable code. Auto-generated from title if omitted. Codes `geojson_data`, `schedule_data`, and `device` are reserved by the platform. |
+| `code` | `Code` | The machine-readable code. Auto-generated from title if omitted. Codes `geojson_data` and `schedule_data` are reserved by the platform. |
 | `title` | `String!` | The display name. |
 | `description` | `String` | The description. |
 | `fieldType` | [FieldType](../custom-fields.md#type-fieldtype)! | The data type. Immutable after creation. |
@@ -720,7 +740,8 @@ Field parameters input. Exactly one field must be provided.
 | ----- | ---- | ----------- |
 | `string` | [StringFieldParamsInput](../custom-fields.md#type-stringfieldparamsinput) | Parameters for STRING field type. |
 | `text` | [TextFieldParamsInput](../custom-fields.md#type-textfieldparamsinput) | Parameters for TEXT field type. |
-| `number` | [NumberFieldParamsInput](../custom-fields.md#type-numberfieldparamsinput) | Parameters for NUMBER field type. |
+| `decimal` | [DecimalFieldParamsInput](../custom-fields.md#type-decimalfieldparamsinput) | Parameters for DECIMAL field type. |
+| `integer` | [IntegerFieldParamsInput](../custom-fields.md#type-integerfieldparamsinput) | Parameters for INTEGER field type. |
 | `boolean` | [BooleanFieldParamsInput](../custom-fields.md#type-booleanfieldparamsinput) | Parameters for BOOLEAN field type. |
 | `date` | [DateFieldParamsInput](../custom-fields.md#type-datefieldparamsinput) | Parameters for DATE field type. |
 | `datetime` | [DateTimeFieldParamsInput](../custom-fields.md#type-datetimefieldparamsinput) | Parameters for DATETIME field type. |
@@ -745,7 +766,7 @@ Parameters for STRING field type.
 | `isRequired` | `Boolean!` | Whether a value is required. |
 | `minLength` | `Int` | The minimum character length. |
 | `maxLength` | `Int` | The maximum character length. |
-| `defaultValue` | `String` | The default value. |
+| `defaultString` | `String` | The default value. |
 | `trim` | `Boolean` | Whether to trim whitespace. |
 
 </details>
@@ -760,24 +781,39 @@ Parameters for TEXT field type.
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` | Whether a value is required. |
 | `maxLength` | `Int` | The maximum character length. |
-| `defaultValue` | `String` | The default value. |
+| `defaultText` | `String` | The default value. |
 | `trim` | `Boolean` | Whether to trim whitespace. |
 
 </details>
 
 <details>
 
-<summary>NumberFieldParamsInput</summary>
+<summary>DecimalFieldParamsInput</summary>
 
-Parameters for NUMBER field type.
+Parameters for DECIMAL field type.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` | Whether a value is required. |
-| `min` | `Float` | The minimum allowed value. |
-| `max` | `Float` | The maximum allowed value. |
-| `precision` | `Int` | The decimal precision. |
-| `defaultValue` | `Float` | The default value. |
+| `minDecimal` | `Decimal` | The minimum allowed value. |
+| `maxDecimal` | `Decimal` | The maximum allowed value. |
+| `scale` | `Int!` | Digits after the decimal point. Must be >= 0. Values sent with more fractional digits than `scale` are rounded using HALF_UP before storage. |
+| `defaultDecimal` | `Decimal` | The default value. |
+
+</details>
+
+<details>
+
+<summary>IntegerFieldParamsInput</summary>
+
+Parameters for INTEGER field type.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` | Whether a value is required. |
+| `minInteger` | `Long` | The minimum allowed value. |
+| `maxInteger` | `Long` | The maximum allowed value. |
+| `defaultInteger` | `Long` | The default value. |
 
 </details>
 
@@ -790,7 +826,7 @@ Parameters for BOOLEAN field type.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` | Whether a value is required. |
-| `defaultValue` | `Boolean` | The default value. |
+| `defaultBoolean` | `Boolean` | The default value. |
 
 </details>
 
@@ -803,7 +839,7 @@ Parameters for DATE field type.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` | Whether a value is required. |
-| `defaultValue` | `Date` | The default value. |
+| `defaultDate` | `Date` | The default value. |
 
 </details>
 
@@ -816,7 +852,7 @@ Parameters for DATETIME field type.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` | Whether a value is required. |
-| `defaultValue` | `DateTime` | The default value. |
+| `defaultDatetime` | `DateTime` | The default value. |
 
 </details>
 
@@ -856,7 +892,7 @@ Parameters for OPTIONS field type.
 | `isRequired` | `Boolean!` | Whether a value is required. |
 | `isMulti` | `Boolean` | Whether multiple options can be selected. |
 | `options` | [[FieldOptionInput](../custom-fields.md#type-fieldoptioninput)!]! | The available options. |
-| `defaultValue` | `Code` | The default option code. |
+| `defaultOptions` | `Code` | The default option code. |
 
 </details>
 
@@ -913,7 +949,7 @@ Parameters for CATALOG field type.
 | `isRequired` | `Boolean!` | Whether a value is required. |
 | `isMulti` | `Boolean` | Whether multiple items can be selected. |
 | `refCatalogCode` | `Code!` | The catalog code that items can be selected from. |
-| `defaultValue` | `Code` | The default item code. |
+| `defaultCatalog` | `Code` | The default item code. |
 
 </details>
 
@@ -926,7 +962,7 @@ Parameters for TAG field type.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` | Whether a value is required. |
-| `defaultValue` | `Code` | The default tag code. |
+| `defaultTag` | `Code` | The default tag code. |
 
 </details>
 

@@ -98,7 +98,7 @@ Ordering options for assets.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `field` | [AssetOrderField](#type-assetorderfield) | The standard field to order by. Mutually exclusive with `customFieldCode`. |
-| `customFieldCode` | `Code` | The custom field code to order by. Mutually exclusive with `field`. |
+| `customFieldCode` | `Code` | The custom field code to order by. Mutually exclusive with `field`. Supported field types: STRING, TEXT, DECIMAL, INTEGER, DATE, DATETIME. OPTIONS, TAG, BOOLEAN, GEOJSON, SCHEDULE, DEVICE, REFERENCE, CATALOG are not supported for sorting. |
 | `direction` | [OrderDirection](../common.md#type-orderdirection)! | The direction to order. |
 
 ---

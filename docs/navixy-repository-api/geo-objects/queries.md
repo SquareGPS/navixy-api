@@ -126,7 +126,7 @@ A geographic object such as a geofence, point of interest, or route.
 | `organization` | [Organization](../organizations/README.md#type-organization)! | The organization that owns this geo object. |
 | `type` | [GeoObjectType](types.md#type-geoobjecttype)! | The geo object type classification. |
 | `geojsonData` | `GeoJSON!` | The geographic shape of this object as GeoJSON geometry. |
-| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. System-reserved codes (`geojson_data`, `schedule_data`, `device`) are excluded from this map and exposed through dedicated typed fields on the entity instead. |
+| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. System-reserved codes (`geojson_data`, `schedule_data`) are excluded from this map and exposed through dedicated typed fields on the entity instead. |
 | `containsPoints` | [[PointContainmentResult](types.md#type-pointcontainmentresult)!]! | Checks if the given points are contained within this geo object's geometry. Returns the containment status for each point. Only applicable to Polygon and MultiPolygon geometries. |
 
 </details>
@@ -227,7 +227,8 @@ Choose the variant that matches the custom field's data type:
 | FieldType         | Variant      | Example                                |
 |-------------------|--------------|----------------------------------------|
 | STRING, TEXT      | `string`     | `{ string: "hello" }`                  |
-| NUMBER            | `number`     | `{ number: 42.0 }`                     |
+| DECIMAL           | `decimal`    | `{ decimal: "42.50" }`                 |
+| INTEGER           | `integer`    | `{ integer: 42 }`                      |
 | BOOLEAN           | `boolean`    | `{ boolean: true }`                    |
 | DATE              | `date`       | `{ date: "2024-01-15" }`              |
 | DATETIME          | `datetime`   | `{ datetime: "2024-01-15T10:30:00Z" }`|
@@ -241,7 +242,8 @@ Choose the variant that matches the custom field's data type:
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `string` | `String` | String value — for STRING, TEXT, OPTIONS, CATALOG, TAG fields. |
-| `number` | `Float` | Numeric value — for NUMBER fields. |
+| `decimal` | `Decimal` | Arbitrary-precision decimal value — for DECIMAL fields. |
+| `integer` | `Long` | Signed 64-bit integer value — for INTEGER fields. |
 | `boolean` | `Boolean` | Boolean value — for BOOLEAN fields. |
 | `date` | `Date` | Date value — for DATE fields. |
 | `datetime` | `DateTime` | Date-time value — for DATETIME fields. |
@@ -260,7 +262,7 @@ Ordering options for geo objects.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `field` | [GeoObjectOrderField](types.md#type-geoobjectorderfield) | The standard field to order by. Mutually exclusive with `customFieldCode`. |
-| `customFieldCode` | `Code` | The custom field code to order by. Mutually exclusive with `field`. |
+| `customFieldCode` | `Code` | The custom field code to order by. Mutually exclusive with `field`. Supported field types: STRING, TEXT, DECIMAL, INTEGER, DATE, DATETIME. OPTIONS, TAG, BOOLEAN, GEOJSON, SCHEDULE, DEVICE, REFERENCE, CATALOG are not supported for sorting. |
 | `direction` | [OrderDirection](../common.md#type-orderdirection)! | The direction to order. |
 
 </details>

@@ -317,7 +317,8 @@ Field parameters input. Exactly one field must be provided.
 | ----- | ---- | ----------- |
 | `string` | [StringFieldParamsInput](../custom-fields.md#type-stringfieldparamsinput) | Parameters for STRING field type. |
 | `text` | [TextFieldParamsInput](../custom-fields.md#type-textfieldparamsinput) | Parameters for TEXT field type. |
-| `number` | [NumberFieldParamsInput](../custom-fields.md#type-numberfieldparamsinput) | Parameters for NUMBER field type. |
+| `decimal` | [DecimalFieldParamsInput](../custom-fields.md#type-decimalfieldparamsinput) | Parameters for DECIMAL field type. |
+| `integer` | [IntegerFieldParamsInput](../custom-fields.md#type-integerfieldparamsinput) | Parameters for INTEGER field type. |
 | `boolean` | [BooleanFieldParamsInput](../custom-fields.md#type-booleanfieldparamsinput) | Parameters for BOOLEAN field type. |
 | `date` | [DateFieldParamsInput](../custom-fields.md#type-datefieldparamsinput) | Parameters for DATE field type. |
 | `datetime` | [DateTimeFieldParamsInput](../custom-fields.md#type-datetimefieldparamsinput) | Parameters for DATETIME field type. |
@@ -342,7 +343,7 @@ Parameters for STRING field type.
 | `isRequired` | `Boolean!` | Whether a value is required. |
 | `minLength` | `Int` | The minimum character length. |
 | `maxLength` | `Int` | The maximum character length. |
-| `defaultValue` | `String` | The default value. |
+| `defaultString` | `String` | The default value. |
 | `trim` | `Boolean` | Whether to trim whitespace. |
 
 </details>
@@ -357,24 +358,39 @@ Parameters for TEXT field type.
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` | Whether a value is required. |
 | `maxLength` | `Int` | The maximum character length. |
-| `defaultValue` | `String` | The default value. |
+| `defaultText` | `String` | The default value. |
 | `trim` | `Boolean` | Whether to trim whitespace. |
 
 </details>
 
 <details>
 
-<summary>NumberFieldParamsInput</summary>
+<summary>DecimalFieldParamsInput</summary>
 
-Parameters for NUMBER field type.
+Parameters for DECIMAL field type.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` | Whether a value is required. |
-| `min` | `Float` | The minimum allowed value. |
-| `max` | `Float` | The maximum allowed value. |
-| `precision` | `Int` | The decimal precision. |
-| `defaultValue` | `Float` | The default value. |
+| `minDecimal` | `Decimal` | The minimum allowed value. |
+| `maxDecimal` | `Decimal` | The maximum allowed value. |
+| `scale` | `Int!` | Digits after the decimal point. Must be >= 0. Values sent with more fractional digits than `scale` are rounded using HALF_UP before storage. |
+| `defaultDecimal` | `Decimal` | The default value. |
+
+</details>
+
+<details>
+
+<summary>IntegerFieldParamsInput</summary>
+
+Parameters for INTEGER field type.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` | Whether a value is required. |
+| `minInteger` | `Long` | The minimum allowed value. |
+| `maxInteger` | `Long` | The maximum allowed value. |
+| `defaultInteger` | `Long` | The default value. |
 
 </details>
 
@@ -387,7 +403,7 @@ Parameters for BOOLEAN field type.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` | Whether a value is required. |
-| `defaultValue` | `Boolean` | The default value. |
+| `defaultBoolean` | `Boolean` | The default value. |
 
 </details>
 
@@ -400,7 +416,7 @@ Parameters for DATE field type.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` | Whether a value is required. |
-| `defaultValue` | `Date` | The default value. |
+| `defaultDate` | `Date` | The default value. |
 
 </details>
 
@@ -413,7 +429,7 @@ Parameters for DATETIME field type.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` | Whether a value is required. |
-| `defaultValue` | `DateTime` | The default value. |
+| `defaultDatetime` | `DateTime` | The default value. |
 
 </details>
 
@@ -453,7 +469,7 @@ Parameters for OPTIONS field type.
 | `isRequired` | `Boolean!` | Whether a value is required. |
 | `isMulti` | `Boolean` | Whether multiple options can be selected. |
 | `options` | [[FieldOptionInput](../custom-fields.md#type-fieldoptioninput)!]! | The available options. |
-| `defaultValue` | `Code` | The default option code. |
+| `defaultOptions` | `Code` | The default option code. |
 
 </details>
 
@@ -510,7 +526,7 @@ Parameters for CATALOG field type.
 | `isRequired` | `Boolean!` | Whether a value is required. |
 | `isMulti` | `Boolean` | Whether multiple items can be selected. |
 | `refCatalogCode` | `Code!` | The catalog code that items can be selected from. |
-| `defaultValue` | `Code` | The default item code. |
+| `defaultCatalog` | `Code` | The default item code. |
 
 </details>
 
@@ -523,7 +539,7 @@ Parameters for TAG field type.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` | Whether a value is required. |
-| `defaultValue` | `Code` | The default tag code. |
+| `defaultTag` | `Code` | The default tag code. |
 
 </details>
 
@@ -724,7 +740,8 @@ Field parameters input. Exactly one field must be provided.
 | ----- | ---- | ----------- |
 | `string` | [StringFieldParamsInput](../custom-fields.md#type-stringfieldparamsinput) | Parameters for STRING field type. |
 | `text` | [TextFieldParamsInput](../custom-fields.md#type-textfieldparamsinput) | Parameters for TEXT field type. |
-| `number` | [NumberFieldParamsInput](../custom-fields.md#type-numberfieldparamsinput) | Parameters for NUMBER field type. |
+| `decimal` | [DecimalFieldParamsInput](../custom-fields.md#type-decimalfieldparamsinput) | Parameters for DECIMAL field type. |
+| `integer` | [IntegerFieldParamsInput](../custom-fields.md#type-integerfieldparamsinput) | Parameters for INTEGER field type. |
 | `boolean` | [BooleanFieldParamsInput](../custom-fields.md#type-booleanfieldparamsinput) | Parameters for BOOLEAN field type. |
 | `date` | [DateFieldParamsInput](../custom-fields.md#type-datefieldparamsinput) | Parameters for DATE field type. |
 | `datetime` | [DateTimeFieldParamsInput](../custom-fields.md#type-datetimefieldparamsinput) | Parameters for DATETIME field type. |
@@ -749,7 +766,7 @@ Parameters for STRING field type.
 | `isRequired` | `Boolean!` | Whether a value is required. |
 | `minLength` | `Int` | The minimum character length. |
 | `maxLength` | `Int` | The maximum character length. |
-| `defaultValue` | `String` | The default value. |
+| `defaultString` | `String` | The default value. |
 | `trim` | `Boolean` | Whether to trim whitespace. |
 
 </details>
@@ -764,24 +781,39 @@ Parameters for TEXT field type.
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` | Whether a value is required. |
 | `maxLength` | `Int` | The maximum character length. |
-| `defaultValue` | `String` | The default value. |
+| `defaultText` | `String` | The default value. |
 | `trim` | `Boolean` | Whether to trim whitespace. |
 
 </details>
 
 <details>
 
-<summary>NumberFieldParamsInput</summary>
+<summary>DecimalFieldParamsInput</summary>
 
-Parameters for NUMBER field type.
+Parameters for DECIMAL field type.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` | Whether a value is required. |
-| `min` | `Float` | The minimum allowed value. |
-| `max` | `Float` | The maximum allowed value. |
-| `precision` | `Int` | The decimal precision. |
-| `defaultValue` | `Float` | The default value. |
+| `minDecimal` | `Decimal` | The minimum allowed value. |
+| `maxDecimal` | `Decimal` | The maximum allowed value. |
+| `scale` | `Int!` | Digits after the decimal point. Must be >= 0. Values sent with more fractional digits than `scale` are rounded using HALF_UP before storage. |
+| `defaultDecimal` | `Decimal` | The default value. |
+
+</details>
+
+<details>
+
+<summary>IntegerFieldParamsInput</summary>
+
+Parameters for INTEGER field type.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` | Whether a value is required. |
+| `minInteger` | `Long` | The minimum allowed value. |
+| `maxInteger` | `Long` | The maximum allowed value. |
+| `defaultInteger` | `Long` | The default value. |
 
 </details>
 
@@ -794,7 +826,7 @@ Parameters for BOOLEAN field type.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` | Whether a value is required. |
-| `defaultValue` | `Boolean` | The default value. |
+| `defaultBoolean` | `Boolean` | The default value. |
 
 </details>
 
@@ -807,7 +839,7 @@ Parameters for DATE field type.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` | Whether a value is required. |
-| `defaultValue` | `Date` | The default value. |
+| `defaultDate` | `Date` | The default value. |
 
 </details>
 
@@ -820,7 +852,7 @@ Parameters for DATETIME field type.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` | Whether a value is required. |
-| `defaultValue` | `DateTime` | The default value. |
+| `defaultDatetime` | `DateTime` | The default value. |
 
 </details>
 
@@ -860,7 +892,7 @@ Parameters for OPTIONS field type.
 | `isRequired` | `Boolean!` | Whether a value is required. |
 | `isMulti` | `Boolean` | Whether multiple options can be selected. |
 | `options` | [[FieldOptionInput](../custom-fields.md#type-fieldoptioninput)!]! | The available options. |
-| `defaultValue` | `Code` | The default option code. |
+| `defaultOptions` | `Code` | The default option code. |
 
 </details>
 
@@ -917,7 +949,7 @@ Parameters for CATALOG field type.
 | `isRequired` | `Boolean!` | Whether a value is required. |
 | `isMulti` | `Boolean` | Whether multiple items can be selected. |
 | `refCatalogCode` | `Code!` | The catalog code that items can be selected from. |
-| `defaultValue` | `Code` | The default item code. |
+| `defaultCatalog` | `Code` | The default item code. |
 
 </details>
 
@@ -930,7 +962,7 @@ Parameters for TAG field type.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` | Whether a value is required. |
-| `defaultValue` | `Code` | The default tag code. |
+| `defaultTag` | `Code` | The default tag code. |
 
 </details>
 
