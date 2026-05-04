@@ -47,7 +47,7 @@ cURL
 ```sh
 curl -X POST 'https://api.eu.navixy.com/v2/task/form/values/update' \
     -H 'Content-Type: application/json' \
-    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task_id": 12546, "values": {"Numerical Value": {"type": "text", "value": "text field value"}}}'
+    -d '{"hash": "3b47a8672465f8009969caee36fda834", "task_id": 9677618, "values": {"2533373665146": {"type": "text", "value": "Hideo Kojima"}}}'
 ```
 {% endcode %}
 
