@@ -21,10 +21,10 @@ Updates existing form values of given task.
 
 **Parameters**
 
-| name     | description                    | type        |
-| -------- | ------------------------------ | ----------- |
-| task\_id | An ID of the task.             | int         |
-| values   | Map of field\_id-value object. | JSON object |
+| name     | description                                     | type        |
+| -------- | ----------------------------------------------- | ----------- |
+| task\_id | An ID of the task.                              | int         |
+| values   | Map of field\_id-value object (Numerical value) | JSON object |
 
 where values object is:
 
