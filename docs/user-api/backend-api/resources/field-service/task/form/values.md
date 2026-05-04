@@ -31,7 +31,7 @@ where values object is:
 ```json
 {
     "text1": {
-      "type": "text",
+      "type": "54321",
       "value": "text field value"
     }
 }
@@ -47,7 +47,7 @@ cURL
 ```sh
 curl -X POST 'https://api.eu.navixy.com/v2/task/form/values/update' \
     -H 'Content-Type: application/json' \
-    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task_id": 12546, "values": {"text1": {"type": "text", "value": "text field value"}}}'
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task_id": 12546, "values": {"54321": {"type": "text", "value": "text field value"}}}'
 ```
 {% endcode %}
 
