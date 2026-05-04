@@ -30,8 +30,8 @@ where values object is:
 
 ```json
 {
-    "Numerical value": {
-      "type": "text1",
+    "1223344": {
+      "type": "text",
       "value": "text field value"
     }
 }
