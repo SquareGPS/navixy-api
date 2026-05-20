@@ -17,10 +17,12 @@ _required permissions_: `password: "update"`.
 
 #### Parameters
 
-| name          | description                                                | type   |
-| ------------- | ---------------------------------------------------------- | ------ |
-| old\_password | Current dealer's password.                                 | string |
-| new\_password | New password for the dealer, 6 to 20 printable characters. | string |
+| name          | description              | type   |
+| ------------- | ------------------------ | ------ |
+| old\_password | Current dealer password. | string |
+| new\_password | New dealer password.     | string |
+
+{% include "../../../.gitbook/includes/password-requirements.md" %}
 
 #### Example
 
@@ -30,7 +32,7 @@ cURL
 ```sh
 curl -X POST 'https://api.eu.navixy.com/v2/panel/dealer/password/update' \
     -H 'Content-Type: application/json' \
-    -d '{"hash": "fa7bf873fab9333144e171372a321b06", "old_password": "qwerty", "new_password": "B1r7d@Y"}'
+    -d '{"hash": "fa7bf873fab9333144e171372a321b06", "old_password": "qwerty", "new_password": "Hh6FXTt%E!Rx*%f3"}'
 ```
 {% endcode %}
 

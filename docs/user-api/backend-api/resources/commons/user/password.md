@@ -17,9 +17,11 @@ Changes password of user with the provided session hash (it is contained in a pa
 
 #### Parameters
 
-| name     | description                                              | type   |
-| -------- | -------------------------------------------------------- | ------ |
-| password | New password for the user. 6 to 20 printable characters. | string |
+| name     | description                | type   |
+| -------- | -------------------------- | ------ |
+| password | New password for the user. | string |
+
+{% include "../../../../../.gitbook/includes/password-requirements.md" %}
 
 #### Example
 
@@ -28,7 +30,7 @@ cURL
 ```sh
 curl -X POST 'https://api.eu.navixy.com/v2/user/password/change' \
     -H 'Content-Type: application/json' \
-    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "password": "12@14Y$"}'
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "password": "D9#YoBaQd@RMjMSb"}'
 ```
 
 #### Response
@@ -63,7 +65,7 @@ cURL
 ```sh
 curl -X POST 'https://api.eu.navixy.com/v2/user/password/set' \
     -H 'Content-Type: application/json' \
-    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "old_password": "qwert1", "new_password": "12@14Y$"}'
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "old_password": "Hh6FXTt%E!Rx*%f3", "new_password": "D9#YoBaQd@RMjMSb"}'
 ```
 {% endcode %}
 
