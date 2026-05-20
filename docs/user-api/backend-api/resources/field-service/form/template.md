@@ -16,6 +16,8 @@ User can assign form to the task or checkin by choosing template without the nee
 {
   "id": 1,
   "label": "Order form",
+  "description": "Form for delivery orders",
+  "version": 3,
   "fields":[{
      "id": "Text-1",
      "label": "Name", 
@@ -34,6 +36,8 @@ User can assign form to the task or checkin by choosing template without the nee
 
 * `id` - int. An ID of a template.
 * `label` - string. User-defined template label, from 1 to 100 characters.
+* `description` - string. User-defined template description. Can be empty or null.
+* `version` - int. Auto-incrementing version number, updated on each template modification.
 * `fields` - array of multiple [form\_field](field-types.md) objects.
 * `created` - [date/time](../../../#data-types). Date when this template created. The read-only field.
 * `submit_in_zone` - boolean. If `true`, form can be submitted only in task zone.
@@ -173,27 +177,27 @@ https://api.eu.navixy.com/v2/form/template/read?hash=a6aa75587e5c59c32d347da4385
 ```json
 {
     "success": true,
-    "list":[{
+    "value": {
       "id": 1,
       "label": "Order form",
       "fields": [{
         "id": "Text-1",
-        "label": "Name", 
+        "label": "Name",
         "description": "Your full name",
-        "required": true, 
-        "type": "text", 
-        "min_length": 5, 
+        "required": true,
+        "type": "text",
+        "min_length": 5,
         "max_length": 255
       }],
       "created": "2017-03-15 12:36:27",
       "submit_in_zone": true,
       "updated": "2017-03-16 15:22:53",
       "default": false
-    }]
+    }
 }
 ```
 
-* `list` - ordered array of [form\_template objects](template.md#form-template-object).
+* `value` - a [form\_template object](template.md#form-template-object).
 
 #### Errors
 
@@ -219,7 +223,7 @@ cURL
 ```sh
 curl -X POST 'https://api.eu.navixy.com/v2/form/template/update' \
     -H 'Content-Type: application/json' \
-    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "template": {"id": 111, label": "Order form", "fields": [{"id": "Text-1", "label": "Name", "description": "Your full name", "required": true, "type": "text", "min_length": 5, "max_length": 255}], "submit_in_zone": true, "default": false}}'
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "template": {"id": 111, "label": "Order form", "fields": [{"id": "Text-1", "label": "Name", "description": "Your full name", "required": true, "type": "text", "min_length": 5, "max_length": 255}], "submit_in_zone": true, "default": false}}'
 ```
 {% endcode %}
 

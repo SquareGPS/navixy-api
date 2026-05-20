@@ -28,23 +28,23 @@ organization(id: ID!): Organization
 
 An organization in the hierarchy that owns entities and users.
 
-**Implements:** [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
+**Implements:** [Node](../common.md#type-node), [Versioned](../common.md#type-versioned), [Titled](../common.md#type-titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Can be provided in update/delete mutations to prevent lost updates. If omitted, the update proceeds without stale-read protection. |
 | `title` | `String!` | The human-readable display name. |
 | `externalId` | `String` | An external system identifier for integration purposes. |
 | `isActive` | `Boolean!` | Whether this organization is active. |
-| `features` | [[OrganizationFeature](#organizationfeature)!]! | The feature flags enabled for this organization. |
-| `parent` | [Organization](#organization) | The parent organization in the hierarchy. Null for root organizations. |
-| `children` | [OrganizationConnection](#organizationconnection)! | The child organizations. |
-| `members` | [MemberConnection](members.md#memberconnection)! | The members of this organization. |
-| `devices` | [DeviceConnection](../devices/types.md#deviceconnection)! | The devices owned by this organization. |
-| `assets` | [AssetConnection](../assets/types.md#assetconnection)! | The assets owned by this organization. |
-| `geoObjects` | [GeoObjectConnection](../geo-objects/types.md#geoobjectconnection)! | The geographic objects owned by this organization. |
-| `schedules` | [ScheduleConnection](../schedules.md#scheduleconnection)! | The schedules owned by this organization. |
+| `features` | [[OrganizationFeature](#type-organizationfeature)!]! | The feature flags enabled for this organization. |
+| `parent` | [Organization](#type-organization) | The parent organization in the hierarchy. Null for root organizations. |
+| `children` | [OrganizationConnection](#type-organizationconnection)! | The child organizations. |
+| `members` | [MemberConnection](members.md#type-memberconnection)! | The members of this organization. |
+| `devices` | [DeviceConnection](../devices/types.md#type-deviceconnection)! | The devices owned by this organization. |
+| `assets` | [AssetConnection](../assets/types.md#type-assetconnection)! | The assets owned by this organization. |
+| `geoObjects` | [GeoObjectConnection](../geo-objects/types.md#type-geoobjectconnection)! | The geographic objects owned by this organization. |
+| `schedules` | [ScheduleConnection](../schedules.md#type-scheduleconnection)! | The schedules owned by this organization. |
 
 </details>
 
@@ -54,14 +54,14 @@ An organization in the hierarchy that owns entities and users.
 
 A paginated list of Organization items.
 
-**Implements:** [Connection](../common.md#connection)
+**Implements:** [Connection](../common.md#type-connection)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[OrganizationEdge](#organizationedge)!]! | A list of edges. |
-| `nodes` | [[Organization](#organization)!]! | A list of nodes in the connection (without edge metadata). |
-| `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
-| `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
+| `edges` | [[OrganizationEdge](#type-organizationedge)!]! | A list of edges. |
+| `nodes` | [[Organization](#type-organization)!]! | A list of nodes in the connection (without edge metadata). |
+| `pageInfo` | [PageInfo](../common.md#type-pageinfo)! | Information about the current page. |
+| `total` | [CountInfo](../common.md#type-countinfo) | The total count of items matching the filter. |
 
 </details>
 
@@ -116,8 +116,8 @@ Ordering options for organizations.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [OrganizationOrderField](#organizationorderfield)! | The field to order by. |
-| `direction` | [OrderDirection](../common.md#orderdirection)! | The direction to order. |
+| `field` | [OrganizationOrderField](#type-organizationorderfield)! | The field to order by. |
+| `direction` | [OrderDirection](../common.md#type-orderdirection)! | The direction to order. |
 
 </details>
 
@@ -129,14 +129,14 @@ Ordering options for organizations.
 
 A paginated list of Organization items.
 
-**Implements:** [Connection](../common.md#connection)
+**Implements:** [Connection](../common.md#type-connection)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[OrganizationEdge](#organizationedge)!]! | A list of edges. |
-| `nodes` | [[Organization](#organization)!]! | A list of nodes in the connection (without edge metadata). |
-| `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
-| `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
+| `edges` | [[OrganizationEdge](#type-organizationedge)!]! | A list of edges. |
+| `nodes` | [[Organization](#type-organization)!]! | A list of nodes in the connection (without edge metadata). |
+| `pageInfo` | [PageInfo](../common.md#type-pageinfo)! | Information about the current page. |
+| `total` | [CountInfo](../common.md#type-countinfo) | The total count of items matching the filter. |
 
 </details>
 
@@ -188,7 +188,7 @@ Input for creating a new organization.
 | `parentId` | `ID` | The parent organization ID. Null for root organizations. |
 | `title` | `String!` | The display name. |
 | `externalId` | `String` | An external system identifier. |
-| `features` | [[OrganizationFeature](#organizationfeature)!] | The feature flags to enable. |
+| `features` | [[OrganizationFeature](#type-organizationfeature)!] | The feature flags to enable. |
 
 </details>
 
@@ -202,7 +202,7 @@ The result of an organization mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `organization` | [Organization](#organization)! | The created or updated organization. |
+| `organization` | [Organization](#type-organization)! | The created or updated organization. |
 
 </details>
 
@@ -212,23 +212,23 @@ The result of an organization mutation.
 
 An organization in the hierarchy that owns entities and users.
 
-**Implements:** [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
+**Implements:** [Node](../common.md#type-node), [Versioned](../common.md#type-versioned), [Titled](../common.md#type-titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Can be provided in update/delete mutations to prevent lost updates. If omitted, the update proceeds without stale-read protection. |
 | `title` | `String!` | The human-readable display name. |
 | `externalId` | `String` | An external system identifier for integration purposes. |
 | `isActive` | `Boolean!` | Whether this organization is active. |
-| `features` | [[OrganizationFeature](#organizationfeature)!]! | The feature flags enabled for this organization. |
-| `parent` | [Organization](#organization) | The parent organization in the hierarchy. Null for root organizations. |
-| `children` | [OrganizationConnection](#organizationconnection)! | The child organizations. |
-| `members` | [MemberConnection](members.md#memberconnection)! | The members of this organization. |
-| `devices` | [DeviceConnection](../devices/types.md#deviceconnection)! | The devices owned by this organization. |
-| `assets` | [AssetConnection](../assets/types.md#assetconnection)! | The assets owned by this organization. |
-| `geoObjects` | [GeoObjectConnection](../geo-objects/types.md#geoobjectconnection)! | The geographic objects owned by this organization. |
-| `schedules` | [ScheduleConnection](../schedules.md#scheduleconnection)! | The schedules owned by this organization. |
+| `features` | [[OrganizationFeature](#type-organizationfeature)!]! | The feature flags enabled for this organization. |
+| `parent` | [Organization](#type-organization) | The parent organization in the hierarchy. Null for root organizations. |
+| `children` | [OrganizationConnection](#type-organizationconnection)! | The child organizations. |
+| `members` | [MemberConnection](members.md#type-memberconnection)! | The members of this organization. |
+| `devices` | [DeviceConnection](../devices/types.md#type-deviceconnection)! | The devices owned by this organization. |
+| `assets` | [AssetConnection](../assets/types.md#type-assetconnection)! | The assets owned by this organization. |
+| `geoObjects` | [GeoObjectConnection](../geo-objects/types.md#type-geoobjectconnection)! | The geographic objects owned by this organization. |
+| `schedules` | [ScheduleConnection](../schedules.md#type-scheduleconnection)! | The schedules owned by this organization. |
 
 </details>
 
@@ -261,11 +261,11 @@ Input for updating an existing organization.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | The organization ID to update. |
-| `version` | `Int!` | The current version for optimistic locking. |
+| `version` | `Int` | The current version for optimistic locking. If omitted, auto-increments without conflict check. |
 | `title` | `String` | The new display name. |
 | `externalId` | `String` | The new external identifier. |
 | `isActive` | `Boolean` | The new active status. |
-| `features` | [[OrganizationFeature](#organizationfeature)!] | The new feature flags. |
+| `features` | [[OrganizationFeature](#type-organizationfeature)!] | The new feature flags. |
 
 </details>
 
@@ -279,7 +279,7 @@ The result of an organization mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `organization` | [Organization](#organization)! | The created or updated organization. |
+| `organization` | [Organization](#type-organization)! | The created or updated organization. |
 
 </details>
 
@@ -289,23 +289,23 @@ The result of an organization mutation.
 
 An organization in the hierarchy that owns entities and users.
 
-**Implements:** [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
+**Implements:** [Node](../common.md#type-node), [Versioned](../common.md#type-versioned), [Titled](../common.md#type-titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Can be provided in update/delete mutations to prevent lost updates. If omitted, the update proceeds without stale-read protection. |
 | `title` | `String!` | The human-readable display name. |
 | `externalId` | `String` | An external system identifier for integration purposes. |
 | `isActive` | `Boolean!` | Whether this organization is active. |
-| `features` | [[OrganizationFeature](#organizationfeature)!]! | The feature flags enabled for this organization. |
-| `parent` | [Organization](#organization) | The parent organization in the hierarchy. Null for root organizations. |
-| `children` | [OrganizationConnection](#organizationconnection)! | The child organizations. |
-| `members` | [MemberConnection](members.md#memberconnection)! | The members of this organization. |
-| `devices` | [DeviceConnection](../devices/types.md#deviceconnection)! | The devices owned by this organization. |
-| `assets` | [AssetConnection](../assets/types.md#assetconnection)! | The assets owned by this organization. |
-| `geoObjects` | [GeoObjectConnection](../geo-objects/types.md#geoobjectconnection)! | The geographic objects owned by this organization. |
-| `schedules` | [ScheduleConnection](../schedules.md#scheduleconnection)! | The schedules owned by this organization. |
+| `features` | [[OrganizationFeature](#type-organizationfeature)!]! | The feature flags enabled for this organization. |
+| `parent` | [Organization](#type-organization) | The parent organization in the hierarchy. Null for root organizations. |
+| `children` | [OrganizationConnection](#type-organizationconnection)! | The child organizations. |
+| `members` | [MemberConnection](members.md#type-memberconnection)! | The members of this organization. |
+| `devices` | [DeviceConnection](../devices/types.md#type-deviceconnection)! | The devices owned by this organization. |
+| `assets` | [AssetConnection](../assets/types.md#type-assetconnection)! | The assets owned by this organization. |
+| `geoObjects` | [GeoObjectConnection](../geo-objects/types.md#type-geoobjectconnection)! | The geographic objects owned by this organization. |
+| `schedules` | [ScheduleConnection](../schedules.md#type-scheduleconnection)! | The schedules owned by this organization. |
 
 </details>
 
@@ -338,7 +338,7 @@ Input for deleting an organization and all its data.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | The organization ID to delete. |
-| `version` | `Int!` | The current version for optimistic locking. |
+| `version` | `Int` | The current version for optimistic locking. If omitted, auto-increments without conflict check. |
 
 </details>
 
@@ -360,29 +360,33 @@ The result of a delete mutation.
 
 ## Objects
 
+<a id="type-organization"></a>
+
 ### Organization
 
 An organization in the hierarchy that owns entities and users.
 
-**Implements:** [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
+**Implements:** [Node](../common.md#type-node), [Versioned](../common.md#type-versioned), [Titled](../common.md#type-titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Can be provided in update/delete mutations to prevent lost updates. If omitted, the update proceeds without stale-read protection. |
 | `title` | `String!` | The human-readable display name. |
 | `externalId` | `String` | An external system identifier for integration purposes. |
 | `isActive` | `Boolean!` | Whether this organization is active. |
-| `features` | [[OrganizationFeature](#organizationfeature)!]! | The feature flags enabled for this organization. |
-| `parent` | [Organization](#organization) | The parent organization in the hierarchy. Null for root organizations. |
-| `children` | [OrganizationConnection](#organizationconnection)! | The child organizations. |
-| `members` | [MemberConnection](members.md#memberconnection)! | The members of this organization. |
-| `devices` | [DeviceConnection](../devices/types.md#deviceconnection)! | The devices owned by this organization. |
-| `assets` | [AssetConnection](../assets/types.md#assetconnection)! | The assets owned by this organization. |
-| `geoObjects` | [GeoObjectConnection](../geo-objects/types.md#geoobjectconnection)! | The geographic objects owned by this organization. |
-| `schedules` | [ScheduleConnection](../schedules.md#scheduleconnection)! | The schedules owned by this organization. |
+| `features` | [[OrganizationFeature](#type-organizationfeature)!]! | The feature flags enabled for this organization. |
+| `parent` | [Organization](#type-organization) | The parent organization in the hierarchy. Null for root organizations. |
+| `children` | [OrganizationConnection](#type-organizationconnection)! | The child organizations. |
+| `members` | [MemberConnection](members.md#type-memberconnection)! | The members of this organization. |
+| `devices` | [DeviceConnection](../devices/types.md#type-deviceconnection)! | The devices owned by this organization. |
+| `assets` | [AssetConnection](../assets/types.md#type-assetconnection)! | The assets owned by this organization. |
+| `geoObjects` | [GeoObjectConnection](../geo-objects/types.md#type-geoobjectconnection)! | The geographic objects owned by this organization. |
+| `schedules` | [ScheduleConnection](../schedules.md#type-scheduleconnection)! | The schedules owned by this organization. |
 
 ---
+
+<a id="type-organizationpayload"></a>
 
 ### OrganizationPayload
 
@@ -390,11 +394,13 @@ The result of an organization mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `organization` | [Organization](#organization)! | The created or updated organization. |
+| `organization` | [Organization](#type-organization)! | The created or updated organization. |
 
 ---
 
 ## Inputs
+
+<a id="type-organizationfilter"></a>
 
 ### OrganizationFilter
 
@@ -407,6 +413,8 @@ Filtering options for organizations.
 
 ---
 
+<a id="type-organizationchildrenfilter"></a>
+
 ### OrganizationChildrenFilter
 
 Filtering options for organization children. Excludes parentId as it is implicit.
@@ -418,16 +426,20 @@ Filtering options for organization children. Excludes parentId as it is implicit
 
 ---
 
+<a id="type-organizationorder"></a>
+
 ### OrganizationOrder
 
 Ordering options for organizations.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [OrganizationOrderField](#organizationorderfield)! | The field to order by. |
-| `direction` | [OrderDirection](../common.md#orderdirection)! | The direction to order. |
+| `field` | [OrganizationOrderField](#type-organizationorderfield)! | The field to order by. |
+| `direction` | [OrderDirection](../common.md#type-orderdirection)! | The direction to order. |
 
 ---
+
+<a id="type-organizationcreateinput"></a>
 
 ### OrganizationCreateInput
 
@@ -438,9 +450,11 @@ Input for creating a new organization.
 | `parentId` | `ID` | The parent organization ID. Null for root organizations. |
 | `title` | `String!` | The display name. |
 | `externalId` | `String` | An external system identifier. |
-| `features` | [[OrganizationFeature](#organizationfeature)!] | The feature flags to enable. |
+| `features` | [[OrganizationFeature](#type-organizationfeature)!] | The feature flags to enable. |
 
 ---
+
+<a id="type-organizationupdateinput"></a>
 
 ### OrganizationUpdateInput
 
@@ -449,13 +463,15 @@ Input for updating an existing organization.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | The organization ID to update. |
-| `version` | `Int!` | The current version for optimistic locking. |
+| `version` | `Int` | The current version for optimistic locking. If omitted, auto-increments without conflict check. |
 | `title` | `String` | The new display name. |
 | `externalId` | `String` | The new external identifier. |
 | `isActive` | `Boolean` | The new active status. |
-| `features` | [[OrganizationFeature](#organizationfeature)!] | The new feature flags. |
+| `features` | [[OrganizationFeature](#type-organizationfeature)!] | The new feature flags. |
 
 ---
+
+<a id="type-organizationdeleteinput"></a>
 
 ### OrganizationDeleteInput
 
@@ -464,11 +480,13 @@ Input for deleting an organization and all its data.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | The organization ID to delete. |
-| `version` | `Int!` | The current version for optimistic locking. |
+| `version` | `Int` | The current version for optimistic locking. If omitted, auto-increments without conflict check. |
 
 ---
 
 ## Enums
+
+<a id="type-organizationfeature"></a>
 
 ### OrganizationFeature
 
@@ -480,6 +498,8 @@ Feature flags that can be enabled for an organization.
 | `WHITELABEL` | The organization has custom branding including domain, logo, and color scheme. |
 
 ---
+
+<a id="type-organizationorderfield"></a>
 
 ### OrganizationOrderField
 
@@ -493,30 +513,34 @@ Fields available for ordering organizations.
 
 ## Pagination types
 
+<a id="type-organizationconnection"></a>
+
 ### OrganizationConnection
 
 A paginated list of Organization items.
 
-**Implements:** [Connection](../common.md#connection)
+**Implements:** [Connection](../common.md#type-connection)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[OrganizationEdge](#organizationedge)!]! | A list of edges. |
-| `nodes` | [[Organization](#organization)!]! | A list of nodes in the connection (without edge metadata). |
-| `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
-| `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
+| `edges` | [[OrganizationEdge](#type-organizationedge)!]! | A list of edges. |
+| `nodes` | [[Organization](#type-organization)!]! | A list of nodes in the connection (without edge metadata). |
+| `pageInfo` | [PageInfo](../common.md#type-pageinfo)! | Information about the current page. |
+| `total` | [CountInfo](../common.md#type-countinfo) | The total count of items matching the filter. |
 
 ---
+
+<a id="type-organizationedge"></a>
 
 ### OrganizationEdge
 
 An edge in the Organization connection.
 
-**Implements:** [Edge](../common.md#edge)
+**Implements:** [Edge](../common.md#type-edge)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `cursor` | `String!` | An opaque cursor for this edge. |
-| `node` | [Organization](#organization)! | The organization at the end of the edge. |
+| `node` | [Organization](#type-organization)! | The organization at the end of the edge. |
 
 ---

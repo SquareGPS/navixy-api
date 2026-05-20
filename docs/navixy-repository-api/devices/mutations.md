@@ -32,8 +32,8 @@ Input for creating a new device.
 | `typeId` | `ID!` | The device type ID. |
 | `modelId` | `ID!` | The device model ID. |
 | `statusId` | `ID!` | The initial device status ID. |
-| `title` | `String!` | The device display name. |
-| `identifiers` | [[DeviceIdentifierInput](types.md#deviceidentifierinput)!] | The hardware identifiers. |
+| `title` | `String` | The device display name. If omitted or blank, the server generates "<vendor.title> <model.title> <identifier.value>" where the identifier is chosen by type priority: IMEI > SERIAL_NUMBER > MAC_ADDRESS, with fallback to identifiers[0] when none of the priority types are present. |
+| `identifiers` | [[DeviceIdentifierInput](types.md#type-deviceidentifierinput)!]! | The hardware identifiers. At least one entry is required. |
 
 </details>
 
@@ -45,7 +45,7 @@ Input for a device identifier.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `type` | [DeviceIdType](types.md#deviceidtype)! | The type of identifier. |
+| `type` | [DeviceIdType](types.md#type-deviceidtype)! | The type of identifier. |
 | `value` | `String!` | The identifier value. |
 | `namespace` | `Code` | The namespace for uniqueness scope. Null means globally unique. |
 
@@ -61,7 +61,7 @@ The result of a device mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `device` | [Device](types.md#device)! | The created or updated device. |
+| `device` | [Device](types.md#type-device)! | The created or updated device. |
 
 </details>
 
@@ -71,22 +71,23 @@ The result of a device mutation.
 
 A tracking device such as a GPS tracker, sensor, or beacon.
 
-**Implements:** [Node](../common.md#node), [Titled](../common.md#titled), [Versioned](../common.md#versioned), [InventoryItem](inventory.md#inventoryitem)
+**Implements:** [Node](../common.md#type-node), [Titled](../common.md#type-titled), [Versioned](../common.md#type-versioned), [InventoryItem](inventory.md#type-inventoryitem)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Can be provided in update/delete mutations to prevent lost updates. If omitted, the update proceeds without stale-read protection. |
 | `title` | `String!` | The human-readable display name. |
-| `organization` | [Organization](../organizations/README.md#organization)! | The organization that owns this device. |
-| `type` | [DeviceType](types.md#devicetype)! | The device type classification. |
-| `model` | [DeviceModel](types.md#devicemodel)! | The specific device model. |
-| `status` | [DeviceStatus](types.md#devicestatus)! | The current operational status. |
-| `identifiers` | [[DeviceIdentifier](types.md#deviceidentifier)!]! | The hardware identifiers for this device (IMEI, serial number, MAC address, etc.). |
-| `inventory` | [Inventory](inventory.md#inventory) | The inventory this device is currently assigned to. |
-| `relationsFrom` | [[DeviceRelation](types.md#devicerelation)!]! | The outgoing relationships from this device to other devices. |
-| `relationsTo` | [[DeviceRelation](types.md#devicerelation)!]! | The incoming relationships from other devices to this device. |
-| `inventoryHistory` | [DeviceInventoryRelationConnection](inventory.md#deviceinventoryrelationconnection)! | The history of inventory assignments for this device. |
+| `organization` | [Organization](../organizations/README.md#type-organization)! | The organization that owns this device. |
+| `type` | [DeviceType](types.md#type-devicetype)! | The device type classification. |
+| `model` | [DeviceModel](types.md#type-devicemodel)! | The specific device model. |
+| `status` | [DeviceStatus](types.md#type-devicestatus)! | The current operational status. |
+| `identifiers` | [[DeviceIdentifier](types.md#type-deviceidentifier)!]! | The hardware identifiers for this device (IMEI, serial number, MAC address, etc.). |
+| `asset` | [Asset](../assets/types.md#type-asset) | The asset this device is currently linked to. |
+| `inventory` | [Inventory](inventory.md#type-inventory) | The inventory this device is currently assigned to. |
+| `relationsFrom` | [[DeviceRelation](types.md#type-devicerelation)!]! | The outgoing relationships from this device to other devices. |
+| `relationsTo` | [[DeviceRelation](types.md#type-devicerelation)!]! | The incoming relationships from other devices to this device. |
+| `inventoryHistory` | [DeviceInventoryRelationConnection](inventory.md#type-deviceinventoryrelationconnection)! | The history of inventory assignments for this device. |
 
 </details>
 
@@ -119,7 +120,7 @@ Input for updating an existing device.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | The device ID to update. |
-| `version` | `Int!` | The current version for optimistic locking. |
+| `version` | `Int` | The current version for optimistic locking. If omitted, auto-increments without conflict check. |
 | `modelId` | `ID` | The new device model. |
 | `statusId` | `ID` | The new device status. |
 | `title` | `String` | The new display name. |
@@ -136,7 +137,7 @@ The result of a device mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `device` | [Device](types.md#device)! | The created or updated device. |
+| `device` | [Device](types.md#type-device)! | The created or updated device. |
 
 </details>
 
@@ -146,22 +147,23 @@ The result of a device mutation.
 
 A tracking device such as a GPS tracker, sensor, or beacon.
 
-**Implements:** [Node](../common.md#node), [Titled](../common.md#titled), [Versioned](../common.md#versioned), [InventoryItem](inventory.md#inventoryitem)
+**Implements:** [Node](../common.md#type-node), [Titled](../common.md#type-titled), [Versioned](../common.md#type-versioned), [InventoryItem](inventory.md#type-inventoryitem)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Can be provided in update/delete mutations to prevent lost updates. If omitted, the update proceeds without stale-read protection. |
 | `title` | `String!` | The human-readable display name. |
-| `organization` | [Organization](../organizations/README.md#organization)! | The organization that owns this device. |
-| `type` | [DeviceType](types.md#devicetype)! | The device type classification. |
-| `model` | [DeviceModel](types.md#devicemodel)! | The specific device model. |
-| `status` | [DeviceStatus](types.md#devicestatus)! | The current operational status. |
-| `identifiers` | [[DeviceIdentifier](types.md#deviceidentifier)!]! | The hardware identifiers for this device (IMEI, serial number, MAC address, etc.). |
-| `inventory` | [Inventory](inventory.md#inventory) | The inventory this device is currently assigned to. |
-| `relationsFrom` | [[DeviceRelation](types.md#devicerelation)!]! | The outgoing relationships from this device to other devices. |
-| `relationsTo` | [[DeviceRelation](types.md#devicerelation)!]! | The incoming relationships from other devices to this device. |
-| `inventoryHistory` | [DeviceInventoryRelationConnection](inventory.md#deviceinventoryrelationconnection)! | The history of inventory assignments for this device. |
+| `organization` | [Organization](../organizations/README.md#type-organization)! | The organization that owns this device. |
+| `type` | [DeviceType](types.md#type-devicetype)! | The device type classification. |
+| `model` | [DeviceModel](types.md#type-devicemodel)! | The specific device model. |
+| `status` | [DeviceStatus](types.md#type-devicestatus)! | The current operational status. |
+| `identifiers` | [[DeviceIdentifier](types.md#type-deviceidentifier)!]! | The hardware identifiers for this device (IMEI, serial number, MAC address, etc.). |
+| `asset` | [Asset](../assets/types.md#type-asset) | The asset this device is currently linked to. |
+| `inventory` | [Inventory](inventory.md#type-inventory) | The inventory this device is currently assigned to. |
+| `relationsFrom` | [[DeviceRelation](types.md#type-devicerelation)!]! | The outgoing relationships from this device to other devices. |
+| `relationsTo` | [[DeviceRelation](types.md#type-devicerelation)!]! | The incoming relationships from other devices to this device. |
+| `inventoryHistory` | [DeviceInventoryRelationConnection](inventory.md#type-deviceinventoryrelationconnection)! | The history of inventory assignments for this device. |
 
 </details>
 
@@ -194,7 +196,7 @@ Input for deleting a device.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | The device ID to delete. |
-| `version` | `Int!` | The current version for optimistic locking. |
+| `version` | `Int` | The current version for optimistic locking. If omitted, auto-increments without conflict check. |
 
 </details>
 
@@ -241,7 +243,7 @@ Input for adding an identifier to a device.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `deviceId` | `ID!` | The device ID. |
-| `identifier` | [DeviceIdentifierInput](types.md#deviceidentifierinput)! | The identifier details. |
+| `identifier` | [DeviceIdentifierInput](types.md#type-deviceidentifierinput)! | The identifier details. |
 
 </details>
 
@@ -253,7 +255,7 @@ Input for a device identifier.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `type` | [DeviceIdType](types.md#deviceidtype)! | The type of identifier. |
+| `type` | [DeviceIdType](types.md#type-deviceidtype)! | The type of identifier. |
 | `value` | `String!` | The identifier value. |
 | `namespace` | `Code` | The namespace for uniqueness scope. Null means globally unique. |
 
@@ -269,7 +271,7 @@ The result of a device identifier mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `deviceIdentifier` | [DeviceIdentifier](types.md#deviceidentifier)! | The added device identifier. |
+| `deviceIdentifier` | [DeviceIdentifier](types.md#type-deviceidentifier)! | The added device identifier. |
 
 </details>
 
@@ -279,13 +281,13 @@ The result of a device identifier mutation.
 
 A hardware identifier for a device.
 
-**Implements:** [Node](../common.md#node)
+**Implements:** [Node](../common.md#type-node)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `device` | [Device](types.md#device)! | The device this identifier belongs to. |
-| `type` | [DeviceIdType](types.md#deviceidtype)! | The type of identifier. |
+| `device` | [Device](types.md#type-device)! | The device this identifier belongs to. |
+| `type` | [DeviceIdType](types.md#type-deviceidtype)! | The type of identifier. |
 | `value` | `String!` | The identifier value. |
 | `namespace` | `Code` | The namespace for uniqueness scope. Null means the identifier is globally unique. |
 
@@ -381,7 +383,7 @@ The result of a device relation mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `deviceRelation` | [DeviceRelation](types.md#devicerelation)! | The created device relationship. |
+| `deviceRelation` | [DeviceRelation](types.md#type-devicerelation)! | The created device relationship. |
 
 </details>
 
@@ -391,14 +393,14 @@ The result of a device relation mutation.
 
 A relationship between two devices.
 
-**Implements:** [Node](../common.md#node)
+**Implements:** [Node](../common.md#type-node)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `first` | [Device](types.md#device)! | The first device in the relationship. |
-| `second` | [Device](types.md#device)! | The second device in the relationship. |
-| `type` | [DeviceRelationType](types.md#devicerelationtype)! | The type of relationship. |
+| `first` | [Device](types.md#type-device)! | The first device in the relationship. |
+| `second` | [Device](types.md#type-device)! | The second device in the relationship. |
+| `type` | [DeviceRelationType](types.md#type-devicerelationtype)! | The type of relationship. |
 
 </details>
 
@@ -477,10 +479,10 @@ Input for creating a device type.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization that will own the item. |
-| `code` | `Code!` | The machine-readable code. |
+| `code` | `Code` | The machine-readable code. Auto-generated from title if omitted. |
 | `title` | `String!` | The display name. |
-| `order` | `Int` | The display order. |
-| `meta` | [CatalogItemMetaInput](../catalogs/catalog-items.md#catalogitemmetainput) | The display properties. |
+| `order` | `Int` | The display order. Auto-calculated as last position if omitted. |
+| `meta` | [CatalogItemMetaInput](../catalogs/catalog-items.md#type-catalogitemmetainput) | The display properties. |
 
 </details>
 
@@ -494,9 +496,6 @@ Display properties for catalog items.
 | ----- | ---- | ----------- |
 | `description` | `String` | The description. |
 | `hidden` | `Boolean` | Whether the item is hidden from regular UI lists. |
-| `textColor` | `HexColorCode` | The text color for UI display. |
-| `backgroundColor` | `HexColorCode` | The background color for UI display. |
-| `icon` | `String` | A relative URL to the icon. |
 
 </details>
 
@@ -510,7 +509,7 @@ The result of a device type mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `deviceType` | [DeviceType](types.md#devicetype)! | The created or updated device type. |
+| `deviceType` | [DeviceType](types.md#type-devicetype)! | The created or updated device type. |
 
 </details>
 
@@ -520,7 +519,7 @@ The result of a device type mutation.
 
 A classification type for devices.
 
-**Implements:** [CatalogItem](../catalogs/catalog-items.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
+**Implements:** [CatalogItem](../catalogs/catalog-items.md#type-catalogitem), [Node](../common.md#type-node), [Versioned](../common.md#type-versioned), [Titled](../common.md#type-titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -529,10 +528,9 @@ A classification type for devices.
 | `title` | `String!` | The human-readable display name. Can be localized. |
 | `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
 | `order` | `Int!` | The display order within the same level or category. |
-| `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
-| `organization` | [Organization](../organizations/README.md#organization) | The organization that owns this item. Null for system items. |
-| `meta` | [CatalogItemMeta](../catalogs/catalog-items.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
-| `customFieldDefinitions` | [[CustomFieldDefinition](../custom-fields.md#customfielddefinition)!]! | Custom field definitions specific to this device type, ordered by display order. |
+| `catalog` | [Catalog](../catalogs/catalog-items.md#type-catalog)! | The catalog this item belongs to. |
+| `organization` | [Organization](../organizations/README.md#type-organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../catalogs/catalog-items.md#type-catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 
 </details>
 
@@ -565,10 +563,10 @@ Input for updating a device type.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | The item ID to update. |
-| `version` | `Int!` | The current version for optimistic locking. |
+| `version` | `Int` | The current version for optimistic locking. If omitted, auto-increments without conflict check. |
 | `title` | `String` | The new display name. |
 | `order` | `Int` | The new display order. |
-| `meta` | [CatalogItemMetaInput](../catalogs/catalog-items.md#catalogitemmetainput) | The display properties. |
+| `meta` | [CatalogItemMetaInput](../catalogs/catalog-items.md#type-catalogitemmetainput) | The display properties. |
 
 </details>
 
@@ -582,9 +580,6 @@ Display properties for catalog items.
 | ----- | ---- | ----------- |
 | `description` | `String` | The description. |
 | `hidden` | `Boolean` | Whether the item is hidden from regular UI lists. |
-| `textColor` | `HexColorCode` | The text color for UI display. |
-| `backgroundColor` | `HexColorCode` | The background color for UI display. |
-| `icon` | `String` | A relative URL to the icon. |
 
 </details>
 
@@ -598,7 +593,7 @@ The result of a device type mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `deviceType` | [DeviceType](types.md#devicetype)! | The created or updated device type. |
+| `deviceType` | [DeviceType](types.md#type-devicetype)! | The created or updated device type. |
 
 </details>
 
@@ -608,7 +603,7 @@ The result of a device type mutation.
 
 A classification type for devices.
 
-**Implements:** [CatalogItem](../catalogs/catalog-items.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
+**Implements:** [CatalogItem](../catalogs/catalog-items.md#type-catalogitem), [Node](../common.md#type-node), [Versioned](../common.md#type-versioned), [Titled](../common.md#type-titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -617,10 +612,9 @@ A classification type for devices.
 | `title` | `String!` | The human-readable display name. Can be localized. |
 | `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
 | `order` | `Int!` | The display order within the same level or category. |
-| `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
-| `organization` | [Organization](../organizations/README.md#organization) | The organization that owns this item. Null for system items. |
-| `meta` | [CatalogItemMeta](../catalogs/catalog-items.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
-| `customFieldDefinitions` | [[CustomFieldDefinition](../custom-fields.md#customfielddefinition)!]! | Custom field definitions specific to this device type, ordered by display order. |
+| `catalog` | [Catalog](../catalogs/catalog-items.md#type-catalog)! | The catalog this item belongs to. |
+| `organization` | [Organization](../organizations/README.md#type-organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../catalogs/catalog-items.md#type-catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 
 </details>
 
@@ -653,7 +647,7 @@ Input for deleting a catalog item.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | The catalog item ID to delete. |
-| `version` | `Int!` | The current version for optimistic locking. |
+| `version` | `Int` | The current version for optimistic locking. If omitted, auto-increments without conflict check. |
 
 </details>
 
@@ -700,10 +694,10 @@ Input for creating a device status.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization that will own the item. |
-| `code` | `Code!` | The machine-readable code. |
+| `code` | `Code` | The machine-readable code. Auto-generated from title if omitted. |
 | `title` | `String!` | The display name. |
-| `order` | `Int` | The display order. |
-| `meta` | [CatalogItemMetaInput](../catalogs/catalog-items.md#catalogitemmetainput) | The display properties. |
+| `order` | `Int` | The display order. Auto-calculated as last position if omitted. |
+| `meta` | [CatalogItemMetaInput](../catalogs/catalog-items.md#type-catalogitemmetainput) | The display properties. |
 
 </details>
 
@@ -717,9 +711,6 @@ Display properties for catalog items.
 | ----- | ---- | ----------- |
 | `description` | `String` | The description. |
 | `hidden` | `Boolean` | Whether the item is hidden from regular UI lists. |
-| `textColor` | `HexColorCode` | The text color for UI display. |
-| `backgroundColor` | `HexColorCode` | The background color for UI display. |
-| `icon` | `String` | A relative URL to the icon. |
 
 </details>
 
@@ -733,7 +724,7 @@ The result of a device status mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `deviceStatus` | [DeviceStatus](types.md#devicestatus)! | The created or updated device status. |
+| `deviceStatus` | [DeviceStatus](types.md#type-devicestatus)! | The created or updated device status. |
 
 </details>
 
@@ -743,7 +734,7 @@ The result of a device status mutation.
 
 An operational status for devices.
 
-**Implements:** [CatalogItem](../catalogs/catalog-items.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
+**Implements:** [CatalogItem](../catalogs/catalog-items.md#type-catalogitem), [Node](../common.md#type-node), [Versioned](../common.md#type-versioned), [Titled](../common.md#type-titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -752,9 +743,9 @@ An operational status for devices.
 | `title` | `String!` | The human-readable display name. Can be localized. |
 | `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
 | `order` | `Int!` | The display order within the same level or category. |
-| `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
-| `organization` | [Organization](../organizations/README.md#organization) | The organization that owns this item. Null for system items. |
-| `meta` | [CatalogItemMeta](../catalogs/catalog-items.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
+| `catalog` | [Catalog](../catalogs/catalog-items.md#type-catalog)! | The catalog this item belongs to. |
+| `organization` | [Organization](../organizations/README.md#type-organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../catalogs/catalog-items.md#type-catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 
 </details>
 
@@ -787,10 +778,10 @@ Input for updating a device status.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | The item ID to update. |
-| `version` | `Int!` | The current version for optimistic locking. |
+| `version` | `Int` | The current version for optimistic locking. If omitted, auto-increments without conflict check. |
 | `title` | `String` | The new display name. |
 | `order` | `Int` | The new display order. |
-| `meta` | [CatalogItemMetaInput](../catalogs/catalog-items.md#catalogitemmetainput) | The display properties. |
+| `meta` | [CatalogItemMetaInput](../catalogs/catalog-items.md#type-catalogitemmetainput) | The display properties. |
 
 </details>
 
@@ -804,9 +795,6 @@ Display properties for catalog items.
 | ----- | ---- | ----------- |
 | `description` | `String` | The description. |
 | `hidden` | `Boolean` | Whether the item is hidden from regular UI lists. |
-| `textColor` | `HexColorCode` | The text color for UI display. |
-| `backgroundColor` | `HexColorCode` | The background color for UI display. |
-| `icon` | `String` | A relative URL to the icon. |
 
 </details>
 
@@ -820,7 +808,7 @@ The result of a device status mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `deviceStatus` | [DeviceStatus](types.md#devicestatus)! | The created or updated device status. |
+| `deviceStatus` | [DeviceStatus](types.md#type-devicestatus)! | The created or updated device status. |
 
 </details>
 
@@ -830,7 +818,7 @@ The result of a device status mutation.
 
 An operational status for devices.
 
-**Implements:** [CatalogItem](../catalogs/catalog-items.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
+**Implements:** [CatalogItem](../catalogs/catalog-items.md#type-catalogitem), [Node](../common.md#type-node), [Versioned](../common.md#type-versioned), [Titled](../common.md#type-titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -839,9 +827,9 @@ An operational status for devices.
 | `title` | `String!` | The human-readable display name. Can be localized. |
 | `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
 | `order` | `Int!` | The display order within the same level or category. |
-| `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
-| `organization` | [Organization](../organizations/README.md#organization) | The organization that owns this item. Null for system items. |
-| `meta` | [CatalogItemMeta](../catalogs/catalog-items.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
+| `catalog` | [Catalog](../catalogs/catalog-items.md#type-catalog)! | The catalog this item belongs to. |
+| `organization` | [Organization](../organizations/README.md#type-organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../catalogs/catalog-items.md#type-catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 
 </details>
 
@@ -874,7 +862,7 @@ Input for deleting a catalog item.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | The catalog item ID to delete. |
-| `version` | `Int!` | The current version for optimistic locking. |
+| `version` | `Int` | The current version for optimistic locking. If omitted, auto-increments without conflict check. |
 
 </details>
 

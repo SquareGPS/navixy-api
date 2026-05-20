@@ -10,7 +10,8 @@
 * [Error handling](error-handling.md)
 * [Optimistic locking](optimistic-locking.md)
 * [Guides](guides/README.md)
-  * [Activating a device](guides/activating-a-device.md)
+  * [Working with devices](guides/working-with-devices.md)
+  * [Managing device inventory](guides/managing-device-inventory.md)
   * [Working with assets](guides/working-with-assets.md)
   * [Organizing assets into groups](guides/organizing-assets-into-groups.md)
   * [Implementing custom fields](guides/implementing-custom-fields.md)
@@ -63,7 +64,7 @@
 
 ## GraphQL Schema
 
-* [Public GraphQL schema](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/nvx4-clean/docs/navixy-repository-api/graphql-schema/schema.graphql)
+* [Public GraphQL schema](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/master/docs/navixy-repository-api/graphql-schema/schema.graphql)
 
 ## GraphQL reference
 

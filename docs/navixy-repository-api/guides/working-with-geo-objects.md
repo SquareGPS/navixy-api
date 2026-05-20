@@ -131,13 +131,13 @@ The response confirms the new type:
 
 Save the type ID — you'll need it when creating geo objects.
 
+{% hint style="info" %}
+Geo object types are organizational categories — they don't constrain the geometry shape. A geo object with type "Place" can use any geometry, including a `Polygon`.
+{% endhint %}
+
 ## Understanding GeoJSON geometry
 
-Geo objects store their geographic shape in the `geometry` field, which uses GeoJSON format as defined in [RFC 7946](https://www.rfc-editor.org/rfc/rfc7946). This format represents geographic features with coordinate-based geometries.
-
-{% hint style="info" %}
-The `geometry` field is a convenience alias for the `geojson` system custom field. You can also access the same data through the `customFields` field.
-{% endhint %}
+Geo objects store their geographic shape in the `geojsonData` field, which uses GeoJSON format as defined in [RFC 7946](https://www.rfc-editor.org/rfc/rfc7946). This format represents geographic features with coordinate-based geometries.
 
 A complete GeoJSON is always a `FeatureCollection` wrapping one or more `Feature` objects, each of which holds a geometry and optional properties:
 
@@ -160,6 +160,32 @@ A complete GeoJSON is always a `FeatureCollection` wrapping one or more `Feature
         ]
       },
       "properties": {}
+    }
+  ]
+}
+```
+
+Inside GraphQL operations, this JSON is transformed in the following way:
+
+```graphql
+{
+  type: "FeatureCollection",
+  features: [
+    {
+      type: "Feature",
+      geometry: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [13.35, 52.48],
+            [13.45, 52.48],
+            [13.45, 52.56],
+            [13.35, 52.56],
+            [13.35, 52.48]
+          ]
+        ]
+      },
+      properties: {}
     }
   ]
 }
@@ -212,13 +238,17 @@ A delivery company needs to define service areas and mark important locations. T
 
 Rather than a `Point`, model the warehouse as a small `Polygon` buffer centered on the building. This lets you use `containsPoints` later to detect vehicle arrivals and departures.
 
+{% hint style="info" %}
+`version` is optional — omitting it applies the update unconditionally without conflict detection. Include it whenever you want to guard against overwriting concurrent changes. See [Optimistic locking](../optimistic-locking.md) for details. In this example, we'll be using this field.
+{% endhint %}
+
 ```graphql
 mutation CreateWarehouseZone {
   geoObjectCreate(input: {
     organizationId: "7c9e6679-7425-40de-944b-e07fc1f90ae7"
-    typeId: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"
+    typeId: "019ce6d5-ff98-8000-801f-43474f542312"
     title: "Main Warehouse - Mitte"
-    geometry: {
+    geojsonData: {
       type: "FeatureCollection"
       features: [{
         type: "Feature"
@@ -242,7 +272,7 @@ mutation CreateWarehouseZone {
       id
       version
       title
-      geometry
+      geojsonData
     }
   }
 }
@@ -260,7 +290,7 @@ The response confirms creation:
         "id": "019a6b2f-793e-807b-8001-555345529b44",
         "version": 1,
         "title": "Main Warehouse - Mitte",
-        "geometry": {
+        "geojsonData": {
           "type": "FeatureCollection",
           "features": [
             {
@@ -287,7 +317,7 @@ The response confirms creation:
 }
 ```
 
-Save the `id` and `version` — you'll need them for updates.
+Save the `id`. You'll need it for updates.
 {% endstep %}
 
 {% step %}
@@ -305,7 +335,7 @@ query GetWarehouseZone {
       code
       title
     }
-    geometry
+    geojsonData
   }
 }
 ```
@@ -323,7 +353,7 @@ The response returns the full geo object:
         "code": "poi",
         "title": "Point of Interest"
       },
-      "geometry": {
+      "geojsonData": {
         "type": "FeatureCollection",
         "features": [
           {
@@ -349,7 +379,7 @@ The response returns the full geo object:
 }
 ```
 
-The `geometry` field contains the full GeoJSON structure you provided, which you can use to verify the configuration or display on a map in your application.
+The `geojsonData` field contains the full GeoJSON structure you provided, which you can use to verify the configuration or display on a map in your application.
 {% endstep %}
 
 {% step %}
@@ -363,7 +393,7 @@ mutation CreateDeliveryZone {
     organizationId: "7c9e6679-7425-40de-944b-e07fc1f90ae7"
     typeId: "b1ffcd00-0d1c-5fg9-cc7e-7cc0ce491b22"
     title: "Central Berlin Zone"
-    geometry: {
+    geojsonData: {
       type: "FeatureCollection"
       features: [{
         type: "Feature"
@@ -387,7 +417,7 @@ mutation CreateDeliveryZone {
       id
       version
       title
-      geometry
+      geojsonData
     }
   }
 }
@@ -409,7 +439,7 @@ The response returns:
         "id": "019a6b30-8a4f-807b-8001-666456630c55",
         "version": 1,
         "title": "Central Berlin Zone",
-        "geometry": {
+        "geojsonData": {
           "type": "FeatureCollection",
           "features": [
             {
@@ -446,7 +476,7 @@ Check if specific delivery addresses fall within your zone using the `containsPo
 query CheckDeliveryAddresses {
   geoObject(id: "019a6b30-8a4f-807b-8001-666456630c55") {
     title
-    geometry
+    geojsonData
     containsPoints(points: [
       { lat: 52.520008, lng: 13.404954 }
       { lat: 52.500000, lng: 13.400000 }
@@ -470,7 +500,7 @@ The response shows which points are inside the zone:
   "data": {
     "geoObject": {
       "title": "Central Berlin Zone",
-      "geometry": {
+      "geojsonData": {
         "type": "FeatureCollection",
         "features": [
           {
@@ -530,7 +560,7 @@ mutation ExpandDeliveryZone {
   geoObjectUpdate(input: {
     id: "019a6b30-8a4f-807b-8001-666456630c55"
     version: 1
-    geometry: {
+    geojsonData: {
       type: "FeatureCollection"
       features: [{
         type: "Feature"
@@ -553,13 +583,11 @@ mutation ExpandDeliveryZone {
     geoObject {
       id
       version
-      geometry
+      geojsonData
     }
   }
 }
 ```
-
-The `version` parameter ensures you don't accidentally overwrite changes made by someone else. If the version doesn't match, you'll receive a [conflict error](../error-handling.md#version-conflict-409).
 
 The response shows the incremented version:
 
@@ -570,7 +598,7 @@ The response shows the incremented version:
       "geoObject": {
         "id": "019a6b30-8a4f-807b-8001-666456630c55",
         "version": 2,
-        "geometry": {
+        "geojsonData": {
           "type": "FeatureCollection",
           "features": [
             {
@@ -626,17 +654,17 @@ All geometry values in the API are wrapped in a `FeatureCollection`. The example
 
 ### Single location marker (warehouse, customer address)
 
-```json
+```graphql
 {
-  "type": "FeatureCollection",
-  "features": [
+  type: "FeatureCollection",
+  features: [
     {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [13.404954, 52.520008]
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.404954, 52.520008]
       },
-      "properties": {}
+      properties: {}
     }
   ]
 }
@@ -644,15 +672,15 @@ All geometry values in the API are wrapped in a `FeatureCollection`. The example
 
 ### Rectangular area (simple geofence)
 
-```json
+```graphql
 {
-  "type": "FeatureCollection",
-  "features": [
+  type: "FeatureCollection",
+  features: [
     {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      type: "Feature",
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [13.35, 52.48],
             [13.45, 52.48],
@@ -662,7 +690,7 @@ All geometry values in the API are wrapped in a `FeatureCollection`. The example
           ]
         ]
       },
-      "properties": {}
+      properties: {}
     }
   ]
 }
@@ -670,15 +698,15 @@ All geometry values in the API are wrapped in a `FeatureCollection`. The example
 
 ### Polygon with exclusion zone (donut-shaped)
 
-```json
+```graphql
 {
-  "type": "FeatureCollection",
-  "features": [
+  type: "FeatureCollection",
+  features: [
     {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      type: "Feature",
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [13.30, 52.45],
             [13.50, 52.45],
@@ -695,7 +723,7 @@ All geometry values in the API are wrapped in a `FeatureCollection`. The example
           ]
         ]
       },
-      "properties": {}
+      properties: {}
     }
   ]
 }
@@ -709,13 +737,13 @@ In fleet management, routes are modeled as `Polygon` corridors rather than `Line
 
 ```json
 {
-  "type": "FeatureCollection",
-  "features": [
+  type: "FeatureCollection",
+  features: [
     {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      type: "Feature",
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [13.376, 52.515],
             [13.406, 52.519],
@@ -725,7 +753,7 @@ In fleet management, routes are modeled as `Polygon` corridors rather than `Line
           ]
         ]
       },
-      "properties": {}
+      properties: {}
     }
   ]
 }
@@ -739,19 +767,19 @@ Use `LineString` when you need to draw a line on a map for display purposes — 
 
 ```json
 {
-  "type": "FeatureCollection",
-  "features": [
+  type: "FeatureCollection",
+  features: [
     {
-      "type": "Feature",
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
+      type: "Feature",
+      geometry: {
+        type: "LineString",
+        coordinates: [
           [13.377704, 52.516275],
           [13.404954, 52.520008],
           [13.388175, 52.519444]
         ]
       },
-      "properties": {}
+      properties: {}
     }
   ]
 }
@@ -761,19 +789,19 @@ Use `LineString` when you need to draw a line on a map for display purposes — 
 
 ```json
 {
-  "type": "FeatureCollection",
-  "features": [
+  type: "FeatureCollection",
+  features: [
     {
-      "type": "Feature",
-      "geometry": {
-        "type": "MultiPoint",
-        "coordinates": [
+      type: "Feature",
+      geometry: {
+        type: "MultiPoint",
+        coordinates: [
           [13.404954, 52.520008],
           [13.410000, 52.515000],
           [13.395000, 52.525000]
         ]
       },
-      "properties": {}
+      properties: {}
     }
   ]
 }
@@ -796,7 +824,7 @@ query ListGeoObjects {
         code
         title
       }
-      geometry
+      geojsonData
     }
     pageInfo {
       hasNextPage
@@ -820,7 +848,7 @@ The response returns a paginated list:
             "code": "poi",
             "title": "Point of Interest"
           },
-          "geometry": {
+          "geojsonData": {
             "type": "FeatureCollection",
             "features": [
               {
@@ -849,7 +877,7 @@ The response returns a paginated list:
             "code": "geofence",
             "title": "Geofence"
           },
-          "geometry": {
+          "geojsonData": {
             "type": "FeatureCollection",
             "features": [
               {
@@ -922,7 +950,7 @@ For more on filtering and pagination, see [Filtering and sorting](../filtering-a
 
 ## Handling version conflicts
 
-If someone else updates the geo object while you're working on it, your mutation will fail with a conflict error:
+If you include `version` in your mutation and the entity has been modified since you last fetched it, the API returns a conflict error:
 
 ```json
 {

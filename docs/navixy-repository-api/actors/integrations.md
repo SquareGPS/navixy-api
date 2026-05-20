@@ -28,14 +28,14 @@ integration(id: ID!): Integration
 
 An external system integration with API access.
 
-**Implements:** [Actor](README.md#actor), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
+**Implements:** [Actor](README.md#type-actor), [Node](../common.md#type-node), [Versioned](../common.md#type-versioned), [Titled](../common.md#type-titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. |
-| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Can be provided in update/delete mutations to prevent lost updates. If omitted, the update proceeds without stale-read protection. |
 | `title` | `String!` | The display name of the actor. |
-| `organization` | [Organization](../organizations/README.md#organization)! | The organization this integration belongs to. |
+| `organization` | [Organization](../organizations/README.md#type-organization)! | The organization this integration belongs to. |
 | `credentialRef` | `String` | A reference to credentials stored in a secure vault. |
 | `isActive` | `Boolean!` | Whether this integration is active. |
 
@@ -47,23 +47,23 @@ An external system integration with API access.
 
 An organization in the hierarchy that owns entities and users.
 
-**Implements:** [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
+**Implements:** [Node](../common.md#type-node), [Versioned](../common.md#type-versioned), [Titled](../common.md#type-titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Can be provided in update/delete mutations to prevent lost updates. If omitted, the update proceeds without stale-read protection. |
 | `title` | `String!` | The human-readable display name. |
 | `externalId` | `String` | An external system identifier for integration purposes. |
 | `isActive` | `Boolean!` | Whether this organization is active. |
-| `features` | [[OrganizationFeature](../organizations/README.md#organizationfeature)!]! | The feature flags enabled for this organization. |
-| `parent` | [Organization](../organizations/README.md#organization) | The parent organization in the hierarchy. Null for root organizations. |
-| `children` | [OrganizationConnection](../organizations/README.md#organizationconnection)! | The child organizations. |
-| `members` | [MemberConnection](../organizations/members.md#memberconnection)! | The members of this organization. |
-| `devices` | [DeviceConnection](../devices/types.md#deviceconnection)! | The devices owned by this organization. |
-| `assets` | [AssetConnection](../assets/types.md#assetconnection)! | The assets owned by this organization. |
-| `geoObjects` | [GeoObjectConnection](../geo-objects/types.md#geoobjectconnection)! | The geographic objects owned by this organization. |
-| `schedules` | [ScheduleConnection](../schedules.md#scheduleconnection)! | The schedules owned by this organization. |
+| `features` | [[OrganizationFeature](../organizations/README.md#type-organizationfeature)!]! | The feature flags enabled for this organization. |
+| `parent` | [Organization](../organizations/README.md#type-organization) | The parent organization in the hierarchy. Null for root organizations. |
+| `children` | [OrganizationConnection](../organizations/README.md#type-organizationconnection)! | The child organizations. |
+| `members` | [MemberConnection](../organizations/members.md#type-memberconnection)! | The members of this organization. |
+| `devices` | [DeviceConnection](../devices/types.md#type-deviceconnection)! | The devices owned by this organization. |
+| `assets` | [AssetConnection](../assets/types.md#type-assetconnection)! | The assets owned by this organization. |
+| `geoObjects` | [GeoObjectConnection](../geo-objects/types.md#type-geoobjectconnection)! | The geographic objects owned by this organization. |
+| `schedules` | [ScheduleConnection](../schedules.md#type-scheduleconnection)! | The schedules owned by this organization. |
 
 </details>
 
@@ -119,8 +119,8 @@ Ordering options for integrations.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [IntegrationOrderField](#integrationorderfield)! | The field to order by. |
-| `direction` | [OrderDirection](../common.md#orderdirection)! | The direction to order. |
+| `field` | [IntegrationOrderField](#type-integrationorderfield)! | The field to order by. |
+| `direction` | [OrderDirection](../common.md#type-orderdirection)! | The direction to order. |
 
 </details>
 
@@ -132,14 +132,14 @@ Ordering options for integrations.
 
 A paginated list of Integration items.
 
-**Implements:** [Connection](../common.md#connection)
+**Implements:** [Connection](../common.md#type-connection)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[IntegrationEdge](#integrationedge)!]! | A list of edges. |
-| `nodes` | [[Integration](#integration)!]! | A list of nodes in the connection (without edge metadata). |
-| `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
-| `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
+| `edges` | [[IntegrationEdge](#type-integrationedge)!]! | A list of edges. |
+| `nodes` | [[Integration](#type-integration)!]! | A list of nodes in the connection (without edge metadata). |
+| `pageInfo` | [PageInfo](../common.md#type-pageinfo)! | Information about the current page. |
+| `total` | [CountInfo](../common.md#type-countinfo) | The total count of items matching the filter. |
 
 </details>
 
@@ -204,7 +204,7 @@ The result of an integration mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `integration` | [Integration](#integration)! | The created or updated integration. |
+| `integration` | [Integration](#type-integration)! | The created or updated integration. |
 
 </details>
 
@@ -214,14 +214,14 @@ The result of an integration mutation.
 
 An external system integration with API access.
 
-**Implements:** [Actor](README.md#actor), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
+**Implements:** [Actor](README.md#type-actor), [Node](../common.md#type-node), [Versioned](../common.md#type-versioned), [Titled](../common.md#type-titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. |
-| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Can be provided in update/delete mutations to prevent lost updates. If omitted, the update proceeds without stale-read protection. |
 | `title` | `String!` | The display name of the actor. |
-| `organization` | [Organization](../organizations/README.md#organization)! | The organization this integration belongs to. |
+| `organization` | [Organization](../organizations/README.md#type-organization)! | The organization this integration belongs to. |
 | `credentialRef` | `String` | A reference to credentials stored in a secure vault. |
 | `isActive` | `Boolean!` | Whether this integration is active. |
 
@@ -256,7 +256,7 @@ Input for updating an existing integration.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | The integration ID to update. |
-| `version` | `Int!` | The current version for optimistic locking. |
+| `version` | `Int` | The current version for optimistic locking. If omitted, auto-increments without conflict check. |
 | `title` | `String` | The new display name. |
 | `credentialRef` | `String` | The new credential reference. |
 | `isActive` | `Boolean` | The new active status. |
@@ -273,7 +273,7 @@ The result of an integration mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `integration` | [Integration](#integration)! | The created or updated integration. |
+| `integration` | [Integration](#type-integration)! | The created or updated integration. |
 
 </details>
 
@@ -283,14 +283,14 @@ The result of an integration mutation.
 
 An external system integration with API access.
 
-**Implements:** [Actor](README.md#actor), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
+**Implements:** [Actor](README.md#type-actor), [Node](../common.md#type-node), [Versioned](../common.md#type-versioned), [Titled](../common.md#type-titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. |
-| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Can be provided in update/delete mutations to prevent lost updates. If omitted, the update proceeds without stale-read protection. |
 | `title` | `String!` | The display name of the actor. |
-| `organization` | [Organization](../organizations/README.md#organization)! | The organization this integration belongs to. |
+| `organization` | [Organization](../organizations/README.md#type-organization)! | The organization this integration belongs to. |
 | `credentialRef` | `String` | A reference to credentials stored in a secure vault. |
 | `isActive` | `Boolean!` | Whether this integration is active. |
 
@@ -325,7 +325,7 @@ Input for deleting an integration.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | The integration ID to delete. |
-| `version` | `Int!` | The current version for optimistic locking. |
+| `version` | `Int` | The current version for optimistic locking. If omitted, auto-increments without conflict check. |
 
 </details>
 
@@ -347,22 +347,26 @@ The result of a delete mutation.
 
 ## Objects
 
+<a id="type-integration"></a>
+
 ### Integration
 
 An external system integration with API access.
 
-**Implements:** [Actor](README.md#actor), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
+**Implements:** [Actor](README.md#type-actor), [Node](../common.md#type-node), [Versioned](../common.md#type-versioned), [Titled](../common.md#type-titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. |
-| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Can be provided in update/delete mutations to prevent lost updates. If omitted, the update proceeds without stale-read protection. |
 | `title` | `String!` | The display name of the actor. |
-| `organization` | [Organization](../organizations/README.md#organization)! | The organization this integration belongs to. |
+| `organization` | [Organization](../organizations/README.md#type-organization)! | The organization this integration belongs to. |
 | `credentialRef` | `String` | A reference to credentials stored in a secure vault. |
 | `isActive` | `Boolean!` | Whether this integration is active. |
 
 ---
+
+<a id="type-integrationpayload"></a>
 
 ### IntegrationPayload
 
@@ -370,11 +374,13 @@ The result of an integration mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `integration` | [Integration](#integration)! | The created or updated integration. |
+| `integration` | [Integration](#type-integration)! | The created or updated integration. |
 
 ---
 
 ## Inputs
+
+<a id="type-integrationfilter"></a>
 
 ### IntegrationFilter
 
@@ -386,16 +392,20 @@ Filtering options for integrations.
 
 ---
 
+<a id="type-integrationorder"></a>
+
 ### IntegrationOrder
 
 Ordering options for integrations.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [IntegrationOrderField](#integrationorderfield)! | The field to order by. |
-| `direction` | [OrderDirection](../common.md#orderdirection)! | The direction to order. |
+| `field` | [IntegrationOrderField](#type-integrationorderfield)! | The field to order by. |
+| `direction` | [OrderDirection](../common.md#type-orderdirection)! | The direction to order. |
 
 ---
+
+<a id="type-integrationcreateinput"></a>
 
 ### IntegrationCreateInput
 
@@ -409,6 +419,8 @@ Input for creating a new integration.
 
 ---
 
+<a id="type-integrationupdateinput"></a>
+
 ### IntegrationUpdateInput
 
 Input for updating an existing integration.
@@ -416,12 +428,14 @@ Input for updating an existing integration.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | The integration ID to update. |
-| `version` | `Int!` | The current version for optimistic locking. |
+| `version` | `Int` | The current version for optimistic locking. If omitted, auto-increments without conflict check. |
 | `title` | `String` | The new display name. |
 | `credentialRef` | `String` | The new credential reference. |
 | `isActive` | `Boolean` | The new active status. |
 
 ---
+
+<a id="type-integrationdeleteinput"></a>
 
 ### IntegrationDeleteInput
 
@@ -430,11 +444,13 @@ Input for deleting an integration.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | The integration ID to delete. |
-| `version` | `Int!` | The current version for optimistic locking. |
+| `version` | `Int` | The current version for optimistic locking. If omitted, auto-increments without conflict check. |
 
 ---
 
 ## Enums
+
+<a id="type-integrationorderfield"></a>
 
 ### IntegrationOrderField
 
@@ -448,30 +464,34 @@ Fields available for ordering integrations.
 
 ## Pagination types
 
+<a id="type-integrationconnection"></a>
+
 ### IntegrationConnection
 
 A paginated list of Integration items.
 
-**Implements:** [Connection](../common.md#connection)
+**Implements:** [Connection](../common.md#type-connection)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[IntegrationEdge](#integrationedge)!]! | A list of edges. |
-| `nodes` | [[Integration](#integration)!]! | A list of nodes in the connection (without edge metadata). |
-| `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
-| `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
+| `edges` | [[IntegrationEdge](#type-integrationedge)!]! | A list of edges. |
+| `nodes` | [[Integration](#type-integration)!]! | A list of nodes in the connection (without edge metadata). |
+| `pageInfo` | [PageInfo](../common.md#type-pageinfo)! | Information about the current page. |
+| `total` | [CountInfo](../common.md#type-countinfo) | The total count of items matching the filter. |
 
 ---
+
+<a id="type-integrationedge"></a>
 
 ### IntegrationEdge
 
 An edge in the Integration connection.
 
-**Implements:** [Edge](../common.md#edge)
+**Implements:** [Edge](../common.md#type-edge)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `cursor` | `String!` | An opaque cursor for this edge. |
-| `node` | [Integration](#integration)! | The integration at the end of the edge. |
+| `node` | [Integration](#type-integration)! | The integration at the end of the edge. |
 
 ---

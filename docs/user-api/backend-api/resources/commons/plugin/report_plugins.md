@@ -1228,3 +1228,20 @@ plugin-specific parameters:
   "plugin_id": 85
 }
 ```
+
+### Fuel Volume Report 2.0
+
+Plugin to generate the Fuel Volume 2.0, also called Fuel Level and Refueling reports.
+
+#### Parameters
+
+default **plugin\_id**: 95
+
+#### plugin example
+
+```json
+{ 
+   "hide_empty_tabs": true, 
+   "plugin_id": 95
+}
+```

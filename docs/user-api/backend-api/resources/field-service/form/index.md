@@ -4,16 +4,15 @@ title: About forms
 
 # About forms
 
-Forms used to provide additional information, such as user's name, phone, delivery date, etc. upon task completion\
-or check-in from iOS/Android mobile tracker app.\
-Forms can be attached to tasks. If form attached to task, this task cannot be completed without form submission.
+Forms are used to provide additional information, such as the user's name, phone, delivery date, etc. upon task completion or check-in from iOS/Android mobile tracker app.
 
-* Each form must be created from template, read more at [Templates](template.md)
-* For description of `<form_field>` and `<field_value>`, see [Form fields and values](field-types.md)
-* Using web API, it's now possible to only attach/fill forms with tasks (checkin forms are created through\
-  Android/iOS tracker applications). See [Task form actions](../task/form/index.md) to use forms with tasks.
+Forms can be attached to tasks. If a form attached to a task, this task cannot be completed without submitting the form.
 
-Find comprehinsive information on forms usage in our [instructions](../../../guides/field-service-management/create-forms.md).
+* Each form must be created from a template. Read more on the [Templates](template.md) page.
+* For description of `<form_field>` and `<field_value>`, see [Form fields and values](field-types.md).
+* Web API only allows attaching/filling out forms with tasks (check-in forms are created through Android/iOS tracker applications). See [Task form actions](../task/form/index.md) to use forms with tasks.
+
+Find comprehensive information on form usage in our [instructions](../../../guides/field-service-management/create-forms.md).
 
 ## Form object
 
@@ -36,6 +35,10 @@ Find comprehinsive information on forms usage in our [instructions](../../../gui
     "submit_in_zone": true,
     "task_id": 1,
     "template_id": 1,
+    "description": "",
+    "template_version": null,
+    "tracker_id": 14,
+    "checkin_id": null,
     "values": {
       "111-aaa-whatever": {
         "type": "text",
@@ -195,7 +198,7 @@ Downloads form as a file by an ID.
 | name   | description                          | type                         |
 | ------ | ------------------------------------ | ---------------------------- |
 | id     | ID of the form.                      | int                          |
-| format | File format. Can be "pdf" or "xlsx". | [enum](../../../#data-types) |
+| format | File format. Can be `pdf` or `xlsx`. | [enum](../../../#data-types) |
 
 #### Examples
 

@@ -74,7 +74,7 @@ You'll receive a response:
 }
 ```
 
-Use the `id` of the organization you want to work with for all subsequent geo object operations.
+Use the `id` of the organization you want to work with for all subsequent asset group operations.
 
 ### Check available asset group types
 
@@ -153,6 +153,12 @@ TransLog GmbH wants to organize their delivery trucks by regional depot. They'll
 ### **Create an asset group type**
 
 Start by creating the "Depot" group type. This type constrains membership to delivery trucks only, with no cap on how many can join a group.
+
+{% hint style="info" %}
+`version` is optional — omitting it applies the update unconditionally without conflict detection. Include it whenever you want to guard against overwriting concurrent changes. See [Optimistic locking](../optimistic-locking.md) for details. In this example, we'll be using this field.
+{% endhint %}
+
+Run this mutation:
 
 ```graphql
 mutation CreateDepotGroupType {
@@ -685,7 +691,7 @@ For details on pagination, see [Pagination](../pagination.md).
 
 ### Handling version conflicts
 
-Asset groups use optimistic locking. If another client updates a group between when you fetched it and when you submit your mutation, the API returns a `CONFLICT` (409) error:
+If you include `version` in your mutation and the entity has been modified since you last fetched it, the API returns a [conflict error](../error-handling.md#version-conflict-409):
 
 ```json
 {

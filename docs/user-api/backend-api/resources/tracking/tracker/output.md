@@ -3,9 +3,9 @@ title: Output control
 description: API calls for output control.
 ---
 
-# Output control
+# Digital output
 
-API calls for output control. Some device models work with `set_all` and some with `set` calls.
+API calls for digital output control (built-in device outputs switching). Some device models work with `set_all` and some with `set` calls.
 
 ## API actions
 

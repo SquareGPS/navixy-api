@@ -1,6 +1,6 @@
 # =============================================================================
 # NAVIXY 4 - GraphQL Schema
-# Version: 0.5
+# Version: 0.6.5
 # =============================================================================
 #
 # TABLE OF CONTENTS
@@ -173,17 +173,22 @@
 #
 # OPERATIONS:
 #
-#   | Operation | version in input | Behavior                        |
-#   |-----------|------------------|---------------------------------|
-#   | Create    | Not required     | Returns version: 1              |
-#   | Update    | Required         | 409 Conflict if mismatch        |
-#   | Delete    | Required         | 409 Conflict if mismatch        |
+#   | Operation | version in input | Behavior                              |
+#   |-----------|------------------|---------------------------------------|
+#   | Create    | Not required     | Returns version: 1                    |
+#   | Update    | Optional         | If provided: 409 Conflict if mismatch |
+#   |           |                  | If omitted: uses current DB version   |
+#   | Delete    | Optional         | If provided: 409 Conflict if mismatch |
+#   |           |                  | If omitted: deletes without check     |
 #
 # VERSION MISMATCH:
-#   If the entity has been modified since you fetched it:
+#   If version is provided and the entity has been modified since you fetched it:
 #   - HTTP Status: 200 (per GraphQL-over-HTTP spec)
 #   - Error code: CONFLICT
 #   - Error extensions include: status=409, expectedVersion, currentVersion
+#   If version is omitted, the client is not protected against stale reads
+#   (e.g., editing a form while another user modifies the same entity).
+#   Concurrent server-side modifications are still detected.
 #
 # =============================================================================
 #
@@ -196,7 +201,7 @@
 #
 #   Examples: deviceInventoryLink, deviceInventoryUnlink, roleAssign, roleRevoke,
 #   permissionGrant, permissionRevoke, userScopeSet, userScopeRemove,
-#   assetGroupItemAdd, assetGroupItemRemove, deviceIdentifierAdd, deviceIdentifierRemove.
+#   assetGroupItemsAdd, assetGroupItemsRemove, deviceIdentifierAdd, deviceIdentifierRemove.
 
 # =============================================================================
 # 3. LOCALIZATION
@@ -639,6 +644,10 @@ scalar EmailAddress
     url: "https://the-guild.dev/graphql/scalars/docs/scalars/email-address"
   )
 
+# TODO: TimeZone scalar — will be used in UserSettings.timezone and schedule entities.
+# scalar TimeZone
+#   @specifiedBy(url: "https://the-guild.dev/graphql/scalars/docs/scalars/time-zone")
+
 # @category: common
 "A hexadecimal color code. Supports 3-digit (`#RGB`) or 6-digit (`#RRGGBB`) format."
 scalar HexColorCode
@@ -660,12 +669,9 @@ A machine-readable identifier code.
 Constraints:
 - Allowed characters: ASCII letters (a-z, A-Z), digits (0-9), underscore (_), dot (.), hyphen (-)
 - Must start with a letter or digit
-- Case-insensitive for uniqueness checks
+- Case-preserving: the original casing is stored as provided
+- Case-insensitive for uniqueness checks and comparisons
 - Maximum length: 64 characters
-
-Naming conventions:
-- System items: UPPER_SNAKE_CASE (e.g., DEVICE_TYPE, ACTIVE)
-- User items: any valid format (e.g., vehicle_car, sensor-v2)
 
 Uniqueness:
 - For catalog items: unique within the same catalog and organization scope
@@ -852,9 +858,9 @@ enum AuditEventType {
 
 # @category: custom-fields
 """
-Controls the behavior of `customFieldDefinitionDelete` when the field has existing values.
+Controls the behavior when deleting a custom field definition that has existing values.
 
-Prefer `customFieldDefinitionArchive` for non-destructive deactivation.
+Prefer archiving for non-destructive deactivation.
 Use `CASCADE` only when permanent data removal is explicitly intended.
 """
 enum CustomFieldDefinitionDeleteBehavior {
@@ -931,6 +937,9 @@ interface Customizable {
   """
   Custom field values as a key-value map.
   Keys are `CustomFieldDefinition` codes.
+
+  System-reserved codes (`geojson_data`, `schedule_data`) are excluded from this
+  map and exposed through dedicated typed fields on the entity instead.
   """
   customFields(
     "Limit returned fields to these codes. Returns all fields if not specified."
@@ -943,7 +952,8 @@ interface Customizable {
 interface Versioned {
   """
   The version number for optimistic locking.
-  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates.
+  Incremented on each update. Can be provided in update/delete mutations to prevent lost updates.
+  If omitted, the update proceeds without stale-read protection.
   """
   version: Int!
 }
@@ -1021,12 +1031,6 @@ type CatalogItemMeta {
   canBeDeleted: Boolean!
   "Whether this item is hidden from regular UI lists."
   hidden: Boolean!
-  "The text color for UI display."
-  textColor: HexColorCode
-  "The background color for UI display."
-  backgroundColor: HexColorCode
-  "A relative URL to the icon for this item."
-  icon: String
 }
 
 # @category: catalogs/catalog-items
@@ -1521,6 +1525,50 @@ type DeviceModelEdge implements Edge {
   node: DeviceModel!
 }
 
+# @category: devices
+"A paginated list of DeviceVendor items."
+type DeviceVendorConnection implements Connection {
+  "A list of edges."
+  edges: [DeviceVendorEdge!]!
+  "A list of nodes in the connection (without edge metadata)."
+  nodes: [DeviceVendor!]!
+  "Information about the current page."
+  pageInfo: PageInfo!
+  "The total count of items matching the filter."
+  total: CountInfo
+}
+
+# @category: devices
+"An edge in the DeviceVendor connection."
+type DeviceVendorEdge implements Edge {
+  "An opaque cursor for this edge."
+  cursor: String!
+  "The device vendor at the end of the edge."
+  node: DeviceVendor!
+}
+
+# @category: devices
+"A paginated list of DeviceRelationType items."
+type DeviceRelationTypeConnection implements Connection {
+  "A list of edges."
+  edges: [DeviceRelationTypeEdge!]!
+  "A list of nodes in the connection (without edge metadata)."
+  nodes: [DeviceRelationType!]!
+  "Information about the current page."
+  pageInfo: PageInfo!
+  "The total count of items matching the filter."
+  total: CountInfo
+}
+
+# @category: devices
+"An edge in the DeviceRelationType connection."
+type DeviceRelationTypeEdge implements Edge {
+  "An opaque cursor for this edge."
+  cursor: String!
+  "The device relation type at the end of the edge."
+  node: DeviceRelationType!
+}
+
 # @category: assets
 "A paginated list of AssetType items."
 type AssetTypeConnection implements Connection {
@@ -1791,8 +1839,7 @@ type DeviceType implements CatalogItem & Node & Versioned & Titled {
   catalog: Catalog!
   organization: Organization
   meta: CatalogItemMeta!
-  "Custom field definitions specific to this device type, ordered by display order."
-  customFieldDefinitions: [CustomFieldDefinition!]!
+  # TODO: customFieldDefinitions temporarily hidden from SDL; backend support preserved — re-add when needed
 }
 
 # @category: devices
@@ -2169,8 +2216,6 @@ type User implements Actor & Node & Versioned & Titled {
   identityProviderId: String!
   "The user's primary email address."
   email: EmailAddress!
-  "The user's preferred locale."
-  locale: Locale
   "An external system identifier for integration purposes."
   externalId: String
   "Whether this user account is active."
@@ -2322,6 +2367,8 @@ type Device implements Node & Titled & Versioned & InventoryItem {
   status: DeviceStatus!
   "The hardware identifiers for this device (IMEI, serial number, MAC address, etc.)."
   identifiers: [DeviceIdentifier!]!
+  "The asset this device is currently linked to."
+  asset: Asset
   "The inventory this device is currently assigned to."
   inventory: Inventory
   "The outgoing relationships from this device to other devices."
@@ -2400,11 +2447,10 @@ type Asset implements Node & Titled & Customizable & Versioned {
     "Limit returned fields to these codes. Returns all fields if not specified."
     codes: [Code!]
   ): JSON!
-  """
-  The primary tracking device linked to this asset.
-  This is an alias for the `device` custom field.
-  """
-  device: Device
+  "The primary device (isPrimary=true among DEVICE-type custom fields)."
+  primaryDevice: Device
+  "All devices linked via DEVICE-type custom fields."
+  devices: [Device!]!
   "The groups this asset belongs to."
   groups(
     "Filtering options for the returned groups."
@@ -2431,7 +2477,7 @@ type AssetGroup implements Node & Versioned & Titled {
   "The organization that owns this group."
   organization: Organization!
   "The group type with membership constraints."
-  type: AssetGroupType!
+  type: AssetGroupType
   "The color for UI display in hexadecimal format."
   color: HexColorCode
   "The assets currently in this group."
@@ -2515,10 +2561,7 @@ type GeoObject implements Node & Titled & Customizable & Versioned {
   organization: Organization!
   "The geo object type classification."
   type: GeoObjectType!
-  """
-  The geographic shape of this object as GeoJSON geometry.
-  This is an alias for the `geojson_data` custom field.
-  """
+  "The geographic shape of this object as GeoJSON geometry."
   geojsonData: GeoJSON!
   customFields(
     "Limit returned fields to these codes. Returns all fields if not specified."
@@ -2554,10 +2597,7 @@ type Schedule implements Node & Titled & Customizable & Versioned {
   title: String!
   "The organization that owns this schedule."
   organization: Organization!
-  """
-  The calendar and time interval definitions for this schedule.
-  This is an alias for the `schedule_data` custom field.
-  """
+  "The calendar and time interval definitions for this schedule."
   scheduleData: ScheduleData!
   customFields(
     "Limit returned fields to these codes. Returns all fields if not specified."
@@ -2575,9 +2615,7 @@ A custom field definition that specifies the metadata for a custom field.
 Note: The `fieldType` property is immutable after creation.
 To change the field type, delete the definition and create a new one.
 """
-type CustomFieldDefinition implements Node & Versioned & Titled {
-  id: ID!
-  version: Int!
+type CustomFieldDefinition {
   "The human-readable display name."
   title: String!
   "The machine-readable code, unique per owner and organization."
@@ -2586,12 +2624,6 @@ type CustomFieldDefinition implements Node & Versioned & Titled {
   description: String
   "The display order within the owner context."
   order: Int!
-  "The organization that owns this definition. Null for system-level fields."
-  organization: Organization
-  "The owner catalog item: EntityType for system fields, or a specific type like AssetType for type-specific fields."
-  owner: CatalogItem!
-  "The target entity type this field applies to."
-  targetEntityType: EntityType!
   """
   The data type determining validation rules and UI rendering.
   This property is immutable and cannot be changed after creation.
@@ -2602,7 +2634,7 @@ type CustomFieldDefinition implements Node & Versioned & Titled {
   """
   Whether this field definition is archived.
   Archived fields preserve existing values but no longer appear in forms and accept no new input.
-  Use `customFieldDefinitionArchive` / `customFieldDefinitionRestore` to toggle this state.
+  Use the `archive` / `restore` actions in the parent catalog item's `customFieldDefinitions` input to toggle this state.
   """
   isArchived: Boolean!
 }
@@ -2743,9 +2775,8 @@ type FieldParamsCatalog implements FieldParams & MultiValue {
 
 # @category: custom-fields
 "Parameters for TAG field type."
-type FieldParamsTag implements FieldParams & MultiValue {
+type FieldParamsTag implements FieldParams {
   isRequired: Boolean!
-  isMulti: Boolean!
   "The default tag code."
   defaultValue: Code
 }
@@ -2945,8 +2976,8 @@ input DeviceFilter {
   statusIds: [ID!]
   "Filter by vendors (OR within field)."
   vendorIds: [ID!]
-  "Partial match on device identifier value (case-sensitive contains)."
-  identifierContains: String
+  "Partial match on device identifier value (case-insensitive contains)."
+  identifierContains: String @trim
   "Filter by inventories (OR within field)."
   inventoryIds: [ID!]
   "Partial match on title (case-insensitive contains)."
@@ -3304,6 +3335,42 @@ enum UserScopeOrderField {
 # --- Custom Field Filter ---
 
 # @category: custom-fields
+"""
+Typed filter value for custom fields. Exactly one field must be set (`@oneOf`).
+Choose the variant that matches the custom field's data type:
+
+| FieldType         | Variant      | Example                                |
+|-------------------|--------------|----------------------------------------|
+| STRING, TEXT      | `string`     | `{ string: "hello" }`                  |
+| NUMBER            | `number`     | `{ number: 42.0 }`                     |
+| BOOLEAN           | `boolean`    | `{ boolean: true }`                    |
+| DATE              | `date`       | `{ date: "2024-01-15" }`              |
+| DATETIME          | `datetime`   | `{ datetime: "2024-01-15T10:30:00Z" }`|
+| OPTIONS, CATALOG, TAG | `string` | `{ string: "option_code" }`            |
+| DEVICE, REFERENCE | `id`         | `{ id: "019a6a3f-..." }`              |
+| (IN operator)     | `stringList` | `{ stringList: ["a", "b"] }`           |
+| (IN operator)     | `idList`     | `{ idList: ["uuid1", "uuid2"] }`       |
+"""
+input CustomFieldFilterValue @oneOf {
+  "String value — for STRING, TEXT, OPTIONS, CATALOG, TAG fields."
+  string: String
+  "Numeric value — for NUMBER fields."
+  number: Float
+  "Boolean value — for BOOLEAN fields."
+  boolean: Boolean
+  "Date value — for DATE fields."
+  date: Date
+  "Date-time value — for DATETIME fields."
+  datetime: DateTime
+  "ID value — for DEVICE, REFERENCE fields."
+  id: ID
+  "List of strings — for IN operator on string-based fields."
+  stringList: [String!]
+  "List of IDs — for IN operator on reference fields."
+  idList: [ID!]
+}
+
+# @category: custom-fields
 "A filter condition for a custom field value."
 input CustomFieldFilter {
   "The custom field code to filter by."
@@ -3311,38 +3378,18 @@ input CustomFieldFilter {
   "The comparison operator."
   operator: FieldOperator!
   "The value to compare against. Null for `IS_NULL` and `IS_NOT_NULL` operators."
-  value: JSON
+  value: CustomFieldFilterValue
 }
 
 #
-# CUSTOM FIELD FILTER VALUE FORMAT
-# --------------------------------
-# The `value` field must match the field's data type:
-#
-#   | FieldType | JSON value type          | Example                        |
-#   |-----------|--------------------------|--------------------------------|
-#   | STRING    | string                   | "hello"                        |
-#   | TEXT      | string                   | "long text..."                 |
-#   | NUMBER    | number                   | 42, 3.14                       |
-#   | BOOLEAN   | boolean                  | true, false                    |
-#   | DATE      | string (YYYY-MM-DD)      | "2024-01-15"                   |
-#   | DATETIME  | string (RFC 3339)        | "2024-01-15T10:30:00Z"         |
-#   | GEOJSON   | object (GeoJSON)         | {"type":"Point","coordinates"} |
-#   | SCHEDULE  | object                   | {...}                          |
-#   | OPTIONS   | string (option code)     | "option_a"                     |
-#   | DEVICE    | string (device ID)       | "019a6a3f-..."                 |
-#   | REFERENCE | string (entity ID)       | "019a6a3f-..."                 |
-#   | CATALOG   | string (item code)       | "ITEM_CODE"                    |
-#   | TAG       | string (tag code)        | "TAG_CODE"                     |
-#
 # OPERATOR RULES:
 #   - IS_NULL / IS_NOT_NULL: `value` must be null or omitted
-#   - IN: `value` must be an array
-#   - All other operators: `value` is a single value (scalar)
+#   - IN: `value` must use `stringList` or `idList` variant
+#   - All other operators: `value` is a single-value variant
 #
-# MULTI-VALUE FIELDS (isMulti=true):
+# MULTI-VALUE FIELDS (isMulti=true for OPTIONS/CATALOG, always for TAG):
 #   Filter matches if ANY value in the array satisfies the condition.
-#   Example: field=["red","blue"], filter={operator:EQ, value:"red"} → match
+#   Example: field=["red","blue"], filter={operator:EQ, value:{string:"red"}} → match
 #
 # Invalid `value` format returns VALIDATION_ERROR with status 400.
 #
@@ -3358,6 +3405,10 @@ input CustomFieldsPatchInput {
   set: JSON
   "Field codes to remove."
   unset: [Code!]
+  "Field codes to mark as primary (replaces previous primary of the same field type)."
+  setPrimary: [Code!]
+  "Field codes to unmark as primary."
+  unsetPrimary: [Code!]
 }
 
 # --- Device ---
@@ -3384,8 +3435,8 @@ input DeviceCreateInput {
 input DeviceUpdateInput {
   "The device ID to update."
   id: ID!
-  "The current version for optimistic locking."
-  version: Int!
+  "The current version for optimistic locking. If omitted, auto-increments without conflict check."
+  version: Int
   "The new device model."
   modelId: ID
   "The new device status."
@@ -3399,8 +3450,8 @@ input DeviceUpdateInput {
 input DeviceDeleteInput {
   "The device ID to delete."
   id: ID!
-  "The current version for optimistic locking."
-  version: Int!
+  "The current version for optimistic locking. If omitted, auto-increments without conflict check."
+  version: Int
 }
 
 # @category: devices
@@ -3450,8 +3501,8 @@ input AssetCreateInput {
 input AssetUpdateInput {
   "The asset ID to update."
   id: ID!
-  "The current version for optimistic locking."
-  version: Int!
+  "The current version for optimistic locking. If omitted, auto-increments without conflict check."
+  version: Int
   "The new display name."
   title: String @trim
   "The custom field changes."
@@ -3463,8 +3514,8 @@ input AssetUpdateInput {
 input AssetDeleteInput {
   "The asset ID to delete."
   id: ID!
-  "The current version for optimistic locking."
-  version: Int!
+  "The current version for optimistic locking. If omitted, auto-increments without conflict check."
+  version: Int
 }
 
 # --- AssetGroup ---
@@ -3475,11 +3526,13 @@ input AssetGroupCreateInput {
   "The organization that will own the group."
   organizationId: ID!
   "The group type ID."
-  typeId: ID!
+  typeId: ID
   "The group display name."
   title: String! @trim
   "The color for UI display."
   color: HexColorCode
+  "Initial list of asset IDs to add to the group."
+  assetIds: [ID!]
 }
 
 # @category: assets/groups
@@ -3487,12 +3540,14 @@ input AssetGroupCreateInput {
 input AssetGroupUpdateInput {
   "The asset group ID to update."
   id: ID!
-  "The current version for optimistic locking."
-  version: Int!
+  "The current version for optimistic locking. If omitted, auto-increments without conflict check."
+  version: Int
   "The new display name."
   title: String @trim
   "The new color."
   color: HexColorCode
+  "Full replacement list of asset IDs in the group. If provided, replaces all current memberships."
+  assetIds: [ID!]
 }
 
 # @category: assets/groups
@@ -3500,26 +3555,26 @@ input AssetGroupUpdateInput {
 input AssetGroupDeleteInput {
   "The asset group ID to delete."
   id: ID!
-  "The current version for optimistic locking."
-  version: Int!
+  "The current version for optimistic locking. If omitted, auto-increments without conflict check."
+  version: Int
 }
 
 # @category: assets/groups
-"Input for adding an asset to a group."
-input AssetGroupItemAddInput {
+"Input for adding assets to a group."
+input AssetGroupItemsAddInput {
   "The group ID."
   groupId: ID!
-  "The asset ID to add."
-  assetId: ID!
+  "The asset IDs to add."
+  assetIds: [ID!]!
 }
 
 # @category: assets/groups
-"Input for removing an asset from a group."
-input AssetGroupItemRemoveInput {
+"Input for removing assets from a group."
+input AssetGroupItemsRemoveInput {
   "The group ID."
   groupId: ID!
-  "The asset ID to remove."
-  assetId: ID!
+  "The asset IDs to remove."
+  assetIds: [ID!]!
 }
 
 # --- GeoObject ---
@@ -3544,8 +3599,8 @@ input GeoObjectCreateInput {
 input GeoObjectUpdateInput {
   "The geo object ID to update."
   id: ID!
-  "The current version for optimistic locking."
-  version: Int!
+  "The current version for optimistic locking. If omitted, auto-increments without conflict check."
+  version: Int
   "The new display name."
   title: String @trim
   "The new geometry."
@@ -3559,8 +3614,8 @@ input GeoObjectUpdateInput {
 input GeoObjectDeleteInput {
   "The geo object ID to delete."
   id: ID!
-  "The current version for optimistic locking."
-  version: Int!
+  "The current version for optimistic locking. If omitted, auto-increments without conflict check."
+  version: Int
 }
 
 # --- Schedule ---
@@ -3583,8 +3638,8 @@ input ScheduleCreateInput {
 input ScheduleUpdateInput {
   "The schedule ID to update."
   id: ID!
-  "The current version for optimistic locking."
-  version: Int!
+  "The current version for optimistic locking. If omitted, auto-increments without conflict check."
+  version: Int
   "The new display name."
   title: String @trim
   "The new schedule data."
@@ -3598,8 +3653,8 @@ input ScheduleUpdateInput {
 input ScheduleDeleteInput {
   "The schedule ID to delete."
   id: ID!
-  "The current version for optimistic locking."
-  version: Int!
+  "The current version for optimistic locking. If omitted, auto-increments without conflict check."
+  version: Int
 }
 
 # --- Inventory ---
@@ -3618,8 +3673,8 @@ input InventoryCreateInput {
 input InventoryUpdateInput {
   "The inventory ID to update."
   id: ID!
-  "The current version for optimistic locking."
-  version: Int!
+  "The current version for optimistic locking. If omitted, auto-increments without conflict check."
+  version: Int
   "The new display name."
   title: String @trim
 }
@@ -3629,8 +3684,8 @@ input InventoryUpdateInput {
 input InventoryDeleteInput {
   "The inventory ID to delete."
   id: ID!
-  "The current version for optimistic locking."
-  version: Int!
+  "The current version for optimistic locking. If omitted, auto-increments without conflict check."
+  version: Int
 }
 
 # --- Organization ---
@@ -3653,8 +3708,8 @@ input OrganizationCreateInput {
 input OrganizationUpdateInput {
   "The organization ID to update."
   id: ID!
-  "The current version for optimistic locking."
-  version: Int!
+  "The current version for optimistic locking. If omitted, auto-increments without conflict check."
+  version: Int
   "The new display name."
   title: String @trim
   "The new external identifier."
@@ -3670,8 +3725,8 @@ input OrganizationUpdateInput {
 input OrganizationDeleteInput {
   "The organization ID to delete."
   id: ID!
-  "The current version for optimistic locking."
-  version: Int!
+  "The current version for optimistic locking. If omitted, auto-increments without conflict check."
+  version: Int
 }
 
 # --- User Profile ---
@@ -3710,8 +3765,8 @@ input MemberCreateInput {
 input MemberUpdateInput {
   "The membership ID to update."
   id: ID!
-  "The current version for optimistic locking."
-  version: Int!
+  "The current version for optimistic locking. If omitted, auto-increments without conflict check."
+  version: Int
   "The new active status."
   isActive: Boolean
 }
@@ -3721,8 +3776,8 @@ input MemberUpdateInput {
 input MemberRemoveInput {
   "The membership ID to remove."
   id: ID!
-  "The current version for optimistic locking."
-  version: Int!
+  "The current version for optimistic locking. If omitted, auto-increments without conflict check."
+  version: Int
 }
 
 # --- Integration ---
@@ -3743,8 +3798,8 @@ input IntegrationCreateInput {
 input IntegrationUpdateInput {
   "The integration ID to update."
   id: ID!
-  "The current version for optimistic locking."
-  version: Int!
+  "The current version for optimistic locking. If omitted, auto-increments without conflict check."
+  version: Int
   "The new display name."
   title: String @trim
   "The new credential reference."
@@ -3758,8 +3813,8 @@ input IntegrationUpdateInput {
 input IntegrationDeleteInput {
   "The integration ID to delete."
   id: ID!
-  "The current version for optimistic locking."
-  version: Int!
+  "The current version for optimistic locking. If omitted, auto-increments without conflict check."
+  version: Int
 }
 
 # --- ACL ---
@@ -3861,35 +3916,48 @@ input DeviceRelationRemoveInput {
 # --- CustomFieldDefinition ---
 
 # @category: custom-fields
-"Input for creating a custom field definition."
-input CustomFieldDefinitionCreateInput {
-  "The organization ID."
-  organizationId: ID!
-  "The owner catalog item ID (EntityType or a specific type like AssetType)."
-  ownerCatalogItemId: ID!
-  "The target entity type ID."
-  targetEntityTypeId: ID!
-  "The machine-readable code."
-  code: Code!
+"""
+A single operation on a custom field definition within the parent catalog item.
+Exactly one action must be provided.
+"""
+input CustomFieldDefinitionInput @oneOf {
+  "Create a new custom field definition."
+  create: CustomFieldDefinitionCreateData
+  "Update an existing custom field definition."
+  update: CustomFieldDefinitionUpdateData
+  "Delete a custom field definition."
+  delete: CustomFieldDefinitionDeleteData
+  "Archive a custom field definition (non-destructive deactivation)."
+  archive: CustomFieldDefinitionArchiveData
+  "Restore a previously archived custom field definition."
+  restore: CustomFieldDefinitionRestoreData
+}
+
+# @category: custom-fields
+"Data for creating a custom field definition within its parent catalog item."
+input CustomFieldDefinitionCreateData {
+  """
+  The machine-readable code. Auto-generated from title if omitted.
+  Codes `geojson_data` and `schedule_data` are reserved by the platform.
+  """
+  code: Code
   "The display name."
   title: String! @trim
   "The description."
   description: String @trim
   "The data type. Immutable after creation."
   fieldType: FieldType!
-  "The display order."
-  order: Int = 0
+  "The display order. Auto-calculated as last position if omitted."
+  order: Int
   "The type-specific parameters. Exactly one variant must be provided."
   params: FieldParamsInput!
 }
 
 # @category: custom-fields
-"Input for updating a custom field definition. Note: `fieldType` cannot be changed."
-input CustomFieldDefinitionUpdateInput {
-  "The definition ID to update."
-  id: ID!
-  "The current version for optimistic locking."
-  version: Int!
+"Data for updating an existing custom field definition. Note: `fieldType` cannot be changed."
+input CustomFieldDefinitionUpdateData {
+  "The code of the field definition to update."
+  code: Code!
   "The new display name."
   title: String @trim
   "The new description."
@@ -3902,18 +3970,16 @@ input CustomFieldDefinitionUpdateInput {
 
 # @category: custom-fields
 """
-Input for permanently deleting a custom field definition.
+Data for permanently deleting a custom field definition.
 
 If entities have values for this field, the default behavior is to reject the deletion.
 Use `onValues: CASCADE` to explicitly allow deletion with all associated values.
 
-Prefer `customFieldDefinitionArchive` for non-destructive deactivation.
+Prefer archiving for non-destructive deactivation.
 """
-input CustomFieldDefinitionDeleteInput {
-  "The definition ID to delete."
-  id: ID!
-  "The current version for optimistic locking."
-  version: Int!
+input CustomFieldDefinitionDeleteData {
+  "The code of the field definition to delete."
+  code: Code!
   """
   What to do when existing entities have values for this field.
   Defaults to `REJECT` to prevent accidental data loss.
@@ -3923,21 +3989,23 @@ input CustomFieldDefinitionDeleteInput {
 
 # @category: custom-fields
 """
-Input for archiving a custom field definition.
+Data for archiving or restoring a custom field definition.
 
 Archiving deactivates the field without data loss:
 - The field definition and all its values are preserved.
 - The field no longer appears in forms and accepts no new values.
 - Existing values remain readable and visible in history/exports.
-- An archived field can be restored via `customFieldDefinitionRestore`.
-
-Use this instead of hard deletion when historical data must be retained.
 """
-input CustomFieldDefinitionArchiveInput {
-  "The definition ID to archive."
-  id: ID!
-  "The current version for optimistic locking."
-  version: Int!
+input CustomFieldDefinitionArchiveData {
+  "The code of the field definition to archive."
+  code: Code!
+}
+
+# @category: custom-fields
+"Data for restoring a previously archived custom field definition."
+input CustomFieldDefinitionRestoreData {
+  "The code of the field definition to restore."
+  code: Code!
 }
 
 # @category: custom-fields
@@ -4071,11 +4139,15 @@ input OptionsFieldParamsInput {
 }
 
 # @category: custom-fields
-"Input for an option definition."
+"""
+Input for an option definition.
+When updating options: if an entry without `code` is provided, a new option is created.
+If the label already exists within this field, an error is returned.
+"""
 input FieldOptionInput {
-  "The unique code."
-  code: Code!
-  "The display label."
+  "The unique code. Auto-generated from label if omitted."
+  code: Code
+  "The display label. Must be unique within the custom field."
   label: String!
   "The description."
   description: String
@@ -4117,8 +4189,6 @@ input CatalogFieldParamsInput {
 input TagFieldParamsInput {
   "Whether a value is required."
   isRequired: Boolean!
-  "Whether multiple tags can be selected."
-  isMulti: Boolean = false
   "The default tag code."
   defaultValue: Code
 }
@@ -4132,12 +4202,47 @@ input CatalogItemMetaInput {
   description: String @trim
   "Whether the item is hidden from regular UI lists."
   hidden: Boolean
-  "The text color for UI display."
-  textColor: HexColorCode
-  "The background color for UI display."
-  backgroundColor: HexColorCode
-  "A relative URL to the icon."
-  icon: String
+}
+
+# @category: catalogs/catalog-items
+"Input for creating a user-defined catalog (a container for user catalog items)."
+input CatalogCreateInput {
+  "The organization that will own the catalog."
+  organizationId: ID!
+  "The module this catalog belongs to. Defaults to CORE if omitted."
+  moduleId: ID
+  "The machine-readable code, unique within the organization. Auto-generated from title if omitted."
+  code: Code
+  "The display name."
+  title: String! @trim
+  "The display order. Auto-calculated as last position if omitted."
+  order: Int
+  "The display properties."
+  meta: CatalogItemMetaInput
+}
+
+# @category: catalogs/catalog-items
+"Input for updating a user-defined catalog."
+input CatalogUpdateInput {
+  "The catalog ID to update."
+  id: ID!
+  "The current version for optimistic locking. If omitted, auto-increments without conflict check."
+  version: Int
+  "The new display name."
+  title: String @trim
+  "The new display order."
+  order: Int
+  "The display properties."
+  meta: CatalogItemMetaInput
+}
+
+# @category: catalogs/catalog-items
+"Input for deleting a user-defined catalog."
+input CatalogDeleteInput {
+  "The catalog ID to delete."
+  id: ID!
+  "The current version for optimistic locking. If omitted, deletes regardless of version."
+  version: Int
 }
 
 # @category: actors/users
@@ -4147,12 +4252,12 @@ input UserCatalogItemCreateInput {
   organizationId: ID!
   "The catalog to add the item to."
   catalogId: ID!
-  "The machine-readable code, unique within the catalog and organization."
-  code: Code!
+  "The machine-readable code, unique within the catalog and organization. Auto-generated from title if omitted."
+  code: Code
   "The display name."
   title: String! @trim
-  "The display order."
-  order: Int = 0
+  "The display order. Auto-calculated as last position if omitted."
+  order: Int
   "The parent item ID for hierarchical catalogs."
   parentId: ID
   "The display properties."
@@ -4164,8 +4269,8 @@ input UserCatalogItemCreateInput {
 input UserCatalogItemUpdateInput {
   "The item ID to update."
   id: ID!
-  "The current version for optimistic locking."
-  version: Int!
+  "The current version for optimistic locking. If omitted, auto-increments without conflict check."
+  version: Int
   "The new display name."
   title: String @trim
   "The new display order."
@@ -4181,14 +4286,15 @@ input UserCatalogItemUpdateInput {
 input DeviceTypeCreateInput {
   "The organization that will own the item."
   organizationId: ID!
-  "The machine-readable code."
-  code: Code!
+  "The machine-readable code. Auto-generated from title if omitted."
+  code: Code
   "The display name."
   title: String! @trim
-  "The display order."
-  order: Int = 0
+  "The display order. Auto-calculated as last position if omitted."
+  order: Int
   "The display properties."
   meta: CatalogItemMetaInput
+  # TODO: customFieldDefinitions temporarily hidden from SDL; backend support preserved — re-add when needed
 }
 
 # @category: devices
@@ -4196,14 +4302,15 @@ input DeviceTypeCreateInput {
 input DeviceTypeUpdateInput {
   "The item ID to update."
   id: ID!
-  "The current version for optimistic locking."
-  version: Int!
+  "The current version for optimistic locking. If omitted, auto-increments without conflict check."
+  version: Int
   "The new display name."
   title: String @trim
   "The new display order."
   order: Int
   "The display properties."
   meta: CatalogItemMetaInput
+  # TODO: customFieldDefinitions temporarily hidden from SDL; backend support preserved — re-add when needed
 }
 
 # @category: devices
@@ -4211,12 +4318,12 @@ input DeviceTypeUpdateInput {
 input DeviceStatusCreateInput {
   "The organization that will own the item."
   organizationId: ID!
-  "The machine-readable code."
-  code: Code!
+  "The machine-readable code. Auto-generated from title if omitted."
+  code: Code
   "The display name."
   title: String! @trim
-  "The display order."
-  order: Int = 0
+  "The display order. Auto-calculated as last position if omitted."
+  order: Int
   "The display properties."
   meta: CatalogItemMetaInput
 }
@@ -4226,8 +4333,8 @@ input DeviceStatusCreateInput {
 input DeviceStatusUpdateInput {
   "The item ID to update."
   id: ID!
-  "The current version for optimistic locking."
-  version: Int!
+  "The current version for optimistic locking. If omitted, auto-increments without conflict check."
+  version: Int
   "The new display name."
   title: String @trim
   "The new display order."
@@ -4241,14 +4348,19 @@ input DeviceStatusUpdateInput {
 input AssetTypeCreateInput {
   "The organization that will own the item."
   organizationId: ID!
-  "The machine-readable code."
-  code: Code!
+  "The machine-readable code. Auto-generated from title if omitted."
+  code: Code
   "The display name."
   title: String! @trim
-  "The display order."
-  order: Int = 0
+  "The display order. Auto-calculated as last position if omitted."
+  order: Int
   "The display properties."
   meta: CatalogItemMetaInput
+  """
+  Operations on custom field definitions for this asset type.
+  Only `create` is allowed when creating a new catalog item.
+  """
+  customFieldDefinitions: [CustomFieldDefinitionInput!]
 }
 
 # @category: assets
@@ -4256,14 +4368,16 @@ input AssetTypeCreateInput {
 input AssetTypeUpdateInput {
   "The item ID to update."
   id: ID!
-  "The current version for optimistic locking."
-  version: Int!
+  "The current version for optimistic locking. If omitted, auto-increments without conflict check."
+  version: Int
   "The new display name."
   title: String @trim
   "The new display order."
   order: Int
   "The display properties."
   meta: CatalogItemMetaInput
+  "Operations on custom field definitions belonging to this asset type."
+  customFieldDefinitions: [CustomFieldDefinitionInput!]
 }
 
 # @category: assets/groups
@@ -4271,12 +4385,12 @@ input AssetTypeUpdateInput {
 input AssetGroupTypeCreateInput {
   "The organization that will own the item."
   organizationId: ID!
-  "The machine-readable code."
-  code: Code!
+  "The machine-readable code. Auto-generated from title if omitted."
+  code: Code
   "The display name."
   title: String! @trim
-  "The display order."
-  order: Int = 0
+  "The display order. Auto-calculated as last position if omitted."
+  order: Int
   "The allowed asset types with optional limits."
   allowedAssetTypes: [AssetGroupTypeConstraintInput!]
   "The display properties."
@@ -4288,8 +4402,8 @@ input AssetGroupTypeCreateInput {
 input AssetGroupTypeUpdateInput {
   "The item ID to update."
   id: ID!
-  "The current version for optimistic locking."
-  version: Int!
+  "The current version for optimistic locking. If omitted, auto-increments without conflict check."
+  version: Int
   "The new display name."
   title: String @trim
   "The new display order."
@@ -4314,14 +4428,19 @@ input AssetGroupTypeConstraintInput {
 input GeoObjectTypeCreateInput {
   "The organization that will own the item."
   organizationId: ID!
-  "The machine-readable code."
-  code: Code!
+  "The machine-readable code. Auto-generated from title if omitted."
+  code: Code
   "The display name."
   title: String! @trim
-  "The display order."
-  order: Int = 0
+  "The display order. Auto-calculated as last position if omitted."
+  order: Int
   "The display properties."
   meta: CatalogItemMetaInput
+  """
+  Operations on custom field definitions for this geo object type.
+  Only `create` is allowed when creating a new catalog item.
+  """
+  customFieldDefinitions: [CustomFieldDefinitionInput!]
 }
 
 # @category: geo-objects
@@ -4329,14 +4448,16 @@ input GeoObjectTypeCreateInput {
 input GeoObjectTypeUpdateInput {
   "The item ID to update."
   id: ID!
-  "The current version for optimistic locking."
-  version: Int!
+  "The current version for optimistic locking. If omitted, auto-increments without conflict check."
+  version: Int
   "The new display name."
   title: String @trim
   "The new display order."
   order: Int
   "The display properties."
   meta: CatalogItemMetaInput
+  "Operations on custom field definitions belonging to this geo object type."
+  customFieldDefinitions: [CustomFieldDefinitionInput!]
 }
 
 # @category: catalogs/tags
@@ -4344,12 +4465,12 @@ input GeoObjectTypeUpdateInput {
 input TagCreateInput {
   "The organization that will own the item."
   organizationId: ID!
-  "The machine-readable code."
-  code: Code!
+  "The machine-readable code. Auto-generated from title if omitted."
+  code: Code
   "The display name."
   title: String! @trim
-  "The display order."
-  order: Int = 0
+  "The display order. Auto-calculated as last position if omitted."
+  order: Int
   "The entity types this tag can be applied to. Empty means universal."
   entityTypeIds: [ID!]
   "The display properties."
@@ -4361,8 +4482,8 @@ input TagCreateInput {
 input TagUpdateInput {
   "The item ID to update."
   id: ID!
-  "The current version for optimistic locking."
-  version: Int!
+  "The current version for optimistic locking. If omitted, auto-increments without conflict check."
+  version: Int
   "The new display name."
   title: String @trim
   "The new display order."
@@ -4378,12 +4499,12 @@ input TagUpdateInput {
 input RoleCreateInput {
   "The organization that will own the item."
   organizationId: ID!
-  "The machine-readable code."
-  code: Code!
+  "The machine-readable code. Auto-generated from title if omitted."
+  code: Code
   "The display name."
   title: String! @trim
-  "The display order."
-  order: Int = 0
+  "The display order. Auto-calculated as last position if omitted."
+  order: Int
   "The display properties."
   meta: CatalogItemMetaInput
 }
@@ -4393,8 +4514,8 @@ input RoleCreateInput {
 input RoleUpdateInput {
   "The item ID to update."
   id: ID!
-  "The current version for optimistic locking."
-  version: Int!
+  "The current version for optimistic locking. If omitted, auto-increments without conflict check."
+  version: Int
   "The new display name."
   title: String @trim
   "The new display order."
@@ -4408,8 +4529,8 @@ input RoleUpdateInput {
 input CatalogItemDeleteInput {
   "The catalog item ID to delete."
   id: ID!
-  "The current version for optimistic locking."
-  version: Int!
+  "The current version for optimistic locking. If omitted, auto-increments without conflict check."
+  version: Int
 }
 # =============================================================================
 # 20. QUERY
@@ -4508,6 +4629,44 @@ type Query {
     "The ordering options for the returned device models."
     orderBy: CatalogItemOrder = { field: TITLE, direction: ASC }
   ): DeviceModelConnection!
+
+  # @category: devices
+  "Lists device vendors for an organization."
+  deviceVendors(
+    "The organization to retrieve device vendors for."
+    organizationId: ID!
+    "Filtering options for the returned device vendors."
+    filter: CatalogItemFilter
+    "The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    first: Int
+    "The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination)."
+    after: String
+    "The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    last: Int
+    "The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination)."
+    before: String
+    "The ordering options for the returned device vendors."
+    orderBy: CatalogItemOrder = { field: ORDER, direction: ASC }
+  ): DeviceVendorConnection!
+
+  # @category: devices
+  "Lists device relation types for an organization."
+  deviceRelationTypes(
+    "The organization to retrieve device relation types for."
+    organizationId: ID!
+    "Filtering options for the returned device relation types."
+    filter: CatalogItemFilter
+    "The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    first: Int
+    "The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination)."
+    after: String
+    "The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    last: Int
+    "The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination)."
+    before: String
+    "The ordering options for the returned device relation types."
+    orderBy: CatalogItemOrder = { field: ORDER, direction: ASC }
+  ): DeviceRelationTypeConnection!
 
   # @category: assets
   "Lists asset types for an organization."
@@ -4841,8 +5000,10 @@ type Query {
   ): AuditEventConnection!
 
   # @category: audit
-  "Retrieves the change history for any entity."
+  "Retrieves the change history for any entity within an organization."
   entityHistory(
+    "The organization that owns the entity."
+    organizationId: ID!
     "The ID of the entity to retrieve history for."
     entityId: ID!
     "Filtering options for the returned audit events."
@@ -5001,13 +5162,6 @@ type IntegrationPayload {
   integration: Integration!
 }
 
-# @category: custom-fields
-"The result of a custom field definition mutation."
-type CustomFieldDefinitionPayload {
-  "The created or updated custom field definition."
-  customFieldDefinition: CustomFieldDefinition!
-}
-
 # @category: devices
 "The result of a device identifier mutation."
 type DeviceIdentifierPayload {
@@ -5015,12 +5169,6 @@ type DeviceIdentifierPayload {
   deviceIdentifier: DeviceIdentifier!
 }
 
-# @category: assets/groups
-"The result of an asset group item mutation."
-type AssetGroupItemPayload {
-  "The created group membership record."
-  assetGroupItem: AssetGroupItem!
-}
 
 # @category: devices/inventory
 "The result of a device inventory link mutation."
@@ -5106,6 +5254,13 @@ type TagPayload {
 type RolePayload {
   "The created or updated role."
   role: Role!
+}
+
+# @category: catalogs/catalog-items
+"The result of a catalog mutation."
+type CatalogPayload {
+  "The created or updated catalog."
+  catalog: Catalog!
 }
 
 # @category: actors/users
@@ -5203,18 +5358,18 @@ type Mutation {
   ): DeletePayload
 
   # @category: assets/groups
-  "Adds an asset to a group."
-  assetGroupItemAdd(
-    "The input fields for adding the asset to the group."
-    input: AssetGroupItemAddInput!
-  ): AssetGroupItemPayload
+  "Adds assets to a group."
+  assetGroupItemsAdd(
+    "The input fields for adding assets to the group."
+    input: AssetGroupItemsAddInput!
+  ): AssetGroupPayload
 
   # @category: assets/groups
-  "Removes an asset from a group."
-  assetGroupItemRemove(
-    "The input fields for removing the asset from the group."
-    input: AssetGroupItemRemoveInput!
-  ): DeletePayload
+  "Removes assets from a group."
+  assetGroupItemsRemove(
+    "The input fields for removing assets from the group."
+    input: AssetGroupItemsRemoveInput!
+  ): AssetGroupPayload
 
   # --- GeoObjects ---
 
@@ -5437,49 +5592,6 @@ type Mutation {
     input: DeviceRelationRemoveInput!
   ): DeletePayload
 
-  # --- Custom Fields ---
-
-  # @category: custom-fields
-  "Creates a custom field definition."
-  customFieldDefinitionCreate(
-    "The input fields for creating the definition."
-    input: CustomFieldDefinitionCreateInput!
-  ): CustomFieldDefinitionPayload
-
-  # @category: custom-fields
-  "Updates a custom field definition. Note: `fieldType` cannot be changed."
-  customFieldDefinitionUpdate(
-    "The input fields for updating the definition."
-    input: CustomFieldDefinitionUpdateInput!
-  ): CustomFieldDefinitionPayload
-
-  # @category: custom-fields
-  "Deletes a custom field definition."
-  customFieldDefinitionDelete(
-    "The input fields for deleting the definition."
-    input: CustomFieldDefinitionDeleteInput!
-  ): DeletePayload
-
-  # @category: custom-fields
-  """
-  Archives a custom field definition.
-
-  Archiving is a non-destructive alternative to deletion:
-  the field is deactivated but all data is preserved.
-  Archived fields can be restored via `customFieldDefinitionRestore`.
-  """
-  customFieldDefinitionArchive(
-    "The input fields for archiving the definition."
-    input: CustomFieldDefinitionArchiveInput!
-  ): CustomFieldDefinitionPayload
-
-  # @category: custom-fields
-  "Restores a previously archived custom field definition, making it active again."
-  customFieldDefinitionRestore(
-    "The definition ID to restore."
-    input: CustomFieldDefinitionArchiveInput!
-  ): CustomFieldDefinitionPayload
-
   # --- Catalog Item CRUD ---
 
   # @category: devices
@@ -5627,6 +5739,27 @@ type Mutation {
   roleDelete(
     "The input fields for deleting the role."
     input: CatalogItemDeleteInput!
+  ): DeletePayload
+
+  # @category: catalogs/catalog-items
+  "Creates a new user-defined catalog."
+  catalogCreate(
+    "The input fields for creating the catalog."
+    input: CatalogCreateInput!
+  ): CatalogPayload
+
+  # @category: catalogs/catalog-items
+  "Updates a user-defined catalog."
+  catalogUpdate(
+    "The input fields for updating the catalog."
+    input: CatalogUpdateInput!
+  ): CatalogPayload
+
+  # @category: catalogs/catalog-items
+  "Deletes a user-defined catalog."
+  catalogDelete(
+    "The input fields for deleting the catalog."
+    input: CatalogDeleteInput!
   ): DeletePayload
 
   # @category: actors/users

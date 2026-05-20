@@ -53,8 +53,8 @@ Ordering options for catalog items.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [CatalogItemOrderField](../catalogs/catalog-items.md#catalogitemorderfield)! | The field to order by. |
-| `direction` | [OrderDirection](../common.md#orderdirection)! | The direction to order. |
+| `field` | [CatalogItemOrderField](../catalogs/catalog-items.md#type-catalogitemorderfield)! | The field to order by. |
+| `direction` | [OrderDirection](../common.md#type-orderdirection)! | The direction to order. |
 
 </details>
 
@@ -66,14 +66,14 @@ Ordering options for catalog items.
 
 A paginated list of DeviceType items.
 
-**Implements:** [Connection](../common.md#connection)
+**Implements:** [Connection](../common.md#type-connection)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[DeviceTypeEdge](types.md#devicetypeedge)!]! | A list of edges. |
-| `nodes` | [[DeviceType](types.md#devicetype)!]! | A list of nodes in the connection (without edge metadata). |
-| `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
-| `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
+| `edges` | [[DeviceTypeEdge](types.md#type-devicetypeedge)!]! | A list of edges. |
+| `nodes` | [[DeviceType](types.md#type-devicetype)!]! | A list of nodes in the connection (without edge metadata). |
+| `pageInfo` | [PageInfo](../common.md#type-pageinfo)! | Information about the current page. |
+| `total` | [CountInfo](../common.md#type-countinfo) | The total count of items matching the filter. |
 
 </details>
 
@@ -145,8 +145,8 @@ Ordering options for catalog items.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [CatalogItemOrderField](../catalogs/catalog-items.md#catalogitemorderfield)! | The field to order by. |
-| `direction` | [OrderDirection](../common.md#orderdirection)! | The direction to order. |
+| `field` | [CatalogItemOrderField](../catalogs/catalog-items.md#type-catalogitemorderfield)! | The field to order by. |
+| `direction` | [OrderDirection](../common.md#type-orderdirection)! | The direction to order. |
 
 </details>
 
@@ -158,14 +158,14 @@ Ordering options for catalog items.
 
 A paginated list of DeviceStatus items.
 
-**Implements:** [Connection](../common.md#connection)
+**Implements:** [Connection](../common.md#type-connection)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[DeviceStatusEdge](types.md#devicestatusedge)!]! | A list of edges. |
-| `nodes` | [[DeviceStatus](types.md#devicestatus)!]! | A list of nodes in the connection (without edge metadata). |
-| `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
-| `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
+| `edges` | [[DeviceStatusEdge](types.md#type-devicestatusedge)!]! | A list of edges. |
+| `nodes` | [[DeviceStatus](types.md#type-devicestatus)!]! | A list of nodes in the connection (without edge metadata). |
+| `pageInfo` | [PageInfo](../common.md#type-pageinfo)! | Information about the current page. |
+| `total` | [CountInfo](../common.md#type-countinfo) | The total count of items matching the filter. |
 
 </details>
 
@@ -238,8 +238,8 @@ Ordering options for catalog items.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [CatalogItemOrderField](../catalogs/catalog-items.md#catalogitemorderfield)! | The field to order by. |
-| `direction` | [OrderDirection](../common.md#orderdirection)! | The direction to order. |
+| `field` | [CatalogItemOrderField](../catalogs/catalog-items.md#type-catalogitemorderfield)! | The field to order by. |
+| `direction` | [OrderDirection](../common.md#type-orderdirection)! | The direction to order. |
 
 </details>
 
@@ -251,14 +251,198 @@ Ordering options for catalog items.
 
 A paginated list of DeviceModel items.
 
-**Implements:** [Connection](../common.md#connection)
+**Implements:** [Connection](../common.md#type-connection)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[DeviceModelEdge](types.md#devicemodeledge)!]! | A list of edges. |
-| `nodes` | [[DeviceModel](types.md#devicemodel)!]! | A list of nodes in the connection (without edge metadata). |
-| `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
-| `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
+| `edges` | [[DeviceModelEdge](types.md#type-devicemodeledge)!]! | A list of edges. |
+| `nodes` | [[DeviceModel](types.md#type-devicemodel)!]! | A list of nodes in the connection (without edge metadata). |
+| `pageInfo` | [PageInfo](../common.md#type-pageinfo)! | Information about the current page. |
+| `total` | [CountInfo](../common.md#type-countinfo) | The total count of items matching the filter. |
+
+</details>
+
+<details>
+
+<summary>PageInfo (entity)</summary>
+
+Information about the current page in a paginated connection.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `hasNextPage` | `Boolean!` | Whether more items exist after the current page. |
+| `hasPreviousPage` | `Boolean!` | Whether more items exist before the current page. |
+| `startCursor` | `String` | The cursor pointing to the first item in the current page. |
+| `endCursor` | `String` | The cursor pointing to the last item in the current page. |
+
+</details>
+
+---
+
+### deviceVendors
+
+Lists device vendors for an organization.
+
+```graphql
+deviceVendors(
+    organizationId: ID!
+    filter: CatalogItemFilter
+    first: Int
+    after: String
+    last: Int
+    before: String
+    orderBy: CatalogItemOrder = { field: ORDER, direction: ASC }
+  ): DeviceVendorConnection!
+```
+
+**Arguments**
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `organizationId` | `ID!` | The organization to retrieve device vendors for. |
+| `filter` | `CatalogItemFilter` | Filtering options for the returned device vendors. |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy` | `CatalogItemOrder` | The ordering options for the returned device vendors. |
+
+**Input types:**
+
+<details>
+
+<summary>CatalogItemFilter</summary>
+
+Filtering options for catalog items.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `titleContains` | `String` | Partial match on title (case-insensitive contains). |
+| `codes` | `[Code!]` | Match any of these codes. |
+
+</details>
+
+<details>
+
+<summary>CatalogItemOrder</summary>
+
+Ordering options for catalog items.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `field` | [CatalogItemOrderField](../catalogs/catalog-items.md#type-catalogitemorderfield)! | The field to order by. |
+| `direction` | [OrderDirection](../common.md#type-orderdirection)! | The direction to order. |
+
+</details>
+
+**Output types:**
+
+<details>
+
+<summary>DeviceVendorConnection</summary>
+
+A paginated list of DeviceVendor items.
+
+**Implements:** [Connection](../common.md#type-connection)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `edges` | [[DeviceVendorEdge](types.md#type-devicevendoredge)!]! | A list of edges. |
+| `nodes` | [[DeviceVendor](types.md#type-devicevendor)!]! | A list of nodes in the connection (without edge metadata). |
+| `pageInfo` | [PageInfo](../common.md#type-pageinfo)! | Information about the current page. |
+| `total` | [CountInfo](../common.md#type-countinfo) | The total count of items matching the filter. |
+
+</details>
+
+<details>
+
+<summary>PageInfo (entity)</summary>
+
+Information about the current page in a paginated connection.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `hasNextPage` | `Boolean!` | Whether more items exist after the current page. |
+| `hasPreviousPage` | `Boolean!` | Whether more items exist before the current page. |
+| `startCursor` | `String` | The cursor pointing to the first item in the current page. |
+| `endCursor` | `String` | The cursor pointing to the last item in the current page. |
+
+</details>
+
+---
+
+### deviceRelationTypes
+
+Lists device relation types for an organization.
+
+```graphql
+deviceRelationTypes(
+    organizationId: ID!
+    filter: CatalogItemFilter
+    first: Int
+    after: String
+    last: Int
+    before: String
+    orderBy: CatalogItemOrder = { field: ORDER, direction: ASC }
+  ): DeviceRelationTypeConnection!
+```
+
+**Arguments**
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `organizationId` | `ID!` | The organization to retrieve device relation types for. |
+| `filter` | `CatalogItemFilter` | Filtering options for the returned device relation types. |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy` | `CatalogItemOrder` | The ordering options for the returned device relation types. |
+
+**Input types:**
+
+<details>
+
+<summary>CatalogItemFilter</summary>
+
+Filtering options for catalog items.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `titleContains` | `String` | Partial match on title (case-insensitive contains). |
+| `codes` | `[Code!]` | Match any of these codes. |
+
+</details>
+
+<details>
+
+<summary>CatalogItemOrder</summary>
+
+Ordering options for catalog items.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `field` | [CatalogItemOrderField](../catalogs/catalog-items.md#type-catalogitemorderfield)! | The field to order by. |
+| `direction` | [OrderDirection](../common.md#type-orderdirection)! | The direction to order. |
+
+</details>
+
+**Output types:**
+
+<details>
+
+<summary>DeviceRelationTypeConnection</summary>
+
+A paginated list of DeviceRelationType items.
+
+**Implements:** [Connection](../common.md#type-connection)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `edges` | [[DeviceRelationTypeEdge](types.md#type-devicerelationtypeedge)!]! | A list of edges. |
+| `nodes` | [[DeviceRelationType](types.md#type-devicerelationtype)!]! | A list of nodes in the connection (without edge metadata). |
+| `pageInfo` | [PageInfo](../common.md#type-pageinfo)! | Information about the current page. |
+| `total` | [CountInfo](../common.md#type-countinfo) | The total count of items matching the filter. |
 
 </details>
 
@@ -301,22 +485,23 @@ device(id: ID!): Device
 
 A tracking device such as a GPS tracker, sensor, or beacon.
 
-**Implements:** [Node](../common.md#node), [Titled](../common.md#titled), [Versioned](../common.md#versioned), [InventoryItem](inventory.md#inventoryitem)
+**Implements:** [Node](../common.md#type-node), [Titled](../common.md#type-titled), [Versioned](../common.md#type-versioned), [InventoryItem](inventory.md#type-inventoryitem)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Can be provided in update/delete mutations to prevent lost updates. If omitted, the update proceeds without stale-read protection. |
 | `title` | `String!` | The human-readable display name. |
-| `organization` | [Organization](../organizations/README.md#organization)! | The organization that owns this device. |
-| `type` | [DeviceType](types.md#devicetype)! | The device type classification. |
-| `model` | [DeviceModel](types.md#devicemodel)! | The specific device model. |
-| `status` | [DeviceStatus](types.md#devicestatus)! | The current operational status. |
-| `identifiers` | [[DeviceIdentifier](types.md#deviceidentifier)!]! | The hardware identifiers for this device (IMEI, serial number, MAC address, etc.). |
-| `inventory` | [Inventory](inventory.md#inventory) | The inventory this device is currently assigned to. |
-| `relationsFrom` | [[DeviceRelation](types.md#devicerelation)!]! | The outgoing relationships from this device to other devices. |
-| `relationsTo` | [[DeviceRelation](types.md#devicerelation)!]! | The incoming relationships from other devices to this device. |
-| `inventoryHistory` | [DeviceInventoryRelationConnection](inventory.md#deviceinventoryrelationconnection)! | The history of inventory assignments for this device. |
+| `organization` | [Organization](../organizations/README.md#type-organization)! | The organization that owns this device. |
+| `type` | [DeviceType](types.md#type-devicetype)! | The device type classification. |
+| `model` | [DeviceModel](types.md#type-devicemodel)! | The specific device model. |
+| `status` | [DeviceStatus](types.md#type-devicestatus)! | The current operational status. |
+| `identifiers` | [[DeviceIdentifier](types.md#type-deviceidentifier)!]! | The hardware identifiers for this device (IMEI, serial number, MAC address, etc.). |
+| `asset` | [Asset](../assets/types.md#type-asset) | The asset this device is currently linked to. |
+| `inventory` | [Inventory](inventory.md#type-inventory) | The inventory this device is currently assigned to. |
+| `relationsFrom` | [[DeviceRelation](types.md#type-devicerelation)!]! | The outgoing relationships from this device to other devices. |
+| `relationsTo` | [[DeviceRelation](types.md#type-devicerelation)!]! | The incoming relationships from other devices to this device. |
+| `inventoryHistory` | [DeviceInventoryRelationConnection](inventory.md#type-deviceinventoryrelationconnection)! | The history of inventory assignments for this device. |
 
 </details>
 
@@ -326,23 +511,23 @@ A tracking device such as a GPS tracker, sensor, or beacon.
 
 An organization in the hierarchy that owns entities and users.
 
-**Implements:** [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
+**Implements:** [Node](../common.md#type-node), [Versioned](../common.md#type-versioned), [Titled](../common.md#type-titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Can be provided in update/delete mutations to prevent lost updates. If omitted, the update proceeds without stale-read protection. |
 | `title` | `String!` | The human-readable display name. |
 | `externalId` | `String` | An external system identifier for integration purposes. |
 | `isActive` | `Boolean!` | Whether this organization is active. |
-| `features` | [[OrganizationFeature](../organizations/README.md#organizationfeature)!]! | The feature flags enabled for this organization. |
-| `parent` | [Organization](../organizations/README.md#organization) | The parent organization in the hierarchy. Null for root organizations. |
-| `children` | [OrganizationConnection](../organizations/README.md#organizationconnection)! | The child organizations. |
-| `members` | [MemberConnection](../organizations/members.md#memberconnection)! | The members of this organization. |
-| `devices` | [DeviceConnection](types.md#deviceconnection)! | The devices owned by this organization. |
-| `assets` | [AssetConnection](../assets/types.md#assetconnection)! | The assets owned by this organization. |
-| `geoObjects` | [GeoObjectConnection](../geo-objects/types.md#geoobjectconnection)! | The geographic objects owned by this organization. |
-| `schedules` | [ScheduleConnection](../schedules.md#scheduleconnection)! | The schedules owned by this organization. |
+| `features` | [[OrganizationFeature](../organizations/README.md#type-organizationfeature)!]! | The feature flags enabled for this organization. |
+| `parent` | [Organization](../organizations/README.md#type-organization) | The parent organization in the hierarchy. Null for root organizations. |
+| `children` | [OrganizationConnection](../organizations/README.md#type-organizationconnection)! | The child organizations. |
+| `members` | [MemberConnection](../organizations/members.md#type-memberconnection)! | The members of this organization. |
+| `devices` | [DeviceConnection](types.md#type-deviceconnection)! | The devices owned by this organization. |
+| `assets` | [AssetConnection](../assets/types.md#type-assetconnection)! | The assets owned by this organization. |
+| `geoObjects` | [GeoObjectConnection](../geo-objects/types.md#type-geoobjectconnection)! | The geographic objects owned by this organization. |
+| `schedules` | [ScheduleConnection](../schedules.md#type-scheduleconnection)! | The schedules owned by this organization. |
 
 </details>
 
@@ -390,7 +575,7 @@ Filtering options for devices.
 | `modelIds` | `[ID!]` | Filter by device models (OR within field). |
 | `statusIds` | `[ID!]` | Filter by statuses (OR within field). |
 | `vendorIds` | `[ID!]` | Filter by vendors (OR within field). |
-| `identifierContains` | `String` | Partial match on device identifier value (case-sensitive contains). |
+| `identifierContains` | `String` | Partial match on device identifier value (case-insensitive contains). |
 | `inventoryIds` | `[ID!]` | Filter by inventories (OR within field). |
 | `titleContains` | `String` | Partial match on title (case-insensitive contains). |
 
@@ -404,8 +589,8 @@ Ordering options for devices.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [DeviceOrderField](types.md#deviceorderfield) | The field to order by. |
-| `direction` | [OrderDirection](../common.md#orderdirection)! | The direction to order. |
+| `field` | [DeviceOrderField](types.md#type-deviceorderfield) | The field to order by. |
+| `direction` | [OrderDirection](../common.md#type-orderdirection)! | The direction to order. |
 
 </details>
 
@@ -417,14 +602,14 @@ Ordering options for devices.
 
 A paginated list of Device items.
 
-**Implements:** [Connection](../common.md#connection)
+**Implements:** [Connection](../common.md#type-connection)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[DeviceEdge](types.md#deviceedge)!]! | A list of edges. |
-| `nodes` | [[Device](types.md#device)!]! | A list of nodes in the connection (without edge metadata). |
-| `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
-| `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
+| `edges` | [[DeviceEdge](types.md#type-deviceedge)!]! | A list of edges. |
+| `nodes` | [[Device](types.md#type-device)!]! | A list of nodes in the connection (without edge metadata). |
+| `pageInfo` | [PageInfo](../common.md#type-pageinfo)! | Information about the current page. |
+| `total` | [CountInfo](../common.md#type-countinfo) | The total count of items matching the filter. |
 
 </details>
 

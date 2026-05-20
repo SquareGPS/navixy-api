@@ -68,6 +68,8 @@ An object with a globally unique identifier.
 
 ## Objects
 
+<a id="type-pageinfo"></a>
+
 ### PageInfo
 
 Information about the current page in a paginated connection.
@@ -81,6 +83,8 @@ Information about the current page in a paginated connection.
 
 ---
 
+<a id="type-countinfo"></a>
+
 ### CountInfo
 
 Information about the total count of items in a connection.
@@ -88,9 +92,11 @@ Information about the total count of items in a connection.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `count` | `Int!` | The count of items matching the filter. |
-| `precision` | [CountPrecision](#countprecision)! | The precision level of the count value. |
+| `precision` | [CountPrecision](#type-countprecision)! | The precision level of the count value. |
 
 ---
+
+<a id="type-deletepayload"></a>
 
 ### DeletePayload
 
@@ -104,6 +110,8 @@ The result of a delete mutation.
 
 ## Enums
 
+<a id="type-orderdirection"></a>
+
 ### OrderDirection
 
 The direction for sorting query results.
@@ -114,6 +122,8 @@ The direction for sorting query results.
 | `DESC` | Sort in descending order (Z→A, 9→0, newest→oldest). NULL values appear first. |
 
 ---
+
+<a id="type-countprecision"></a>
 
 ### CountPrecision
 
@@ -129,6 +139,8 @@ The precision level of a total count value.
 
 ## Interfaces
 
+<a id="type-node"></a>
+
 ### Node
 
 An object with a globally unique identifier.
@@ -138,6 +150,8 @@ An object with a globally unique identifier.
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
 
 ---
+
+<a id="type-titled"></a>
 
 ### Titled
 
@@ -149,15 +163,19 @@ An object with a human-readable display name.
 
 ---
 
+<a id="type-customizable"></a>
+
 ### Customizable
 
 An object that supports custom field values.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. |
+| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. System-reserved codes (`geojson_data`, `schedule_data`) are excluded from this map and exposed through dedicated typed fields on the entity instead. |
 
 ---
+
+<a id="type-versioned"></a>
 
 ### Versioned
 
@@ -165,9 +183,11 @@ An object that supports [optimistic locking](optimistic-locking.md) for concurre
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Can be provided in update/delete mutations to prevent lost updates. If omitted, the update proceeds without stale-read protection. |
 
 ---
+
+<a id="type-multivalue"></a>
 
 ### MultiValue
 
@@ -179,6 +199,8 @@ An interface for field parameters that support selecting multiple values.
 
 ---
 
+<a id="type-edge"></a>
+
 ### Edge
 
 An edge in a paginated connection.
@@ -189,18 +211,22 @@ An edge in a paginated connection.
 
 ---
 
+<a id="type-connection"></a>
+
 ### Connection
 
 A paginated connection following the Relay Cursor Connections specification.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `pageInfo` | [PageInfo](#pageinfo)! | Information about the current page. |
-| `total` | [CountInfo](#countinfo) | The total count of items matching the filter. |
+| `pageInfo` | [PageInfo](#type-pageinfo)! | Information about the current page. |
+| `total` | [CountInfo](#type-countinfo) | The total count of items matching the filter. |
 
 ---
 
 ## Scalars
+
+<a id="type-datetime"></a>
 
 ### DateTime
 
@@ -214,6 +240,8 @@ An [ISO 8601](https://www.iso.org/standard/8601.html) datetime string with timez
 
 ---
 
+<a id="type-date"></a>
+
 ### Date
 
 An [ISO 8601](https://www.iso.org/standard/8601.html) date string without time component ([RFC 3339](https://www.rfc-editor.org/rfc/rfc3339.html)). Example: `2024-01-15`.
@@ -225,6 +253,8 @@ An [ISO 8601](https://www.iso.org/standard/8601.html) date string without time c
 | Specification | [https://scalars.graphql.org/chillicream/date.html](https://scalars.graphql.org/chillicream/date.html) |
 
 ---
+
+<a id="type-json"></a>
 
 ### JSON
 
@@ -238,6 +268,8 @@ An arbitrary JSON value. Can be an object, array, string, number, boolean, or nu
 
 ---
 
+<a id="type-geojson"></a>
+
 ### GeoJSON
 
 A GeoJSON geometry object ([RFC 7946](https://www.rfc-editor.org/rfc/rfc7946.html)). Supports Point, LineString, Polygon, and other geometry types.
@@ -250,6 +282,8 @@ A GeoJSON geometry object ([RFC 7946](https://www.rfc-editor.org/rfc/rfc7946.htm
 
 ---
 
+<a id="type-latitude"></a>
+
 ### Latitude
 
 A geographic latitude coordinate in decimal degrees. Valid range: -90.0 to 90.0.
@@ -261,6 +295,8 @@ A geographic latitude coordinate in decimal degrees. Valid range: -90.0 to 90.0.
 
 ---
 
+<a id="type-longitude"></a>
+
 ### Longitude
 
 A geographic longitude coordinate in decimal degrees. Valid range: -180.0 to 180.0.
@@ -271,6 +307,8 @@ A geographic longitude coordinate in decimal degrees. Valid range: -180.0 to 180
 | Example | `-122.4194` |
 
 ---
+
+<a id="type-locale"></a>
 
 ### Locale
 
@@ -284,6 +322,8 @@ A BCP 47 language tag identifying a user locale. Example: `en-US`, `es-MX`, `fr-
 
 ---
 
+<a id="type-emailaddress"></a>
+
 ### EmailAddress
 
 An email address conforming to [RFC 5322](https://www.rfc-editor.org/rfc/rfc5322.html). Example: `user@example.com`.
@@ -294,6 +334,8 @@ An email address conforming to [RFC 5322](https://www.rfc-editor.org/rfc/rfc5322
 | Example | `user@example.com` |
 
 ---
+
+<a id="type-hexcolorcode"></a>
 
 ### HexColorCode
 
@@ -306,6 +348,8 @@ A hexadecimal color code. Supports 3-digit (`#RGB`) or 6-digit (`#RRGGBB`) forma
 
 ---
 
+<a id="type-countrycode"></a>
+
 ### CountryCode
 
 An [ISO 3166](https://www.iso.org/standard/3166.html)-1 alpha-2 country code. Example: `US`, `GB`, `ES`.
@@ -317,6 +361,8 @@ An [ISO 3166](https://www.iso.org/standard/3166.html)-1 alpha-2 country code. Ex
 
 ---
 
+<a id="type-code"></a>
+
 ### Code
 
 A machine-readable identifier code.
@@ -324,12 +370,9 @@ A machine-readable identifier code.
 Constraints:
 - Allowed characters: ASCII letters (a-z, A-Z), digits (0-9), underscore (_), dot (.), hyphen (-)
 - Must start with a letter or digit
-- Case-insensitive for uniqueness checks
+- Case-preserving: the original casing is stored as provided
+- Case-insensitive for uniqueness checks and comparisons
 - Maximum length: 64 characters
-
-Naming conventions:
-- System items: UPPER_SNAKE_CASE (e.g., DEVICE_TYPE, ACTIVE)
-- User items: any valid format (e.g., vehicle_car, sensor-v2)
 
 Uniqueness:
 - For catalog items: unique within the same catalog and organization scope
@@ -344,5 +387,46 @@ Examples: DEVICE_TYPE, vehicle_car, status.active, sensor-v2, ABC123
 | Format | `UPPER_SNAKE_CASE`, `lower_snake_case` |
 | Example | `DEVICE_TYPE`, `vehicle_type` |
 | Specification | [https://api.navixy.com/spec/scalars/code](https://api.navixy.com/spec/scalars/code) |
+
+---
+
+<a id="type-decimal"></a>
+
+### Decimal
+
+Arbitrary-precision decimal value encoded as a JSON string (e.g. `"5.25"`).
+String encoding avoids the precision loss inherent in JSON `Float`.
+
+Values exceeding the declared `scale` of a decimal custom field are rounded
+server-side using HALF_UP (round half away from zero for positive values,
+round half toward zero for negative — matches Java `RoundingMode.HALF_UP`).
+The rounded value is persisted in both the CFV table and the
+`custom_fields_data` JSONB blob; raw un-rounded input is never stored.
+
+Storage is `numeric(28, 10)` — up to 28 significant digits, of which at
+most 10 follow the decimal point (so up to 18 digits before). Values
+exceeding this envelope (e.g. more than 18 integer digits) are rejected
+as `VALIDATION_ERROR` at the API layer.
+
+| Property | Value |
+| -------- | ----- |
+| Format | `String-encoded decimal number` |
+| Example | `"123.456"` |
+| Specification | [https://www.navixy.com/docs/navixy-repository-api/core-api-reference/common#decimal](https://www.navixy.com/docs/navixy-repository-api/core-api-reference/common#decimal) |
+
+---
+
+<a id="type-long"></a>
+
+### Long
+
+Signed 64-bit integer in the range [-9223372036854775808, 9223372036854775807].
+Encoded as a JSON number.
+
+| Property | Value |
+| -------- | ----- |
+| Format | `64-bit signed integer` |
+| Example | `1234567890123456789` |
+| Specification | [https://www.navixy.com/docs/navixy-repository-api/core-api-reference/common#long](https://www.navixy.com/docs/navixy-repository-api/core-api-reference/common#long) |
 
 ---

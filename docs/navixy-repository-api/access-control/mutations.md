@@ -44,7 +44,7 @@ The result of a role assignment mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `actorRole` | [ActorRole](types.md#actorrole)! | The created role assignment. |
+| `actorRole` | [ActorRole](types.md#type-actorrole)! | The created role assignment. |
 
 </details>
 
@@ -54,15 +54,15 @@ The result of a role assignment mutation.
 
 An assignment of a role to an actor.
 
-**Implements:** [Node](../common.md#node)
+**Implements:** [Node](../common.md#type-node)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `actor` | [Actor](../actors/README.md#actor)! | The actor receiving the role. |
-| `role` | [Role](types.md#role)! | The role being assigned. |
+| `actor` | [Actor](../actors/README.md#type-actor)! | The actor receiving the role. |
+| `role` | [Role](types.md#type-role)! | The role being assigned. |
 | `assignedAt` | `DateTime!` | The date and time when the role was assigned. |
-| `assignedBy` | [Actor](../actors/README.md#actor) | The actor who assigned the role. |
+| `assignedBy` | [Actor](../actors/README.md#type-actor) | The actor who assigned the role. |
 | `expireDate` | `DateTime` | The date and time when the role expires. Null means the role is permanent. |
 
 </details>
@@ -144,7 +144,7 @@ Input for granting a permission to a role.
 | `roleId` | `ID!` | The role ID. |
 | `permissionScopeId` | `ID!` | The permission scope ID. |
 | `targetEntityId` | `ID` | The specific entity ID. Null means all entities of the type. |
-| `actions` | [[ActionPermission](types.md#actionpermission)!]! | The actions to allow. |
+| `actions` | [[ActionPermission](types.md#type-actionpermission)!]! | The actions to allow. |
 
 </details>
 
@@ -158,7 +158,7 @@ The result of a permission grant mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `rolePermission` | [RolePermission](types.md#rolepermission)! | The created permission. |
+| `rolePermission` | [RolePermission](types.md#type-rolepermission)! | The created permission. |
 
 </details>
 
@@ -168,17 +168,17 @@ The result of a permission grant mutation.
 
 A permission granted to a role.
 
-**Implements:** [Node](../common.md#node)
+**Implements:** [Node](../common.md#type-node)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `role` | [Role](types.md#role)! | The role receiving the permission. |
-| `permissionScope` | [PermissionScope](types.md#permissionscope)! | The permission scope being granted. |
+| `role` | [Role](types.md#type-role)! | The role receiving the permission. |
+| `permissionScope` | [PermissionScope](types.md#type-permissionscope)! | The permission scope being granted. |
 | `targetEntityId` | `ID` | The specific entity ID this permission applies to. Null means all entities of the type. |
-| `actions` | [[ActionPermission](types.md#actionpermission)!]! | The actions allowed by this permission. |
+| `actions` | [[ActionPermission](types.md#type-actionpermission)!]! | The actions allowed by this permission. |
 | `grantedAt` | `DateTime!` | The date and time when the permission was granted. |
-| `grantedBy` | [Actor](../actors/README.md#actor)! | The actor who granted the permission. |
+| `grantedBy` | [Actor](../actors/README.md#type-actor)! | The actor who granted the permission. |
 
 </details>
 
@@ -259,7 +259,7 @@ Input for setting a user scope restriction.
 | `actorId` | `ID!` | The actor ID to restrict. |
 | `permissionScopeId` | `ID!` | The permission scope ID. |
 | `targetEntityId` | `ID!` | The specific entity ID to allow access to. |
-| `actions` | [[ActionPermission](types.md#actionpermission)!]! | The actions to allow. |
+| `actions` | [[ActionPermission](types.md#type-actionpermission)!]! | The actions to allow. |
 
 </details>
 
@@ -273,7 +273,7 @@ The result of a user scope mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `userScope` | [UserScope](types.md#userscope)! | The created user scope restriction. |
+| `userScope` | [UserScope](types.md#type-userscope)! | The created user scope restriction. |
 
 </details>
 
@@ -284,15 +284,15 @@ The result of a user scope mutation.
 A whitelist filter that restricts an actor's access to specific entities.
 When present, effective permissions = role permissions ∩ user scope.
 
-**Implements:** [Node](../common.md#node)
+**Implements:** [Node](../common.md#type-node)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `actor` | [Actor](../actors/README.md#actor)! | The actor being restricted. |
-| `permissionScope` | [PermissionScope](types.md#permissionscope)! | The permission scope being filtered. |
+| `actor` | [Actor](../actors/README.md#type-actor)! | The actor being restricted. |
+| `permissionScope` | [PermissionScope](types.md#type-permissionscope)! | The permission scope being filtered. |
 | `targetEntityId` | `ID!` | The specific entity the actor can access. |
-| `actions` | [[ActionPermission](types.md#actionpermission)!]! | The actions allowed on this specific entity. |
+| `actions` | [[ActionPermission](types.md#type-actionpermission)!]! | The actions allowed on this specific entity. |
 
 </details>
 
@@ -371,10 +371,10 @@ Input for creating a role.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization that will own the item. |
-| `code` | `Code!` | The machine-readable code. |
+| `code` | `Code` | The machine-readable code. Auto-generated from title if omitted. |
 | `title` | `String!` | The display name. |
-| `order` | `Int` | The display order. |
-| `meta` | [CatalogItemMetaInput](../catalogs/catalog-items.md#catalogitemmetainput) | The display properties. |
+| `order` | `Int` | The display order. Auto-calculated as last position if omitted. |
+| `meta` | [CatalogItemMetaInput](../catalogs/catalog-items.md#type-catalogitemmetainput) | The display properties. |
 
 </details>
 
@@ -388,9 +388,6 @@ Display properties for catalog items.
 | ----- | ---- | ----------- |
 | `description` | `String` | The description. |
 | `hidden` | `Boolean` | Whether the item is hidden from regular UI lists. |
-| `textColor` | `HexColorCode` | The text color for UI display. |
-| `backgroundColor` | `HexColorCode` | The background color for UI display. |
-| `icon` | `String` | A relative URL to the icon. |
 
 </details>
 
@@ -404,7 +401,7 @@ The result of a role mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `role` | [Role](types.md#role)! | The created or updated role. |
+| `role` | [Role](types.md#type-role)! | The created or updated role. |
 
 </details>
 
@@ -414,7 +411,7 @@ The result of a role mutation.
 
 A role that can be assigned to actors to grant permissions.
 
-**Implements:** [CatalogItem](../catalogs/README.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
+**Implements:** [CatalogItem](../catalogs/catalog-items.md#type-catalogitem), [Node](../common.md#type-node), [Versioned](../common.md#type-versioned), [Titled](../common.md#type-titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -423,10 +420,10 @@ A role that can be assigned to actors to grant permissions.
 | `title` | `String!` | The human-readable display name. Can be localized. |
 | `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
 | `order` | `Int!` | The display order within the same level or category. |
-| `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
-| `organization` | [Organization](../organizations/README.md#organization) | The organization that owns this item. Null for system items. |
-| `meta` | [CatalogItemMeta](../catalogs/README.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
-| `permissions` | [RolePermissionConnection](types.md#rolepermissionconnection)! | The permissions assigned to this role. |
+| `catalog` | [Catalog](../catalogs/catalog-items.md#type-catalog)! | The catalog this item belongs to. |
+| `organization` | [Organization](../organizations/README.md#type-organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../catalogs/catalog-items.md#type-catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
+| `permissions` | [RolePermissionConnection](types.md#type-rolepermissionconnection)! | The permissions assigned to this role. |
 
 </details>
 
@@ -459,10 +456,10 @@ Input for updating a role.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | The item ID to update. |
-| `version` | `Int!` | The current version for optimistic locking. |
+| `version` | `Int` | The current version for optimistic locking. If omitted, auto-increments without conflict check. |
 | `title` | `String` | The new display name. |
 | `order` | `Int` | The new display order. |
-| `meta` | [CatalogItemMetaInput](../catalogs/catalog-items.md#catalogitemmetainput) | The display properties. |
+| `meta` | [CatalogItemMetaInput](../catalogs/catalog-items.md#type-catalogitemmetainput) | The display properties. |
 
 </details>
 
@@ -476,9 +473,6 @@ Display properties for catalog items.
 | ----- | ---- | ----------- |
 | `description` | `String` | The description. |
 | `hidden` | `Boolean` | Whether the item is hidden from regular UI lists. |
-| `textColor` | `HexColorCode` | The text color for UI display. |
-| `backgroundColor` | `HexColorCode` | The background color for UI display. |
-| `icon` | `String` | A relative URL to the icon. |
 
 </details>
 
@@ -492,7 +486,7 @@ The result of a role mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `role` | [Role](types.md#role)! | The created or updated role. |
+| `role` | [Role](types.md#type-role)! | The created or updated role. |
 
 </details>
 
@@ -502,7 +496,7 @@ The result of a role mutation.
 
 A role that can be assigned to actors to grant permissions.
 
-**Implements:** [CatalogItem](../catalogs/README.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
+**Implements:** [CatalogItem](../catalogs/catalog-items.md#type-catalogitem), [Node](../common.md#type-node), [Versioned](../common.md#type-versioned), [Titled](../common.md#type-titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -511,10 +505,10 @@ A role that can be assigned to actors to grant permissions.
 | `title` | `String!` | The human-readable display name. Can be localized. |
 | `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
 | `order` | `Int!` | The display order within the same level or category. |
-| `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
-| `organization` | [Organization](../organizations/README.md#organization) | The organization that owns this item. Null for system items. |
-| `meta` | [CatalogItemMeta](../catalogs/README.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
-| `permissions` | [RolePermissionConnection](types.md#rolepermissionconnection)! | The permissions assigned to this role. |
+| `catalog` | [Catalog](../catalogs/catalog-items.md#type-catalog)! | The catalog this item belongs to. |
+| `organization` | [Organization](../organizations/README.md#type-organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../catalogs/catalog-items.md#type-catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
+| `permissions` | [RolePermissionConnection](types.md#type-rolepermissionconnection)! | The permissions assigned to this role. |
 
 </details>
 
@@ -547,7 +541,7 @@ Input for deleting a catalog item.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | The catalog item ID to delete. |
-| `version` | `Int!` | The current version for optimistic locking. |
+| `version` | `Int` | The current version for optimistic locking. If omitted, auto-increments without conflict check. |
 
 </details>
 
