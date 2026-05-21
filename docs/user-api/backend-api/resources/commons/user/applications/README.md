@@ -18,7 +18,7 @@ However, if you need to automate application management and integrate external t
 * Delete existing applications
 * Enable/Disable - control application availability
 
-For detailed reference see [User application resources](user).
+For detailed reference see [User application resources](/broken/pages/b6ca25c8a18d2ae05c9bead8e284912f74c9f1c8).
 
 ## How to create a new application
 
