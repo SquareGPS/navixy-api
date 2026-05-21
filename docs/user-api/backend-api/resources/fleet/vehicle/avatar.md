@@ -66,7 +66,7 @@ e.g. `https://api.eu.navixy.com/v2/static/vehicle/avatars/abcdef123456789.png`.
 
 **required sub-user rights**: `vehicle_update`
 
-**avatar\_file\_name** returned in response and will be returned from [/vehicle/list](broken-reference).
+**avatar\_file\_name** returned in response and will be returned from [/vehicle/list](README.md#list).
 
 **MUST** be a POST multipart request (multipart/form-data),\
 with one of the parts being an image file upload (with the name "file").
