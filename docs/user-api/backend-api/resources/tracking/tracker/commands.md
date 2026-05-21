@@ -87,7 +87,7 @@ Hardware command strings are device-specific. Always refer to your device manufa
 API base path: `/tracker/command`.
 
 {% hint style="info" %}
-All API calls require authentication. Pass your **API key** or **user session hash** as the `hash` parameter in the request body, as a query string parameter, or in the `Authorization: NVX <value>` header. API keys are recommended for integrations — they don't expire and can be managed independently. See [Authentication](../../authentication.md) for details.
+All API calls require authentication. Pass your **API key** or **user session hash** as the `hash` parameter in the request body, as a query string parameter, or in the `Authorization: NVX <value>` header. API keys are recommended for integrations — they don't expire and can be managed independently. See [Authentication](../../../../authentication.md) for details.
 {% endhint %}
 
 ### create
