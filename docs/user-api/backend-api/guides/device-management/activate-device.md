@@ -24,7 +24,7 @@ Check all plugins available for the user with the [`plugin/list`](../../resource
 * 35 - Mobile app activation with optional activation code.
 * 68 - Mobile app activation with mandatory activation code.
 
-Full information about activation codes and their purposes is available [here](https://navixy.com/docs/admin/activation-codes).
+Full information about activation codes and their purposes is available [here](https://docs.navixy.com/admin-panel/activation-codes).
 
 **Step 3: Activate the device**
 
@@ -49,7 +49,7 @@ This section provides information about activating GPS trackers using plugins 44
 
 #### Activation with optional activation code
 
-By using plugin 44, the activation process is simplified, as the [activation code](https://navixy.com/docs/admin/activation-codes) is not mandatory, making it easier to manage multiple devices without needing individual codes for each.
+By using plugin 44, the activation process is simplified, as the [activation code](https://docs.navixy.com/admin-panel/activation-codes) is not mandatory, making it easier to manage multiple devices without needing individual codes for each.
 
 For example, let's consider a Teltonika FMB 140 device with IMEI `986575154632586`. The device's SIM phone number is `999999999969` and its APN settings are `internet`, `user`, and `passwd`. This device is supported on the platform, and the user has plugin 44, which allows for device activation with an optional activation code.
 
@@ -113,7 +113,7 @@ Tracker object fields are described [here](../../resources/tracking/tracker/#tra
 
 #### Activation with mandatory activation code
 
-When [activation codes](https://navixy.com/docs/admin/activation-codes) are required for device activation, use plugin 37.
+When [activation codes](https://docs.navixy.com/admin-panel/activation-codes) are required for device activation, use plugin 37.
 
 For example, we have a Teltonika FMB 140 device with IMEI `986575154632586`. The device's SIM phone number is `999999999969`, and its APN settings are `internet`, with `apn_user` and `apn_password` left empty. This device is supported on the platform, and the user has plugin 37, which mandates the use of an activation code.
 
@@ -216,7 +216,7 @@ Using the `register_quick` endpoint can significantly speed up the process of ac
 
 #### Troubleshooting GPS tracker activation
 
-There could be several reasons why a device doesn't activate. If we exclude SMS gateway issues, and it is functioning correctly, all other potential issues are listed [here](https://navixy.com/docs/user/guide/faq/gps-device-activation-troubleshooting).
+There could be several reasons why a device doesn't activate. If we exclude SMS gateway issues, and it is functioning correctly, all other potential issues are listed [here](https://docs.navixy.com/user-guide/device-activation-troubleshooting).
 
 After eliminating all possible issues and ensuring everything is working properly, you can send the [`tracker/register_retry`](../../resources/tracking/tracker/#register_retry) request to avoid creating the same unit again for the user. Additionally, it is not possible to activate two devices with the same ID on the platform.
 
@@ -283,7 +283,7 @@ The platform will notify us about success and with information about this device
 
 #### Activation with mandatory activation code
 
-If a user is required to use [activation codes](https://navixy.com/docs/admin/activation-codes) (plugin 68), we should use this parameter when activating a new device.
+If a user is required to use [activation codes](https://docs.navixy.com/admin-panel/activation-codes) (plugin 68), we should use this parameter when activating a new device.
 
 {% tabs %}
 {% tab title="cURL" %}

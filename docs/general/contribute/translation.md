@@ -3,11 +3,11 @@ description: Instructions to add localizations for Navixy Platform
 ---
 # Translate Navixy
 
-Navixy is dedicated to global accessibility, offering support for a [wide range of languages](https://navixy.com/docs/admin/settings/service-preferences/regional-settings#user-interface-language) to cater to users worldwide. The platform is designed to be versatile, accommodating both left-to-right and right-to-left languages. We continually expand our language support through contributions from our vibrant community of translators. If the language you need isn't yet supported, we invite you to join us and help expand our multilingual capabilities.
+Navixy is dedicated to global accessibility, offering support for a [wide range of languages](https://docs.navixy.com/admin-panel/regional-settings#languages) to cater to users worldwide. The platform is designed to be versatile, accommodating both left-to-right and right-to-left languages. We continually expand our language support through contributions from our vibrant community of translators. If the language you need isn't yet supported, we invite you to join us and help expand our multilingual capabilities.
 
 ## Currently Supported Languages
 
-Navixy currently supports dozens of languages, with more being added regularly. For the most up-to-date list of supported languages, visit our [regional settings documentation](https://navixy.com/docs/admin/settings/service-preferences/regional-settings#user-interface-language).
+Navixy currently supports dozens of languages, with more being added regularly. For the most up-to-date list of supported languages, visit our [regional settings documentation](https://docs.navixy.com/admin-panel/regional-settings#languages).
 
 ## How to Become a Contributor
 

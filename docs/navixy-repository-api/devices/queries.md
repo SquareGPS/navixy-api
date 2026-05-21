@@ -24,10 +24,10 @@ deviceTypes(
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization to retrieve device types for. |
 | `filter` | `CatalogItemFilter` | Filtering options for the returned device types. |
-| `first` | `Int` | The first `n` elements from the [paginated list](../pagination.md). |
-| `after` | `String` | The elements that come after the specified [cursor](../pagination.md). |
-| `last` | `Int` | The last `n` elements from the [paginated list](../pagination.md). |
-| `before` | `String` | The elements that come before the specified [cursor](../pagination.md). |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `orderBy` | `CatalogItemOrder` | The ordering options for the returned device types. |
 
 **Input types:**
@@ -116,10 +116,10 @@ deviceStatuses(
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization to retrieve device statuses for. |
 | `filter` | `CatalogItemFilter` | Filtering options for the returned device statuses. |
-| `first` | `Int` | The first `n` elements from the [paginated list](../pagination.md). |
-| `after` | `String` | The elements that come after the specified [cursor](../pagination.md). |
-| `last` | `Int` | The last `n` elements from the [paginated list](../pagination.md). |
-| `before` | `String` | The elements that come before the specified [cursor](../pagination.md). |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `orderBy` | `CatalogItemOrder` | The ordering options for the returned device statuses. |
 
 **Input types:**
@@ -208,10 +208,10 @@ deviceModels(
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization to retrieve device models for. |
 | `filter` | `DeviceModelFilter` | Filtering options for the returned device models. |
-| `first` | `Int` | The first `n` elements from the [paginated list](../pagination.md). |
-| `after` | `String` | The elements that come after the specified [cursor](../pagination.md). |
-| `last` | `Int` | The last `n` elements from the [paginated list](../pagination.md). |
-| `before` | `String` | The elements that come before the specified [cursor](../pagination.md). |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `orderBy` | `CatalogItemOrder` | The ordering options for the returned device models. |
 
 **Input types:**
@@ -301,10 +301,10 @@ deviceVendors(
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization to retrieve device vendors for. |
 | `filter` | `CatalogItemFilter` | Filtering options for the returned device vendors. |
-| `first` | `Int` | The first `n` elements from the [paginated list](../pagination.md). |
-| `after` | `String` | The elements that come after the specified [cursor](../pagination.md). |
-| `last` | `Int` | The last `n` elements from the [paginated list](../pagination.md). |
-| `before` | `String` | The elements that come before the specified [cursor](../pagination.md). |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `orderBy` | `CatalogItemOrder` | The ordering options for the returned device vendors. |
 
 **Input types:**
@@ -393,10 +393,10 @@ deviceRelationTypes(
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization to retrieve device relation types for. |
 | `filter` | `CatalogItemFilter` | Filtering options for the returned device relation types. |
-| `first` | `Int` | The first `n` elements from the [paginated list](../pagination.md). |
-| `after` | `String` | The elements that come after the specified [cursor](../pagination.md). |
-| `last` | `Int` | The last `n` elements from the [paginated list](../pagination.md). |
-| `before` | `String` | The elements that come before the specified [cursor](../pagination.md). |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `orderBy` | `CatalogItemOrder` | The ordering options for the returned device relation types. |
 
 **Input types:**
@@ -555,10 +555,10 @@ devices(
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization to retrieve devices for. |
 | `filter` | `DeviceFilter` | Filtering options for the returned devices. |
-| `first` | `Int` | The first `n` elements from the [paginated list](../pagination.md). |
-| `after` | `String` | The elements that come after the specified [cursor](../pagination.md). |
-| `last` | `Int` | The last `n` elements from the [paginated list](../pagination.md). |
-| `before` | `String` | The elements that come before the specified [cursor](../pagination.md). |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `orderBy` | `DeviceOrder` | The ordering options for the returned devices. |
 
 **Input types:**

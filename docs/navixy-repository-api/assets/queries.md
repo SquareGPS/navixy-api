@@ -24,10 +24,10 @@ assetTypes(
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization to retrieve asset types for. |
 | `filter` | `CatalogItemFilter` | Filtering options for the returned asset types. |
-| `first` | `Int` | The first `n` elements from the [paginated list](../pagination.md). |
-| `after` | `String` | The elements that come after the specified [cursor](../pagination.md). |
-| `last` | `Int` | The last `n` elements from the [paginated list](../pagination.md). |
-| `before` | `String` | The elements that come before the specified [cursor](../pagination.md). |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `orderBy` | `CatalogItemOrder` | The ordering options for the returned asset types. |
 
 **Input types:**
@@ -182,10 +182,10 @@ assets(
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization to retrieve assets for. |
 | `filter` | `AssetFilter` | Filtering options for the returned assets. |
-| `first` | `Int` | The first `n` elements from the [paginated list](../pagination.md). |
-| `after` | `String` | The elements that come after the specified [cursor](../pagination.md). |
-| `last` | `Int` | The last `n` elements from the [paginated list](../pagination.md). |
-| `before` | `String` | The elements that come before the specified [cursor](../pagination.md). |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `orderBy` | `AssetOrder` | The ordering options for the returned assets. |
 
 **Input types:**

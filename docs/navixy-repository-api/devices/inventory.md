@@ -90,10 +90,10 @@ inventories(
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization to retrieve inventories for. |
 | `filter` | `InventoryFilter` | Filtering options for the returned inventories. |
-| `first` | `Int` | The first `n` elements from the [paginated list](../pagination.md). |
-| `after` | `String` | The elements that come after the specified [cursor](../pagination.md). |
-| `last` | `Int` | The last `n` elements from the [paginated list](../pagination.md). |
-| `before` | `String` | The elements that come before the specified [cursor](../pagination.md). |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `orderBy` | `InventoryOrder` | The ordering options for the returned inventories. |
 
 **Input types:**
