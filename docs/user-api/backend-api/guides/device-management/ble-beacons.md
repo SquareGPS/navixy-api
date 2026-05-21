@@ -11,7 +11,7 @@ In this tutorial, we will guide you through the process of tracking stationary o
 * The API calls needed to retrieve information about the tags
 * Additional use cases based on real-world scenarios
 
-Additionally, you can read more about configuration examples in our [Expert Center](https://docs.navixy.com/expert-center/tracking-of-stationary-objects).
+Additionally, you can read more about configuration examples in our [Expert Center](https://navixy.com/docs/expert-center/faq-and-troubleshooting/access-iot-data/gps-tracking-of-stationary-assets-with-ble-tags).
 
 ## What you need to track stationary objects
 
