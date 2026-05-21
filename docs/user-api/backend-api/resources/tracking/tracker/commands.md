@@ -4,24 +4,24 @@ description: >-
   individual trackers.
 ---
 
-# Output control
+# Commands
 
-## Output control
+## Commands
 
-Output control lets you define reusable commands for a tracker and execute them on demand. Two command types are supported:
+Commands let you define reusable commands for a tracker and execute them on demand. Two command types are supported:
 
 * **Hardware** — sends a protocol-level command string directly to the device (e.g. to reboot firmware or toggle a relay).
-* **Software** — sends an HTTP POST request with a JSON body to any URL, optionally embedding live device attributes in the payload.
+* **HTTP** — sends an HTTP POST request with a JSON body to any URL, optionally embedding live device attributes in the payload.
 
-Commands are stored per tracker and can be executed at any time from the [Output control widget](https://app.gitbook.com/s/446mKak1zDrGv70ahuYZ/guide/devices-and-settings/object-management/output-control-widget) in the platform UI.
+Commands are stored per tracker and can be executed at any time from the [Commands block](https://app.gitbook.com/s/446mKak1zDrGv70ahuYZ/guide/devices-and-settings/object-management/commands-block) in the platform UI.
 
 {% hint style="info" %}
-Output control is designed for manual, on-demand actions targeting a single tracker. For automated, rule-based command sending across multiple devices, use [IoT Logic](https://app.gitbook.com/o/YVLWhgAwCZPoU5vlRsCs/s/tx3J5BxnWyPV0nP2xr0z/) with the **Device action** or **Webhook** nodes.
+Commands is designed for manual, on-demand actions targeting a single tracker. For automated, rule-based command sending across multiple devices, use [IoT Logic](https://app.gitbook.com/o/YVLWhgAwCZPoU5vlRsCs/s/tx3J5BxnWyPV0nP2xr0z/) with the **Device action** or **Webhook** nodes.
 {% endhint %}
 
 ### Object structure
 
-Each output control entry has a common set of fields. The `config` object differs by `type`.
+Each command has a common set of fields. The `config` object differs by `type`.
 
 {% tabs %}
 {% tab title="Hardware" %}
@@ -37,20 +37,20 @@ Each output control entry has a common set of fields. The `config` object differ
 }
 ```
 
-* `id` - int. Unique output control ID. Assigned by the server on creation. Read-only.
-* `name` - string. Human-readable label shown in the Object widget (e.g. `"engine_stop"`).
+* `id` - int. Unique command ID. Assigned by the server on creation. Read-only.
+* `name` - string. Human-readable label shown in the Commands block (e.g. `"engine_stop"`).
 * `type` - string. Always `"hardware"` for this variant.
 * `config` - object. Hardware command configuration.
   * `command` - string. The exact protocol-level command string sent to the device (e.g. `"RELAY,1#"`). Valid values are device-specific — refer to your device manufacturer's documentation.
   * `reliable` - boolean. If `true`, the platform requests delivery confirmation (acknowledgement) from the device before marking the command as successfully sent.
 {% endtab %}
 
-{% tab title="Software" %}
+{% tab title="HTTP" %}
 ```json
 {
   "id": 20,
   "name": "Notify Slack",
-  "type": "software",
+  "type": "http",
   "config": {
     "url": "https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXX",
     "headers": [
@@ -68,10 +68,10 @@ Each output control entry has a common set of fields. The `config` object differ
 }
 ```
 
-* `id` - int. Unique output control ID. Assigned by the server on creation. Read-only.
-* `name` - string. Human-readable label shown in the Object widget (e.g. `"webhook_action"`).
-* `type` - string. Always `"software"` for this variant.
-* `config` - object. Software command configuration.
+* `id` - int. Unique command ID. Assigned by the server on creation. Read-only.
+* `name` - string. Human-readable label shown in the Commands block (e.g. `"webhook_action"`).
+* `type` - string. Always `"http"` for this variant.
+* `config` - object. HTTP command configuration.
   * `url` - string. The full endpoint URL that will receive the HTTP POST request.
   * `headers` - array of objects. HTTP request headers to include. Can be empty.
     * `key` - string. Header name (e.g. `"Authorization"`).
@@ -86,7 +86,7 @@ Hardware command strings are device-specific. Always refer to your device manufa
 
 ## API actions
 
-API base path: `/tracker/output_control`.
+API base path: `/tracker/command`.
 
 {% hint style="info" %}
 All API calls require authentication. Pass your **API key** or **user session hash** as the `hash` parameter in the request body, as a query string parameter, or in the `Authorization: NVX <value>` header. API keys are recommended for integrations — they don't expire and can be managed independently. See [Authentication](../../authentication.md) for details.
@@ -94,29 +94,29 @@ All API calls require authentication. Pass your **API key** or **user session ha
 
 ### create
 
-Creates a new output control for a tracker.
+Creates a new command for a tracker.
 
 **Required sub-user rights:** `tracker_update`.
 
 #### Parameters
 
-| name            | description                                                                                     | type   | format           |
-| --------------- | ----------------------------------------------------------------------------------------------- | ------ | ---------------- |
-| hash            | API key or user session hash.                                                                   | string | `"your_api_key"` |
-| tracker\_id     | ID of the tracker to create the output control for.                                             | int    | `70074765`       |
-| output\_control | Output control object without `id`. See [object structure](output-control.md#object-structure). | object | See examples     |
+| name        | description                                                                         | type   | format           |
+| ----------- | ----------------------------------------------------------------------------------- | ------ | ---------------- |
+| hash        | API key or user session hash.                                                       | string | `"your_api_key"` |
+| tracker\_id | ID of the tracker to create the command for.                                        | int    | `70074765`       |
+| command     | Command object without `id`. See [object structure](commands.md#object-structure). | object | See examples     |
 
 #### Examples
 
 {% tabs %}
 {% tab title="cURL — hardware" %}
 ```sh
-curl -X POST 'https://api.eu.navixy.com/v2/tracker/output_control/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/command/create' \
     -H 'Content-Type: application/json' \
     -d '{
         "hash": "your_api_key",
         "tracker_id": 70074765,
-        "output_control": {
+        "command": {
             "name": "engine_stop",
             "type": "hardware",
             "config": {
@@ -128,16 +128,16 @@ curl -X POST 'https://api.eu.navixy.com/v2/tracker/output_control/create' \
 ```
 {% endtab %}
 
-{% tab title="cURL — software" %}
+{% tab title="cURL — http" %}
 ```sh
-curl -X POST 'https://api.eu.navixy.com/v2/tracker/output_control/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/command/create' \
     -H 'Content-Type: application/json' \
     -d '{
         "hash": "your_api_key",
         "tracker_id": 70074765,
-        "output_control": {
+        "command": {
             "name": "webhook_action",
-            "type": "software",
+            "type": "http",
             "config": {
                 "url": "https://example.com/webhook",
                 "headers": [
@@ -160,7 +160,7 @@ curl -X POST 'https://api.eu.navixy.com/v2/tracker/output_control/create' \
 
 #### Response
 
-Returns the created output control object, including the server-assigned `id`.
+Returns the created command object, including the server-assigned `id`.
 
 ```json
 {
@@ -178,7 +178,7 @@ Returns the created output control object, including the server-assigned `id`.
 ```
 
 * `success` - boolean. Always `true` for successful responses.
-* `value` - object. The created output control. See [object structure](output-control.md#object-structure).
+* `value` - object. The created command. See [object structure](commands.md#object-structure).
 
 #### Errors
 
@@ -191,29 +191,29 @@ Returns the created output control object, including the server-assigned `id`.
 
 ### update
 
-Updates an existing output control. The full object including `id` must be provided.
+Updates an existing command. The full object including `id` must be provided.
 
 **Required sub-user rights:** `tracker_update`.
 
 #### Parameters
 
-| name            | description                                                                                               | type   | format           |
-| --------------- | --------------------------------------------------------------------------------------------------------- | ------ | ---------------- |
-| hash            | API key or user session hash.                                                                             | string | `"your_api_key"` |
-| tracker\_id     | ID of the tracker that owns the output control.                                                           | int    | `70074765`       |
-| output\_control | Updated output control object including `id`. See [object structure](output-control.md#object-structure). | object | See example      |
+| name        | description                                                                                   | type   | format           |
+| ----------- | --------------------------------------------------------------------------------------------- | ------ | ---------------- |
+| hash        | API key or user session hash.                                                                 | string | `"your_api_key"` |
+| tracker\_id | ID of the tracker that owns the command.                                                      | int    | `70074765`       |
+| command     | Updated command object including `id`. See [object structure](commands.md#object-structure). | object | See example      |
 
 #### Examples
 
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST 'https://api.eu.navixy.com/v2/tracker/output_control/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/command/update' \
     -H 'Content-Type: application/json' \
     -d '{
         "hash": "your_api_key",
         "tracker_id": 70074765,
-        "output_control": {
+        "command": {
             "id": 2,
             "name": "engine_stop_updated",
             "type": "hardware",
@@ -229,7 +229,7 @@ curl -X POST 'https://api.eu.navixy.com/v2/tracker/output_control/update' \
 
 #### Response
 
-Returns the updated output control object.
+Returns the updated command object.
 
 ```json
 {
@@ -247,12 +247,12 @@ Returns the updated output control object.
 ```
 
 * `success` - boolean. Always `true` for successful responses.
-* `value` - object. The updated output control. See [object structure](output-control.md#object-structure).
+* `value` - object. The updated command. See [object structure](commands.md#object-structure).
 
 #### Errors
 
 * 7 - Invalid parameters – if required fields are missing or malformed.
-* 201 - Not found in the database – if the output control or tracker does not exist.
+* 201 - Not found in the database – if the command or tracker does not exist.
 
 [General error codes](../../../errors.md)
 
@@ -260,29 +260,29 @@ Returns the updated output control object.
 
 ### execute
 
-Executes an output control immediately. For hardware commands, the command string is sent to the device. For software commands, an HTTP POST request is dispatched to the configured URL with the current device attribute values substituted into the body.
+Executes a command immediately. For hardware commands, the command string is sent to the device. For HTTP commands, an HTTP POST request is dispatched to the configured URL with the current device attribute values substituted into the body.
 
 **Required sub-user rights:** `tracker_update`.
 
 #### Parameters
 
-| name        | description                                     | type   | format           |
-| ----------- | ----------------------------------------------- | ------ | ---------------- |
-| hash        | API key or user session hash.                   | string | `"your_api_key"` |
-| tracker\_id | ID of the tracker that owns the output control. | int    | `70074765`       |
-| id          | ID of the output control to execute.            | int    | `3`              |
+| name        | description                              | type   | format           |
+| ----------- | ---------------------------------------- | ------ | ---------------- |
+| hash        | API key or user session hash.            | string | `"your_api_key"` |
+| tracker\_id | ID of the tracker that owns the command. | int    | `70074765`       |
+| command\_id | ID of the command to execute.            | int    | `3`              |
 
 #### Examples
 
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST 'https://api.eu.navixy.com/v2/tracker/output_control/execute' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/command/execute' \
     -H 'Content-Type: application/json' \
     -d '{
         "hash": "your_api_key",
         "tracker_id": 70074765,
-        "id": 3
+        "command_id": 3
     }'
 ```
 {% endtab %}
@@ -301,7 +301,7 @@ curl -X POST 'https://api.eu.navixy.com/v2/tracker/output_control/execute' \
 #### Errors
 
 * 7 - Invalid parameters – if required fields are missing or malformed.
-* 201 - Not found in the database – if the output control or tracker does not exist.
+* 201 - Not found in the database – if the command or tracker does not exist.
 
 [General error codes](../../../errors.md)
 
@@ -309,29 +309,29 @@ curl -X POST 'https://api.eu.navixy.com/v2/tracker/output_control/execute' \
 
 ### delete
 
-Deletes an output control.
+Deletes a command.
 
 **Required sub-user rights:** `tracker_update`.
 
 #### Parameters
 
-| name        | description                                     | type   | format           |
-| ----------- | ----------------------------------------------- | ------ | ---------------- |
-| hash        | API key or user session hash.                   | string | `"your_api_key"` |
-| tracker\_id | ID of the tracker that owns the output control. | int    | `70074765`       |
-| id          | ID of the output control to delete.             | int    | `5`              |
+| name        | description                              | type   | format           |
+| ----------- | ---------------------------------------- | ------ | ---------------- |
+| hash        | API key or user session hash.            | string | `"your_api_key"` |
+| tracker\_id | ID of the tracker that owns the command. | int    | `70074765`       |
+| command\_id | ID of the command to delete.             | int    | `5`              |
 
 #### Examples
 
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST 'https://api.eu.navixy.com/v2/tracker/output_control/delete' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/command/delete' \
     -H 'Content-Type: application/json' \
     -d '{
         "hash": "your_api_key",
         "tracker_id": 70074765,
-        "id": 5
+        "command_id": 5
     }'
 ```
 {% endtab %}
@@ -350,7 +350,7 @@ curl -X POST 'https://api.eu.navixy.com/v2/tracker/output_control/delete' \
 #### Errors
 
 * 7 - Invalid parameters – if required fields are missing or malformed.
-* 201 - Not found in the database – if the output control or tracker does not exist.
+* 201 - Not found in the database – if the command or tracker does not exist.
 
 [General error codes](../../../errors.md)
 
@@ -358,27 +358,27 @@ curl -X POST 'https://api.eu.navixy.com/v2/tracker/output_control/delete' \
 
 ## Batch operations
 
-API path: `/tracker/batch_get_output_controls`.
+API path: `/tracker/batch_get_commands`.
 
-### batch\_get\_output\_controls
+### batch\_get\_commands
 
-Returns all output controls for the specified trackers, grouped by tracker ID. If `trackers` is omitted or empty, returns controls for all trackers accessible to the current user.
+Returns all commands for the specified trackers, grouped by tracker ID. If `trackers` is omitted or empty, returns commands for all trackers accessible to the current user.
 
 **Required sub-user rights:** `tracker_update`.
 
 #### Parameters
 
-| name     | description                                                                                                      | type      | format                 |
-| -------- | ---------------------------------------------------------------------------------------------------------------- | --------- | ---------------------- |
-| hash     | API key or user session hash.                                                                                    | string    | `"your_api_key"`       |
-| trackers | Optional. List of tracker IDs to retrieve output controls for. If omitted, all accessible trackers are included. | int array | `[70074765, 70074766]` |
+| name     | description                                                                                             | type      | format                 |
+| -------- | ------------------------------------------------------------------------------------------------------- | --------- | ---------------------- |
+| hash     | API key or user session hash.                                                                           | string    | `"your_api_key"`       |
+| trackers | Optional. List of tracker IDs to retrieve commands for. If omitted, all accessible trackers are included. | int array | `[70074765, 70074766]` |
 
 #### Examples
 
 {% tabs %}
 {% tab title="cURL — specific trackers" %}
 ```sh
-curl -X POST 'https://api.eu.navixy.com/v2/tracker/batch_get_output_controls' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/batch_get_commands' \
     -H 'Content-Type: application/json' \
     -d '{
         "hash": "your_api_key",
@@ -389,7 +389,7 @@ curl -X POST 'https://api.eu.navixy.com/v2/tracker/batch_get_output_controls' \
 
 {% tab title="cURL — all trackers" %}
 ```sh
-curl -X POST 'https://api.eu.navixy.com/v2/tracker/batch_get_output_controls' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/batch_get_commands' \
     -H 'Content-Type: application/json' \
     -d '{
         "hash": "your_api_key"
@@ -400,7 +400,7 @@ curl -X POST 'https://api.eu.navixy.com/v2/tracker/batch_get_output_controls' \
 
 #### Response
 
-Returns a `result` object whose keys are tracker IDs (as strings) and values are arrays of output control objects for that tracker. Trackers with no configured controls return an empty array.
+Returns a `result` object whose keys are tracker IDs (as strings) and values are arrays of command objects for that tracker. Trackers with no configured commands return an empty array.
 
 ```json
 {
@@ -418,7 +418,7 @@ Returns a `result` object whose keys are tracker IDs (as strings) and values are
       {
         "id": 20,
         "name": "Notify Slack",
-        "type": "software",
+        "type": "http",
         "config": {
           "url": "https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXXXXXX",
           "headers": [],
@@ -434,7 +434,7 @@ Returns a `result` object whose keys are tracker IDs (as strings) and values are
 ```
 
 * `success` - boolean. Always `true` for successful responses.
-* `result` - object. Keys are tracker IDs (string). Values are arrays of output control objects. See [object structure](output-control.md#object-structure).
+* `result` - object. Keys are tracker IDs (string). Values are arrays of command objects. See [object structure](commands.md#object-structure).
 
 #### Errors
 
