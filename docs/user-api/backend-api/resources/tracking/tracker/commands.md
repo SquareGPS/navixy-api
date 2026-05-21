@@ -6,14 +6,12 @@ description: >-
 
 # Commands
 
-## Commands
-
 Commands let you define reusable commands for a tracker and execute them on demand. Two command types are supported:
 
 * **Hardware** — sends a protocol-level command string directly to the device (e.g. to reboot firmware or toggle a relay).
 * **HTTP** — sends an HTTP POST request with a JSON body to any URL, optionally embedding live device attributes in the payload.
 
-Commands are stored per tracker and can be executed at any time from the [Commands block](https://app.gitbook.com/s/446mKak1zDrGv70ahuYZ/guide/devices-and-settings/object-management/commands-block) in the platform UI.
+Commands are stored per tracker and can be executed at any time from the [Commands block](https://app.gitbook.com/s/446mKak1zDrGv70ahuYZ/guide/devices-and-settings/object-management/output-control-block) in the platform UI.
 
 {% hint style="info" %}
 Commands is designed for manual, on-demand actions targeting a single tracker. For automated, rule-based command sending across multiple devices, use [IoT Logic](https://app.gitbook.com/o/YVLWhgAwCZPoU5vlRsCs/s/tx3J5BxnWyPV0nP2xr0z/) with the **Device action** or **Webhook** nodes.
@@ -100,10 +98,10 @@ Creates a new command for a tracker.
 
 #### Parameters
 
-| name        | description                                                                         | type   | format           |
-| ----------- | ----------------------------------------------------------------------------------- | ------ | ---------------- |
-| hash        | API key or user session hash.                                                       | string | `"your_api_key"` |
-| tracker\_id | ID of the tracker to create the command for.                                        | int    | `70074765`       |
+| name        | description                                                                        | type   | format           |
+| ----------- | ---------------------------------------------------------------------------------- | ------ | ---------------- |
+| hash        | API key or user session hash.                                                      | string | `"your_api_key"` |
+| tracker\_id | ID of the tracker to create the command for.                                       | int    | `70074765`       |
 | command     | Command object without `id`. See [object structure](commands.md#object-structure). | object | See examples     |
 
 #### Examples
@@ -197,10 +195,10 @@ Updates an existing command. The full object including `id` must be provided.
 
 #### Parameters
 
-| name        | description                                                                                   | type   | format           |
-| ----------- | --------------------------------------------------------------------------------------------- | ------ | ---------------- |
-| hash        | API key or user session hash.                                                                 | string | `"your_api_key"` |
-| tracker\_id | ID of the tracker that owns the command.                                                      | int    | `70074765`       |
+| name        | description                                                                                  | type   | format           |
+| ----------- | -------------------------------------------------------------------------------------------- | ------ | ---------------- |
+| hash        | API key or user session hash.                                                                | string | `"your_api_key"` |
+| tracker\_id | ID of the tracker that owns the command.                                                     | int    | `70074765`       |
 | command     | Updated command object including `id`. See [object structure](commands.md#object-structure). | object | See example      |
 
 #### Examples
@@ -368,9 +366,9 @@ Returns all commands for the specified trackers, grouped by tracker ID. If `trac
 
 #### Parameters
 
-| name     | description                                                                                             | type      | format                 |
-| -------- | ------------------------------------------------------------------------------------------------------- | --------- | ---------------------- |
-| hash     | API key or user session hash.                                                                           | string    | `"your_api_key"`       |
+| name     | description                                                                                               | type      | format                 |
+| -------- | --------------------------------------------------------------------------------------------------------- | --------- | ---------------------- |
+| hash     | API key or user session hash.                                                                             | string    | `"your_api_key"`       |
 | trackers | Optional. List of tracker IDs to retrieve commands for. If omitted, all accessible trackers are included. | int array | `[70074765, 70074766]` |
 
 #### Examples
