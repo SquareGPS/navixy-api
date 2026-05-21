@@ -24,10 +24,10 @@ assetGroupTypes(
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization to retrieve asset group types for. |
 | `filter` | `CatalogItemFilter` | Filtering options for the returned asset group types. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `first` | `Int` | The first `n` elements from the [paginated list](../../pagination.md). |
+| `after` | `String` | The elements that come after the specified [cursor](../../pagination.md). |
+| `last` | `Int` | The last `n` elements from the [paginated list](../../pagination.md). |
+| `before` | `String` | The elements that come before the specified [cursor](../../pagination.md). |
 | `orderBy` | `CatalogItemOrder` | The ordering options for the returned asset group types. |
 
 **Input types:**
@@ -181,10 +181,10 @@ assetGroups(
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization to retrieve asset groups for. |
 | `filter` | `AssetGroupFilter` | Filtering options for the returned asset groups. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `first` | `Int` | The first `n` elements from the [paginated list](../../pagination.md). |
+| `after` | `String` | The elements that come after the specified [cursor](../../pagination.md). |
+| `last` | `Int` | The last `n` elements from the [paginated list](../../pagination.md). |
+| `before` | `String` | The elements that come before the specified [cursor](../../pagination.md). |
 | `orderBy` | `AssetGroupOrder` | The ordering options for the returned asset groups. |
 
 **Input types:**

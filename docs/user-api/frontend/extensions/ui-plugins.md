@@ -49,11 +49,11 @@ The application can be installed for all users or for a specific one.
 
 ### Standalone version
 
-You can find the instruction on installation of the software [here](https://docs.navixy.com/on-premise/applications).
+You can find the instruction on installation of the software [here](https://navixy.com/docs/on-premise/on-premise/how-to-guide/installation).
 
 ## Alternative solution - User applications
 
 You can also embed practically any custom application to the platform on your own. The User applications feature offers an unprecedented freedom when you need to display 3rd-party content without switching interfaces using UI or API. To learn more about this functionality, see:
 
-* [User documentation](https://docs.navixy.com/user-guide/user-applications) - detailed feature description and instruction on how to use it from the platform's UI.
+* [User documentation](https://navixy.com/docs/user/guide/account/user-applications) - detailed feature description and instruction on how to use it from the platform's UI.
 * [API documentation](../../backend-api/resources/commons/user/applications/README.md) - instructions on how to use it through API requests.
