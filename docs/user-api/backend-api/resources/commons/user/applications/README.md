@@ -18,8 +18,6 @@ However, if you need to automate application management and integrate external t
 * Delete existing applications
 * Enable/Disable - control application availability
 
-For detailed reference see [User application resources](/broken/pages/0581b45ef03198e50e462ac93e42a311efe2b379).
-
 ## How to create a new application
 
 To create a new user application using the user/application/update API, send a POST request with the required parameters.

@@ -66,10 +66,10 @@ https://api.eu.navixy.com/v2/delivery/read?hash=a6aa75587e5c59c32d347da438505fc3
 ```
 
 * `user_id` - master ID of the user to which the task belongs to.
-* `task` - a task object, for more info see [/task](../../../introduction/resources/tracking/broken-reference/)\
+* `task` - a task object, for more info see [/task](../field-service/task/README.md)\
   object structure.
-* `tracker` - corresponding tracker object, for more info see[tracker/](../../../introduction/resources/tracking/broken-reference/) object structure.
-* `restrictions` - tariff restrictions object, for more info see[user/get\_tariff\_restrictions](../../../introduction/resources/tracking/broken-reference/).
+* `tracker` - corresponding tracker object, for more info see[tracker/](tracker/README.md) object structure.
+* `restrictions` - tariff restrictions object, for more info see[user/get\_tariff\_restrictions](../commons/user/index.md#get_tariff_restrictions).
 * `first_name` - string. The first name of employee assigned to the task, or null if missing.
 * `middle_name` - string. The middle name of employee assigned to the task, or null if missing.
 * `last_name` - string. The last name of employee assigned to the task, or null if missing.
@@ -188,16 +188,16 @@ https://api.eu.navixy.com/v2/delivery/list?hash=a6aa75587e5c59c32d347da438505fc3
 }
 ```
 
-* `task` - a task object, for more info see [/task](../../../introduction/resources/tracking/broken-reference/) object\
+* `task` - a task object, for more info see [/task](../field-service/task/README.md) object\
   structure.
-* `tracker` - corresponding tracker object, for more info see[tracker/](../../../introduction/resources/tracking/broken-reference/) object structure.
+* `tracker` - corresponding tracker object, for more info see[tracker/](tracker/README.md) object structure.
 * `first_name` - string. The first name of employee assigned to the task, or null if missing.
 * `middle_name` - string. The middle name of employee assigned to the task, or null if missing.
 * `last_name` - string. The last name of employee assigned to the task, or null if missing.
 * `vehicle_label` - string. A label of the vehicle assigned to the task, or null if missing.
 * `estimated_time` - int. Estimated time of arrival in seconds, or null if unavailable.
 * `user_id` - master ID of the user to which the task belongs to.
-* `restrictions` - tariff restrictions object, for more info see[user/get\_tariff\_restrictions](../../../introduction/resources/tracking/broken-reference/).
+* `restrictions` - tariff restrictions object, for more info see[user/get\_tariff\_restrictions](../commons/user/index.md#get_tariff_restrictions).
 
 #### Errors
 

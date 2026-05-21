@@ -44,7 +44,7 @@ Common parameters are:
 }
 ```
 
-For `tracker` object structure, see [tracker/](../../../../introduction/resources/tracking/tracker/broken-reference/).
+For `tracker` object structure, see [tracker/](README.md).
 
 #### Errors
 
