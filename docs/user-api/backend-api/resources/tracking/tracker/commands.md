@@ -158,25 +158,17 @@ curl -X POST 'https://api.eu.navixy.com/v2/tracker/command/create' \
 
 #### Response
 
-Returns the created command object, including the server-assigned `id`.
+Returns the server-assigned `id` of the created command.
 
 ```json
 {
   "success": true,
-  "value": {
-    "id": 19,
-    "name": "engine_stop",
-    "type": "hardware",
-    "config": {
-      "command": "RELAY,1#",
-      "reliable": true
-    }
-  }
+  "id": 19
 }
 ```
 
 * `success` - boolean. Always `true` for successful responses.
-* `value` - object. The created command. See [object structure](commands.md#object-structure).
+* `id` - int. ID of the newly created command.
 
 #### Errors
 
@@ -227,25 +219,13 @@ curl -X POST 'https://api.eu.navixy.com/v2/tracker/command/update' \
 
 #### Response
 
-Returns the updated command object.
-
 ```json
 {
-  "success": true,
-  "value": {
-    "id": 2,
-    "name": "engine_stop_updated",
-    "type": "hardware",
-    "config": {
-      "command": "RELAY,0#",
-      "reliable": true
-    }
-  }
+  "success": true
 }
 ```
 
 * `success` - boolean. Always `true` for successful responses.
-* `value` - object. The updated command. See [object structure](commands.md#object-structure).
 
 #### Errors
 
