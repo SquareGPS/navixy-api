@@ -96,7 +96,7 @@ Let's explore the Service Settings object using the following example:
 * `privacy_policy_link` - string. Nullable, privacy policy link (it may be empty).
 * `tos` - string. Nullable, terms of service text (it may be empty).
 * `no_register_commands` - boolean. Prevents sending commands to devices on activation if `true`.
-* `default_user_time_zone` - string. [Time zone ID](../../timezone.md) for new users created via [user/upload](broken-reference). This time zone is also selected by default when creating a new user in the Navixy Admin Panel.
+* `default_user_time_zone` - string. [Time zone ID](../../timezone.md) for new users created via [user/upload](../../user/README.md#upload). This time zone is also selected by default when creating a new user in the Navixy Admin Panel.
 
 ## API actions
 

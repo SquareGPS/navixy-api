@@ -132,7 +132,7 @@ https://api.eu.navixy.com/v2/panel/dealer/get_info?hash=fa7bf873fab9333144e17137
 * `logo` (string): Path or URL to dealer's logotype or null.
 * `paas_activation_date` (string): Date of activation pay.
 * `features` (array of strings): Set of allowed [dealer features](../../../user-api/backend-api/resources/commons/dealer.md#dealer-features).
-* `default_user_time_zone` (string): [Time zone ID](../timezone.md) for new users created via [user/upload](broken-reference). This zone will also be selected by default when creating a new user in the Navixy Admin Panel.
+* `default_user_time_zone` (string): [Time zone ID](../timezone.md) for new users created via [user/upload](../user/README.md#upload). This zone will also be selected by default when creating a new user in the Navixy Admin Panel.
 
 #### Errors
 
