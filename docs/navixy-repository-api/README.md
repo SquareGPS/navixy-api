@@ -59,5 +59,5 @@ The API reference provides complete technical specifications for all GraphQL typ
 * [**Catalogs**](catalogs/)
 
 {% hint style="warning" %}
-The API supports [GraphQL introspection](graphql-basics.md#the-schema) for authenticated users. You can perform it via [Navixy Repository GraphQL Sandbox](https://api.navixy.dev/v4/graphql/sandbox) (currently in query-only demo mode) or with your own tools. You can also check the public [GraphQL schema](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/nvx4-clean/docs/navixy-repository-api/graphql-schema/schema.graphql).
+The API supports [GraphQL introspection](graphql-basics.md#the-schema) for authenticated users. You can also check the public [GraphQL schema](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/nvx4-clean/docs/navixy-repository-api/graphql-schema/schema.graphql).
 {% endhint %}
