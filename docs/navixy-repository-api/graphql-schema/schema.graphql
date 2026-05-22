@@ -1,6 +1,6 @@
 # =============================================================================
 # NAVIXY 4 - GraphQL Schema
-# Version: 0.6.5
+# Version: 0.6.8
 # =============================================================================
 #
 # TABLE OF CONTENTS
@@ -276,7 +276,7 @@
 #   {
 #     "extensions": {
 #       // RFC 9457 standard fields
-#       "type": "https://api.navixy.com/errors/not-found",
+#       "type": "https://www.navixy.com/docs/navixy-repository-api/error-handling#entity-not-found-404",
 #       "title": "Resource Not Found",
 #       "status": 404,
 #       "detail": "Device with ID '019a6a3f-...' does not exist",
@@ -324,19 +324,19 @@
 #
 #   | Code                | Type URI                                   | Status | Description                           |
 #   |---------------------|--------------------------------------------|--------|---------------------------------------|
-#   | UNAUTHORIZED        | .../errors/unauthorized                    | 401    | Missing or invalid authentication     |
-#   | PERMISSION_DENIED   | .../errors/forbidden                       | 403    | Insufficient permissions              |
-#   | NOT_FOUND           | .../errors/not-found                       | 404    | Entity does not exist                 |
-#   | VALIDATION_ERROR    | .../errors/validation                      | 400    | Input validation failed               |
-#   | CONFLICT            | .../errors/conflict                        | 409    | Optimistic lock version mismatch      |
-#   | DUPLICATE           | .../errors/duplicate                       | 409    | Unique constraint violation           |
-#   | RATE_LIMITED        | .../errors/rate-limited                    | 429    | Too many requests                     |
-#   | QUERY_TOO_COMPLEX   | .../errors/query-too-complex               | 400    | Query exceeds complexity limit        |
-#   | QUERY_TOO_DEEP      | .../errors/query-too-deep                  | 400    | Query exceeds depth limit             |
-#   | INTERNAL_ERROR      | .../errors/internal                        | 500    | Unexpected server error               |
-#   | SERVICE_UNAVAILABLE | .../errors/service-unavailable             | 503    | Downstream service unavailable        |
+#   | UNAUTHORIZED        | .../error-handling#unauthorized-401                | 401    | Missing or invalid authentication     |
+#   | PERMISSION_DENIED   | .../error-handling#permission-denied-403           | 403    | Insufficient permissions              |
+#   | NOT_FOUND           | .../error-handling#entity-not-found-404            | 404    | Entity does not exist                 |
+#   | VALIDATION_ERROR    | .../error-handling##validation-error-400           | 400    | Input validation failed               |
+#   | CONFLICT            | .../error-handling#version-conflict-409            | 409    | Optimistic lock version mismatch      |
+#   | DUPLICATE           | .../error-handling#duplicate-409                   | 409    | Unique constraint violation           |
+#   | RATE_LIMITED        | .../error-handling#rate-limited-429                | 429    | Too many requests                     |
+#   | QUERY_TOO_COMPLEX   | .../error-handling#query-too-complex-400           | 400    | Query exceeds complexity limit        |
+#   | QUERY_TOO_DEEP      | .../error-handling#query-too-deep-400              | 400    | Query exceeds depth limit             |
+#   | INTERNAL_ERROR      | .../error-handling#internal-500                    | 500    | Unexpected server error               |
+#   | SERVICE_UNAVAILABLE | .../error-handling#service-unavailable-503         | 503    | Downstream service unavailable        |
 #
-#   Base URI: https://api.navixy.com
+#   Base URI: https://www.navixy.com/docs/navixy-repository-api
 #
 # -----------------------------------------------------------------------------
 # ERROR EXAMPLES
@@ -354,7 +354,7 @@
 #         "path": ["device"],
 #         "locations": [{ "line": 1, "column": 9 }],
 #         "extensions": {
-#           "type": "https://api.navixy.com/errors/not-found",
+#           "type": "https://www.navixy.com/docs/navixy-repository-api/error-handling#entity-not-found-404",
 #           "title": "Resource Not Found",
 #           "status": 404,
 #           "detail": "Device with ID 'non-existent-id' does not exist",
@@ -379,7 +379,7 @@
 #         "path": ["deviceCreate"],
 #         "locations": [{ "line": 1, "column": 12 }],
 #         "extensions": {
-#           "type": "https://api.navixy.com/errors/validation",
+#           "type": "https://www.navixy.com/docs/navixy-repository-api/error-handling#validation-error-400",
 #           "title": "Validation Error",
 #           "status": 400,
 #           "detail": "Field 'title' must not be empty",
@@ -403,7 +403,7 @@
 #         "path": ["deviceUpdate"],
 #         "locations": [{ "line": 1, "column": 12 }],
 #         "extensions": {
-#           "type": "https://api.navixy.com/errors/conflict",
+#           "type": "https://www.navixy.com/docs/navixy-repository-api/error-handling#version-conflict-409",
 #           "title": "Optimistic Lock Conflict",
 #           "status": 409,
 #           "detail": "Device was modified. Expected version 5, current version 7",
@@ -430,7 +430,7 @@
 #         "path": ["deviceIdentifierAdd"],
 #         "locations": [{ "line": 1, "column": 12 }],
 #         "extensions": {
-#           "type": "https://api.navixy.com/errors/duplicate",
+#           "type": "https://www.navixy.com/docs/navixy-repository-api/error-handling#duplicate-409",
 #           "title": "Duplicate Entry",
 #           "status": 409,
 #           "detail": "Device identifier with type 'IMEI' and value '123456789012345' already exists",
@@ -681,12 +681,37 @@ Uniqueness:
 
 Examples: DEVICE_TYPE, vehicle_car, status.active, sensor-v2, ABC123
 """
-scalar Code @specifiedBy(url: "https://api.navixy.com/spec/scalars/code")
+scalar Code @specifiedBy(url: "https://www.navixy.com/docs/navixy-repository-api/core-api-reference/common#code")
+
+# @category: common
+"""
+Arbitrary-precision decimal value encoded as a JSON string (e.g. `"5.25"`).
+String encoding avoids the precision loss inherent in JSON `Float`.
+
+Values exceeding the declared `scale` of a decimal custom field are rounded
+server-side using HALF_UP (round half away from zero for positive values,
+round half toward zero for negative — matches Java `RoundingMode.HALF_UP`).
+The rounded value is persisted in both the CFV table and the
+`custom_fields_data` JSONB blob; raw un-rounded input is never stored.
+
+Storage is `numeric(28, 10)` — up to 28 significant digits, of which at
+most 10 follow the decimal point (so up to 18 digits before). Values
+exceeding this envelope (e.g. more than 18 integer digits) are rejected
+as `VALIDATION_ERROR` at the API layer.
+"""
+scalar Decimal @specifiedBy(url: "https://www.navixy.com/docs/navixy-repository-api/core-api-reference/common#decimal")
+
+# @category: common
+"""
+Signed 64-bit integer in the range [-9223372036854775808, 9223372036854775807].
+Encoded as a JSON number.
+"""
+scalar Long @specifiedBy(url: "https://www.navixy.com/docs/navixy-repository-api/core-api-reference/common#long")
 
 # @category: schedules
 "A schedule data structure containing time intervals and recurrence rules."
 scalar ScheduleData
-  @specifiedBy(url: "https://api.navixy.com/spec/scalars/schedule-data")
+  @specifiedBy(url: "https://www.navixy.com/docs/navixy-repository-api/core-api-reference/schedules#scheduledata")
 
 # =============================================================================
 # 8. ENUMS
@@ -739,8 +764,10 @@ enum FieldType {
   STRING
   "Multi-line text input. Maximum 65,535 characters."
   TEXT
-  "Numeric value, supporting both integers and decimals."
-  NUMBER
+  "Arbitrary-precision decimal value (encoded as Decimal string)."
+  DECIMAL
+  "Signed 64-bit integer value (encoded as Long)."
+  INTEGER
   "Boolean true/false value."
   BOOLEAN
   "Calendar date without time component (YYYY-MM-DD)."
@@ -1839,7 +1866,6 @@ type DeviceType implements CatalogItem & Node & Versioned & Titled {
   catalog: Catalog!
   organization: Organization
   meta: CatalogItemMeta!
-  # TODO: customFieldDefinitions temporarily hidden from SDL; backend support preserved — re-add when needed
 }
 
 # @category: devices
@@ -2476,7 +2502,7 @@ type AssetGroup implements Node & Versioned & Titled {
   title: String!
   "The organization that owns this group."
   organization: Organization!
-  "The group type with membership constraints."
+  "The group type with membership constraints. Immutable after creation."
   type: AssetGroupType
   "The color for UI display in hexadecimal format."
   color: HexColorCode
@@ -2591,7 +2617,7 @@ type PointContainmentResult {
 
 # @category: schedules
 "A schedule definition for work hours, maintenance windows, or other time-based rules."
-type Schedule implements Node & Titled & Customizable & Versioned {
+type Schedule implements Node & Titled & Versioned {
   id: ID!
   version: Int!
   title: String!
@@ -2599,10 +2625,6 @@ type Schedule implements Node & Titled & Customizable & Versioned {
   organization: Organization!
   "The calendar and time interval definitions for this schedule."
   scheduleData: ScheduleData!
-  customFields(
-    "Limit returned fields to these codes. Returns all fields if not specified."
-    codes: [Code!]
-  ): JSON!
 }
 # =============================================================================
 # 16. CUSTOM FIELDS
@@ -2655,7 +2677,7 @@ type FieldParamsString implements FieldParams {
   "The maximum character length."
   maxLength: Int
   "The default value."
-  defaultValue: String
+  defaultString: String
   "Whether to trim leading and trailing whitespace."
   trim: Boolean!
 }
@@ -2667,23 +2689,38 @@ type FieldParamsText implements FieldParams {
   "The maximum character length."
   maxLength: Int
   "The default value."
-  defaultValue: String
+  defaultText: String
   "Whether to trim leading and trailing whitespace."
   trim: Boolean!
 }
 
 # @category: custom-fields
-"Parameters for NUMBER field type."
-type FieldParamsNumber implements FieldParams {
+"Parameters for DECIMAL field type."
+type FieldParamsDecimal implements FieldParams {
   isRequired: Boolean!
   "The minimum allowed value."
-  min: Float
+  minDecimal: Decimal
   "The maximum allowed value."
-  max: Float
-  "The decimal precision."
-  precision: Int
+  maxDecimal: Decimal
+  """
+  Digits after the decimal point. Must be >= 0. Values sent with more
+  fractional digits than `scale` are rounded using HALF_UP before storage.
+  """
+  scale: Int!
   "The default value."
-  defaultValue: Float
+  defaultDecimal: Decimal
+}
+
+# @category: custom-fields
+"Parameters for INTEGER field type."
+type FieldParamsInteger implements FieldParams {
+  isRequired: Boolean!
+  "The minimum allowed value."
+  minInteger: Long
+  "The maximum allowed value."
+  maxInteger: Long
+  "The default value."
+  defaultInteger: Long
 }
 
 # @category: custom-fields
@@ -2691,7 +2728,7 @@ type FieldParamsNumber implements FieldParams {
 type FieldParamsBoolean implements FieldParams {
   isRequired: Boolean!
   "The default value."
-  defaultValue: Boolean
+  defaultBoolean: Boolean
 }
 
 # @category: custom-fields
@@ -2699,7 +2736,7 @@ type FieldParamsBoolean implements FieldParams {
 type FieldParamsDate implements FieldParams {
   isRequired: Boolean!
   "The default value."
-  defaultValue: Date
+  defaultDate: Date
 }
 
 # @category: custom-fields
@@ -2707,7 +2744,7 @@ type FieldParamsDate implements FieldParams {
 type FieldParamsDatetime implements FieldParams {
   isRequired: Boolean!
   "The default value."
-  defaultValue: DateTime
+  defaultDatetime: DateTime
 }
 
 # @category: custom-fields
@@ -2732,7 +2769,7 @@ type FieldParamsOptions implements FieldParams & MultiValue {
   "The available options to choose from."
   options: [FieldOption!]!
   "The default option code."
-  defaultValue: Code
+  defaultOptions: Code
 }
 
 # @category: custom-fields
@@ -2770,7 +2807,7 @@ type FieldParamsCatalog implements FieldParams & MultiValue {
   "The catalog code that items can be selected from."
   refCatalogCode: Code!
   "The default item code."
-  defaultValue: Code
+  defaultCatalog: Code
 }
 
 # @category: custom-fields
@@ -2778,7 +2815,7 @@ type FieldParamsCatalog implements FieldParams & MultiValue {
 type FieldParamsTag implements FieldParams {
   isRequired: Boolean!
   "The default tag code."
-  defaultValue: Code
+  defaultTag: Code
 }
 
 # =============================================================================
@@ -3038,7 +3075,12 @@ input AssetFilter {
 input AssetOrder {
   "The standard field to order by. Mutually exclusive with `customFieldCode`."
   field: AssetOrderField
-  "The custom field code to order by. Mutually exclusive with `field`."
+  """
+  The custom field code to order by. Mutually exclusive with `field`.
+  Supported field types: STRING, TEXT, DECIMAL, INTEGER, DATE, DATETIME.
+  OPTIONS, TAG, BOOLEAN, GEOJSON, SCHEDULE, DEVICE, REFERENCE, CATALOG
+  are not supported for sorting.
+  """
   customFieldCode: Code
   "The direction to order."
   direction: OrderDirection!
@@ -3146,7 +3188,12 @@ input GeoObjectFilter {
 input GeoObjectOrder {
   "The standard field to order by. Mutually exclusive with `customFieldCode`."
   field: GeoObjectOrderField
-  "The custom field code to order by. Mutually exclusive with `field`."
+  """
+  The custom field code to order by. Mutually exclusive with `field`.
+  Supported field types: STRING, TEXT, DECIMAL, INTEGER, DATE, DATETIME.
+  OPTIONS, TAG, BOOLEAN, GEOJSON, SCHEDULE, DEVICE, REFERENCE, CATALOG
+  are not supported for sorting.
+  """
   customFieldCode: Code
   "The direction to order."
   direction: OrderDirection!
@@ -3166,17 +3213,13 @@ enum GeoObjectOrderField {
 input ScheduleFilter {
   "Partial match on title (case-insensitive contains)."
   titleContains: String @trim
-  "Filter by custom field values."
-  customFields: [CustomFieldFilter!]
 }
 
 # @category: schedules
 "Ordering options for schedules."
 input ScheduleOrder {
-  "The standard field to order by. Mutually exclusive with `customFieldCode`."
+  "The standard field to order by."
   field: ScheduleOrderField
-  "The custom field code to order by. Mutually exclusive with `field`."
-  customFieldCode: Code
   "The direction to order."
   direction: OrderDirection!
 }
@@ -3342,7 +3385,8 @@ Choose the variant that matches the custom field's data type:
 | FieldType         | Variant      | Example                                |
 |-------------------|--------------|----------------------------------------|
 | STRING, TEXT      | `string`     | `{ string: "hello" }`                  |
-| NUMBER            | `number`     | `{ number: 42.0 }`                     |
+| DECIMAL           | `decimal`    | `{ decimal: "42.50" }`                 |
+| INTEGER           | `integer`    | `{ integer: 42 }`                      |
 | BOOLEAN           | `boolean`    | `{ boolean: true }`                    |
 | DATE              | `date`       | `{ date: "2024-01-15" }`              |
 | DATETIME          | `datetime`   | `{ datetime: "2024-01-15T10:30:00Z" }`|
@@ -3354,8 +3398,10 @@ Choose the variant that matches the custom field's data type:
 input CustomFieldFilterValue @oneOf {
   "String value — for STRING, TEXT, OPTIONS, CATALOG, TAG fields."
   string: String
-  "Numeric value — for NUMBER fields."
-  number: Float
+  "Arbitrary-precision decimal value — for DECIMAL fields."
+  decimal: Decimal
+  "Signed 64-bit integer value — for INTEGER fields."
+  integer: Long
   "Boolean value — for BOOLEAN fields."
   boolean: Boolean
   "Date value — for DATE fields."
@@ -3424,10 +3470,15 @@ input DeviceCreateInput {
   modelId: ID!
   "The initial device status ID."
   statusId: ID!
-  "The device display name."
-  title: String! @trim
-  "The hardware identifiers."
-  identifiers: [DeviceIdentifierInput!]
+  """
+  The device display name. If omitted or blank, the server generates
+  "<vendor.title> <model.title> <identifier.value>" where the identifier
+  is chosen by type priority: IMEI > SERIAL_NUMBER > MAC_ADDRESS, with
+  fallback to identifiers[0] when none of the priority types are present.
+  """
+  title: String @trim
+  "The hardware identifiers. At least one entry is required."
+  identifiers: [DeviceIdentifierInput!]!
 }
 
 # @category: devices
@@ -3525,7 +3576,7 @@ input AssetDeleteInput {
 input AssetGroupCreateInput {
   "The organization that will own the group."
   organizationId: ID!
-  "The group type ID."
+  "The group type ID. Immutable after creation."
   typeId: ID
   "The group display name."
   title: String! @trim
@@ -3629,8 +3680,6 @@ input ScheduleCreateInput {
   title: String! @trim
   "The schedule data."
   scheduleData: ScheduleData!
-  "The custom field values."
-  customFields: CustomFieldsPatchInput
 }
 
 # @category: schedules
@@ -3644,8 +3693,6 @@ input ScheduleUpdateInput {
   title: String @trim
   "The new schedule data."
   scheduleData: ScheduleData
-  "The custom field changes."
-  customFields: CustomFieldsPatchInput
 }
 
 # @category: schedules
@@ -4015,8 +4062,10 @@ input FieldParamsInput @oneOf {
   string: StringFieldParamsInput
   "Parameters for TEXT field type."
   text: TextFieldParamsInput
-  "Parameters for NUMBER field type."
-  number: NumberFieldParamsInput
+  "Parameters for DECIMAL field type."
+  decimal: DecimalFieldParamsInput
+  "Parameters for INTEGER field type."
+  integer: IntegerFieldParamsInput
   "Parameters for BOOLEAN field type."
   boolean: BooleanFieldParamsInput
   "Parameters for DATE field type."
@@ -4049,7 +4098,7 @@ input StringFieldParamsInput {
   "The maximum character length."
   maxLength: Int
   "The default value."
-  defaultValue: String
+  defaultString: String
   "Whether to trim whitespace."
   trim: Boolean = true
 }
@@ -4062,24 +4111,40 @@ input TextFieldParamsInput {
   "The maximum character length."
   maxLength: Int
   "The default value."
-  defaultValue: String
+  defaultText: String
   "Whether to trim whitespace."
   trim: Boolean = false
 }
 
 # @category: custom-fields
-"Parameters for NUMBER field type."
-input NumberFieldParamsInput {
+"Parameters for DECIMAL field type."
+input DecimalFieldParamsInput {
   "Whether a value is required."
   isRequired: Boolean!
   "The minimum allowed value."
-  min: Float
+  minDecimal: Decimal
   "The maximum allowed value."
-  max: Float
-  "The decimal precision."
-  precision: Int
+  maxDecimal: Decimal
+  """
+  Digits after the decimal point. Must be >= 0. Values sent with more
+  fractional digits than `scale` are rounded using HALF_UP before storage.
+  """
+  scale: Int!
   "The default value."
-  defaultValue: Float
+  defaultDecimal: Decimal
+}
+
+# @category: custom-fields
+"Parameters for INTEGER field type."
+input IntegerFieldParamsInput {
+  "Whether a value is required."
+  isRequired: Boolean!
+  "The minimum allowed value."
+  minInteger: Long
+  "The maximum allowed value."
+  maxInteger: Long
+  "The default value."
+  defaultInteger: Long
 }
 
 # @category: custom-fields
@@ -4088,7 +4153,7 @@ input BooleanFieldParamsInput {
   "Whether a value is required."
   isRequired: Boolean!
   "The default value."
-  defaultValue: Boolean
+  defaultBoolean: Boolean
 }
 
 # @category: custom-fields
@@ -4097,7 +4162,7 @@ input DateFieldParamsInput {
   "Whether a value is required."
   isRequired: Boolean!
   "The default value."
-  defaultValue: Date
+  defaultDate: Date
 }
 
 # @category: custom-fields
@@ -4106,7 +4171,7 @@ input DateTimeFieldParamsInput {
   "Whether a value is required."
   isRequired: Boolean!
   "The default value."
-  defaultValue: DateTime
+  defaultDatetime: DateTime
 }
 
 # @category: custom-fields
@@ -4135,7 +4200,7 @@ input OptionsFieldParamsInput {
   "The available options."
   options: [FieldOptionInput!]!
   "The default option code."
-  defaultValue: Code
+  defaultOptions: Code
 }
 
 # @category: custom-fields
@@ -4181,7 +4246,7 @@ input CatalogFieldParamsInput {
   "The catalog code that items can be selected from."
   refCatalogCode: Code!
   "The default item code."
-  defaultValue: Code
+  defaultCatalog: Code
 }
 
 # @category: custom-fields
@@ -4190,7 +4255,7 @@ input TagFieldParamsInput {
   "Whether a value is required."
   isRequired: Boolean!
   "The default tag code."
-  defaultValue: Code
+  defaultTag: Code
 }
 
 # --- Catalog Item CRUD Inputs ---
@@ -4294,7 +4359,6 @@ input DeviceTypeCreateInput {
   order: Int
   "The display properties."
   meta: CatalogItemMetaInput
-  # TODO: customFieldDefinitions temporarily hidden from SDL; backend support preserved — re-add when needed
 }
 
 # @category: devices
@@ -4310,7 +4374,6 @@ input DeviceTypeUpdateInput {
   order: Int
   "The display properties."
   meta: CatalogItemMetaInput
-  # TODO: customFieldDefinitions temporarily hidden from SDL; backend support preserved — re-add when needed
 }
 
 # @category: devices
