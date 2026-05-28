@@ -1,6 +1,6 @@
 # =============================================================================
 # NAVIXY 4 - GraphQL Schema
-# Version: 0.6.8
+# Version: 0.6.9
 # =============================================================================
 #
 # TABLE OF CONTENTS
@@ -3468,8 +3468,6 @@ input DeviceCreateInput {
   typeId: ID!
   "The device model ID."
   modelId: ID!
-  "The initial device status ID."
-  statusId: ID!
   """
   The device display name. If omitted or blank, the server generates
   "<vendor.title> <model.title> <identifier.value>" where the identifier
@@ -3490,8 +3488,6 @@ input DeviceUpdateInput {
   version: Int
   "The new device model."
   modelId: ID
-  "The new device status."
-  statusId: ID
   "The new display name."
   title: String @trim
 }

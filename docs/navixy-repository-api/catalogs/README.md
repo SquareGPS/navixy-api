@@ -28,7 +28,7 @@ The `code` field uses the [Code](../common.md#code) scalar, a case-insensitive a
 
 ### Catalogs are catalog items
 
-The [Catalog](catalog-items.md#catalog-2) type itself implements `CatalogItem`. A catalog is a named container that groups related items and is associated with a system module (such as `repo`, `fleet_management`, or `iot`). This self-referential design means the API's meta-catalog, "the catalog of catalogs," is itself a catalog item.
+The [Catalog](catalog-items.md#type-catalog) type itself implements `CatalogItem`. A catalog is a named container that groups related items and is associated with a system module (such as `repo`, `fleet_management`, or `iot`). This self-referential design means the API's meta-catalog, "the catalog of catalogs," is itself a catalog item.
 
 ### Item origins
 

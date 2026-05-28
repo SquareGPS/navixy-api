@@ -22,7 +22,7 @@ me: Actor!
 
 An entity that can perform actions and have permissions assigned.
 
-**Implements:** [Node](../common.md#node), [Titled](../common.md#titled)
+**Implements:** [Node](../common.md#type-node), [Titled](../common.md#type-titled)
 
 | Field   | Type      | Description                    |
 | ------- | --------- | ------------------------------ |
@@ -34,6 +34,8 @@ An entity that can perform actions and have permissions assigned.
 ***
 
 ## Objects
+
+<a id="type-personname"></a>
 
 ### PersonName
 
@@ -56,11 +58,13 @@ Examples by culture:
 
 ***
 
+<a id="type-systemactor"></a>
+
 ### SystemActor
 
 The built-in system actor used for automated operations.
 
-**Implements:** [Actor](./#actor), [Node](../common.md#node), [Titled](../common.md#titled)
+**Implements:** [Actor](#type-actor), [Node](../common.md#type-node), [Titled](../common.md#type-titled)
 
 | Field   | Type      | Description                    |
 | ------- | --------- | ------------------------------ |
@@ -71,11 +75,13 @@ The built-in system actor used for automated operations.
 
 ## Interfaces
 
+<a id="type-actor"></a>
+
 ### Actor
 
 An entity that can perform actions and have permissions assigned.
 
-**Implements:** [Node](../common.md#node), [Titled](../common.md#titled)
+**Implements:** [Node](../common.md#type-node), [Titled](../common.md#type-titled)
 
 | Field   | Type      | Description                    |
 | ------- | --------- | ------------------------------ |

@@ -290,7 +290,6 @@ Input for creating a new device.
 | `organizationId` | `ID!` | The organization that will own the device. |
 | `typeId` | `ID!` | The device type ID. |
 | `modelId` | `ID!` | The device model ID. |
-| `statusId` | `ID!` | The initial device status ID. |
 | `title` | `String` | The device display name. If omitted or blank, the server generates "<vendor.title> <model.title> <identifier.value>" where the identifier is chosen by type priority: IMEI > SERIAL_NUMBER > MAC_ADDRESS, with fallback to identifiers[0] when none of the priority types are present. |
 | `identifiers` | [[DeviceIdentifierInput](#type-deviceidentifierinput)!]! | The hardware identifiers. At least one entry is required. |
 
@@ -307,7 +306,6 @@ Input for updating an existing device.
 | `id` | `ID!` | The device ID to update. |
 | `version` | `Int` | The current version for optimistic locking. If omitted, auto-increments without conflict check. |
 | `modelId` | `ID` | The new device model. |
-| `statusId` | `ID` | The new device status. |
 | `title` | `String` | The new display name. |
 
 ---
