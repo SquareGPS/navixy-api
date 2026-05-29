@@ -54,29 +54,25 @@ You'll receive a response:
 
 Use the `id` of the organization you want to work with for all subsequent device operations.
 
-You also need IDs for three catalog entities before you can create a device:
+You also need IDs for two catalog entities before you create a device:
 
-* **Device type**: a classification you define (for example, "GPS Tracker" or "Beacon")
-* **Device status**: an operational state you define (for example, "In Stock", "Active", or "Decommissioned")
-* **Device model**: the specific hardware model, sourced from the read-only model catalog
+* **Device type**: a classification you define (for example, "GPS Tracker" or "Sensor")
+* **Device model**: the specific hardware model sourced from the read-only model catalog
 
-To check what types and statuses already exist in your organization:
+To check what types and statuses already exist in your organization, run this query:
 
 ```graphql
-query GetDeviceCatalog {
+query GetDeviceTypes {
   deviceTypes(organizationId: "7c9e6679-7425-40de-944b-e07fc1f90ae7") {
-    nodes { id title code }
-  }
-  deviceStatuses(organizationId: "7c9e6679-7425-40de-944b-e07fc1f90ae7") {
     nodes { id title code }
   }
 }
 ```
 
-If the results are empty, create the entries you need:
+If no device types exist yet, create the ones you need:
 
 ```graphql
-mutation CreateDeviceCatalog {
+mutation CreateDeviceType {
   deviceTypeCreate(input: {
     organizationId: "7c9e6679-7425-40de-944b-e07fc1f90ae7"
     title: "GPS Tracker"
@@ -84,15 +80,12 @@ mutation CreateDeviceCatalog {
   }) {
     deviceType { id code }
   }
-  deviceStatusCreate(input: {
-    organizationId: "7c9e6679-7425-40de-944b-e07fc1f90ae7"
-    title: "In Stock"
-    code: "in_stock"
-  }) {
-    deviceStatus { id code }
-  }
 }
 ```
+
+{% hint style="info" %}
+Device statuses are system-managed. Three statuses (`Not Activated`, `Active`, and `Inactive`) are seeded automatically for every organization. Every new device starts with `Not Activated`. You can query DeviceStatuses to retrieve their IDs for use in filters and create additional custom statuses alongside the built-in ones.
+{% endhint %}
 
 To look up a hardware model, query the read-only model catalog. You can filter by title or vendor:
 
@@ -107,9 +100,9 @@ query FindDeviceModel {
 }
 ```
 
-If you need to browse models by manufacturer first, use the `deviceVendors` query to get vendor IDs, then pass them to `deviceModels` via `filter.vendorIds`.
+If you want to browse models by manufacturer first, use the `deviceVendors` query to get vendor IDs, then pass them to `deviceModels` via `filter.vendorIds`.
 
-Save the returned IDs — you'll need all three to create a device.
+Save the returned IDs. You'll need both to create a device.
 
 ## Understanding devices
 
@@ -125,9 +118,7 @@ Identifier uniqueness is enforced globally on the combination of `type`, `value`
 
 ### Device status and properties
 
-Devices don't support custom fields. The mutable properties are `title`, `modelId`, and `statusId`. Status is the primary way to represent a device's operational state — in stock, deployed, under repair, or decommissioned. You define the statuses that fit your workflow.
-
-The device type is set at creation and cannot be changed afterwards.
+Devices don't support [custom fields](implementing-custom-fields.md). The mutable properties are `title` and `modelId`. Device status is server-managed: every new device starts with the system status `Not Activated`. The platform provides three built-in statuses (`Not Activated`, `Active`, `Inactive`) visible to all organizations. You can create additional custom statuses with [deviceStatusCreate](../devices/mutations.md#devicestatuscreate), but status cannot be changed through the public API.
 
 #### Asset link
 
@@ -157,7 +148,7 @@ FleetOps Ltd receives a shipment of Teltonika FMB003 GPS trackers for installati
 {% step %}
 ### Create a device
 
-Register the first device using the type, model, and status IDs from the prerequisites step.
+Register the first device using the type and model IDs from the prerequisites step
 
 {% hint style="info" %}
 `version` is optional — omitting it applies the update unconditionally without conflict detection. Include it whenever you want to guard against overwriting concurrent changes. See [Optimistic locking](../optimistic-locking.md) for details. In this example, we'll be using this field.
@@ -171,7 +162,6 @@ mutation RegisterDevice {
     organizationId: "7c9e6679-7425-40de-944b-e07fc1f90ae7"
     typeId: "b8e3c1f0-1d2a-4e5b-9c8d-111222333444"
     modelId: "c9f4d2e1-2e3b-5f6c-ad9e-222333444555"
-    statusId: "d0a5e3f2-3f4c-6a7d-be0f-333444555666"
     title: "FMB003 — Unit 001"
     identifiers: [
       { type: IMEI, value: "356307042772396" }
@@ -184,12 +174,11 @@ mutation RegisterDevice {
       type { title }
       model { title vendor { title } }
       status { title }
-      identifiers { type value namespace }
+      identifiers { id type value namespace }
       asset { id title }
     }
   }
 }
-
 ```
 
 At least one identifier is required. Place the most important identifier first — if `title` is omitted, the server generates one using the first identifier's value (e.g., `"Teltonika FMB003 356307042772396"`).
@@ -210,9 +199,14 @@ Response:
         "title": "FMB003 — Unit 001",
         "type": { "title": "GPS Tracker" },
         "model": { "title": "FMB003", "vendor": { "title": "Teltonika" } },
-        "status": { "title": "In Stock" },
+        "status": { "title": "Not Activated" },
         "identifiers": [
-          { "type": "IMEI", "value": "356307042772396", "namespace": null }
+          {
+          "id": "f2c7a5b4-5b6e-8c9f-d011-555666777888",
+          "type": "IMEI",
+          "value": "356307042772396",
+          "namespace": null
+          }
         ],
         "asset": null
       }
@@ -229,7 +223,7 @@ Identifier uniqueness is enforced globally on the combination of `type`, `value`
 {% endstep %}
 
 {% step %}
-### Add additional identifiers
+### Add more identifiers
 
 The IMEI was provided at creation. To register additional identifiers, such as a serial number, use [deviceIdentifierAdd](../devices/mutations.md#deviceidentifieradd):
 
@@ -430,16 +424,15 @@ mutation UnlinkDevices {
 {% endstep %}
 
 {% step %}
-#### Update a device
+### Update a device
 
-When Unit 001 is installed in a delivery truck, update its status to reflect the change. You can update the title, model, or status in the same mutation.
+When Unit 001 is installed in a delivery truck, update its title to reflect the assignment. You can also update the model in the same mutation.
 
 ```graphql
 mutation DeployDevice {
   deviceUpdate(input: {
     id: "e1b6f4a3-4a5d-7b8e-cf10-444555666777"
     version: 1
-    statusId: "e2c8f5a4-5a6e-8b9f-c010-444555666778"
     title: "FMB003 — Unit 001 (Truck 14)"
   }) {
     device {
@@ -463,8 +456,8 @@ Response:
         "id": "e1b6f4a3-4a5d-7b8e-cf10-444555666777",
         "version": 2,
         "title": "FMB003 — Unit 001 (Truck 14)",
-        "status": { "title": "Active" },
-         "asset": {
+        "status": { "title": "Not Activated" },
+        "asset": {
           "id": "a4c9d5e6-6d8f-4a1b-b234-777888999000",
           "title": "Truck DE-1049"
         }
