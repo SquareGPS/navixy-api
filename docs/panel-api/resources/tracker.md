@@ -522,12 +522,12 @@ https://api.eu.navixy.com/v2/panel/tracker/console/connect?hash=fa7bf873fab93331
 
 Establish WS connection with a URL:
 
-`wss://{{panel_host}}/console?device=<device_id>&key=<key>&timestamp=<timestamp>&dealer_id=<dealer_id>`&#x20;
+`wss://{{panel_host}}/console?device=<device_id>&key=<key>&timestamp=<timestamp>&dealer_id=<dealer_id>`
 
 panel\_host for:
 
-* EU server is `panel.navixy.com`,&#x20;
-* US server is `panel.us.navixy.com`,&#x20;
+* EU server is `panel.navixy.com`,
+* US server is `panel.us.navixy.com`,
 * ME server is `panel.me.navixy.com`.
 
 JSON objects come in the next text frames:
@@ -870,15 +870,15 @@ _required permissions_: `trackers: "read"`.
 
 #### Parameters
 
-| name       | description                                                                                                                           | type    |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------- |
-| user\_id   | Optional. ID of the user. User must belong to authorized dealer.                                                                      | int     |
-| tariff\_id | Optional. ID of the tariff. Tariff must belong to authorized dealer.                                                                  | int     |
-| filter     | Optional. Text filter string.                                                                                                         | string  |
-| order\_by  | Optional. List ordering. Can be one of "id", "label", "status", "model", "device\_id", "phone", "creation\_date", "last\_connection". | string  |
-| ascending  | Optional. If `true`, ordering will be ascending, descending otherwise. Default is `true`.                                             | boolean |
-| offset     | Optional. Starting offset, used for pagination. Default is `0`.                                                                       | int     |
-| limit      | Optional. Max number of records to return, used for pagination.                                                                       | int     |
+| name       | description                                                                                                                                                            | type    |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| user\_id   | Optional. ID of the user. User must belong to authorized dealer.                                                                                                       | int     |
+| tariff\_id | Optional. ID of the tariff. Tariff must belong to authorized dealer.                                                                                                   | int     |
+| filter     | Optional. Text filter string.                                                                                                                                          | string  |
+| order\_by  | Optional. List ordering. Can be one of "id", "label", "status", "model", "device\_id", "phone", "creation\_date", "last\_connection", "tariff\_id", "business\_status" | string  |
+| ascending  | Optional. If `true`, ordering will be ascending, descending otherwise. Default is `true`.                                                                              | boolean |
+| offset     | Optional. Starting offset, used for pagination. Default is `0`.                                                                                                        | int     |
+| limit      | Optional. Max number of records to return, used for pagination.                                                                                                        | int     |
 
 #### Examples
 
