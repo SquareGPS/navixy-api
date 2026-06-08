@@ -64,7 +64,7 @@ A schedule consists of metadata (title and organization) and calendar data store
 
 ### Top-level fields
 
-The JSON structure follows the RFC 5545 conventions:
+The JSON structure follows the JSCalendar conventions:
 
 <table><thead><tr><th width="115.60003662109375">Field</th><th width="89.20001220703125" data-type="checkbox">Required</th><th>Description</th></tr></thead><tbody><tr><td><code>timezone</code></td><td>true</td><td>IANA timezone identifier (e.g., <code>Europe/Berlin</code>, <code>America/New_York</code>, <code>UTC</code>). Defines how the API interprets all date-time values in timed events.</td></tr><tr><td><code>events</code></td><td>true</td><td>Non-empty array of time slots, each with a start time, end time or duration, and an optional recurrence rule</td></tr><tr><td><code>active</code></td><td>false</td><td>Boolean. When <code>false</code>, the schedule is disabled without deleting it. Defaults to <code>true</code>.</td></tr><tr><td><code>description</code></td><td>false</td><td>Free-text description. The schedule's display name is the entity <code>title</code>, not this field.</td></tr></tbody></table>
 
@@ -87,7 +87,7 @@ Each event in the `events` array can include:
 
 ### Recurrence rule fields
 
-The `rrule` property supports these fields:
+The `recurrenceRule` property supports these fields:
 
 <table><thead><tr><th width="118.4000244140625">Field</th><th width="129">Type</th><th>Description</th></tr></thead><tbody><tr><td><code>frequency</code></td><td>String</td><td><strong>Required.</strong> One of: <code>secondly</code>, <code>minutely</code>, <code>hourly</code>, <code>daily</code>, <code>weekly</code>, <code>monthly</code>, <code>yearly</code>. Lowercase.</td></tr><tr><td><code>interval</code></td><td>Integer</td><td>Repeat every N periods. Must be ≥ 1. Defaults to 1.</td></tr><tr><td><code>count</code></td><td>Integer</td><td>Stop after N occurrences. Mutually exclusive with <code>until</code>.</td></tr><tr><td><code>until</code></td><td>String</td><td>Stop after this local date-time. Must be ≥ <code>start</code>. Mutually exclusive with <code>count</code>.</td></tr><tr><td><code>byDay</code></td><td>Object[]</td><td>Days of the week. Each entry is <code>{ "day": "&#x3C;mo|tu|we|th|fr|sa|su>", "nthOfPeriod": &#x3C;integer> }</code>. The optional <code>nthOfPeriod</code> sets an ordinal (e.g., <code>{ "day": "mo", "nthOfPeriod": 1 }</code> = first Monday of the period) and is only valid for <code>monthly</code> or <code>yearly</code> frequency.</td></tr><tr><td><code>byMonth</code></td><td>Integer[]</td><td>Months: 1–12.</td></tr><tr><td><code>byMonthDay</code></td><td>Integer[]</td><td>Days of the month: 1–31, or -31 to -1 from the end (-1 = last day).</td></tr><tr><td><code>byYearDay</code></td><td>Integer[]</td><td>Days of the year: 1–366, or -366 to -1 from the end.</td></tr><tr><td><code>byWeekNo</code></td><td>Integer[]</td><td>Weeks of the year: 1–53, or -53 to -1. Valid only with <code>yearly</code> frequency.</td></tr><tr><td><code>byHour</code></td><td>Integer[]</td><td>Hours: 0–23. Must not be used on all-day events.</td></tr><tr><td><code>byMinute</code></td><td>Integer[]</td><td>Minutes: 0–59. Must not be used on all-day events.</td></tr><tr><td><code>bySecond</code></td><td>Integer[]</td><td>Seconds: 0–60 (60 is valid for leap seconds). Must not be used on all-day events.</td></tr><tr><td><code>firstDayOfWeek</code></td><td>String</td><td>First day of the week for week calculations. One of <code>mo</code>–<code>su</code>. Defaults to <code>mo</code>. (iCalendar WKST.)</td></tr></tbody></table>
 
@@ -195,7 +195,7 @@ The `scheduleData` field returns the full JSON structure you provided. Use it to
 {% step %}
 #### **Exclude holidays**
 
-The maintenance provider doesn't work on public holidays. Several holidays in the year fall on Mondays. Add these as exception dates using `exdate`. This requires updating the schedule with `scheduleUpdate`.
+The maintenance provider doesn't work on public holidays. Several holidays in the year fall on Mondays. Add these as exception dates using `excludedDates`. This requires updating the schedule with [scheduleUpdate](../schedules.md#scheduleupdate).
 
 {% hint style="danger" %}
 When updating `scheduleData`, you must provide the complete value, as the API replaces the entire field. Include all existing configuration alongside your changes.
@@ -582,39 +582,17 @@ Different temperature thresholds for day and night operation:
 
 ```json
 {
-  "timeZone": "Europe/Berlin",
+  "timeZone": "Europe/Moscow",
   "events": [
     {
-      "start": "2025-01-06T08:00:00",
-      "duration": "PT4H",
-      "recurrenceRule": {
-        "frequency": "weekly",
-        "byDay": [
-          { "day": "mo" }, { "day": "tu" }, { "day": "we" },
-          { "day": "th" }, { "day": "fr" }
-        ]
-      },
-      "excludedDates": [
-        "2025-01-01T08:00:00",
-        "2025-12-25T08:00:00",
-        "2025-12-26T08:00:00"
-      ]
+      "start": "2025-01-06T06:00:00",
+      "duration": "PT16H",
+      "recurrenceRule": { "frequency": "daily" }
     },
     {
-      "start": "2025-01-06T13:00:00",
-      "duration": "PT4H",
-      "recurrenceRule": {
-        "frequency": "weekly",
-        "byDay": [
-          { "day": "mo" }, { "day": "tu" }, { "day": "we" },
-          { "day": "th" }, { "day": "fr" }
-        ]
-      },
-      "excludedDates": [
-        "2025-01-01T13:00:00",
-        "2025-12-25T13:00:00",
-        "2025-12-26T13:00:00"
-      ]
+      "start": "2025-01-06T22:00:00",
+      "duration": "PT8H",
+      "recurrenceRule": { "frequency": "daily" }
     }
   ]
 }
