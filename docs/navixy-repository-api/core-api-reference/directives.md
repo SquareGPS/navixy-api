@@ -1,3 +1,9 @@
+---
+description: >-
+  GraphQL directives supported by Navixy Repository API, including standard
+  directives and the custom @trim directive.
+---
+
 # Directives
 
 {% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}
