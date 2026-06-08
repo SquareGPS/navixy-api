@@ -1,3 +1,9 @@
+---
+description: >-
+  Query reference for organization members, including their roles, permissions,
+  and user profile data within each organization.
+---
+
 # Members
 
 {% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}

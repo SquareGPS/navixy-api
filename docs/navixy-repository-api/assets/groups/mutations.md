@@ -1,3 +1,9 @@
+---
+description: >-
+  Mutation reference for asset groups. Create, update, and delete group types
+  and groups, and manage asset memberships.
+---
+
 # Asset groups — Mutations
 
 {% include "../../.gitbook/includes/navixy-repository-api-is-a-....md" %}

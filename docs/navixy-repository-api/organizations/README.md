@@ -1,3 +1,9 @@
+---
+description: >-
+  Organizations are the top-level containers for all business data. Each organization
+  operates as an isolated tenant with its own users, devices, assets, and configuration.
+---
+
 # Organizations
 
 {% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}

@@ -1,3 +1,9 @@
+---
+description: >-
+  Mutation reference for geo objects. Create, update, and delete geo object
+  types and geo objects.
+---
+
 # Geo objects — Mutations
 
 {% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}

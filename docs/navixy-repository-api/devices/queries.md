@@ -1,3 +1,9 @@
+---
+description: >-
+  Query reference for devices. List device types, models, and devices with
+  filtering by type, status, identifiers, and custom fields.
+---
+
 # Devices — Queries
 
 {% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}

@@ -1,3 +1,9 @@
+---
+description: >-
+  Queries, mutations, and types for catalog items, the configurable lookup entries
+  used for device types, asset types, statuses, and other reference data.
+---
+
 # Catalog items
 
 {% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}

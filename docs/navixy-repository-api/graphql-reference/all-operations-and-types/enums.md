@@ -1,3 +1,9 @@
+---
+description: >-
+  All enum types in the Navixy Repository API. Use the exact values shown when
+  passing enums as arguments.
+---
+
 # Enums
 
 Enums represent fixed sets of values. Use the exact value shown when passing as an argument.

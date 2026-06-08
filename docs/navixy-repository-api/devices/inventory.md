@@ -1,3 +1,9 @@
+---
+description: >-
+  Complete reference for device inventory. Manage warehouses, assign devices to
+  inventory locations, and query assignment history.
+---
+
 # Inventory
 
 {% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}

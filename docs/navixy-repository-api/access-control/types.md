@@ -1,3 +1,9 @@
+---
+description: >-
+  Type definitions for access control, including Role, Permission, UserScope,
+  and associated inputs and enums.
+---
+
 # Access control — Types
 
 {% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}

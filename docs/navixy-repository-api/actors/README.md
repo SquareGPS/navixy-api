@@ -1,3 +1,9 @@
+---
+description: >-
+  Actors represent entities that can authenticate and perform actions in the system,
+  including users and integrations.
+---
+
 # Actors
 
 {% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}

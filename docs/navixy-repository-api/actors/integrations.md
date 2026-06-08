@@ -1,3 +1,9 @@
+---
+description: >-
+  Queries and mutations for integration accounts used by API clients, automated
+  systems, and third-party service connections.
+---
+
 # Integrations
 
 {% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}

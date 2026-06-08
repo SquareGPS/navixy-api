@@ -1,3 +1,9 @@
+---
+description: >-
+  Query the audit trail to retrieve a paginated, filterable log of all create,
+  update, and delete events across your organization.
+---
+
 # Audit
 
 {% include ".gitbook/includes/navixy-repository-api-is-a-....md" %}

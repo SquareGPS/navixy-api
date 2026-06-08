@@ -1,5 +1,8 @@
 ---
 hidden: true
+description: >-
+  All Navixy Repository API operations and types in one place, organized by
+  category rather than by domain.
 ---
 
 # All operations and types

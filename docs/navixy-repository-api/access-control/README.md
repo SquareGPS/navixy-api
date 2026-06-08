@@ -1,3 +1,9 @@
+---
+description: >-
+  Role-based access control for your organization. Manage roles, assign permissions,
+  and configure per-actor resource scopes.
+---
+
 # Access control
 
 {% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}

@@ -1,3 +1,8 @@
+---
+description: >-
+  All object types returned by queries and mutations in the Navixy Repository API.
+---
+
 # Objects
 
 Objects are the return types for queries and mutations. They represent the data structures in the Navixy API.

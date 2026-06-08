@@ -1,3 +1,9 @@
+---
+description: >-
+  Foundational types, scalars, and interfaces shared across the API, including
+  Node, Titled, Versioned, pagination types, and common scalars like DateTime and Decimal.
+---
+
 # Common resources
 
 {% include ".gitbook/includes/navixy-repository-api-is-a-....md" %}

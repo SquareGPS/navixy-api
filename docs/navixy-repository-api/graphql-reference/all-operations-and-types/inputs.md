@@ -1,3 +1,9 @@
+---
+description: >-
+  All input types used in Navixy Repository API queries and mutations,
+  organized by entity.
+---
+
 # Inputs
 
 Input types define the structure of arguments passed to queries and mutations. They specify what data you can provide when creating, updating, filtering, or ordering entities.

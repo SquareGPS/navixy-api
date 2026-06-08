@@ -1,3 +1,9 @@
+---
+description: >-
+  GPS trackers, sensors, and hardware units. Register devices, manage identifiers,
+  link them to assets, and track inventory assignments.
+---
+
 # Devices
 
 {% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}

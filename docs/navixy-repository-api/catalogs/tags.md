@@ -1,3 +1,9 @@
+---
+description: >-
+  Complete reference for tags. Create and manage flexible labels for classifying
+  assets, geo objects, and other entities.
+---
+
 # Tags
 
 {% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}

@@ -173,7 +173,7 @@ Multiple custom field conditions are combined with AND logic:
 filter: {
   customFields: [
     { code: "fuel_type", operator: EQ, value: { string: "diesel" } },
-    { code: "year", operator: GTE, value: { number: 2020 } }
+    { code: "year", operator: GTE, value: { integer: 2020 } }
   ]
 }
 ```

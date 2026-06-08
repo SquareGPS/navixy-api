@@ -1,3 +1,9 @@
+---
+description: >-
+  Mutation reference for assets. Create, update, and delete assets, and manage
+  custom field values.
+---
+
 # Assets — Mutations
 
 {% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}

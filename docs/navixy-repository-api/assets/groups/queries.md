@@ -1,3 +1,9 @@
+---
+description: >-
+  Query reference for asset groups. List group types and groups with filtering,
+  sorting, and membership history.
+---
+
 # Asset groups — Queries
 
 {% include "../../.gitbook/includes/navixy-repository-api-is-a-....md" %}

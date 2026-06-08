@@ -1,3 +1,9 @@
+---
+description: >-
+  Queries and mutations for user accounts, including profile lookups and
+  user settings updates.
+---
+
 # Users
 
 {% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}

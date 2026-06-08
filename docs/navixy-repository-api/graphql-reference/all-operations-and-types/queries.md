@@ -1,3 +1,9 @@
+---
+description: >-
+  All Navixy Repository API queries in one place. Retrieve nodes, list entities
+  with filtering and pagination, and look up audit events.
+---
+
 # Queries
 
 Queries retrieve data from the Navixy database without modifying it. List queries return paginated results using the [Relay Cursor Connections](https://relay.dev/graphql/connections.htm) pattern — see the [Pagination guide](../../pagination.md) for details.

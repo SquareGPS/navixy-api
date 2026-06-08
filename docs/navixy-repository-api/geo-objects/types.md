@@ -1,3 +1,9 @@
+---
+description: >-
+  Type definitions for geo objects, including GeoObjectType, GeoObject, geometry
+  types, and associated inputs and enums.
+---
+
 # Geo objects — Types
 
 {% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}

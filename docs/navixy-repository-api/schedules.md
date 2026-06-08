@@ -1,3 +1,9 @@
+---
+description: >-
+  Complete reference for schedules, including queries, mutations, and type definitions
+  for time-based rules using iCalendar (RFC 5545) recurrence.
+---
+
 # Schedules
 
 {% include ".gitbook/includes/navixy-repository-api-is-a-....md" %}
@@ -37,32 +43,6 @@ A schedule definition for work hours, maintenance windows, or other time-based r
 | `title` | `String!` | The human-readable display name. |
 | `organization` | [Organization](organizations/README.md#type-organization)! | The organization that owns this schedule. |
 | `scheduleData` | `ScheduleData!` | The calendar and time interval definitions for this schedule. |
-
-</details>
-
-<details>
-
-<summary>Organization (entity)</summary>
-
-An organization in the hierarchy that owns entities and users.
-
-**Implements:** [Node](common.md#type-node), [Versioned](common.md#type-versioned), [Titled](common.md#type-titled)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Can be provided in update/delete mutations to prevent lost updates. If omitted, the update proceeds without stale-read protection. |
-| `title` | `String!` | The human-readable display name. |
-| `externalId` | `String` | An external system identifier for integration purposes. |
-| `isActive` | `Boolean!` | Whether this organization is active. |
-| `features` | [[OrganizationFeature](organizations/README.md#type-organizationfeature)!]! | The feature flags enabled for this organization. |
-| `parent` | [Organization](organizations/README.md#type-organization) | The parent organization in the hierarchy. Null for root organizations. |
-| `children` | [OrganizationConnection](organizations/README.md#type-organizationconnection)! | The child organizations. |
-| `members` | [MemberConnection](organizations/members.md#type-memberconnection)! | The members of this organization. |
-| `devices` | [DeviceConnection](devices/types.md#type-deviceconnection)! | The devices owned by this organization. |
-| `assets` | [AssetConnection](assets/types.md#type-assetconnection)! | The assets owned by this organization. |
-| `geoObjects` | [GeoObjectConnection](geo-objects/types.md#type-geoobjectconnection)! | The geographic objects owned by this organization. |
-| `schedules` | [ScheduleConnection](#type-scheduleconnection)! | The schedules owned by this organization. |
 
 </details>
 
@@ -139,21 +119,6 @@ A paginated list of Schedule items.
 | `nodes` | [[Schedule](#type-schedule)!]! | A list of nodes in the connection (without edge metadata). |
 | `pageInfo` | [PageInfo](common.md#type-pageinfo)! | Information about the current page. |
 | `total` | [CountInfo](common.md#type-countinfo) | The total count of items matching the filter. |
-
-</details>
-
-<details>
-
-<summary>PageInfo (entity)</summary>
-
-Information about the current page in a paginated connection.
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `hasNextPage` | `Boolean!` | Whether more items exist after the current page. |
-| `hasPreviousPage` | `Boolean!` | Whether more items exist before the current page. |
-| `startCursor` | `String` | The cursor pointing to the first item in the current page. |
-| `endCursor` | `String` | The cursor pointing to the last item in the current page. |
 
 </details>
 
@@ -462,13 +427,58 @@ Fields available for ordering schedules.
 
 ### ScheduleData
 
-A schedule data structure containing time intervals and recurrence rules.
+Schedule configuration as a JSON object — time intervals and recurrence. The same shape backs
+both the `Schedule` entity (`scheduleData`) and `FieldType.SCHEDULE` custom-field values.
+
+A **JSCalendar-aligned profile** ([RFC 8984](https://www.rfc-editor.org/rfc/rfc8984.html) field names) restricted to the subset that round-trips
+to iCalendar / [RFC 5545](https://www.rfc-editor.org/rfc/rfc5545.html) (`.ics`). All date-times are **local wall-clock** (no offset), interpreted
+in the schedule-level `timeZone` — never UTC — so recurring events keep their wall-clock time
+across DST transitions. Validated on write (rejected with a field-specific message); reads are
+tolerant of legacy/empty values.
+
+Field catalogue (NOT a single valid object — `end`/`duration` and `count`/`until` are mutually
+exclusive; numeric ranges below are value DOMAINS, not literal arrays). All date-times are local,
+e.g. `2025-01-06T09:00:00`; dates for all-day, e.g. `2025-06-10`.
+
+Top level:
+- `timeZone`: IANA string, required. Zone for every TIMED event (all-day events are zone-independent).
+- `active`: boolean, optional, default true. Manual on/off for schedule checks.
+- `description`: string, optional, free text. (The NAME is the entity title, not stored here.)
+- `events`: array, required, non-empty.
+
+Each event:
+- `uid`: string, optional, stable slot id.
+- `title`: string, optional, maps to VEVENT SUMMARY.
+- `start`: local date (all-day) or date-time (timed), required. Date-times are exactly
+  `yyyy-MM-dd'T'HH:mm:ss` — seconds required, no fractional seconds, no offset/`Z`.
+- `end` XOR `duration`: a timed event needs exactly one; an all-day event may omit both.
+  `end` is a local date-time (one-off / manual slots); `duration` is a **positive** ISO-8601
+  duration (e.g. `PT9H`, preferred for recurring — stable across DST); for an all-day event the
+  duration must be whole days (e.g. `P1D`), no time component.
+- `showWithoutTime`: boolean, optional. true → all-day: `start`/`end` are dates, FLOATING (ignores
+  `timeZone`); an all-day `recurrenceRule` must not use `byHour`/`byMinute`/`bySecond`.
+- `recurrenceRule`: object, optional. Absent → a single occurrence at `start`.
+- `excludedDates`: array of local date-times, optional. EXDATE — drop whole occurrences.
+- `additionalDates`: array of local date-times, optional. RDATE — add one-off occurrences.
+
+`recurrenceRule`:
+- `frequency`: one of `secondly|minutely|hourly|daily|weekly|monthly|yearly`, required.
+- `interval`: integer >= 1, optional (default 1).
+- `count` XOR `until`: optional; never both. Neither → repeats forever. `until` is a local date-time.
+- `byDay`: array of `{ "day": <mo|tu|we|th|fr|sa|su>, "nthOfPeriod"?: <non-zero int> }`. An ordinal
+  `nthOfPeriod` (e.g. `{day:"mo",nthOfPeriod:1}` = first Monday) is valid only for monthly/yearly.
+- `byMonth`: 1..12. `byMonthDay`: -31..-1 or 1..31. `byYearDay`: -366..-1 or 1..366.
+  `byWeekNo`: -53..-1 or 1..53. `byHour`: 0..23. `byMinute`: 0..59. `bySecond`: 0..60 (60 = leap second).
+- `firstDayOfWeek`: one of `mo..su`, optional (WKST, default mo).
+
+Numeric recurrence domains follow [RFC 5545](https://www.rfc-editor.org/rfc/rfc5545.html) §3.3.10. Maps to a `VEVENT` per `events[]` entry on
+`.ics` export (post-MVP). See **Specification** below.
 
 | Property | Value |
 | -------- | ----- |
-| Format | `iCalendar-compatible JSON` |
-| Example | `{"intervals": [...], "rrule": "FREQ=WEEKLY;BYDAY=MO,WE,FR"}` |
-| Specification | [https://api.navixy.com/spec/scalars/schedule-data](https://api.navixy.com/spec/scalars/schedule-data) |
+| Format | `JSCalendar-aligned JSON (RFC 8984)` |
+| Example | `{"timeZone": "America/New_York", "events": [{"start": "2025-01-06T09:00:00", "duration": "PT8H", "recurrenceRule": {"frequency": "weekly", "byDay": [{"day": "mo"}, {"day": "we"}, {"day": "fr"}]}}]}` |
+| Specification | [https://www.navixy.com/docs/navixy-repository-api/core-api-reference/schedules#scheduledata](https://www.navixy.com/docs/navixy-repository-api/core-api-reference/schedules#scheduledata) |
 
 ---
 

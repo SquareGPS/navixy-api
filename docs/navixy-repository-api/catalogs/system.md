@@ -1,3 +1,9 @@
+---
+description: >-
+  Predefined system catalog items available to all organizations. These read-only
+  reference types cannot be modified or deleted.
+---
+
 # System catalogs
 
 {% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}

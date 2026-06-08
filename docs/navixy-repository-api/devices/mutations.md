@@ -1,3 +1,9 @@
+---
+description: >-
+  Mutation reference for devices. Create, update, and delete devices, manage
+  identifiers, and link or unlink device relations.
+---
+
 # Devices — Mutations
 
 {% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}

@@ -1,3 +1,9 @@
+---
+description: >-
+  Type definitions for devices, including Device, DeviceType, DeviceModel,
+  identifier types, relation types, and associated inputs and enums.
+---
+
 # Devices — Types
 
 {% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}

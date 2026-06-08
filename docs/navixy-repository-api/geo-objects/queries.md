@@ -1,3 +1,9 @@
+---
+description: >-
+  Query reference for geo objects. List and retrieve geo object types and geo objects
+  with filtering, sorting, and pagination.
+---
+
 # Geo objects — Queries
 
 {% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}

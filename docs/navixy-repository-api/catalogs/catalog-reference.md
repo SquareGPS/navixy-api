@@ -1,3 +1,9 @@
+---
+description: >-
+  Cross-reference of all catalog types organized by entity. Use this page to find
+  which catalog backs a given field.
+---
+
 # Catalog reference
 
 {% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}

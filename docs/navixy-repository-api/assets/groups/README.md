@@ -1,3 +1,9 @@
+---
+description: >-
+  Asset groups allow organizing assets into named collections for easier
+  management, reporting, and access control.
+---
+
 # Asset groups
 
 {% include "../../.gitbook/includes/navixy-repository-api-is-a-....md" %}

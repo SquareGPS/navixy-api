@@ -1,3 +1,9 @@
+---
+description: >-
+  Type definitions for custom field definitions, including field types, params,
+  options, filter inputs, and the patch input used in asset and geo object mutations.
+---
+
 # Custom fields
 
 {% include ".gitbook/includes/navixy-repository-api-is-a-....md" %}

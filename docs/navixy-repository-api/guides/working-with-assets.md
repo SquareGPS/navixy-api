@@ -34,7 +34,7 @@ query GetMyOrganization {
 ```
 
 {% hint style="info" %}
-The `... on User` inline fragment is required because `me` returns the [Actor interface](../actors/#actor-1), which can resolve to either a [User](../actors/users.md#user) or an [Integration](../actors/integrations.md#integration-2). The `memberships` field only exists on `User`, so the fragment ensures the query is valid for both actor types. If you authenticate as an `Integration`, the `memberships` block is omitted from the response.
+The `... on User` inline fragment is required because `me` returns the [Actor interface](../actors/#actor-1), which can resolve to either a [User](../actors/users.md#user) or an [Integration](../actors/integrations.md#integration). The `memberships` field only exists on `User`, so the fragment ensures the query is valid for both actor types. If you authenticate as an `Integration`, the `memberships` block is omitted from the response.
 {% endhint %}
 
 You'll receive a response:

@@ -616,10 +616,10 @@ If you provide `version` in `deviceUpdate` or `deviceDelete` and the device has 
 
 To resolve this, fetch the device again to get its current version and state, reconcile any differences with your intended changes, and retry the mutation with the updated version.
 
-For a full explanation of how versioning works, see [Optimistic locking](https://claude.ai/chat/optimistic-locking.md).
+For a full explanation of how versioning works, see [Optimistic locking](../optimistic-locking.md).
 
 ### See also
 
-* [Managing device inventory](https://claude.ai/chat/managing-device-inventory.md): Assign devices to inventories and track assignment history, designate a primary device
-* [Working with assets](https://claude.ai/chat/working-with-assets.md): Link devices to tracked assets
-* [Devices reference](https://claude.ai/chat/6095d343-b927-45b6-9d85-e36725bb212d): Complete reference for all device operations and types
+* [Managing device inventory](managing-device-inventory.md): Assign devices to inventories and track assignment history, designate a primary device
+* [Working with assets](working-with-assets.md): Link devices to tracked assets
+* [Devices reference](../devices/README.md): Complete reference for all device operations and types

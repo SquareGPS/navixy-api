@@ -1,3 +1,9 @@
+---
+description: >-
+  Type definitions for asset groups, including AssetGroupType, AssetGroup,
+  membership types, and associated inputs and enums.
+---
+
 # Asset groups — Types
 
 {% include "../../.gitbook/includes/navixy-repository-api-is-a-....md" %}

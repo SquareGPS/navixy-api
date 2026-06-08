@@ -1,3 +1,9 @@
+---
+description: >-
+  Mutation reference for access control. Assign and revoke roles, grant and revoke
+  permissions, and set or remove user scopes.
+---
+
 # Access control — Mutations
 
 {% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}

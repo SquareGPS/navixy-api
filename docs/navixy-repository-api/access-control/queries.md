@@ -1,3 +1,9 @@
+---
+description: >-
+  Query reference for access control. List roles and retrieve permission and
+  scope assignments for actors.
+---
+
 # Access control — Queries
 
 {% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}

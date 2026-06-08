@@ -1,3 +1,9 @@
+---
+description: >-
+  All Navixy Repository API mutations in one place. Create, update, delete,
+  and manage entity relationships.
+---
+
 # Mutations
 
 Mutations modify data in the Navixy database. Most mutations require authentication and appropriate permissions. Update and delete mutations use [optimistic locking](../../optimistic-locking.md) via a `version` field in the input.

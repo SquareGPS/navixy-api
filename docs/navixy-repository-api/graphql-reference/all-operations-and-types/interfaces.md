@@ -1,3 +1,9 @@
+---
+description: >-
+  All interfaces in the Navixy Repository API. Types implementing an interface
+  guarantee the presence of its fields.
+---
+
 # Interfaces
 
 Interfaces define common fields shared by multiple object types. When a type implements an interface, it guarantees those fields are present.

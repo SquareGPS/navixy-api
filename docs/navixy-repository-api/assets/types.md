@@ -1,3 +1,9 @@
+---
+description: >-
+  Type definitions for assets, including Asset, AssetType, and associated
+  inputs and enums.
+---
+
 # Assets — Types
 
 {% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}

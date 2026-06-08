@@ -6,8 +6,11 @@ This section contains detailed step-by-step tutorials for basic scenarios of usi
 
 ### Guides in this section
 
+* [Working with devices](working-with-devices.md)
+* [Managing device inventory](managing-device-inventory.md)
 * [Working with assets](working-with-assets.md)
 * [Organizing assets into groups](organizing-assets-into-groups.md)
 * [Implementing custom fields](implementing-custom-fields.md)
 * [Managing schedules](managing-schedules.md)
 * [Working with geo objects](working-with-geo-objects.md)
+* [Configuring user permissions](configuring-user-permissions.md)

@@ -1,3 +1,9 @@
+---
+description: >-
+  Query reference for assets. List asset types and assets with filtering by type,
+  linked device, title, and custom fields.
+---
+
 # Assets — Queries
 
 {% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}
@@ -189,6 +195,8 @@ assets(
 | `orderBy` | `AssetOrder` | The ordering options for the returned assets. |
 
 **Input types:**
+
+<a id="assetfilter"></a>
 
 <details>
 
