@@ -1,0 +1,8 @@
+redirects:
+  technologies/navixy-generic-protocol/navixy-generic-protocol-10: technologies/navixy-generic-protocol.md
+  technologies/navixy-generic-protocol/navixy-generic-protocol-10/transport-layer: technologies/navixy-generic-protocol/transport-layer.md
+  technologies/navixy-generic-protocol/navixy-generic-protocol-10/data-types-and-encoding-standards: technologies/navixy-generic-protocol/data-types-and-encoding-standards.md
+  technologies/navixy-generic-protocol/navixy-generic-protocol-10/message-structure-and-attributes: technologies/navixy-generic-protocol/message-structure-and-attributes.md
+  technologies/navixy-generic-protocol/navixy-generic-protocol-10/predefined-event-identifiers: technologies/navixy-generic-protocol/predefined-event-identifiers.md
+  technologies/navixy-generic-protocol/navixy-generic-protocol-11a-on-demand: technologies/navixy-generic-protocol/message-structure-and-attributes.md
+  technologies/navixy-generic-protocol/navixy-generic-protocol-12: technologies/navixy-generic-protocol/message-structure-and-attributes.md
