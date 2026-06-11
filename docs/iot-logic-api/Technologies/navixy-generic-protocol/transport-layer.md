@@ -1,7 +1,5 @@
 ---
-description: >-
-  HTTP/HTTPS and MQTT connection parameters, regional endpoints, and code
-  examples for sending NGP messages.
+description: Connect to Navixy via HTTP/HTTPS or MQTT to send NGP messages. Regional endpoint URLs, connection parameters, and code examples for both transport methods.
 ---
 
 # Transport layer

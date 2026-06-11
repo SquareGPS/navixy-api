@@ -1,3 +1,7 @@
+---
+description: Create an IoT Logic flow with an embedded MQTT output node in a single API request. Includes the full request body, curl example, and response structure.
+---
+
 # Sending device data to an external system
 
 Let's create a flow that sends your device data to an external system through MQTT. Rather than creating multiple endpoints separately, we can accomplish this in one single request.

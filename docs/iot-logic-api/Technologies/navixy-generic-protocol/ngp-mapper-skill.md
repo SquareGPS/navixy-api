@@ -1,7 +1,5 @@
 ---
-description: >-
-  Use the NGP Mapper Claude skill to generate a ready-to-implement field mapping
-  from any device or telematics platform format to Navixy Generic Protocol.
+description: Use the NGP Mapper Claude skill to generate a ready-to-implement field mapping from any device or telematics platform format to Navixy Generic Protocol.
 ---
 
 # NGP Mapper skill

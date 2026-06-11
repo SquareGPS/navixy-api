@@ -1,4 +1,5 @@
 ---
+description: "IoT Logic API technical reference: environments, authentication, rate limits, request formats, response structure, error codes, and flow architecture."
 stoplight-id: n6jl7wc7cska8
 ---
 

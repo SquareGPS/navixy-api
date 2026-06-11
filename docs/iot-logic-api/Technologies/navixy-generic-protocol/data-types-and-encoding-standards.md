@@ -1,7 +1,5 @@
 ---
-description: >-
-  JSON type mapping, timestamp formatting, binary encoding, and value
-  constraints used in NGP messages.
+description: Map JSON types to NGP fields, format timestamps as ISO 8601 UTC, and encode binary values as Base64. Covers size limits and constraints for each data type.
 ---
 
 # Data types and encoding standards

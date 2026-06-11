@@ -1,7 +1,5 @@
 ---
-description: >-
-  Standard event_id values for NGP messages, covering power, security, safety,
-  vehicle efficiency, track, I/O, and peripheral events.
+description: Standard event_id values for NGP messages, covering power, security, safety, vehicle efficiency, track, I/O, and peripheral events.
 ---
 
 # Predefined event identifiers

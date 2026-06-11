@@ -1,4 +1,5 @@
 ---
+description: Use IoT Logic API guides to send device data to MQTT, manage flows and endpoints, configure advanced scenarios, and add calculated attributes to the Navixy UI.
 stoplight-id: pozrbwqv150yy
 ---
 

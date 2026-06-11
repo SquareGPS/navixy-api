@@ -1,4 +1,5 @@
 ---
+description: Configure IoT Logic flows with multiple output endpoints and nested node schemas. Shows how flow, node, and endpoint API resources relate to each other.
 stoplight-id: cs3amob44lhu6
 ---
 

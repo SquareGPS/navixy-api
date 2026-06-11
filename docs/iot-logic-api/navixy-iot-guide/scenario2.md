@@ -1,3 +1,7 @@
+---
+description: List, inspect, and update IoT Logic flows and endpoints via the REST API. Shows how to view node configs and modify existing flows with curl request examples.
+---
+
 # Managing your flows and endpoints
 
 After you create one or multiple flows, you can proceed with managing thm. This guide demonstrates how to view, read details, and update existing IoT Logic flows using the Navixy IoT Logic API. You'll learn how to list all your flows, examine specific flow configurations including nodes and connections, and modify flows by adding new data processing rules. The examples show practical scenarios like managing fleet vehicle data flows, adding calculated attributes for business metrics, and connecting to MQTT endpoints for external system integration.

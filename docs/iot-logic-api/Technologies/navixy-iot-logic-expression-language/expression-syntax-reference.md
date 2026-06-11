@@ -1,3 +1,7 @@
+---
+description: "Full syntax reference for the IoT Logic Expression Language: literals, operators, attribute access, built-in functions, data types, and null handling rules."
+---
+
 # Expression syntax reference
 
 This reference documents the complete syntax of the Navixy IoT Logic Expression Language, including literals, operators, functions, and data types. For conceptual information about how expressions work within IoT Logic, see the [Expression language overview](./).

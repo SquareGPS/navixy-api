@@ -1,4 +1,5 @@
 ---
+description: Create IoT Logic flows with data source, initiate attribute, and output endpoint nodes. Defines flow object properties, node types, and the connection schema.
 stoplight-id: cr4zu3e4l42hj
 ---
 

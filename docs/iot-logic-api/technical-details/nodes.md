@@ -1,3 +1,7 @@
+---
+description: "Build IoT Logic flows with six node types: data source, attribute, logic, webhook, action, and output endpoint. Schema and property reference for each."
+---
+
 # Nodes
 
 ## Data Source node (`data_source`)

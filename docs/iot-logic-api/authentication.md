@@ -1,4 +1,5 @@
 ---
+description: Access the IoT Logic API using a session hash or a long-lived API key. Pass credentials as a query parameter or header on each request.
 stoplight-id: 2aq3knmc7036u
 tags:
   - auth

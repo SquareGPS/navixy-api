@@ -1,7 +1,5 @@
 ---
-description: >-
-  Complete reference for NGP message attributes: location, events, cell towers,
-  Wi-Fi, sensors, I/O, and custom fields.
+description: "Define NGP message payloads using mandatory and optional attributes: location, events, mobile cells, Wi-Fi, device motion, sensors, I/O, and custom fields."
 ---
 
 # Message structure and attributes
