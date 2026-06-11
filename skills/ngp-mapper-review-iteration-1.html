@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eval Review</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js" integrity="sha384-EnyY0/GSHQGSxSgMwaIPzSESbqoOLSexfnSMN2AP+39Ckmn92stwABZynq1JyzdT" crossorigin="anonymous"></script>
+  <style>
+    :root {
+      --bg: #faf9f5;
+      --surface: #ffffff;
+      --border: #e8e6dc;
+      --text: #141413;
+      --text-muted: #b0aea5;
+      --accent: #d97757;
+      --accent-hover: #c4613f;
+      --green: #788c5d;
+      --green-bg: #eef2e8;
+      --red: #c44;
+      --red-bg: #fceaea;
+      --header-bg: #141413;
+      --header-text: #faf9f5;
+      --radius: 6px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Lora', Georgia, serif;
+      background: var(--bg);
+      color: var(--text);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ---- Header ---- */
+    .header {
+      background: var(--header-bg);
+      color: var(--header-text);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .header h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+    .header .instructions {
+      font-size: 0.8rem;
+      opacity: 0.7;
+      margin-top: 0.25rem;
+    }
+    .header .progress {
+      font-size: 0.875rem;
+      opacity: 0.8;
+      text-align: right;
+    }
+
+    /* ---- Main content ---- */
+    .main {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    /* ---- Sections ---- */
+    .section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      flex-shrink: 0;
+    }
+    .section-header {
+      font-family: 'Poppins', sans-serif;
+      padding: 0.75rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+    }
+    .section-body {
+      padding: 1rem;
+    }
+
+    /* ---- Config badge ---- */
+    .config-badge {
+      display: inline-block;
+      padding: 0.2rem 0.625rem;
+      border-radius: 9999px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-left: 0.75rem;
+      vertical-align: middle;
+    }
+    .config-badge.config-primary {
+      background: rgba(33, 150, 243, 0.12);
+      color: #1976d2;
+    }
+    .config-badge.config-baseline {
+      background: rgba(255, 193, 7, 0.15);
+      color: #f57f17;
+    }
+
+    /* ---- Prompt ---- */
+    .prompt-text {
+      white-space: pre-wrap;
+      font-size: 0.9375rem;
+      line-height: 1.6;
+    }
+
+    /* ---- Outputs ---- */
+    .output-file {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .output-file + .output-file {
+      margin-top: 1rem;
+    }
+    .output-file-header {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      font-family: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .output-file-header .dl-btn {
+      font-size: 0.7rem;
+      color: var(--accent);
+      text-decoration: none;
+      cursor: pointer;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-weight: 500;
+      opacity: 0.8;
+    }
+    .output-file-header .dl-btn:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+    .output-file-content {
+      padding: 0.75rem;
+      overflow-x: auto;
+    }
+    .output-file-content pre {
+      font-size: 0.8125rem;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-family: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+    }
+    .output-file-content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+    .output-file-content iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+    }
+    .output-file-content table {
+      border-collapse: collapse;
+      font-size: 0.8125rem;
+      width: 100%;
+    }
+    .output-file-content table td,
+    .output-file-content table th {
+      border: 1px solid var(--border);
+      padding: 0.375rem 0.5rem;
+      text-align: left;
+    }
+    .output-file-content table th {
+      background: var(--bg);
+      font-weight: 600;
+    }
+    .output-file-content .download-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.875rem;
+      cursor: pointer;
+    }
+    .output-file-content .download-link:hover {
+      background: var(--border);
+    }
+    .empty-state {
+      color: var(--text-muted);
+      font-style: italic;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    /* ---- Feedback ---- */
+    .prev-feedback {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.625rem 0.75rem;
+      margin-top: 0.75rem;
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .prev-feedback-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.25rem;
+      color: var(--text-muted);
+    }
+    .feedback-textarea {
+      width: 100%;
+      min-height: 100px;
+      padding: 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 0.9375rem;
+      line-height: 1.5;
+      resize: vertical;
+      color: var(--text);
+    }
+    .feedback-textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+    .feedback-status {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+      min-height: 1.1em;
+    }
+
+    /* ---- Grades (collapsible) ---- */
+    .grades-toggle {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+    }
+    .grades-toggle:hover {
+      color: var(--accent);
+    }
+    .grades-toggle .arrow {
+      margin-right: 0.5rem;
+      transition: transform 0.15s;
+      font-size: 0.75rem;
+    }
+    .grades-toggle .arrow.open {
+      transform: rotate(90deg);
+    }
+    .grades-content {
+      display: none;
+      margin-top: 0.75rem;
+    }
+    .grades-content.open {
+      display: block;
+    }
+    .grades-summary {
+      font-size: 0.875rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .grade-badge {
+      display: inline-block;
+      padding: 0.125rem 0.5rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .grade-pass { background: var(--green-bg); color: var(--green); }
+    .grade-fail { background: var(--red-bg); color: var(--red); }
+    .assertion-list {
+      list-style: none;
+    }
+    .assertion-item {
+      padding: 0.625rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.8125rem;
+    }
+    .assertion-item:last-child { border-bottom: none; }
+    .assertion-status {
+      font-weight: 600;
+      margin-right: 0.5rem;
+    }
+    .assertion-status.pass { color: var(--green); }
+    .assertion-status.fail { color: var(--red); }
+    .assertion-evidence {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      margin-top: 0.25rem;
+      padding-left: 1.5rem;
+    }
+
+    /* ---- View tabs ---- */
+    .view-tabs {
+      display: flex;
+      gap: 0;
+      padding: 0 2rem;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .view-tab {
+      font-family: 'Poppins', sans-serif;
+      padding: 0.625rem 1.25rem;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      background: none;
+      color: var(--text-muted);
+      border-bottom: 2px solid transparent;
+      transition: all 0.15s;
+    }
+    .view-tab:hover { color: var(--text); }
+    .view-tab.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+    .view-panel { display: none; }
+    .view-panel.active { display: flex; flex-direction: column; flex: 1; overflow: hidden; }
+
+    /* ---- Benchmark view ---- */
+    .benchmark-view {
+      padding: 1.5rem 2rem;
+      overflow-y: auto;
+      flex: 1;
+    }
+    .benchmark-table {
+      border-collapse: collapse;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 0.8125rem;
+      width: 100%;
+      margin-bottom: 1.5rem;
+    }
+    .benchmark-table th, .benchmark-table td {
+      padding: 0.625rem 0.75rem;
+      text-align: left;
+      border: 1px solid var(--border);
+    }
+    .benchmark-table th {
+      font-family: 'Poppins', sans-serif;
+      background: var(--header-bg);
+      color: var(--header-text);
+      font-weight: 500;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .benchmark-table tr:hover { background: var(--bg); }
+    .benchmark-table tr.benchmark-row-with { background: rgba(33, 150, 243, 0.06); }
+    .benchmark-table tr.benchmark-row-without { background: rgba(255, 193, 7, 0.06); }
+    .benchmark-table tr.benchmark-row-with:hover { background: rgba(33, 150, 243, 0.12); }
+    .benchmark-table tr.benchmark-row-without:hover { background: rgba(255, 193, 7, 0.12); }
+    .benchmark-table tr.benchmark-row-avg { font-weight: 600; border-top: 2px solid var(--border); }
+    .benchmark-table tr.benchmark-row-avg.benchmark-row-with { background: rgba(33, 150, 243, 0.12); }
+    .benchmark-table tr.benchmark-row-avg.benchmark-row-without { background: rgba(255, 193, 7, 0.12); }
+    .benchmark-delta-positive { color: var(--green); font-weight: 600; }
+    .benchmark-delta-negative { color: var(--red); font-weight: 600; }
+    .benchmark-notes {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem;
+    }
+    .benchmark-notes h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.875rem;
+      margin-bottom: 0.75rem;
+    }
+    .benchmark-notes ul {
+      list-style: disc;
+      padding-left: 1.25rem;
+    }
+    .benchmark-notes li {
+      font-size: 0.8125rem;
+      line-height: 1.6;
+      margin-bottom: 0.375rem;
+    }
+    .benchmark-empty {
+      color: var(--text-muted);
+      font-style: italic;
+      text-align: center;
+      padding: 3rem;
+    }
+
+    /* ---- Navigation ---- */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      flex-shrink: 0;
+    }
+    .nav-btn {
+      font-family: 'Poppins', sans-serif;
+      padding: 0.5rem 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      cursor: pointer;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text);
+      transition: all 0.15s;
+    }
+    .nav-btn:hover:not(:disabled) {
+      background: var(--bg);
+      border-color: var(--text-muted);
+    }
+    .nav-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+    .done-btn {
+      font-family: 'Poppins', sans-serif;
+      padding: 0.5rem 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      color: var(--text);
+      cursor: pointer;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: all 0.15s;
+    }
+    .done-btn:hover {
+      background: var(--bg);
+      border-color: var(--text-muted);
+    }
+    .done-btn.ready {
+      border: none;
+      background: var(--accent);
+      color: white;
+      font-weight: 600;
+    }
+    .done-btn.ready:hover {
+      background: var(--accent-hover);
+    }
+    /* ---- Done overlay ---- */
+    .done-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 100;
+      justify-content: center;
+      align-items: center;
+    }
+    .done-overlay.visible {
+      display: flex;
+    }
+    .done-card {
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 2rem 3rem;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      max-width: 500px;
+    }
+    .done-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .done-card p {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+    .done-card .btn-row {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+    }
+    .done-card button {
+      padding: 0.5rem 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      cursor: pointer;
+      font-size: 0.875rem;
+    }
+    .done-card button:hover {
+      background: var(--bg);
+    }
+    /* ---- Toast ---- */
+    .toast {
+      position: fixed;
+      bottom: 5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--header-bg);
+      color: var(--header-text);
+      padding: 0.625rem 1.25rem;
+      border-radius: var(--radius);
+      font-size: 0.875rem;
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+      z-index: 200;
+    }
+    .toast.visible {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div id="app" style="height:100vh; display:flex; flex-direction:column;">
+    <div class="header">
+      <div>
+        <h1>Eval Review: <span id="skill-name"></span></h1>
+        <div class="instructions">Review each output and leave feedback below. Navigate with arrow keys or buttons. When done, copy feedback and paste into Claude Code.</div>
+      </div>
+      <div class="progress" id="progress"></div>
+    </div>
+
+    <!-- View tabs (only shown when benchmark data exists) -->
+    <div class="view-tabs" id="view-tabs" style="display:none;">
+      <button class="view-tab active" onclick="switchView('outputs')">Outputs</button>
+      <button class="view-tab" onclick="switchView('benchmark')">Benchmark</button>
+    </div>
+
+    <!-- Outputs panel (qualitative review) -->
+    <div class="view-panel active" id="panel-outputs">
+    <div class="main">
+      <!-- Prompt -->
+      <div class="section">
+        <div class="section-header">Prompt <span class="config-badge" id="config-badge" style="display:none;"></span></div>
+        <div class="section-body">
+          <div class="prompt-text" id="prompt-text"></div>
+        </div>
+      </div>
+
+      <!-- Outputs -->
+      <div class="section">
+        <div class="section-header">Output</div>
+        <div class="section-body" id="outputs-body">
+          <div class="empty-state">No output files found</div>
+        </div>
+      </div>
+
+      <!-- Previous Output (collapsible) -->
+      <div class="section" id="prev-outputs-section" style="display:none;">
+        <div class="section-header">
+          <div class="grades-toggle" onclick="togglePrevOutputs()">
+            <span class="arrow" id="prev-outputs-arrow">&#9654;</span>
+            Previous Output
+          </div>
+        </div>
+        <div class="grades-content" id="prev-outputs-content"></div>
+      </div>
+
+      <!-- Grades (collapsible) -->
+      <div class="section" id="grades-section" style="display:none;">
+        <div class="section-header">
+          <div class="grades-toggle" onclick="toggleGrades()">
+            <span class="arrow" id="grades-arrow">&#9654;</span>
+            Formal Grades
+          </div>
+        </div>
+        <div class="grades-content" id="grades-content"></div>
+      </div>
+
+      <!-- Feedback -->
+      <div class="section">
+        <div class="section-header">Your Feedback</div>
+        <div class="section-body">
+          <textarea
+            class="feedback-textarea"
+            id="feedback"
+            placeholder="What do you think of this output? Any issues, suggestions, or things that look great?"
+          ></textarea>
+          <div class="feedback-status" id="feedback-status"></div>
+          <div class="prev-feedback" id="prev-feedback" style="display:none;">
+            <div class="prev-feedback-label">Previous feedback</div>
+            <div id="prev-feedback-text"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav" id="outputs-nav">
+      <button class="nav-btn" id="prev-btn" onclick="navigate(-1)">&#8592; Previous</button>
+      <button class="done-btn" id="done-btn" onclick="showDoneDialog()">Submit All Reviews</button>
+      <button class="nav-btn" id="next-btn" onclick="navigate(1)">Next &#8594;</button>
+    </div>
+    </div><!-- end panel-outputs -->
+
+    <!-- Benchmark panel (quantitative stats) -->
+    <div class="view-panel" id="panel-benchmark">
+      <div class="benchmark-view" id="benchmark-content">
+        <div class="benchmark-empty">No benchmark data available. Run a benchmark to see quantitative results here.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Done overlay -->
+  <div class="done-overlay" id="done-overlay">
+    <div class="done-card">
+      <h2>Review Complete</h2>
+      <p>Your feedback has been saved. Go back to your Claude Code session and tell Claude you're done reviewing.</p>
+      <div class="btn-row">
+        <button onclick="closeDoneDialog()">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script>
+    // ---- Embedded data (injected by generate_review.py) ----
+    const EMBEDDED_DATA = {"skill_name": "ngp-mapper", "runs": [{"id": "gps-tracker-json-with_skill", "prompt": "Hey, I'm building a middleware service that pulls data from our existing fleet system and needs to forward it to Navixy. Here's a sample message we receive from our fleet platform:\n\n```json\n{\n  \"imei\": \"352656100901234\",\n  \"utc\": \"2024-09-02 10:03:43\",\n  \"lat\": 56.348579,\n  \"lon\": 60.12344,\n  \"alt\": 271,\n  \"spd\": 43,\n  \"dir\": 77,\n  \"sat\": 8,\n  \"hdop\": 0.41,\n  \"acc\": 1,\n  \"ign\": 1,\n  \"pwr\": 13.9,\n  \"bat\": 4.12,\n  \"blvl\": 93,\n  \"move\": 1,\n  \"odm\": 7382.3,\n  \"adt1\": -13.7,\n  \"fuel\": 86\n}\n```\n\n`acc` is the GPS accuracy flag (1 = has fix, 0 = no fix), `ign` is ignition state (1=on, 0=off), `adt1` is an external temperature sensor. `fuel` is in liters. We'll be sending over HTTP to Navixy EU. Can you help me figure out what the NGP message should look like?", "eval_id": 0, "outputs": [{"name": "mapping.md", "type": "text", "content": "# NGP Mapping Specification: Fleet System to Navixy Generic Protocol\n\n## Overview\n\nThis document defines the conversion from your fleet system's JSON format to Navixy Generic Protocol (NGP) for HTTP transport to Navixy EU.\n\n**Source platform**: Fleet system with GPS/GNSS, ignition, fuel, temperature, and odometer sensors\n**Target**: Navixy Generic Protocol v1.0\n**Transport**: HTTP POST to `http://tracker.navixy.com:47642`\n**Region**: EU\n\n---\n\n## Field Mapping Table\n\n| Source field | Source type | NGP field | NGP type | Transform | Notes |\n|---|---|---|---|---|---|\n| `imei` | String | `device_id` | String | none | IMEI uniquely identifies the device on Navixy |\n| `utc` | String (ISO-like) | `message_time` | Timestamp ISO 8601 UTC | Parse to ISO 8601 | Convert \"2024-09-02 10:03:43\" \u2192 \"2024-09-02T10:03:43Z\" |\n| `lat` | Float | `location.latitude` | Float | none | Already in decimal degrees (\u221290 to 90) |\n| `lon` | Float | `location.longitude` | Float | none | Already in decimal degrees (\u2212180 to 180) |\n| `alt` | Integer | `location.altitude` | Float | none | Altitude in meters |\n| `spd` | Integer | `location.speed` | Float | none | Speed in km/h (already correct unit) |\n| `dir` | Integer | `location.heading` | Integer | clamp to 1\u2013360 | Direction in degrees from north; if 0, omit or use 360 |\n| `sat` | Integer | `location.satellites` | Integer | none | Satellite count; must be \u22653 for platform to store the point |\n| `hdop` | Float | `location.hdop` | Float | none | Horizontal Dilution of Precision |\n| `acc` | Integer (0/1) | `location.fix_type` | String | 1 \u2192 `\"HAS_FIX\"`, 0 \u2192 `\"NO_FIX\"` | GPS accuracy flag |\n| `ign` | Integer (0/1) | `input_status` | Integer | bit 0 set if ign=1 | Ignition state maps to input 1 |\n| `pwr` | Float | `board_voltage` | Float | none | External power supply voltage in volts |\n| `bat` | Float | `battery_voltage` | Float | none | Battery voltage in volts |\n| `blvl` | Integer | `battery_level` | Integer | none | Battery percentage (0\u2013100) |\n| `move` | Integer (0/1) | `is_moving` | Boolean | 1 \u2192 true, 0 \u2192 false | Movement status |\n| `odm` | Float | `hardware_mileage` | Float | none | Cumulative odometer in km |\n| `adt1` | Float | `temperature_2` | Float | none | External temperature sensor reading in \u00b0C |\n| `fuel` | Float | `fuel_level_1` | Float | none | Fuel level in liters |\n\n### Enum & Bitmask Reference\n\n**GPS Fix Type (`acc` \u2192 `location.fix_type`)**\n- `1` \u2192 `\"HAS_FIX\"` \u2014 valid GPS position\n- `0` \u2192 `\"NO_FIX\"` \u2014 no valid GPS lock\n\n**Input Status (`ign` \u2192 `input_status`)**\n- Source value `ign` (0 or 1) maps to bit 0 of `input_status`\n- If `ign = 1`, set `input_status = 0b00000001` (decimal 1)\n- If `ign = 0`, set `input_status = 0b00000000` (decimal 0)\n\n**Movement Status (`move` \u2192 `is_moving`)**\n- `1` \u2192 `true` (vehicle is moving)\n- `0` \u2192 `false` (vehicle is stationary)\n\n---\n\n## Unmapped / Dropped Fields\n\nNone. All source fields have a corresponding NGP destination or custom attribute.\n\n---\n\n## Custom Attributes\n\nNo custom attributes are needed. All source data maps to standard NGP fields.\n\n---\n\n## Fields to Synthesize or Confirm\n\n**\u2713 Confirmed from source:**\n- `device_id`: IMEI (provided)\n- `message_time`: UTC timestamp (provided)\n- `location.satellites`: Present in source (required for platform storage)\n- All mandatory location fields: `latitude`, `longitude`, `satellites`\n\n**No synthesis required** \u2014 all mandatory and recommended fields are present in the source.\n\n---\n\n## Example NGP Message\n\nUsing the provided sample values and applying all transforms:\n\n```json\n{\n  \"version\": \"1.0\",\n  \"device_id\": \"352656100901234\",\n  \"message_time\": \"2024-09-02T10:03:43Z\",\n  \"location\": {\n    \"latitude\": 56.348579,\n    \"longitude\": 60.12344,\n    \"altitude\": 271,\n    \"heading\": 77,\n    \"speed\": 43,\n    \"satellites\": 8,\n    \"hdop\": 0.41,\n    \"fix_type\": \"HAS_FIX\",\n    \"source_type\": \"GNSS\"\n  },\n  \"is_moving\": true,\n  \"hardware_mileage\": 7382.3,\n  \"input_status\": 1,\n  \"board_voltage\": 13.9,\n  \"battery_voltage\": 4.12,\n  \"battery_level\": 93,\n  \"temperature_2\": -13.7,\n  \"fuel_level_1\": 86\n}\n```\n\n### Message Notes\n- `location.fix_type` set to `\"HAS_FIX\"` because source `acc = 1`\n- `input_status` set to `1` (binary 00000001) because source `ign = 1` (bit 0 active)\n- `is_moving` set to `true` because source `move = 1`\n- `heading` included as integer 1\u2013360; if the source ever sends 0, either convert to 360 or omit the field\n- `source_type` set to `\"GNSS\"` (explicit indicator that positioning uses satellite signals)\n- All voltage readings remain in volts as provided\n- All temperature readings remain in Celsius as provided\n- All distances remain in kilometers and liters as provided\n\n---\n\n## Transport Setup: HTTP\n\n**Endpoint**: `http://tracker.navixy.com:47642`\n\n**HTTP Method**: POST\n**Content-Type**: `application/json`\n\n**Authentication**: None required at transport level; device is identified by `device_id` in the JSON payload.\n\n**Request format**:\n```\nPOST /some-path HTTP/1.1\nHost: tracker.navixy.com:47642\nContent-Type: application/json\n\n<one complete NGP JSON object per request>\n```\n\n**Response codes**:\n- `200 OK` \u2014 Message accepted\n- `400 Bad Request` \u2014 Malformed JSON or invalid field values\n- `403 Forbidden` \u2014 `device_id` not registered on your Navixy platform account\n- `4xx / 5xx` \u2014 Transient error; consider retry with exponential backoff\n\n**Error handling**: If you receive `403`, verify that the device IMEI is registered in your Navixy fleet (Settings > Devices > [Device] > Device ID).\n\n---\n\n## Implementation Checklist\n\n- [ ] Parse source `utc` timestamp string to ISO 8601 format (add `T` between date and time, append `Z`)\n- [ ] Extract source `imei` as the `device_id`\n- [ ] Map all location fields (`lat`, `lon`, `alt`, `sat`, `hdop`) directly\n- [ ] Convert source `acc` to `location.fix_type` enum\n- [ ] Convert source `dir` to integer heading (1\u2013360; handle edge case 0 \u2192 360 if needed)\n- [ ] Convert source `ign` to `input_status` bit 0\n- [ ] Convert source `move` to `is_moving` boolean\n- [ ] Include all voltage, battery, and fuel readings as-is\n- [ ] Include temperature sensor reading as `temperature_2`\n- [ ] Set `location.source_type` to `\"GNSS\"`\n- [ ] Test with sample message above and verify response from `http://tracker.navixy.com:47642`\n- [ ] If `403` received, confirm device is registered on Navixy platform\n\n---\n\n## Quick Reference: Conversion Rules\n\n| Rule | Code example |\n|---|---|\n| Timestamp | `utc = \"2024-09-02 10:03:43\"` \u2192 `\"2024-09-02T10:03:43Z\"` |\n| GPS fix | `acc == 1` \u2192 `fix_type: \"HAS_FIX\"`, else `\"NO_FIX\"` |\n| Ignition input | `ign == 1` \u2192 `input_status |= 0x01`, else `input_status = 0` |\n| Movement | `move == 1` \u2192 `is_moving: true`, else `false` |\n| Heading | Use `dir` as-is if 1\u2013360; if 0, convert to 360 or omit |\n| All other fields | Pass through unchanged (voltages, temperatures, odometer, fuel, satellites, hdop, speed, altitude) |\n\n---\n\n## Additional Notes\n\n1. **Message ordering**: Ensure that successive messages have `message_time` values that never go backwards. The Navixy platform silently discards out-of-order messages.\n\n2. **Satellite threshold**: Messages with `location.satellites < 3` are received but not stored as position points. If your GPS often has fewer than 3 satellites, consider a fallback to LBS (cell-based positioning) or setting `source_type: \"LBS\"` with a `precision` estimate.\n\n3. **Speed units**: Your fleet system already provides speed in km/h. If you ever migrate to a source that uses m/s, apply the transform: `speed_kmh = speed_ms \u00d7 3.6`.\n\n4. **Heading edge case**: If `dir = 0`, the platform may treat it as unknown. Either:\n   - Map 0 \u2192 360 (due north)\n   - Omit the `heading` field entirely when source is 0\n\n5. **Fuel units**: Your source provides fuel in liters, which matches NGP `fuel_level_n`. If you later use a percentage-based sensor, NGP still accepts `fuel_level_1`, and you can add a note in the message or device config indicating the unit.\n\n6. **Temperature sensor indexing**: `adt1` is mapped to `temperature_2` because:\n   - `temperature_internal` is reserved for the device's built-in sensor (if any)\n   - `temperature_2` is the first external sensor slot\n   - If you have `adt2`, `adt3`, etc., map them to `temperature_3`, `temperature_4`, and so on.\n\n7. **Voltage readings**: Your fleet system provides both `pwr` (external power, 13.9V) and `bat` (battery, 4.12V). These map cleanly:\n   - `pwr` \u2192 `board_voltage` (external supply, often a vehicle 12V or 24V line)\n   - `bat` \u2192 `battery_voltage` (internal backup battery)\n\n   Both are optional in NGP, but including them helps Navixy track device health and power state.\n\n8. **Testing**: Start by sending the example NGP message above to the EU endpoint. If you receive a `403` and your IMEI is registered, double-check the endpoint URL and your Navixy account region.\n"}], "grading": {"eval_id": 0, "eval_name": "gps-tracker-json", "configuration": "with_skill", "expectations": [{"text": "mapping_table_present: Output contains a field mapping table showing source \u2192 NGP correspondence", "passed": true, "evidence": "Full 18-row mapping table present with source field, source type, NGP field, NGP type, transform, and notes columns"}, {"text": "all_source_fields_covered: All 18 source fields are accounted for (imei, utc, lat, lon, alt, spd, dir, sat, hdop, acc, ign, pwr, bat, blvl, move, odm, adt1, fuel)", "passed": true, "evidence": "All 18 source fields explicitly present in the mapping table with NGP destinations"}, {"text": "timestamp_iso8601_conversion: Output notes that utc field needs conversion to ISO 8601 format (space \u2192 T, add Z suffix)", "passed": true, "evidence": "Row shows 'Convert \"2024-09-02 10:03:43\" \u2192 \"2024-09-02T10:03:43Z\"' and implementation checklist explicitly calls this out"}, {"text": "ign_to_input_status_bitmask: Output maps ign to input_status bitmask (not just a boolean field)", "passed": true, "evidence": "Maps to bit 0 of input_status with bitmask explanation: 'If ign = 1, set input_status = 0b00000001 (decimal 1)'"}, {"text": "acc_to_fix_type_enum: Output maps acc to location.fix_type with enum values (1\u2192HAS_FIX, 0\u2192NO_FIX)", "passed": true, "evidence": "Table row: 'acc | Integer (0/1) | location.fix_type | String | 1 \u2192 HAS_FIX, 0 \u2192 NO_FIX' with full enum section"}, {"text": "adt1_to_temperature_sensor: Output maps adt1 to temperature_1 or temperature_2 (indexed sensor field)", "passed": true, "evidence": "Maps to temperature_2 with note that temperature_internal is reserved for built-in sensor; adt2/adt3 would be temperature_3/temperature_4"}, {"text": "example_ngp_message_present: Output contains a complete, valid JSON example NGP message using the actual sample values", "passed": true, "evidence": "Complete JSON object with all 18 source fields transformed, using actual sample values (lat=56.348579, bat=4.12, fuel=86, etc.)"}, {"text": "http_eu_transport_details: Output includes HTTP endpoint for EU region: tracker.navixy.com:47642", "passed": true, "evidence": "Transport section shows 'http://tracker.navixy.com:47642' with method POST and Content-Type application/json"}], "pass_count": 8, "total_count": 8, "pass_rate": 1.0}}, {"id": "gps-tracker-json-without_skill", "prompt": "Hey, I'm building a middleware service that pulls data from our existing fleet system and needs to forward it to Navixy. Here's a sample message we receive from our fleet platform:\n\n```json\n{\n  \"imei\": \"352656100901234\",\n  \"utc\": \"2024-09-02 10:03:43\",\n  \"lat\": 56.348579,\n  \"lon\": 60.12344,\n  \"alt\": 271,\n  \"spd\": 43,\n  \"dir\": 77,\n  \"sat\": 8,\n  \"hdop\": 0.41,\n  \"acc\": 1,\n  \"ign\": 1,\n  \"pwr\": 13.9,\n  \"bat\": 4.12,\n  \"blvl\": 93,\n  \"move\": 1,\n  \"odm\": 7382.3,\n  \"adt1\": -13.7,\n  \"fuel\": 86\n}\n```\n\n`acc` is the GPS accuracy flag (1 = has fix, 0 = no fix), `ign` is ignition state (1=on, 0=off), `adt1` is an external temperature sensor. `fuel` is in liters. We'll be sending over HTTP to Navixy EU. Can you help me figure out what the NGP message should look like?", "eval_id": 0, "outputs": [{"name": "mapping.md", "type": "text", "content": "# Fleet Platform to Navixy Generic Protocol (NGP) Mapping\n\n## Overview\n\nThis document provides a complete mapping from your fleet system message format to the Navixy Generic Protocol (NGP) v1.0, suitable for sending to Navixy EU endpoints.\n\n## Source Message Reference\n\nYour fleet platform sends messages with these fields:\n\n```json\n{\n  \"imei\": \"352656100901234\",\n  \"utc\": \"2024-09-02 10:03:43\",\n  \"lat\": 56.348579,\n  \"lon\": 60.12344,\n  \"alt\": 271,\n  \"spd\": 43,\n  \"dir\": 77,\n  \"sat\": 8,\n  \"hdop\": 0.41,\n  \"acc\": 1,\n  \"ign\": 1,\n  \"pwr\": 13.9,\n  \"bat\": 4.12,\n  \"blvl\": 93,\n  \"move\": 1,\n  \"odm\": 7382.3,\n  \"adt1\": -13.7,\n  \"fuel\": 86\n}\n```\n\n## NGP Message Format\n\nThe Navixy Generic Protocol requires JSON with mandatory root-level attributes `message_time` and `device_id`, plus optional location and telemetry data.\n\n### Complete NGP Message Example\n\n```json\n{\n  \"message_time\": \"2024-09-02T10:03:43Z\",\n  \"device_id\": \"352656100901234\",\n  \"version\": \"1.0\",\n  \"location\": {\n    \"latitude\": 56.348579,\n    \"longitude\": 60.12344,\n    \"altitude\": 271,\n    \"fix_type\": \"HAS_FIX\",\n    \"satellites\": 8,\n    \"hdop\": 0.41,\n    \"speed\": 43,\n    \"heading\": 77\n  },\n  \"is_moving\": true,\n  \"hardware_mileage\": 7382.3,\n  \"battery_voltage\": 13.9,\n  \"battery_level\": 93,\n  \"temperature_1\": -13.7,\n  \"fuel_level_1\": 86,\n  \"input_status\": 1\n}\n```\n\n## Field Mapping Table\n\n| Fleet Field | Type | NGP Field | NGP Type | Transformation Notes |\n|-------------|------|-----------|----------|----------------------|\n| `imei` | String | `device_id` | String | Device unique identifier; max 64 chars |\n| `utc` | String (YYYY-MM-DD HH:MM:SS) | `message_time` | Timestamp (ISO 8601 UTC) | Convert to ISO 8601 format: `2024-09-02T10:03:43Z` |\n| `lat` | Float | `location.latitude` | Float | Degrees (-90.0 to 90.0); pass through |\n| `lon` | Float | `location.longitude` | Float | Degrees (-180.0 to 180.0); pass through |\n| `alt` | Float | `location.altitude` | Float | Meters; pass through |\n| `spd` | Float | `location.speed` | Float | km/h; pass through |\n| `dir` | Integer | `location.heading` | Integer | Degrees (1-360); pass through as azimuth |\n| `sat` | Integer | `location.satellites` | Integer | Number of satellites (0-64); pass through |\n| `hdop` | Float | `location.hdop` | Float | Horizontal dilution of precision; pass through |\n| `acc` | Integer (0 or 1) | `location.fix_type` | String | GPS accuracy flag: `1` \u2192 `\"HAS_FIX\"`, `0` \u2192 `\"NO_FIX\"` |\n| `ign` | Integer (0 or 1) | `input_status` | Integer | Ignition state; use as bitmask (bit 0 for ignition) |\n| `pwr` | Float | `board_voltage` | Float | External power supply voltage in volts |\n| `bat` | Float | `battery_voltage` | Float | Battery voltage in volts |\n| `blvl` | Integer | `battery_level` | Integer | Battery level as percentage (0-100); pass through |\n| `move` | Integer (0 or 1) | `is_moving` | Boolean | Movement status: `1` \u2192 `true`, `0` \u2192 `false` |\n| `odm` | Float | `hardware_mileage` | Float | Mileage in kilometers; pass through |\n| `adt1` | Float | `temperature_1` | Float | External temperature sensor #1 in degrees Celsius |\n| `fuel` | Float | `fuel_level_1` | Float | Fuel level in liters; pass through |\n\n## Detailed Field Transformations\n\n### 1. Timestamp Conversion (utc \u2192 message_time)\n\n**Input:** `\"2024-09-02 10:03:43\"` (local or UTC format)\n\n**Output:** `\"2024-09-02T10:03:43Z\"` (ISO 8601 UTC)\n\n**Transformation:**\n```\nReplace the space with 'T' and append 'Z' to indicate UTC timezone.\nAssume input is in UTC (verify with your fleet system).\n```\n\n### 2. Device Identifier (imei \u2192 device_id)\n\n**Input:** `\"352656100901234\"` (IMEI)\n\n**Output:** `\"352656100901234\"` (same value)\n\n**Notes:**\n- The device must be registered in Navixy with this identifier before messages are accepted\n- IMEI is a good unique identifier; no transformation needed\n- Max length: 64 characters\n\n### 3. GPS Fix Type (acc \u2192 fix_type)\n\n**Input:** `1` or `0` (accuracy flag)\n\n**Transformation Logic:**\n```\nif acc == 1:\n    fix_type = \"HAS_FIX\"\nelif acc == 0:\n    fix_type = \"NO_FIX\"\n```\n\n**NGP Options:**\n- `\"HAS_FIX\"` - Device has a valid GPS fix\n- `\"NO_FIX\"` - No GPS signal\n- `\"LAST_KNOWN_POSITION\"` - Last known position before signal loss\n- `\"FIX_2D\"` - 2D position fix (latitude, longitude only)\n- `\"FIX_3D\"` - 3D position fix (with altitude)\n\nFor best results, if you have additional data about fix quality (2D vs 3D), use the more specific values. Otherwise, `HAS_FIX` and `NO_FIX` are sufficient.\n\n### 4. Ignition State (ign \u2192 input_status)\n\n**Input:** `1` or `0` (ignition on/off)\n\n**Transformation Logic:**\n```\nUse as a bitmask where bit 0 represents ignition state:\ninput_status = ign  // 1 for ignition on, 0 for ignition off\n```\n\n**Alternative (if you have multiple discrete inputs):**\n```\ninput_status = (ign << 0) | (other_input_1 << 1) | (other_input_2 << 2) | ...\n```\n\n**Notes:**\n- Navixy uses this for detecting engine start/stop events\n- Can be combined with other discrete inputs as a bitmask\n\n### 5. Movement Detection (move \u2192 is_moving)\n\n**Input:** `1` or `0` (integer)\n\n**Transformation Logic:**\n```\nif move == 1:\n    is_moving = true\nelif move == 0:\n    is_moving = false\n```\n\n### 6. Temperature Sensor (adt1 \u2192 temperature_1)\n\n**Input:** `-13.7` (degrees Celsius)\n\n**Output:** `-13.7` (same value)\n\n**Notes:**\n- NGP supports up to 16 external temperature sensors: `temperature_1` through `temperature_16`\n- If you have multiple external temperature sensors, map them to `temperature_2`, `temperature_3`, etc.\n- Units must be Celsius\n\n### 7. Fuel Level (fuel \u2192 fuel_level_1)\n\n**Input:** `86` (liters)\n\n**Output:** `86` (same value)\n\n**Notes:**\n- NGP supports up to 16 fuel sensors: `fuel_level_1` through `fuel_level_16`\n- If your fuel value is already in percentage (0-100), keep it as is\u2014Navixy accepts both liters and percentage\n- Document which unit your system uses (liters vs. percentage) in your device configuration\n\n### 8. Power Supply Voltage (pwr \u2192 board_voltage)\n\n**Input:** `13.9` (volts)\n\n**Output:** `13.9` (volts)\n\n**Notes:**\n- Represents external power from vehicle charging system (alternator output when engine running)\n- Used by Navixy for power management and ignition detection (voltage-based method)\n- If board_voltage > typical value when ignition is off, it can confirm engine is running\n\n## JavaScript/Node.js Conversion Example\n\n```javascript\nfunction fleetMessageToNGP(fleetMessage) {\n  // Parse UTC timestamp and convert to ISO 8601\n  const utcDate = new Date(fleetMessage.utc);\n  const messageTime = utcDate.toISOString(); // e.g., \"2024-09-02T10:03:43.000Z\"\n\n  // Determine GPS fix type\n  const fixType = fleetMessage.acc === 1 ? \"HAS_FIX\" : \"NO_FIX\";\n\n  // Convert movement integer to boolean\n  const isMoving = fleetMessage.move === 1;\n\n  // Build NGP message\n  const ngpMessage = {\n    message_time: messageTime,\n    device_id: fleetMessage.imei.toString(),\n    version: \"1.0\",\n    location: {\n      latitude: fleetMessage.lat,\n      longitude: fleetMessage.lon,\n      altitude: fleetMessage.alt,\n      fix_type: fixType,\n      satellites: fleetMessage.sat,\n      hdop: fleetMessage.hdop,\n      speed: fleetMessage.spd,\n      heading: fleetMessage.dir\n    },\n    is_moving: isMoving,\n    hardware_mileage: fleetMessage.odm,\n    battery_voltage: fleetMessage.bat,\n    battery_level: fleetMessage.blvl,\n    board_voltage: fleetMessage.pwr,\n    temperature_1: fleetMessage.adt1,\n    fuel_level_1: fleetMessage.fuel,\n    input_status: fleetMessage.ign\n  };\n\n  return ngpMessage;\n}\n\n// Usage example\nconst fleetMsg = {\n  imei: \"352656100901234\",\n  utc: \"2024-09-02 10:03:43\",\n  lat: 56.348579,\n  lon: 60.12344,\n  alt: 271,\n  spd: 43,\n  dir: 77,\n  sat: 8,\n  hdop: 0.41,\n  acc: 1,\n  ign: 1,\n  pwr: 13.9,\n  bat: 4.12,\n  blvl: 93,\n  move: 1,\n  odm: 7382.3,\n  adt1: -13.7,\n  fuel: 86\n};\n\nconst ngpMsg = fleetMessageToNGP(fleetMsg);\nconsole.log(JSON.stringify(ngpMsg, null, 2));\n```\n\n## Python Conversion Example\n\n```python\nfrom datetime import datetime\nimport json\n\ndef fleet_message_to_ngp(fleet_message):\n    \"\"\"Convert fleet platform message to NGP format\"\"\"\n\n    # Parse UTC timestamp and convert to ISO 8601\n    utc_dt = datetime.strptime(fleet_message['utc'], '%Y-%m-%d %H:%M:%S')\n    message_time = utc_dt.isoformat() + 'Z'\n\n    # Determine GPS fix type\n    fix_type = \"HAS_FIX\" if fleet_message['acc'] == 1 else \"NO_FIX\"\n\n    # Convert movement integer to boolean\n    is_moving = fleet_message['move'] == 1\n\n    # Build NGP message\n    ngp_message = {\n        \"message_time\": message_time,\n        \"device_id\": str(fleet_message['imei']),\n        \"version\": \"1.0\",\n        \"location\": {\n            \"latitude\": fleet_message['lat'],\n            \"longitude\": fleet_message['lon'],\n            \"altitude\": fleet_message['alt'],\n            \"fix_type\": fix_type,\n            \"satellites\": fleet_message['sat'],\n            \"hdop\": fleet_message['hdop'],\n            \"speed\": fleet_message['spd'],\n            \"heading\": fleet_message['dir']\n        },\n        \"is_moving\": is_moving,\n        \"hardware_mileage\": fleet_message['odm'],\n        \"battery_voltage\": fleet_message['bat'],\n        \"battery_level\": fleet_message['blvl'],\n        \"board_voltage\": fleet_message['pwr'],\n        \"temperature_1\": fleet_message['adt1'],\n        \"fuel_level_1\": fleet_message['fuel'],\n        \"input_status\": fleet_message['ign']\n    }\n\n    return ngp_message\n\n# Usage example\nfleet_msg = {\n    \"imei\": \"352656100901234\",\n    \"utc\": \"2024-09-02 10:03:43\",\n    \"lat\": 56.348579,\n    \"lon\": 60.12344,\n    \"alt\": 271,\n    \"spd\": 43,\n    \"dir\": 77,\n    \"sat\": 8,\n    \"hdop\": 0.41,\n    \"acc\": 1,\n    \"ign\": 1,\n    \"pwr\": 13.9,\n    \"bat\": 4.12,\n    \"blvl\": 93,\n    \"move\": 1,\n    \"odm\": 7382.3,\n    \"adt1\": -13.7,\n    \"fuel\": 86\n}\n\nngp_msg = fleet_message_to_ngp(fleet_msg)\nprint(json.dumps(ngp_msg, indent=2))\n```\n\n## HTTP POST Example to Navixy EU\n\n### Endpoint URL\n\n```\nhttps://api.eu.navixy.com/v2/receiver/device/track\n```\n\n(Replace with the correct endpoint URL from your Navixy integration documentation)\n\n### HTTP Request\n\n```bash\ncurl -X POST \"https://api.eu.navixy.com/v2/receiver/device/track\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"message_time\": \"2024-09-02T10:03:43Z\",\n    \"device_id\": \"352656100901234\",\n    \"version\": \"1.0\",\n    \"location\": {\n      \"latitude\": 56.348579,\n      \"longitude\": 60.12344,\n      \"altitude\": 271,\n      \"fix_type\": \"HAS_FIX\",\n      \"satellites\": 8,\n      \"hdop\": 0.41,\n      \"speed\": 43,\n      \"heading\": 77\n    },\n    \"is_moving\": true,\n    \"hardware_mileage\": 7382.3,\n    \"battery_voltage\": 13.9,\n    \"battery_level\": 93,\n    \"board_voltage\": 13.9,\n    \"temperature_1\": -13.7,\n    \"fuel_level_1\": 86,\n    \"input_status\": 1\n  }'\n```\n\n## Important Considerations\n\n### Device Registration\n\nBefore sending messages, ensure:\n1. The device with IMEI `352656100901234` is registered in Navixy\n2. The device's protocol is set to \"Navixy Generic Protocol (NGP)\"\n3. The device is assigned to the correct fleet/organization\n\n### Timestamp Format\n\n- NGP requires ISO 8601 UTC format with timezone indicator: `YYYY-MM-DDTHH:MM:SSZ`\n- Ensure your fleet platform timestamps are in UTC or convert them appropriately\n- Navixy will reject messages with future timestamps (message_time > current server time)\n\n### Location Data Minimum Requirements\n\nTo save location data on the platform:\n- **At least 3 satellites** are recommended (your sample has 8 - good)\n- **GPS fix must be present** (acc=1)\n- If satellites < 3, data may be flagged as low quality\n\n### Optional vs. Required Fields\n\n**Mandatory (root level):**\n- `message_time` - ISO 8601 UTC timestamp\n- `device_id` - Device identifier\n\n**Mandatory (for location):**\n- `location.latitude` and `location.longitude` - if sending location\n\n**Recommended:**\n- `location.satellites` - at least 3 for quality assurance\n- `location.fix_type` - explicitly state GPS fix status\n\n**Optional:**\n- All telemetry fields (temperature, fuel, battery, etc.) are optional\n- Include only fields your device supports\n\n### Multiple Sensors\n\nIf your fleet system has multiple sensors of the same type:\n\n**Multiple Temperature Sensors:**\n```json\n\"temperature_1\": -13.7,\n\"temperature_2\": 25.5,\n\"temperature_3\": 18.2\n```\n\n**Multiple Fuel Level Sensors:**\n```json\n\"fuel_level_1\": 86,\n\"fuel_level_2\": 45\n```\n\nUse the numbering convention: `sensor_type_n` where n = 1..16.\n\n### Custom Attributes\n\nIf you have additional data not covered by NGP predefined fields, use custom attributes:\n\n```json\n{\n  \"message_time\": \"2024-09-02T10:03:43Z\",\n  \"device_id\": \"352656100901234\",\n  \"location\": { ... },\n  \"custom_vehicle_mode\": \"highway\",\n  \"custom_cargo_weight\": 2500.5,\n  \"custom_door_status\": true\n}\n```\n\nCustom attributes are passed through unchanged and can be used in IoT Logic flows.\n\n## Testing the Integration\n\n1. **Validate JSON Structure:** Use an online JSON validator or your IDE to ensure the message is valid JSON\n2. **Check Field Values:** Verify that:\n   - Latitude is between -90.0 and 90.0\n   - Longitude is between -180.0 and 180.0\n   - Speed is a positive value\n   - Satellites count is 0-64\n   - Battery level is 0-100\n3. **Send Test Message:** Post a test message to Navixy using the curl example above\n4. **Verify in Web UI:** Log into your Navixy account and check if the device appears and reports correct location/telemetry\n\n## References\n\n- [Navixy Generic Protocol Documentation](https://www.navixy.com/docs/iot-logic-api/technologies/navixy-generic-protocol)\n- [NGP Message Structure and Attributes](https://www.navixy.com/docs/iot-logic-api/technologies/navixy-generic-protocol/navixy-generic-protocol-10/message-structure-and-attributes)\n- [NGP Data Types and Encoding](https://www.navixy.com/docs/iot-logic-api/technologies/navixy-generic-protocol/navixy-generic-protocol-10/data-types-and-encoding-standards)\n"}], "grading": {"eval_id": 0, "eval_name": "gps-tracker-json", "configuration": "without_skill", "expectations": [{"text": "mapping_table_present: Output contains a field mapping table showing source \u2192 NGP correspondence", "passed": true, "evidence": "Complete 18-row mapping table present"}, {"text": "all_source_fields_covered: All 18 source fields are accounted for (imei, utc, lat, lon, alt, spd, dir, sat, hdop, acc, ign, pwr, bat, blvl, move, odm, adt1, fuel)", "passed": true, "evidence": "All 18 source fields present in the mapping table"}, {"text": "timestamp_iso8601_conversion: Output notes that utc field needs conversion to ISO 8601 format (space \u2192 T, add Z suffix)", "passed": true, "evidence": "Section '1. Timestamp Conversion' shows 'Convert \"2024-09-02 10:03:43\" \u2192 \"2024-09-02T10:03:43Z\"'"}, {"text": "ign_to_input_status_bitmask: Output maps ign to input_status bitmask (not just a boolean field)", "passed": true, "evidence": "Mapping table row shows 'input_status' with note 'Ignition state; use as bitmask (bit 0 for ignition)' and 'Alternative (if you have multiple discrete inputs)' bitmask example"}, {"text": "acc_to_fix_type_enum: Output maps acc to location.fix_type with enum values (1\u2192HAS_FIX, 0\u2192NO_FIX)", "passed": true, "evidence": "Detailed section '3. GPS Fix Type' with if/elif logic mapping acc 0/1 to HAS_FIX/NO_FIX"}, {"text": "adt1_to_temperature_sensor: Output maps adt1 to temperature_1 or temperature_2 (indexed sensor field)", "passed": true, "evidence": "Maps to temperature_1 in the example message"}, {"text": "example_ngp_message_present: Output contains a complete, valid JSON example NGP message using the actual sample values", "passed": true, "evidence": "Complete NGP example message present with actual sample values"}, {"text": "http_eu_transport_details: Output includes HTTP endpoint for EU region: tracker.navixy.com:47642", "passed": false, "evidence": "Uses incorrect endpoint 'https://api.eu.navixy.com/v2/receiver/device/track' with a note that the user should verify the correct endpoint. Correct endpoint is http://tracker.navixy.com:47642"}], "pass_count": 7, "total_count": 8, "pass_rate": 0.875}}, {"id": "wialon-nested-export-with_skill", "prompt": "We have a Wialon-based system that exports position data and I want to push it into Navixy. The export format looks like this:\n\n```json\n{\n  \"unit_id\": \"truck_fleet_042\",\n  \"pos\": {\n    \"x\": 60.12344,\n    \"y\": 56.348579,\n    \"z\": 271,\n    \"s\": 26.8,\n    \"c\": 77,\n    \"sc\": 8,\n    \"lc\": 1,\n    \"rt\": 1725270223\n  },\n  \"prms\": {\n    \"board_voltage\": {\"v\": 13.9},\n    \"engine_temp\": {\"v\": 87},\n    \"door_sensor\": {\"v\": 0},\n    \"driver_id\": {\"v\": \"RF123456\"}\n  }\n}\n```\n\n`pos.x` = longitude, `pos.y` = latitude, `pos.s` = speed in m/s, `pos.c` = course (heading), `pos.sc` = satellite count, `pos.lc` = location validity (1=valid), `pos.rt` = Unix timestamp in seconds, `pos.z` = altitude in meters. `engine_temp` is engine coolant temperature in Celsius. `door_sensor` is 1=open, 0=closed. We want to use MQTT on the EU region.", "eval_id": 1, "outputs": [{"name": "mapping.md", "type": "text", "content": "# NGP Mapping: Wialon-Based System Export to Navixy\n\n## Overview\n\nThis document specifies how to convert position and sensor data from a Wialon-based export system to Navixy Generic Protocol (NGP) for ingestion via MQTT on the EU region.\n\n**Source system:** Wialon-based telematics platform exporting nested JSON with GPS position, auxiliary parameters, and sensor readings.\n\n**Target:** Navixy EU region via MQTT protocol.\n\n---\n\n## Input Sample\n\n```json\n{\n  \"unit_id\": \"truck_fleet_042\",\n  \"pos\": {\n    \"x\": 60.12344,\n    \"y\": 56.348579,\n    \"z\": 271,\n    \"s\": 26.8,\n    \"c\": 77,\n    \"sc\": 8,\n    \"lc\": 1,\n    \"rt\": 1725270223\n  },\n  \"prms\": {\n    \"board_voltage\": {\"v\": 13.9},\n    \"engine_temp\": {\"v\": 87},\n    \"door_sensor\": {\"v\": 0},\n    \"driver_id\": {\"v\": \"RF123456\"}\n  }\n}\n```\n\n---\n\n## Field Mapping Table\n\n| Source field | Source type | Source units | NGP field | NGP type | Transform | Notes |\n|---|---|---|---|---|---|---|\n| `unit_id` | String | \u2014 | `device_id` | String | none | Device identifier from fleet system |\n| `pos.x` | Float | Decimal degrees | `location.longitude` | Float | none | Direct mapping |\n| `pos.y` | Float | Decimal degrees | `location.latitude` | Float | none | Direct mapping |\n| `pos.z` | Integer | Meters | `location.altitude` | Float | none | Altitude above sea level |\n| `pos.s` | Float | m/s | `location.speed` | Float | \u00d73.6 | Convert meters/sec to km/h |\n| `pos.c` | Integer | Degrees | `location.heading` | Integer | none | Bearing clockwise from north (0\u2013360) |\n| `pos.sc` | Integer | Count | `location.satellites` | Integer | none | Number of satellites in solution |\n| `pos.lc` | Integer | 0/1 | `location.fix_type` | String | 1\u2192`HAS_FIX`, 0\u2192`NO_FIX` | Location validity flag |\n| `pos.rt` | Integer | Unix epoch (seconds) | `message_time` | ISO 8601 UTC | Convert epoch\u2192ISO 8601 | Timestamp for this position report |\n| `prms.board_voltage.v` | Float | Volts | `board_voltage` | Float | none | External power supply voltage |\n| `prms.engine_temp.v` | Float | Celsius | `temperature_2` | Float | none | Engine coolant temperature |\n| `prms.door_sensor.v` | Integer | 0/1 | `input_status` bit 0 | Integer | see note | 1=door open (input active), 0=door closed |\n| `prms.driver_id.v` | String | \u2014 | `custom_driver_id` | String | none | Driver identification from RFID or other system |\n\n---\n\n## Field Transform Details\n\n### Fix Type Mapping\n\nThe `pos.lc` field encodes location validity as a boolean flag:\n\n- **`lc = 1`** \u2192 `location.fix_type = \"HAS_FIX\"` \u2014 GPS fix is valid and can be stored\n- **`lc = 0`** \u2192 `location.fix_type = \"NO_FIX\"` \u2014 GPS data invalid; point is received but not stored on platform\n\n### Speed Conversion\n\nSource provides speed in **m/s**; NGP expects **km/h**:\n\n```\nspeed_kmh = speed_ms \u00d7 3.6\nExample: 26.8 m/s \u00d7 3.6 = 96.48 km/h\n```\n\n### Timestamp Conversion\n\nSource provides Unix epoch timestamp in **seconds**; NGP requires **ISO 8601 UTC**:\n\n```\nISO 8601 = new Date(unix_seconds \u00d7 1000).toISOString()\nExample: 1725270223 \u2192 \"2024-09-02T10:30:23Z\"\n```\n\n### Input Status Bitmask\n\nThe `door_sensor` value (0 or 1) maps to bit 0 of `input_status`:\n\n```\ninput_status = (door_sensor & 1) << 0\nIf door_sensor = 1 \u2192 input_status = 0b00000001 = 1 (input 1 active)\nIf door_sensor = 0 \u2192 input_status = 0b00000000 = 0 (no inputs active)\n```\n\n---\n\n## Unmapped / Dropped Fields\n\nNone. All source fields have a direct NGP mapping or custom attribute designation.\n\n---\n\n## Custom Attributes\n\n| Source field | Custom NGP field | Rationale |\n|---|---|---|\n| `prms.driver_id.v` | `custom_driver_id` | Driver/operator identification; no direct NGP field; stored as custom for IoT Logic and reporting |\n\n---\n\n## Fields to Synthesize or Confirm\n\n\u2713 **`device_id`** \u2014 Sourced from `unit_id` (e.g., `\"truck_fleet_042\"`). Must be pre-registered on the Navixy platform.\n\n\u2713 **`message_time`** \u2014 Sourced from `pos.rt` (Unix epoch). Will be converted to ISO 8601 UTC.\n\n\u2713 **`location.satellites`** \u2014 Sourced from `pos.sc`. Must be \u22653 for the platform to store the point. The sample has 8 satellites, so data will be retained.\n\n\u2713 **`location.fix_type`** \u2014 Sourced from `pos.lc`. Sample shows `lc = 1` (valid fix).\n\n---\n\n## Example NGP Message\n\nBelow is a complete NGP message using the sample values from the Wialon export, with all transforms applied:\n\n```json\n{\n  \"version\": \"1.0\",\n  \"device_id\": \"truck_fleet_042\",\n  \"message_time\": \"2024-09-02T10:30:23Z\",\n  \"location\": {\n    \"latitude\": 56.348579,\n    \"longitude\": 60.12344,\n    \"altitude\": 271,\n    \"speed\": 96.48,\n    \"heading\": 77,\n    \"satellites\": 8,\n    \"fix_type\": \"HAS_FIX\",\n    \"source_type\": \"GNSS\"\n  },\n  \"board_voltage\": 13.9,\n  \"temperature_2\": 87,\n  \"input_status\": 1,\n  \"custom_driver_id\": \"RF123456\"\n}\n```\n\n---\n\n## Transport Setup: MQTT (EU Region)\n\n### Connection Parameters\n\n| Parameter | Value |\n|---|---|\n| **Broker host** | `mqtt.eu.navixy.com` |\n| **Port** | `1883` (plain TCP) or `8883` (TLS) |\n| **Username** | `ngp_device` |\n| **Password** | Device password configured in Navixy platform |\n| **QoS** | 1 (recommended for reliable delivery) |\n\n### Topic and Message Format\n\n**Topic:** `ngp/{device_id}`\nReplace `{device_id}` with the actual device identifier (e.g., `ngp/truck_fleet_042`).\n\n**Payload:** One JSON object per message (as shown in the example above).\n\n### Connection Example (pseudocode)\n\n```\nCONNECT to mqtt.eu.navixy.com:1883\n  USERNAME: ngp_device\n  PASSWORD: [device_password_from_navixy]\n\nPUBLISH to topic: ngp/truck_fleet_042\n  QoS: 1\n  Payload: {\n    \"version\": \"1.0\",\n    \"device_id\": \"truck_fleet_042\",\n    \"message_time\": \"2024-09-02T10:30:23Z\",\n    ...\n  }\n```\n\n### Notes\n\n- Each GPS/sensor update should be published as a separate MQTT message.\n- Ensure `message_time` is monotonically increasing per device (no out-of-order messages).\n- Without `location.satellites \u2265 3`, the point is received but not stored.\n- QoS 1 ensures messages are delivered at least once; higher QoS may impact throughput.\n\n---\n\n## Implementation Checklist\n\n- [ ] Register all `device_id` values (e.g., `truck_fleet_042`) on the Navixy platform\n- [ ] Retrieve device passwords from Navixy for each registered device\n- [ ] Implement timestamp conversion: Unix epoch (seconds) \u2192 ISO 8601 UTC\n- [ ] Implement speed conversion: m/s \u00d7 3.6 \u2192 km/h\n- [ ] Implement fix_type mapping: `lc` boolean \u2192 `HAS_FIX` / `NO_FIX`\n- [ ] Implement input_status bitmask: door_sensor \u2192 bit 0\n- [ ] Configure MQTT client with broker `mqtt.eu.navixy.com:1883`, username `ngp_device`\n- [ ] Set MQTT topic to `ngp/{device_id}` for each device\n- [ ] Test with sample message and verify data appears on Navixy dashboard\n- [ ] Monitor message timestamps to ensure monotonic ordering per device\n- [ ] Verify board_voltage and temperature readings appear in device telemetry\n- [ ] Confirm custom_driver_id is accessible via IoT Logic and IoT Query\n\n---\n\n## Troubleshooting\n\n| Issue | Probable cause | Solution |\n|---|---|---|\n| Data not appearing on dashboard | `device_id` not registered | Register device on Navixy; use exact ID match |\n| Position stored but with `NO_FIX` status | `pos.lc` was 0 or `satellites` < 3 | Check source data; ensure GPS lock before sending |\n| Speed/heading incorrect | Unit conversion not applied | Verify m/s\u2192km/h factor (\u00d73.6) and heading range (0\u2013360) |\n| MQTT connection refused | Wrong credentials or broker | Confirm username/password and check `mqtt.eu.navixy.com` availability |\n| Messages silently dropped | Out-of-order timestamps | Ensure each device's `message_time` is strictly increasing |\n\n"}], "grading": {"eval_id": 1, "eval_name": "wialon-nested-export", "configuration": "with_skill", "expectations": [{"text": "mapping_table_present: Output contains a field mapping table", "passed": true, "evidence": "Full 13-row mapping table with source field, source type, source units, NGP field, NGP type, transform, notes"}, {"text": "speed_m_per_s_to_km_h: Output correctly documents speed conversion from m/s to km/h (multiply by 3.6), showing 26.8 m/s \u2192 ~96.5 km/h", "passed": true, "evidence": "Speed Conversion section: 'speed_kmh = speed_ms \u00d7 3.6 / Example: 26.8 m/s \u00d7 3.6 = 96.48 km/h'"}, {"text": "unix_epoch_to_iso8601: Output documents converting Unix epoch timestamp (rt) to ISO 8601 UTC", "passed": true, "evidence": "Timestamp Conversion section: '1725270223 \u2192 2024-09-02T10:30:23Z' with JS code example"}, {"text": "driver_id_mapped_to_hardware_key_or_custom: Output maps driver_id to hardware_key or a custom_* attribute", "passed": true, "evidence": "Maps to custom_driver_id in the mapping table: 'prms.driver_id.v \u2192 custom_driver_id | String | none | Driver identification from RFID or other system'"}, {"text": "engine_temp_as_custom_attribute: Output maps engine_temp to a custom_* attribute (no standard NGP field for engine coolant temp)", "passed": false, "evidence": "Maps engine_temp to temperature_2 (standard indexed temperature sensor field) rather than a custom_* attribute. While temperature_2 is valid for an external temperature sensor, it conflates engine coolant temp with a generic temperature slot. The skill appropriately chose temperature_2 as a pragmatic standard field, but the assertion expected custom_* for engine-specific data."}, {"text": "example_ngp_message_present: Output contains a complete JSON example NGP message using the actual sample values after transformation", "passed": true, "evidence": "Complete NGP JSON with speed=96.48, message_time=2024-09-02T10:30:23Z, all transformed values using actual sample data"}, {"text": "mqtt_eu_transport_details: Output includes MQTT connection parameters for EU: host mqtt.eu.navixy.com, topic ngp/{device_id}, username ngp_device", "passed": true, "evidence": "Transport table shows mqtt.eu.navixy.com, port 1883/8883, username ngp_device, topic ngp/truck_fleet_042"}], "pass_count": 6, "total_count": 7, "pass_rate": 0.857}}, {"id": "wialon-nested-export-without_skill", "prompt": "We have a Wialon-based system that exports position data and I want to push it into Navixy. The export format looks like this:\n\n```json\n{\n  \"unit_id\": \"truck_fleet_042\",\n  \"pos\": {\n    \"x\": 60.12344,\n    \"y\": 56.348579,\n    \"z\": 271,\n    \"s\": 26.8,\n    \"c\": 77,\n    \"sc\": 8,\n    \"lc\": 1,\n    \"rt\": 1725270223\n  },\n  \"prms\": {\n    \"board_voltage\": {\"v\": 13.9},\n    \"engine_temp\": {\"v\": 87},\n    \"door_sensor\": {\"v\": 0},\n    \"driver_id\": {\"v\": \"RF123456\"}\n  }\n}\n```\n\n`pos.x` = longitude, `pos.y` = latitude, `pos.s` = speed in m/s, `pos.c` = course (heading), `pos.sc` = satellite count, `pos.lc` = location validity (1=valid), `pos.rt` = Unix timestamp in seconds, `pos.z` = altitude in meters. `engine_temp` is engine coolant temperature in Celsius. `door_sensor` is 1=open, 0=closed. We want to use MQTT on the EU region.", "eval_id": 1, "outputs": [{"name": "mapping.md", "type": "text", "content": "# Wialon to Navixy Generic Protocol (NGP) Mapping\n\n## Overview\n\nThis document defines the mapping strategy for converting Wialon-based position export data into Navixy Generic Protocol (NGP) format for MQTT transmission to the EU region (`mqtt.eu.navixy.com`).\n\n## Source Data Format\n\n```json\n{\n  \"unit_id\": \"truck_fleet_042\",\n  \"pos\": {\n    \"x\": 60.12344,\n    \"y\": 56.348579,\n    \"z\": 271,\n    \"s\": 26.8,\n    \"c\": 77,\n    \"sc\": 8,\n    \"lc\": 1,\n    \"rt\": 1725270223\n  },\n  \"prms\": {\n    \"board_voltage\": {\"v\": 13.9},\n    \"engine_temp\": {\"v\": 87},\n    \"door_sensor\": {\"v\": 0},\n    \"driver_id\": {\"v\": \"RF123456\"}\n  }\n}\n```\n\n**Field Definitions:**\n- `pos.x` = longitude (decimal degrees)\n- `pos.y` = latitude (decimal degrees)\n- `pos.z` = altitude (meters)\n- `pos.s` = speed (meters/second)\n- `pos.c` = course/heading (degrees, 0-359)\n- `pos.sc` = satellite count (number of satellites)\n- `pos.lc` = location validity (1=valid, 0=invalid)\n- `pos.rt` = Unix timestamp (seconds since epoch)\n- `prms.board_voltage` = vehicle board voltage (volts)\n- `prms.engine_temp` = engine coolant temperature (Celsius)\n- `prms.door_sensor` = door status (1=open, 0=closed)\n- `prms.driver_id` = driver identifier (string)\n\n---\n\n## NGP Message Structure\n\nNGP requires messages in the following format:\n\n```json\n{\n  \"message_time\": \"ISO 8601 timestamp\",\n  \"device_id\": \"string identifier\",\n  \"version\": \"1.0\",\n  \"location\": {\n    \"latitude\": number,\n    \"longitude\": number,\n    \"altitude\": number,\n    \"satellites\": number,\n    \"speed\": number,\n    \"heading\": number,\n    \"gnss_time\": \"ISO 8601 timestamp\",\n    \"fix_type\": \"HAS_FIX | NO_FIX\"\n  },\n  \"board_voltage\": number,\n  \"engine_temp\": number,\n  \"door_sensor\": number,\n  \"driver_id\": string\n}\n```\n\n---\n\n## Field-by-Field Mapping\n\n### Mandatory Fields\n\n| NGP Field | Wialon Source | Transformation | Notes |\n|-----------|---------------|-----------------|-------|\n| `message_time` | `pos.rt` | Convert Unix timestamp to ISO 8601 | Server message reception time; represents when data arrives at Navixy |\n| `device_id` | `unit_id` | Use as-is (string) | Must be pre-registered on Navixy platform for data to persist |\n| `version` | N/A | Set to `\"1.0\"` | NGP protocol version |\n\n### Location Fields\n\n| NGP Field | Wialon Source | Transformation | Notes |\n|-----------|---------------|-----------------|-------|\n| `location.latitude` | `pos.y` | Use as-is | Decimal degrees, range [-90.0, 90.0] |\n| `location.longitude` | `pos.x` | Use as-is | Decimal degrees, range [-180.0, 180.0] |\n| `location.altitude` | `pos.z` | Use as-is | Meters above sea level |\n| `location.satellites` | `pos.sc` | Use as-is | Number of satellites in fix |\n| `location.speed` | `pos.s` | Convert m/s to km/h: `speed_kmh = speed_ms * 3.6` | Navixy expects speed in km/h (optional field, but recommended) |\n| `location.heading` | `pos.c` | Use as-is | Degrees (0-359 compass heading) |\n| `location.gnss_time` | `pos.rt` | Convert Unix timestamp to ISO 8601 | Time when GPS fix was acquired |\n| `location.fix_type` | `pos.lc` | `1` \u2192 `\"HAS_FIX\"`, `0` \u2192 `\"NO_FIX\"` | Indicates whether location is valid/valid fix obtained |\n\n**Minimum Location Requirements for Data Persistence:**\n- `latitude`, `longitude`, and `satellites` (\u22653 for reliable positioning) are minimally required\n- Data will not persist on the platform without valid location data\n\n### Telemetry Fields (Custom Attributes)\n\n| NGP Field | Wialon Source | Transformation | Type | Units | Sensor Type |\n|-----------|---------------|-----------------|------|-------|-------------|\n| `board_voltage` | `prms.board_voltage.v` | Use as-is (extract `.v` property) | Numeric | Volts | Custom |\n| `engine_temp` | `prms.engine_temp.v` | Use as-is (extract `.v` property) | Numeric | Celsius | Temperature |\n| `door_sensor` | `prms.door_sensor.v` | Use as-is (extract `.v` property); interpret as: `0`=closed, `1`=open | Numeric | Binary | Custom |\n| `driver_id` | `prms.driver_id.v` | Use as-is (extract `.v` property) | String | N/A | Virtual/IoT Logic Sensor |\n\n---\n\n## Complete NGP Message Example\n\nGiven the Wialon input:\n\n```json\n{\n  \"unit_id\": \"truck_fleet_042\",\n  \"pos\": {\n    \"x\": 60.12344,\n    \"y\": 56.348579,\n    \"z\": 271,\n    \"s\": 26.8,\n    \"c\": 77,\n    \"sc\": 8,\n    \"lc\": 1,\n    \"rt\": 1725270223\n  },\n  \"prms\": {\n    \"board_voltage\": {\"v\": 13.9},\n    \"engine_temp\": {\"v\": 87},\n    \"door_sensor\": {\"v\": 0},\n    \"driver_id\": {\"v\": \"RF123456\"}\n  }\n}\n```\n\n**Converted NGP Message:**\n\n```json\n{\n  \"message_time\": \"2024-09-02T10:03:43Z\",\n  \"device_id\": \"truck_fleet_042\",\n  \"version\": \"1.0\",\n  \"location\": {\n    \"latitude\": 56.348579,\n    \"longitude\": 60.12344,\n    \"altitude\": 271,\n    \"satellites\": 8,\n    \"speed\": 96.48,\n    \"heading\": 77,\n    \"gnss_time\": \"2024-09-02T10:03:43Z\",\n    \"fix_type\": \"HAS_FIX\"\n  },\n  \"board_voltage\": 13.9,\n  \"engine_temp\": 87,\n  \"door_sensor\": 0,\n  \"driver_id\": \"RF123456\"\n}\n```\n\n**Timestamp Conversion:**\n- Unix timestamp `1725270223` \u2192 ISO 8601 `2024-09-02T10:03:43Z`\n\n**Speed Conversion:**\n- Wialon: `26.8 m/s` \u2192 NGP: `26.8 * 3.6 = 96.48 km/h`\n\n---\n\n## MQTT Publishing Configuration\n\n### Connection Details (EU Region)\n\n| Parameter | Value |\n|-----------|-------|\n| Broker Hostname | `mqtt.eu.navixy.com` |\n| Port | `1883` (unencrypted MQTT) or `8883` (MQTT over TLS/SSL) |\n| Protocol | MQTT 5.0 or MQTT 3.1.1 |\n| Quality of Service | QoS 1 (at least once delivery) recommended for reliability |\n\n### Message Publishing\n\n**Topic Format:**\n```\nngp/{device_id}\n```\n\n**Example Topic:**\n```\nngp/truck_fleet_042\n```\n\n**Sample Mosquitto Command:**\n```bash\nmosquitto_pub -h mqtt.eu.navixy.com -p 1883 \\\n  -u ngp_device -P secretword \\\n  -t \"ngp/truck_fleet_042\" \\\n  -q 1 \\\n  -m '{\n    \"message_time\": \"2024-09-02T10:03:43Z\",\n    \"device_id\": \"truck_fleet_042\",\n    \"version\": \"1.0\",\n    \"location\": {\n      \"latitude\": 56.348579,\n      \"longitude\": 60.12344,\n      \"altitude\": 271,\n      \"satellites\": 8,\n      \"speed\": 96.48,\n      \"heading\": 77,\n      \"gnss_time\": \"2024-09-02T10:03:43Z\",\n      \"fix_type\": \"HAS_FIX\"\n    },\n    \"board_voltage\": 13.9,\n    \"engine_temp\": 87,\n    \"door_sensor\": 0,\n    \"driver_id\": \"RF123456\"\n  }'\n```\n\n---\n\n## Platform Configuration (Post-Integration)\n\n### Device Registration Prerequisites\n\n1. **Device Registration:** The `device_id` (e.g., `truck_fleet_042`) must be pre-registered on the Navixy platform before messages will persist\n2. **Sensor Setup:** Custom attributes require manual sensor configuration per device:\n   - **Board Voltage Sensor:**\n     - Label: `Board Voltage`\n     - Parameter: `board_voltage` (or create as custom IoT Logic sensor)\n     - Sensor Type: `Custom`\n     - Units: `Volts`\n\n   - **Engine Temperature Sensor:**\n     - Label: `Engine Temperature`\n     - Parameter: `engine_temp`\n     - Sensor Type: `Temperature`\n     - Units: `Celsius`\n\n   - **Door Sensor:**\n     - Label: `Door Sensor`\n     - Parameter: `door_sensor`\n     - Sensor Type: `Custom` or `Binary`\n     - Units: `Status` (1=Open, 0=Closed)\n\n   - **Driver ID Sensor:**\n     - Label: `Driver ID`\n     - Parameter: `driver_id`\n     - Sensor Type: `Virtual/IoT Logic Sensor`\n     - Data Type: `String`\n\n### IoT Logic Processing (Optional)\n\nFor advanced scenarios, Navixy's IoT Logic flow system can:\n- Convert temperature units (e.g., Celsius to Fahrenheit)\n- Validate sensor readings against thresholds\n- Generate alerts on anomalies\n- Enrich data with calculated attributes\n\n---\n\n## Data Validation & Quality Checks\n\n### Recommended Validations\n\n| Field | Validation Rule |\n|-------|-----------------|\n| `latitude` | Must be in range [-90.0, 90.0] |\n| `longitude` | Must be in range [-180.0, 180.0] |\n| `satellites` | Should be \u2265 3 for valid fix; minimum 1 to save data |\n| `altitude` | Reasonable range: [-500, 8900] meters |\n| `speed` | Non-negative; typically [0, 300] km/h |\n| `heading` | Range [0, 359] degrees |\n| `board_voltage` | Range [0, 32] volts (automotive standard) |\n| `engine_temp` | Range [-40, 150] Celsius |\n| `message_time` | Must not be in the future; should be current or recent |\n\n### Fix Type Logic\n\n- **`HAS_FIX`:** Assign when `pos.lc = 1` AND `pos.sc >= 3`\n- **`NO_FIX`:** Assign when `pos.lc = 0` OR `pos.sc < 3`\n\n---\n\n## Implementation Considerations\n\n### 1. Timestamp Handling\n\n- Wialon provides Unix timestamps (seconds since Jan 1, 1970 UTC)\n- NGP requires ISO 8601 format with timezone indication\n- Always convert to UTC format (suffix with `Z`)\n- Example conversion: `1725270223` \u2192 `2024-09-02T10:03:43Z`\n\n### 2. Speed Unit Conversion\n\n- Wialon provides speed in meters/second\n- Navixy NGP expects kilometers/hour\n- Conversion factor: **1 m/s = 3.6 km/h**\n- Formula: `speed_kmh = speed_ms * 3.6`\n\n### 3. Nested Parameter Extraction\n\n- Wialon parameter structure uses nested objects: `prms.{param_name}.v`\n- Extract the `.v` property when converting to NGP\n- Example: `prms.engine_temp.v` \u2192 extract value and map to `engine_temp` at root level\n\n### 4. Device ID Registration\n\n- The `unit_id` becomes the `device_id` in NGP\n- This ID must exist on the Navixy platform **before** data arrives\n- Data will not persist if device is unregistered\n- Devices can be registered via Navixy API or web UI\n\n### 5. QoS Selection\n\n- **QoS 0:** Fire-and-forget; suitable for high-frequency, non-critical data\n- **QoS 1:** Guaranteed delivery; recommended for fleet tracking to ensure no position loss\n- Choose QoS 1 for production fleet tracking\n\n### 6. Custom Attributes Storage\n\n- NGP custom attributes (like `board_voltage`, `engine_temp`) are stored as-is\n- To display these in the Navixy UI, they must be configured as \"Sensors\" on each device\n- Sensors are device-specific and must be added individually or programmatically via API\n\n---\n\n## Security Considerations\n\n### Authentication\n\n- Credentials provided: `ngp_device` (username), `secretword` (password)\n- These are MQTT broker credentials, not Navixy platform credentials\n- Ensure credentials are securely managed and never hardcoded in public repositories\n\n### TLS/SSL Encryption\n\n- For production environments, use port **8883** with TLS encryption\n- Standard port 1883 is unencrypted and suitable only for secure internal networks\n\n### Data Privacy\n\n- All telematics data (location, speed, sensor readings) is transmitted and stored\n- Ensure compliance with GDPR, CCPA, or other privacy regulations in your jurisdiction\n- Implement appropriate data retention policies on the Navixy platform\n\n---\n\n## Testing Checklist\n\n- [ ] Device is registered on Navixy platform with ID `truck_fleet_042`\n- [ ] MQTT connection to `mqtt.eu.navixy.com:1883` succeeds\n- [ ] Sample message publishes without errors\n- [ ] Message appears in Navixy device tracking view within 30 seconds\n- [ ] Location coordinates display correctly on map\n- [ ] Custom sensors (voltage, temperature, door) are configured on device\n- [ ] Sensor values appear in device details/widget\n- [ ] Timestamp format is correct (ISO 8601)\n- [ ] Speed values are in km/h (verify conversion from m/s)\n- [ ] Fix type changes based on satellite count and validity flag\n\n---\n\n## References\n\n- [Navixy Generic Protocol Documentation](https://www.navixy.com/docs/iot-logic-api/technologies/navixy-generic-protocol)\n- [NGP Message Structure & Attributes](https://www.navixy.com/docs/iot-logic-api/technologies/navixy-generic-protocol/navixy-generic-protocol-10/message-structure-and-attributes)\n- [NGP Transport Layer (MQTT)](https://www.navixy.com/docs/iot-logic-api/technologies/navixy-generic-protocol/navixy-generic-protocol-10/transport-layer)\n- [IoT Logic Sensor Configuration](https://www.navixy.com/docs/user/guide/account/iot-logic/flow-management/initiate-attribute-node/displaying-new-calculated-attributes-on-the-navixy-platform)\n"}], "grading": {"eval_id": 1, "eval_name": "wialon-nested-export", "configuration": "without_skill", "expectations": [{"text": "mapping_table_present: Output contains a field mapping table", "passed": true, "evidence": "Multiple field mapping tables present (mandatory fields, location fields, telemetry fields)"}, {"text": "speed_m_per_s_to_km_h: Output correctly documents speed conversion from m/s to km/h (multiply by 3.6), showing 26.8 m/s \u2192 ~96.5 km/h", "passed": true, "evidence": "'speed_kmh = speed_ms * 3.6' in mapping table and '26.8 m/s \u2192 26.8 * 3.6 = 96.48 km/h' in example conversion"}, {"text": "unix_epoch_to_iso8601: Output documents converting Unix epoch timestamp (rt) to ISO 8601 UTC", "passed": true, "evidence": "'1725270223 \u2192 2024-09-02T10:03:43Z' with timestamp handling section"}, {"text": "driver_id_mapped_to_hardware_key_or_custom: Output maps driver_id to hardware_key or a custom_* attribute", "passed": false, "evidence": "Maps driver_id to root-level field 'driver_id' (no custom_ prefix, not hardware_key). While NGP will treat unrecognized root fields as custom attributes automatically, the mapping does not explicitly designate this as a custom attribute and lacks the best-practice custom_ prefix."}, {"text": "engine_temp_as_custom_attribute: Output maps engine_temp to a custom_* attribute (no standard NGP field for engine coolant temp)", "passed": false, "evidence": "Maps to root-level 'engine_temp' without custom_ prefix or explicit designation as custom attribute. The NGP will store this as a passthrough custom attribute but the mapping does not acknowledge this."}, {"text": "example_ngp_message_present: Output contains a complete JSON example NGP message using the actual sample values after transformation", "passed": true, "evidence": "Complete NGP JSON with speed=96.48, correct timestamp conversion, all field values from sample"}, {"text": "mqtt_eu_transport_details: Output includes MQTT connection parameters for EU: host mqtt.eu.navixy.com, topic ngp/{device_id}, username ngp_device", "passed": true, "evidence": "Connection table shows mqtt.eu.navixy.com, topic ngp/{device_id} with example ngp/truck_fleet_042, MQTT version and QoS details"}], "pass_count": 5, "total_count": 7, "pass_rate": 0.714}}, {"id": "lbs-only-gsm-tracker-with_skill", "prompt": "I'm working with a basic GSM asset tracker that has no GPS chip at all - it only reports cell tower info for positioning. Here's what it sends:\n\n```json\n{\n  \"device\": \"asset-tracker-099\",\n  \"ts\": 1725270223,\n  \"cell\": {\n    \"mcc\": 250,\n    \"mnc\": 1,\n    \"lac\": 32445,\n    \"ci\": 343455,\n    \"rxlev\": -78\n  },\n  \"battery_mv\": 3750,\n  \"moving\": false\n}\n```\n\n`rxlev` is the received signal level in dBm. `battery_mv` is battery voltage in millivolts. We want to use HTTP and our Navixy account is on the EU server. Will Navixy be able to store these messages without GPS coordinates?", "eval_id": 2, "outputs": [{"name": "mapping.md", "type": "text", "content": "# NGP Mapping: Basic GSM Asset Tracker (LBS-Only)\n\n## Overview\n\nThis mapping converts messages from a basic GSM asset tracker (no GPS chip) to Navixy Generic Protocol (NGP). The device reports cell tower information for positioning via LBS (Location Based Services), along with battery voltage and movement status.\n\n**Device ID:** asset-tracker-099\n**Positioning:** LBS only (no GNSS)\n**Transport:** HTTP\n**Navixy Region:** EU\n\n---\n\n## Key Question: Will Navixy Store Messages Without GPS Coordinates?\n\n**Yes, Navixy will store LBS-only messages.** The platform does not require GNSS coordinates. Instead:\n\n- Set `location.source_type: \"LBS\"` to indicate cell-tower-based positioning\n- Map the cell tower information to the `mobile_cells` array (mcc, mnc, lac, cell_id)\n- Provide a `location.precision` estimate (in meters) instead of satellite count\n- Omit `location.latitude` and `location.longitude` if the device does not compute them itself\n\nWhen `source_type: \"LBS\"` is set, Navixy's backend can use the cell tower identifiers to look up approximate coordinates and store the data point. The platform's reverse-geocoding and LBS positioning services will handle the coordinate computation server-side.\n\n---\n\n## Field Mapping Table\n\n| Source field | Source type | NGP field | NGP type | Transform | Notes |\n|---|---|---|---|---|---|\n| `device` | String | `device_id` | String | none | Registered identifier on Navixy; max 64 chars |\n| `ts` | Integer (unix epoch, seconds) | `message_time` | ISO 8601 UTC | Convert to ISO 8601 format | e.g. 1725270223 \u2192 \"2024-09-02T10:03:43Z\" |\n| `cell.mcc` | Integer | `mobile_cells[0].mcc` | Integer | none | Mobile Country Code; Germany = 262, France = 208, etc. |\n| `cell.mnc` | Integer | `mobile_cells[0].mnc` | Integer | none | Mobile Network Code |\n| `cell.lac` | Integer | `mobile_cells[0].lac` | Integer | none | Location Area Code |\n| `cell.ci` | Integer | `mobile_cells[0].cell_id` | Integer | none | Cell tower identifier |\n| `cell.rxlev` | Integer (dBm) | `mobile_cells[0].rssi` | Integer | none | Received Signal Level; use as-is (negative value) |\n| `battery_mv` | Integer (millivolts) | `battery_voltage` | Float, V | \u00f71000 | Convert mV to V; e.g. 3750 mV \u2192 3.75 V |\n| `moving` | Boolean | `is_moving` | Boolean | none | Device movement status |\n\n---\n\n## Unmapped / Dropped Fields\n\n- **`version` (NGP root)**: Not present in source; NGP defaults to `\"1.0\"`, explicitly included in output.\n- **`location.latitude`, `location.longitude`**: Source device has no GPS. These are omitted; Navixy server-side LBS positioning will compute them from cell tower data.\n- **`location.satellites`**: Not applicable for LBS-only positioning. Omitted intentionally.\n\n---\n\n## Custom Attributes\n\nNo custom attributes required for this device. All meaningful fields map directly to standard NGP fields or the `mobile_cells` array.\n\n---\n\n## Fields to Synthesize or Confirm\n\n### Mandatory Fields\n\n1. **`device_id`** \u2192 Source: `device` field\n   The value \"asset-tracker-099\" is used as the device identifier. Ensure this identifier is registered in your Navixy account (Asset \u2192 Devices).\n\n2. **`message_time`** \u2192 Source: `ts` (unix epoch)\n   Convert the unix timestamp to ISO 8601 UTC. Example: 1725270223 \u2192 \"2024-09-02T10:03:43Z\"\n\n### LBS Positioning\n\n3. **`location.source_type`** \u2192 Hardcoded: `\"LBS\"`\n   Since the device has no GNSS, always set this to indicate cell-tower-based positioning.\n\n4. **`location.precision`** \u2192 Recommended: 2000 (meters)\n   For GSM-based LBS without additional refinement (WiFi or triangulation), a precision estimate of 2000\u20135000 meters is typical. Adjust based on your network coverage in the deployment region.\n\n---\n\n## Example NGP Message\n\nUsing the provided sample data, here is a complete, valid NGP message ready to send to Navixy:\n\n```json\n{\n  \"version\": \"1.0\",\n  \"device_id\": \"asset-tracker-099\",\n  \"message_time\": \"2024-09-02T10:03:43Z\",\n  \"location\": {\n    \"source_type\": \"LBS\",\n    \"precision\": 2000\n  },\n  \"mobile_cells\": [\n    {\n      \"mcc\": 250,\n      \"mnc\": 1,\n      \"lac\": 32445,\n      \"cell_id\": 343455,\n      \"rssi\": -78,\n      \"type\": \"GSM\"\n    }\n  ],\n  \"battery_voltage\": 3.75,\n  \"is_moving\": false\n}\n```\n\n### Message Explanation\n\n- **`version`**: NGP protocol version (always \"1.0\").\n- **`device_id`**: Matches the source \"device\" field; must be pre-registered on Navixy.\n- **`message_time`**: ISO 8601 timestamp converted from unix epoch 1725270223.\n- **`location`**: Identifies this as LBS-based positioning with an expected accuracy of \u00b12000 m.\n- **`mobile_cells[0]`**: The single cell tower detected by the device:\n  - MCC 250 (France), MNC 1, LAC 32445, Cell ID 343455\n  - RSSI \u221278 dBm (moderate signal strength)\n  - Type \"GSM\" (can be omitted; defaults to GSM)\n- **`battery_voltage`**: 3.75 V (converted from 3750 mV).\n- **`is_moving`**: false (the device is stationary).\n\n---\n\n## Transport Setup\n\n### HTTP Configuration\n\n**Endpoint:**\n```\nhttp://tracker.navixy.com:47642\n```\n(This is the EU endpoint; adjust to `http://tracker.us.navixy.com:47642` if on US Navixy account.)\n\n**Method:** POST\n**Content-Type:** application/json\n\n**Request Format:**\n- Send exactly one JSON object per HTTP request (no batch envelope, no array wrapper).\n- No authentication header required; the `device_id` field identifies the device to Navixy.\n\n**cURL Example:**\n```bash\ncurl -X POST http://tracker.navixy.com:47642 \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"version\": \"1.0\",\n    \"device_id\": \"asset-tracker-099\",\n    \"message_time\": \"2024-09-02T10:03:43Z\",\n    \"location\": {\n      \"source_type\": \"LBS\",\n      \"precision\": 2000\n    },\n    \"mobile_cells\": [\n      {\n        \"mcc\": 250,\n        \"mnc\": 1,\n        \"lac\": 32445,\n        \"cell_id\": 343455,\n        \"rssi\": -78,\n        \"type\": \"GSM\"\n      }\n    ],\n    \"battery_voltage\": 3.75,\n    \"is_moving\": false\n  }'\n```\n\n**Error Handling:**\n- **HTTP 403 Forbidden**: The `device_id` is not registered on your Navixy account. Register the device first in the Asset \u2192 Devices section.\n- **HTTP 200 OK**: Message accepted and queued for processing.\n- **Silent discards**: Invalid JSON, out-of-order `message_time`, or out-of-range field values are silently discarded without error response.\n\n---\n\n## Implementation Notes\n\n1. **Timestamp Ordering**: Each message's `message_time` must be \u2265 the previous message's time for this device. Out-of-order messages are silently discarded. Ensure the device or converter maintains monotonically increasing timestamps.\n\n2. **Data Storage**: Unlike GNSS-based trackers that require `location.satellites \u2265 3`, LBS-only messages are stored as-is. Navixy's backend resolves the cell tower identifiers to approximate latitude/longitude and stores the data point. The precision field helps Navixy estimate accuracy.\n\n3. **Signal Strength**: The `rxlev` value (\u221278 dBm in this example) is passed as-is to `mobile_cells[].rssi`. Negative values are correct for dBm. Stronger signals (closer to 0, e.g. \u221250 dBm) indicate better positioning accuracy.\n\n4. **Precision Estimate**: For a single GSM cell tower with no triangulation or WiFi refinement, a precision of 2000\u20135000 meters is realistic. If your deployment region has dense cell coverage, you may be able to reduce this estimate; in rural areas, increase it.\n\n5. **Battery Monitoring**: The device reports battery voltage; Navixy will track this over time. If you also want to derive a percentage or trigger low-battery alerts, use IoT Logic rules in Navixy once the data is flowing.\n\n6. **Movement Status**: The `is_moving` boolean is straightforward. If the device always reports false or only detects movement via cell tower changes, this is normal for a basic tracker.\n\n---\n\n## Verification Checklist\n\nBefore deploying to production:\n\n- [ ] Device identifier \"asset-tracker-099\" is registered in Navixy (Asset \u2192 Devices).\n- [ ] Navixy account is on EU server (`navixy.com` login, not `us.navixy.com`).\n- [ ] Device firmware or converter correctly formats the ISO 8601 timestamp from unix epoch.\n- [ ] Battery voltage is divided by 1000 (mV \u2192 V).\n- [ ] Cell tower data (mcc, mnc, lac, ci) is correctly populated.\n- [ ] Messages are sent to `http://tracker.navixy.com:47642` with Content-Type `application/json`.\n- [ ] First message sent and verified to appear in Navixy (check Asset \u2192 device \u2192 Positions).\n- [ ] `message_time` values are monotonically increasing (no out-of-order messages).\n\n---\n\n## References\n\n- **NGP Field Reference**: See SKILL.md for full NGP field constraints and types.\n- **Navixy Documentation**: https://navixy.com/doc/ (EU server documentation)\n- **Mobile Country Codes**: https://en.wikipedia.org/wiki/List_of_mobile_network_codes (verify MCC 250 = France)\n"}], "grading": {"eval_id": 2, "eval_name": "lbs-only-gsm-tracker", "configuration": "with_skill", "expectations": [{"text": "lbs_storage_question_answered_yes: Output clearly answers yes, Navixy can store messages without GPS when using LBS/cell tower data", "passed": true, "evidence": "Section 'Key Question' states 'Yes, Navixy will store LBS-only messages' with detailed explanation of LBS positioning workflow"}, {"text": "mobile_cells_array_mapped: Output maps the cell tower data to the mobile_cells array (mcc, mnc, lac, cell_id)", "passed": true, "evidence": "Mapping table maps cell.mcc\u2192mobile_cells[0].mcc, cell.mnc\u2192mobile_cells[0].mnc, cell.lac\u2192mobile_cells[0].lac, cell.ci\u2192mobile_cells[0].cell_id"}, {"text": "ci_to_cell_id: Output correctly maps source field ci to NGP field cell_id inside mobile_cells", "passed": true, "evidence": "Table row: 'cell.ci | Integer | mobile_cells[0].cell_id | Integer | none | Cell tower identifier'"}, {"text": "source_type_lbs_recommended: Output recommends setting location.source_type to LBS", "passed": true, "evidence": "Fields to Synthesize section: 'location.source_type \u2192 Hardcoded: LBS' and example message includes location.source_type: LBS"}, {"text": "battery_mv_to_volts_conversion: Output converts battery_mv \u00f7 1000 to battery_voltage in volts (3750 \u2192 3.75)", "passed": true, "evidence": "Table row: 'battery_mv | Integer (millivolts) | battery_voltage | Float, V | \u00f71000 | Convert mV to V; e.g. 3750 mV \u2192 3.75 V'"}, {"text": "example_message_with_mobile_cells: Output contains a complete JSON example NGP message that includes the mobile_cells array", "passed": true, "evidence": "Complete NGP JSON with mobile_cells array containing mcc:250, mnc:1, lac:32445, cell_id:343455, rssi:-78, battery_voltage:3.75"}, {"text": "http_eu_transport_details: Output includes HTTP endpoint for EU: tracker.navixy.com:47642", "passed": true, "evidence": "Transport section: 'http://tracker.navixy.com:47642' with cURL example"}], "pass_count": 7, "total_count": 7, "pass_rate": 1.0}}, {"id": "lbs-only-gsm-tracker-without_skill", "prompt": "I'm working with a basic GSM asset tracker that has no GPS chip at all - it only reports cell tower info for positioning. Here's what it sends:\n\n```json\n{\n  \"device\": \"asset-tracker-099\",\n  \"ts\": 1725270223,\n  \"cell\": {\n    \"mcc\": 250,\n    \"mnc\": 1,\n    \"lac\": 32445,\n    \"ci\": 343455,\n    \"rxlev\": -78\n  },\n  \"battery_mv\": 3750,\n  \"moving\": false\n}\n```\n\n`rxlev` is the received signal level in dBm. `battery_mv` is battery voltage in millivolts. We want to use HTTP and our Navixy account is on the EU server. Will Navixy be able to store these messages without GPS coordinates?", "eval_id": 2, "outputs": [{"name": "mapping.md", "type": "text", "content": "# GSM-Only Asset Tracker: Navixy Compatibility Analysis\n\n## Question\nCan Navixy store messages from a basic GSM asset tracker that has **no GPS chip** and only reports cell tower information for positioning?\n\n## Answer: YES\n\n**Navixy can absolutely store and process messages from your GSM-only asset tracker without GPS coordinates.** The platform has native support for Location Based Services (LBS) using cell tower data as a positioning method.\n\n---\n\n## Key Findings\n\n### 1. LBS (Location Based Services) Is a First-Class Feature\n\nNavixy seamlessly integrates GSM cell-based location and LBS as a core tracking capability. According to the platform documentation:\n\n- **GSM-based positioning is fully supported** and functions as a valid alternative to GPS tracking when the latter is unavailable or unreasonable to use\n- The platform automatically switches to LBS when GPS data is unavailable\n- LBS is particularly useful for assets operating indoors, in underground facilities, or in environments where GPS is blocked\n\n### 2. NGP Protocol Supports Cell Tower Data\n\nThe Navixy Generic Protocol (NGP) 1.0 includes a dedicated `mobile_cells` field specifically designed for cell tower information:\n\n```json\n\"mobile_cells\": [{\n    \"mcc\": 250,\n    \"mnc\": 0,\n    \"lac\": 32445,\n    \"cell_id\": 343455,\n    \"rssi\": -54,\n    \"type\": \"LTE\"\n}]\n```\n\nYour asset tracker's data structure maps perfectly to this field:\n- `mcc` (Mobile Country Code): 250\n- `mnc` (Mobile Network Code): 1\n- `lac` (Location Area Code): 32445\n- `ci` (Cell ID): 343455\n- `rxlev` (Received Signal Level): -78 dBm \u2192 maps to `rssi` field\n\n### 3. Location Field Is NOT Mandatory for Storage\n\nThe NGP documentation explicitly states that while `message_time` and `device_id` are required attributes, the `location` (GPS) field is **optional**. A minimum message to be saved includes:\n\n```json\n{\n    \"message_time\": \"2026-02-05T06:00:11Z\",\n    \"device_id\": \"1112312212\",\n    \"location\": {\n        \"latitude\": 34.159,\n        \"longitude\": -118.461,\n        \"satellites\": 3\n    }\n}\n```\n\nHowever, the documentation demonstrates that devices can send other data types without GPS. Your GSM-only data is a valid alternative to this GPS-based location.\n\n### 4. LBS Processing Pipeline\n\nWhen your asset tracker sends cell tower data via HTTP:\n\n1. Navixy receives the HTTP POST with cell ID information\n2. The platform looks up the cell tower in an external LBS database (Google LBS or Mozilla Location Services)\n3. The system converts cell coordinates to geographic location (latitude/longitude)\n4. Location is stored and displayed on the map with associated accuracy radius\n\n**LBS Detection Accuracy:**\n- **Urban areas**: 50-100 meters accuracy (dense base station coverage)\n- **Rural areas**: Multiple kilometers accuracy (sparse base station coverage)\n- **Advanced triangulation** (E-OTD): ~125 meters if base stations have Location Measurement Units\n\n### 5. NGP HTTP Transport Support\n\nYour HTTP approach is fully compatible:\n- **Method**: POST\n- **Content-Type**: application/json\n- **Response codes**: 200 (success), 400 (invalid JSON), 403 (unknown device), 500 (server error)\n- **EU Server endpoint**: `https://api.eu.navixy.com/v2/...` (or your platform's NGP endpoint)\n\n---\n\n## Recommended Message Format for Your Tracker\n\nTransform your GSM data into NGP format for optimal compatibility:\n\n```json\n{\n    \"message_time\": \"2024-09-15T10:03:43Z\",\n    \"device_id\": \"asset-tracker-099\",\n    \"version\": \"1.0\",\n    \"mobile_cells\": [{\n        \"mcc\": 250,\n        \"mnc\": 1,\n        \"lac\": 32445,\n        \"cell_id\": 343455,\n        \"rssi\": -78,\n        \"type\": \"GSM\"\n    }],\n    \"battery_voltage\": 3.75,\n    \"is_moving\": false\n}\n```\n\n**Key mappings:**\n- `ts` (your timestamp) \u2192 `message_time` (ISO 8601 format)\n- `battery_mv` (millivolts) \u2192 `battery_voltage` (volts: 3750 mV = 3.75 V)\n- `moving` \u2192 `is_moving`\n- Cell tower fields \u2192 `mobile_cells` array\n\n---\n\n## Configuration Requirements on Navixy\n\nTo enable LBS processing:\n\n1. **Ensure LBS is enabled** in your device's tariff plan:\n   - Admin Panel \u2192 Account Management \u2192 Service Preferences\n   - Select geolocation service (Google LBS or Mozilla Location Services)\n   - Ensure \"Location by Cell ID\" option is selected in plan settings\n\n2. **LBS API Key Setup** (for hosted/on-premise):\n   - Configure LBS service API key (Google charges per request)\n   - For on-premise: configure `lbs.google.apiKey` or `lbs.service_url` in config\n\n3. **Device Registration**:\n   - Register device with ID \"asset-tracker-099\" on your Navixy instance\n   - Select \"Navixy Generic Protocol\" as the tracker model\n\n---\n\n## Important Considerations\n\n### Data Storage Without GPS\n- Messages are fully stored in the platform database\n- Cell ID data is processed to determine location via LBS lookup\n- Stored location will have accuracy radius (50m-10km depending on area)\n- Historical tracking is available\n\n### Accuracy Trade-offs\n- LBS is less accurate than GPS but requires no hardware modification\n- Works reliably indoors and in poor GPS conditions\n- Accuracy varies significantly by cellular network density\n- Battery consumption is lower than GPS\n\n### Cost Implications\n- Some Navixy plans charge per LBS lookup request\n- For high-frequency reporting (e.g., every 30 seconds), consider:\n  - Increasing reporting interval to reduce API calls\n  - Using device geofencing to trigger reporting only on movement\n  - Implementing local aggregation on the device\n\n### Fallback Strategy\nIf your tracker can add Wi-Fi AP scanning capability, Navixy also supports `wifi_points` field for hybrid positioning when cell coverage is weak.\n\n---\n\n## Summary\n\nYour GSM-only asset tracker is **fully compatible with Navixy**. The platform is explicitly designed to handle devices without GPS, using cell tower information as the primary positioning method. The Navixy Generic Protocol provides native support for your cell tower data structure, and the platform has a complete LBS processing pipeline to convert cell IDs into geographic coordinates.\n\nSimply format your telemetry data as NGP JSON, POST it to your Navixy instance's HTTP endpoint, and enable LBS processing in your account settings. Your assets will be tracked and displayed on maps based on their cell tower locations.\n\n---\n\n## References\n\n- Navixy Generic Protocol 1.0 Documentation: Message Structure and Attributes\n- LBS Tracking Guide: What is LBS Tracking - Cell ID and WPS\n- NGP Transport Layer: HTTP/HTTPS Support\n- Device Model: Navixy Generic Protocol Tracker Configuration\n"}], "grading": {"eval_id": 2, "eval_name": "lbs-only-gsm-tracker", "configuration": "without_skill", "expectations": [{"text": "lbs_storage_question_answered_yes: Output clearly answers yes, Navixy can store messages without GPS when using LBS/cell tower data", "passed": true, "evidence": "Section 'Answer: YES' with subsection 'LBS (Location Based Services) Is a First-Class Feature'"}, {"text": "mobile_cells_array_mapped: Output maps the cell tower data to the mobile_cells array (mcc, mnc, lac, cell_id)", "passed": true, "evidence": "NGP protocol mobile_cells structure shown and source fields listed as mapping to mcc, mnc, lac, cell_id"}, {"text": "ci_to_cell_id: Output correctly maps source field ci to NGP field cell_id inside mobile_cells", "passed": true, "evidence": "'ci (Cell ID): 343455 \u2192 maps to cell_id field' explicitly stated in Key Findings section, and cell_id:343455 appears in the recommended message"}, {"text": "source_type_lbs_recommended: Output recommends setting location.source_type to LBS", "passed": false, "evidence": "The recommended NGP message format does NOT include a location object or source_type:LBS field. The message only has mobile_cells, battery_voltage, is_moving. The field is not recommended despite being important for correct LBS processing."}, {"text": "battery_mv_to_volts_conversion: Output converts battery_mv \u00f7 1000 to battery_voltage in volts (3750 \u2192 3.75)", "passed": true, "evidence": "'battery_mv (millivolts) \u2192 battery_voltage (volts: 3750 mV = 3.75 V)' in Key Mappings section"}, {"text": "example_message_with_mobile_cells: Output contains a complete JSON example NGP message that includes the mobile_cells array", "passed": true, "evidence": "Recommended message format includes mobile_cells array with the correct cell tower data"}, {"text": "http_eu_transport_details: Output includes HTTP endpoint for EU: tracker.navixy.com:47642", "passed": false, "evidence": "HTTP endpoint mentioned as 'https://api.eu.navixy.com/v2/...' (incorrect) and 'EU Server endpoint' without providing the correct tracker.navixy.com:47642 URL"}], "pass_count": 5, "total_count": 7, "pass_rate": 0.714}}], "previous_feedback": {}, "previous_outputs": {}, "benchmark": {"metadata": {"skill_name": "ngp-mapper", "skill_path": "<path/to/skill>", "executor_model": "<model-name>", "analyzer_model": "<model-name>", "timestamp": "2026-03-13T11:27:28Z", "evals_run": [0, 1, 2], "runs_per_configuration": 3}, "runs": [{"eval_id": 0, "configuration": "with_skill", "run_number": 1, "result": {"pass_rate": 1.0, "passed": 8, "failed": 0, "total": 8, "time_seconds": 37.5, "tokens": 29307, "tool_calls": 0, "errors": 0}, "expectations": [{"text": "mapping_table_present: Output contains a field mapping table showing source \u2192 NGP correspondence", "passed": true, "evidence": "Full 18-row mapping table present with source field, source type, NGP field, NGP type, transform, and notes columns"}, {"text": "all_source_fields_covered: All 18 source fields are accounted for (imei, utc, lat, lon, alt, spd, dir, sat, hdop, acc, ign, pwr, bat, blvl, move, odm, adt1, fuel)", "passed": true, "evidence": "All 18 source fields explicitly present in the mapping table with NGP destinations"}, {"text": "timestamp_iso8601_conversion: Output notes that utc field needs conversion to ISO 8601 format (space \u2192 T, add Z suffix)", "passed": true, "evidence": "Row shows 'Convert \"2024-09-02 10:03:43\" \u2192 \"2024-09-02T10:03:43Z\"' and implementation checklist explicitly calls this out"}, {"text": "ign_to_input_status_bitmask: Output maps ign to input_status bitmask (not just a boolean field)", "passed": true, "evidence": "Maps to bit 0 of input_status with bitmask explanation: 'If ign = 1, set input_status = 0b00000001 (decimal 1)'"}, {"text": "acc_to_fix_type_enum: Output maps acc to location.fix_type with enum values (1\u2192HAS_FIX, 0\u2192NO_FIX)", "passed": true, "evidence": "Table row: 'acc | Integer (0/1) | location.fix_type | String | 1 \u2192 HAS_FIX, 0 \u2192 NO_FIX' with full enum section"}, {"text": "adt1_to_temperature_sensor: Output maps adt1 to temperature_1 or temperature_2 (indexed sensor field)", "passed": true, "evidence": "Maps to temperature_2 with note that temperature_internal is reserved for built-in sensor; adt2/adt3 would be temperature_3/temperature_4"}, {"text": "example_ngp_message_present: Output contains a complete, valid JSON example NGP message using the actual sample values", "passed": true, "evidence": "Complete JSON object with all 18 source fields transformed, using actual sample values (lat=56.348579, bat=4.12, fuel=86, etc.)"}, {"text": "http_eu_transport_details: Output includes HTTP endpoint for EU region: tracker.navixy.com:47642", "passed": true, "evidence": "Transport section shows 'http://tracker.navixy.com:47642' with method POST and Content-Type application/json"}], "notes": []}, {"eval_id": 1, "configuration": "with_skill", "run_number": 1, "result": {"pass_rate": 0.8571, "passed": 6, "failed": 1, "total": 7, "time_seconds": 30.6, "tokens": 29000, "tool_calls": 0, "errors": 0}, "expectations": [{"text": "mapping_table_present: Output contains a field mapping table", "passed": true, "evidence": "Full 13-row mapping table with source field, source type, source units, NGP field, NGP type, transform, notes"}, {"text": "speed_m_per_s_to_km_h: Output correctly documents speed conversion from m/s to km/h (multiply by 3.6), showing 26.8 m/s \u2192 ~96.5 km/h", "passed": true, "evidence": "Speed Conversion section: 'speed_kmh = speed_ms \u00d7 3.6 / Example: 26.8 m/s \u00d7 3.6 = 96.48 km/h'"}, {"text": "unix_epoch_to_iso8601: Output documents converting Unix epoch timestamp (rt) to ISO 8601 UTC", "passed": true, "evidence": "Timestamp Conversion section: '1725270223 \u2192 2024-09-02T10:30:23Z' with JS code example"}, {"text": "driver_id_mapped_to_hardware_key_or_custom: Output maps driver_id to hardware_key or a custom_* attribute", "passed": true, "evidence": "Maps to custom_driver_id in the mapping table: 'prms.driver_id.v \u2192 custom_driver_id | String | none | Driver identification from RFID or other system'"}, {"text": "engine_temp_as_custom_attribute: Output maps engine_temp to a custom_* attribute (no standard NGP field for engine coolant temp)", "passed": false, "evidence": "Maps engine_temp to temperature_2 (standard indexed temperature sensor field) rather than a custom_* attribute. While temperature_2 is valid for an external temperature sensor, it conflates engine coolant temp with a generic temperature slot. The skill appropriately chose temperature_2 as a pragmatic standard field, but the assertion expected custom_* for engine-specific data."}, {"text": "example_ngp_message_present: Output contains a complete JSON example NGP message using the actual sample values after transformation", "passed": true, "evidence": "Complete NGP JSON with speed=96.48, message_time=2024-09-02T10:30:23Z, all transformed values using actual sample data"}, {"text": "mqtt_eu_transport_details: Output includes MQTT connection parameters for EU: host mqtt.eu.navixy.com, topic ngp/{device_id}, username ngp_device", "passed": true, "evidence": "Transport table shows mqtt.eu.navixy.com, port 1883/8883, username ngp_device, topic ngp/truck_fleet_042"}], "notes": []}, {"eval_id": 2, "configuration": "with_skill", "run_number": 1, "result": {"pass_rate": 1.0, "passed": 7, "failed": 0, "total": 7, "time_seconds": 33.5, "tokens": 28872, "tool_calls": 0, "errors": 0}, "expectations": [{"text": "lbs_storage_question_answered_yes: Output clearly answers yes, Navixy can store messages without GPS when using LBS/cell tower data", "passed": true, "evidence": "Section 'Key Question' states 'Yes, Navixy will store LBS-only messages' with detailed explanation of LBS positioning workflow"}, {"text": "mobile_cells_array_mapped: Output maps the cell tower data to the mobile_cells array (mcc, mnc, lac, cell_id)", "passed": true, "evidence": "Mapping table maps cell.mcc\u2192mobile_cells[0].mcc, cell.mnc\u2192mobile_cells[0].mnc, cell.lac\u2192mobile_cells[0].lac, cell.ci\u2192mobile_cells[0].cell_id"}, {"text": "ci_to_cell_id: Output correctly maps source field ci to NGP field cell_id inside mobile_cells", "passed": true, "evidence": "Table row: 'cell.ci | Integer | mobile_cells[0].cell_id | Integer | none | Cell tower identifier'"}, {"text": "source_type_lbs_recommended: Output recommends setting location.source_type to LBS", "passed": true, "evidence": "Fields to Synthesize section: 'location.source_type \u2192 Hardcoded: LBS' and example message includes location.source_type: LBS"}, {"text": "battery_mv_to_volts_conversion: Output converts battery_mv \u00f7 1000 to battery_voltage in volts (3750 \u2192 3.75)", "passed": true, "evidence": "Table row: 'battery_mv | Integer (millivolts) | battery_voltage | Float, V | \u00f71000 | Convert mV to V; e.g. 3750 mV \u2192 3.75 V'"}, {"text": "example_message_with_mobile_cells: Output contains a complete JSON example NGP message that includes the mobile_cells array", "passed": true, "evidence": "Complete NGP JSON with mobile_cells array containing mcc:250, mnc:1, lac:32445, cell_id:343455, rssi:-78, battery_voltage:3.75"}, {"text": "http_eu_transport_details: Output includes HTTP endpoint for EU: tracker.navixy.com:47642", "passed": true, "evidence": "Transport section: 'http://tracker.navixy.com:47642' with cURL example"}], "notes": []}, {"eval_id": 0, "configuration": "without_skill", "run_number": 1, "result": {"pass_rate": 0.875, "passed": 7, "failed": 1, "total": 8, "time_seconds": 4400.0, "tokens": 34788, "tool_calls": 0, "errors": 0}, "expectations": [{"text": "mapping_table_present: Output contains a field mapping table showing source \u2192 NGP correspondence", "passed": true, "evidence": "Complete 18-row mapping table present"}, {"text": "all_source_fields_covered: All 18 source fields are accounted for (imei, utc, lat, lon, alt, spd, dir, sat, hdop, acc, ign, pwr, bat, blvl, move, odm, adt1, fuel)", "passed": true, "evidence": "All 18 source fields present in the mapping table"}, {"text": "timestamp_iso8601_conversion: Output notes that utc field needs conversion to ISO 8601 format (space \u2192 T, add Z suffix)", "passed": true, "evidence": "Section '1. Timestamp Conversion' shows 'Convert \"2024-09-02 10:03:43\" \u2192 \"2024-09-02T10:03:43Z\"'"}, {"text": "ign_to_input_status_bitmask: Output maps ign to input_status bitmask (not just a boolean field)", "passed": true, "evidence": "Mapping table row shows 'input_status' with note 'Ignition state; use as bitmask (bit 0 for ignition)' and 'Alternative (if you have multiple discrete inputs)' bitmask example"}, {"text": "acc_to_fix_type_enum: Output maps acc to location.fix_type with enum values (1\u2192HAS_FIX, 0\u2192NO_FIX)", "passed": true, "evidence": "Detailed section '3. GPS Fix Type' with if/elif logic mapping acc 0/1 to HAS_FIX/NO_FIX"}, {"text": "adt1_to_temperature_sensor: Output maps adt1 to temperature_1 or temperature_2 (indexed sensor field)", "passed": true, "evidence": "Maps to temperature_1 in the example message"}, {"text": "example_ngp_message_present: Output contains a complete, valid JSON example NGP message using the actual sample values", "passed": true, "evidence": "Complete NGP example message present with actual sample values"}, {"text": "http_eu_transport_details: Output includes HTTP endpoint for EU region: tracker.navixy.com:47642", "passed": false, "evidence": "Uses incorrect endpoint 'https://api.eu.navixy.com/v2/receiver/device/track' with a note that the user should verify the correct endpoint. Correct endpoint is http://tracker.navixy.com:47642"}], "notes": []}, {"eval_id": 1, "configuration": "without_skill", "run_number": 1, "result": {"pass_rate": 0.7143, "passed": 5, "failed": 2, "total": 7, "time_seconds": 4392.5, "tokens": 32529, "tool_calls": 0, "errors": 0}, "expectations": [{"text": "mapping_table_present: Output contains a field mapping table", "passed": true, "evidence": "Multiple field mapping tables present (mandatory fields, location fields, telemetry fields)"}, {"text": "speed_m_per_s_to_km_h: Output correctly documents speed conversion from m/s to km/h (multiply by 3.6), showing 26.8 m/s \u2192 ~96.5 km/h", "passed": true, "evidence": "'speed_kmh = speed_ms * 3.6' in mapping table and '26.8 m/s \u2192 26.8 * 3.6 = 96.48 km/h' in example conversion"}, {"text": "unix_epoch_to_iso8601: Output documents converting Unix epoch timestamp (rt) to ISO 8601 UTC", "passed": true, "evidence": "'1725270223 \u2192 2024-09-02T10:03:43Z' with timestamp handling section"}, {"text": "driver_id_mapped_to_hardware_key_or_custom: Output maps driver_id to hardware_key or a custom_* attribute", "passed": false, "evidence": "Maps driver_id to root-level field 'driver_id' (no custom_ prefix, not hardware_key). While NGP will treat unrecognized root fields as custom attributes automatically, the mapping does not explicitly designate this as a custom attribute and lacks the best-practice custom_ prefix."}, {"text": "engine_temp_as_custom_attribute: Output maps engine_temp to a custom_* attribute (no standard NGP field for engine coolant temp)", "passed": false, "evidence": "Maps to root-level 'engine_temp' without custom_ prefix or explicit designation as custom attribute. The NGP will store this as a passthrough custom attribute but the mapping does not acknowledge this."}, {"text": "example_ngp_message_present: Output contains a complete JSON example NGP message using the actual sample values after transformation", "passed": true, "evidence": "Complete NGP JSON with speed=96.48, correct timestamp conversion, all field values from sample"}, {"text": "mqtt_eu_transport_details: Output includes MQTT connection parameters for EU: host mqtt.eu.navixy.com, topic ngp/{device_id}, username ngp_device", "passed": true, "evidence": "Connection table shows mqtt.eu.navixy.com, topic ngp/{device_id} with example ngp/truck_fleet_042, MQTT version and QoS details"}], "notes": []}, {"eval_id": 2, "configuration": "without_skill", "run_number": 1, "result": {"pass_rate": 0.7143, "passed": 5, "failed": 2, "total": 7, "time_seconds": 4392.4, "tokens": 46009, "tool_calls": 0, "errors": 0}, "expectations": [{"text": "lbs_storage_question_answered_yes: Output clearly answers yes, Navixy can store messages without GPS when using LBS/cell tower data", "passed": true, "evidence": "Section 'Answer: YES' with subsection 'LBS (Location Based Services) Is a First-Class Feature'"}, {"text": "mobile_cells_array_mapped: Output maps the cell tower data to the mobile_cells array (mcc, mnc, lac, cell_id)", "passed": true, "evidence": "NGP protocol mobile_cells structure shown and source fields listed as mapping to mcc, mnc, lac, cell_id"}, {"text": "ci_to_cell_id: Output correctly maps source field ci to NGP field cell_id inside mobile_cells", "passed": true, "evidence": "'ci (Cell ID): 343455 \u2192 maps to cell_id field' explicitly stated in Key Findings section, and cell_id:343455 appears in the recommended message"}, {"text": "source_type_lbs_recommended: Output recommends setting location.source_type to LBS", "passed": false, "evidence": "The recommended NGP message format does NOT include a location object or source_type:LBS field. The message only has mobile_cells, battery_voltage, is_moving. The field is not recommended despite being important for correct LBS processing."}, {"text": "battery_mv_to_volts_conversion: Output converts battery_mv \u00f7 1000 to battery_voltage in volts (3750 \u2192 3.75)", "passed": true, "evidence": "'battery_mv (millivolts) \u2192 battery_voltage (volts: 3750 mV = 3.75 V)' in Key Mappings section"}, {"text": "example_message_with_mobile_cells: Output contains a complete JSON example NGP message that includes the mobile_cells array", "passed": true, "evidence": "Recommended message format includes mobile_cells array with the correct cell tower data"}, {"text": "http_eu_transport_details: Output includes HTTP endpoint for EU: tracker.navixy.com:47642", "passed": false, "evidence": "HTTP endpoint mentioned as 'https://api.eu.navixy.com/v2/...' (incorrect) and 'EU Server endpoint' without providing the correct tracker.navixy.com:47642 URL"}], "notes": []}], "run_summary": {"with_skill": {"pass_rate": {"mean": 0.9524, "stddev": 0.0825, "min": 0.8571, "max": 1.0}, "time_seconds": {"mean": 33.8667, "stddev": 3.4646, "min": 30.6, "max": 37.5}, "tokens": {"mean": 29059.6667, "stddev": 223.5539, "min": 28872, "max": 29307}}, "without_skill": {"pass_rate": {"mean": 0.7679, "stddev": 0.0928, "min": 0.7143, "max": 0.875}, "time_seconds": {"mean": 4394.9667, "stddev": 4.3593, "min": 4392.4, "max": 4400.0}, "tokens": {"mean": 37775.3333, "stddev": 7219.4681, "min": 32529, "max": 46009}}, "delta": {"pass_rate": "+0.18", "time_seconds": "-4361.1", "tokens": "-8716"}}, "notes": []}};
+
+    // ---- State ----
+    let feedbackMap = {};  // run_id -> feedback text
+    let currentIndex = 0;
+    let visitedRuns = new Set();
+
+    // ---- Init ----
+    async function init() {
+      // Load saved feedback from server — but only if this isn't a fresh
+      // iteration (indicated by previous_feedback being present). When
+      // previous feedback exists, the feedback.json on disk is stale from
+      // the prior iteration and should not pre-fill the textareas.
+      const hasPrevious = Object.keys(EMBEDDED_DATA.previous_feedback || {}).length > 0
+        || Object.keys(EMBEDDED_DATA.previous_outputs || {}).length > 0;
+      if (!hasPrevious) {
+        try {
+          const resp = await fetch("/api/feedback");
+          const data = await resp.json();
+          if (data.reviews) {
+            for (const r of data.reviews) feedbackMap[r.run_id] = r.feedback;
+          }
+        } catch { /* first run, no feedback yet */ }
+      }
+
+      document.getElementById("skill-name").textContent = EMBEDDED_DATA.skill_name;
+      showRun(0);
+
+      // Wire up feedback auto-save
+      const textarea = document.getElementById("feedback");
+      let saveTimeout = null;
+      textarea.addEventListener("input", () => {
+        clearTimeout(saveTimeout);
+        document.getElementById("feedback-status").textContent = "";
+        saveTimeout = setTimeout(() => saveCurrentFeedback(), 800);
+      });
+    }
+
+    // ---- Navigation ----
+    function navigate(delta) {
+      const newIndex = currentIndex + delta;
+      if (newIndex >= 0 && newIndex < EMBEDDED_DATA.runs.length) {
+        saveCurrentFeedback();
+        showRun(newIndex);
+      }
+    }
+
+    function updateNavButtons() {
+      document.getElementById("prev-btn").disabled = currentIndex === 0;
+      document.getElementById("next-btn").disabled =
+        currentIndex === EMBEDDED_DATA.runs.length - 1;
+    }
+
+    // ---- Show a run ----
+    function showRun(index) {
+      currentIndex = index;
+      const run = EMBEDDED_DATA.runs[index];
+
+      // Progress
+      document.getElementById("progress").textContent =
+        `${index + 1} of ${EMBEDDED_DATA.runs.length}`;
+
+      // Prompt
+      document.getElementById("prompt-text").textContent = run.prompt;
+
+      // Config badge
+      const badge = document.getElementById("config-badge");
+      const configMatch = run.id.match(/(with_skill|without_skill|new_skill|old_skill)/);
+      if (configMatch) {
+        const config = configMatch[1];
+        const isBaseline = config === "without_skill" || config === "old_skill";
+        badge.textContent = config.replace(/_/g, " ");
+        badge.className = "config-badge " + (isBaseline ? "config-baseline" : "config-primary");
+        badge.style.display = "inline-block";
+      } else {
+        badge.style.display = "none";
+      }
+
+      // Outputs
+      renderOutputs(run);
+
+      // Previous outputs
+      renderPrevOutputs(run);
+
+      // Grades
+      renderGrades(run);
+
+      // Previous feedback
+      const prevFb = (EMBEDDED_DATA.previous_feedback || {})[run.id];
+      const prevEl = document.getElementById("prev-feedback");
+      if (prevFb) {
+        document.getElementById("prev-feedback-text").textContent = prevFb;
+        prevEl.style.display = "block";
+      } else {
+        prevEl.style.display = "none";
+      }
+
+      // Feedback
+      document.getElementById("feedback").value = feedbackMap[run.id] || "";
+      document.getElementById("feedback-status").textContent = "";
+
+      updateNavButtons();
+
+      // Track visited runs and promote done button when all visited
+      visitedRuns.add(index);
+      const doneBtn = document.getElementById("done-btn");
+      if (visitedRuns.size >= EMBEDDED_DATA.runs.length) {
+        doneBtn.classList.add("ready");
+      }
+
+      // Scroll main content to top
+      document.querySelector(".main").scrollTop = 0;
+    }
+
+    // ---- Render outputs ----
+    function renderOutputs(run) {
+      const container = document.getElementById("outputs-body");
+      container.innerHTML = "";
+
+      const outputs = run.outputs || [];
+      if (outputs.length === 0) {
+        container.innerHTML = '<div class="empty-state">No output files</div>';
+        return;
+      }
+
+      for (const file of outputs) {
+        const fileDiv = document.createElement("div");
+        fileDiv.className = "output-file";
+
+        // Always show file header with download link
+        const header = document.createElement("div");
+        header.className = "output-file-header";
+        const nameSpan = document.createElement("span");
+        nameSpan.textContent = file.name;
+        header.appendChild(nameSpan);
+        const dlBtn = document.createElement("a");
+        dlBtn.className = "dl-btn";
+        dlBtn.textContent = "Download";
+        dlBtn.download = file.name;
+        dlBtn.href = getDownloadUri(file);
+        header.appendChild(dlBtn);
+        fileDiv.appendChild(header);
+
+        const content = document.createElement("div");
+        content.className = "output-file-content";
+
+        if (file.type === "text") {
+          const pre = document.createElement("pre");
+          pre.textContent = file.content;
+          content.appendChild(pre);
+        } else if (file.type === "image") {
+          const img = document.createElement("img");
+          img.src = file.data_uri;
+          img.alt = file.name;
+          content.appendChild(img);
+        } else if (file.type === "pdf") {
+          const iframe = document.createElement("iframe");
+          iframe.src = file.data_uri;
+          content.appendChild(iframe);
+        } else if (file.type === "xlsx") {
+          renderXlsx(content, file.data_b64);
+        } else if (file.type === "binary") {
+          const a = document.createElement("a");
+          a.className = "download-link";
+          a.href = file.data_uri;
+          a.download = file.name;
+          a.textContent = "Download " + file.name;
+          content.appendChild(a);
+        } else if (file.type === "error") {
+          const pre = document.createElement("pre");
+          pre.textContent = file.content;
+          pre.style.color = "var(--red)";
+          content.appendChild(pre);
+        }
+
+        fileDiv.appendChild(content);
+        container.appendChild(fileDiv);
+      }
+    }
+
+    // ---- XLSX rendering via SheetJS ----
+    function renderXlsx(container, b64Data) {
+      try {
+        const raw = Uint8Array.from(atob(b64Data), c => c.charCodeAt(0));
+        const wb = XLSX.read(raw, { type: "array" });
+
+        for (let i = 0; i < wb.SheetNames.length; i++) {
+          const sheetName = wb.SheetNames[i];
+          const ws = wb.Sheets[sheetName];
+
+          if (wb.SheetNames.length > 1) {
+            const sheetLabel = document.createElement("div");
+            sheetLabel.style.cssText =
+              "font-weight:600; font-size:0.8rem; color:#b0aea5; margin-top:0.5rem; margin-bottom:0.25rem;";
+            sheetLabel.textContent = "Sheet: " + sheetName;
+            container.appendChild(sheetLabel);
+          }
+
+          const htmlStr = XLSX.utils.sheet_to_html(ws, { editable: false });
+          const wrapper = document.createElement("div");
+          wrapper.innerHTML = htmlStr;
+          container.appendChild(wrapper);
+        }
+      } catch (err) {
+        container.textContent = "Error rendering spreadsheet: " + err.message;
+      }
+    }
+
+    // ---- Grades ----
+    function renderGrades(run) {
+      const section = document.getElementById("grades-section");
+      const content = document.getElementById("grades-content");
+
+      if (!run.grading) {
+        section.style.display = "none";
+        return;
+      }
+
+      const grading = run.grading;
+      section.style.display = "block";
+      // Reset to collapsed
+      content.classList.remove("open");
+      document.getElementById("grades-arrow").classList.remove("open");
+
+      const summary = grading.summary || {};
+      const expectations = grading.expectations || [];
+
+      let html = '<div style="padding: 1rem;">';
+
+      // Summary line
+      const passRate = summary.pass_rate != null
+        ? Math.round(summary.pass_rate * 100) + "%"
+        : "?";
+      const badgeClass = summary.pass_rate >= 0.8 ? "grade-pass" : summary.pass_rate >= 0.5 ? "" : "grade-fail";
+      html += '<div class="grades-summary">';
+      html += '<span class="grade-badge ' + badgeClass + '">' + passRate + '</span>';
+      html += '<span>' + (summary.passed || 0) + ' passed, ' + (summary.failed || 0) + ' failed of ' + (summary.total || 0) + '</span>';
+      html += '</div>';
+
+      // Assertions list
+      html += '<ul class="assertion-list">';
+      for (const exp of expectations) {
+        const statusClass = exp.passed ? "pass" : "fail";
+        const statusIcon = exp.passed ? "\u2713" : "\u2717";
+        html += '<li class="assertion-item">';
+        html += '<span class="assertion-status ' + statusClass + '">' + statusIcon + '</span>';
+        html += '<span>' + escapeHtml(exp.text) + '</span>';
+        if (exp.evidence) {
+          html += '<div class="assertion-evidence">' + escapeHtml(exp.evidence) + '</div>';
+        }
+        html += '</li>';
+      }
+      html += '</ul>';
+
+      html += '</div>';
+      content.innerHTML = html;
+    }
+
+    function toggleGrades() {
+      const content = document.getElementById("grades-content");
+      const arrow = document.getElementById("grades-arrow");
+      content.classList.toggle("open");
+      arrow.classList.toggle("open");
+    }
+
+    // ---- Previous outputs (collapsible) ----
+    function renderPrevOutputs(run) {
+      const section = document.getElementById("prev-outputs-section");
+      const content = document.getElementById("prev-outputs-content");
+      const prevOutputs = (EMBEDDED_DATA.previous_outputs || {})[run.id];
+
+      if (!prevOutputs || prevOutputs.length === 0) {
+        section.style.display = "none";
+        return;
+      }
+
+      section.style.display = "block";
+      // Reset to collapsed
+      content.classList.remove("open");
+      document.getElementById("prev-outputs-arrow").classList.remove("open");
+
+      // Render the files into the content area
+      content.innerHTML = "";
+      const wrapper = document.createElement("div");
+      wrapper.style.padding = "1rem";
+
+      for (const file of prevOutputs) {
+        const fileDiv = document.createElement("div");
+        fileDiv.className = "output-file";
+
+        const header = document.createElement("div");
+        header.className = "output-file-header";
+        const nameSpan = document.createElement("span");
+        nameSpan.textContent = file.name;
+        header.appendChild(nameSpan);
+        const dlBtn = document.createElement("a");
+        dlBtn.className = "dl-btn";
+        dlBtn.textContent = "Download";
+        dlBtn.download = file.name;
+        dlBtn.href = getDownloadUri(file);
+        header.appendChild(dlBtn);
+        fileDiv.appendChild(header);
+
+        const fc = document.createElement("div");
+        fc.className = "output-file-content";
+
+        if (file.type === "text") {
+          const pre = document.createElement("pre");
+          pre.textContent = file.content;
+          fc.appendChild(pre);
+        } else if (file.type === "image") {
+          const img = document.createElement("img");
+          img.src = file.data_uri;
+          img.alt = file.name;
+          fc.appendChild(img);
+        } else if (file.type === "pdf") {
+          const iframe = document.createElement("iframe");
+          iframe.src = file.data_uri;
+          fc.appendChild(iframe);
+        } else if (file.type === "xlsx") {
+          renderXlsx(fc, file.data_b64);
+        } else if (file.type === "binary") {
+          const a = document.createElement("a");
+          a.className = "download-link";
+          a.href = file.data_uri;
+          a.download = file.name;
+          a.textContent = "Download " + file.name;
+          fc.appendChild(a);
+        }
+
+        fileDiv.appendChild(fc);
+        wrapper.appendChild(fileDiv);
+      }
+
+      content.appendChild(wrapper);
+    }
+
+    function togglePrevOutputs() {
+      const content = document.getElementById("prev-outputs-content");
+      const arrow = document.getElementById("prev-outputs-arrow");
+      content.classList.toggle("open");
+      arrow.classList.toggle("open");
+    }
+
+    // ---- Feedback (saved to server -> feedback.json) ----
+    function saveCurrentFeedback() {
+      const run = EMBEDDED_DATA.runs[currentIndex];
+      const text = document.getElementById("feedback").value;
+
+      if (text.trim() === "") {
+        delete feedbackMap[run.id];
+      } else {
+        feedbackMap[run.id] = text;
+      }
+
+      // Build reviews array from map
+      const reviews = [];
+      for (const [run_id, feedback] of Object.entries(feedbackMap)) {
+        if (feedback.trim()) {
+          reviews.push({ run_id, feedback, timestamp: new Date().toISOString() });
+        }
+      }
+
+      fetch("/api/feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ reviews, status: "in_progress" }),
+      }).then(() => {
+        document.getElementById("feedback-status").textContent = "Saved";
+      }).catch(() => {
+        // Static mode or server unavailable — no-op on auto-save,
+        // feedback will be downloaded on final submit
+        document.getElementById("feedback-status").textContent = "Will download on submit";
+      });
+    }
+
+    // ---- Done ----
+    function showDoneDialog() {
+      // Save current textarea to feedbackMap (but don't POST yet)
+      const run = EMBEDDED_DATA.runs[currentIndex];
+      const text = document.getElementById("feedback").value;
+      if (text.trim() === "") {
+        delete feedbackMap[run.id];
+      } else {
+        feedbackMap[run.id] = text;
+      }
+
+      // POST once with status: complete — include ALL runs so the model
+      // can distinguish "no feedback" (looks good) from "not reviewed"
+      const reviews = [];
+      const ts = new Date().toISOString();
+      for (const r of EMBEDDED_DATA.runs) {
+        reviews.push({ run_id: r.id, feedback: feedbackMap[r.id] || "", timestamp: ts });
+      }
+      const payload = JSON.stringify({ reviews, status: "complete" }, null, 2);
+      fetch("/api/feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: payload,
+      }).then(() => {
+        document.getElementById("done-overlay").classList.add("visible");
+      }).catch(() => {
+        // Server not available (static mode) — download as file
+        const blob = new Blob([payload], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "feedback.json";
+        a.click();
+        URL.revokeObjectURL(url);
+        document.getElementById("done-overlay").classList.add("visible");
+      });
+    }
+
+    function closeDoneDialog() {
+      // Reset status back to in_progress
+      saveCurrentFeedback();
+      document.getElementById("done-overlay").classList.remove("visible");
+    }
+
+    // ---- Toast ----
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.classList.add("visible");
+      setTimeout(() => toast.classList.remove("visible"), 2000);
+    }
+
+    // ---- Keyboard nav ----
+    document.addEventListener("keydown", (e) => {
+      // Don't capture when typing in textarea
+      if (e.target.tagName === "TEXTAREA") return;
+
+      if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+        e.preventDefault();
+        navigate(-1);
+      } else if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+        e.preventDefault();
+        navigate(1);
+      }
+    });
+
+    // ---- Util ----
+    function getDownloadUri(file) {
+      if (file.data_uri) return file.data_uri;
+      if (file.data_b64) return "data:application/octet-stream;base64," + file.data_b64;
+      if (file.type === "text") return "data:text/plain;charset=utf-8," + encodeURIComponent(file.content);
+      return "#";
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement("div");
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // ---- View switching ----
+    function switchView(view) {
+      document.querySelectorAll(".view-tab").forEach(t => t.classList.remove("active"));
+      document.querySelectorAll(".view-panel").forEach(p => p.classList.remove("active"));
+      document.querySelector(`[onclick="switchView('${view}')"]`).classList.add("active");
+      document.getElementById("panel-" + view).classList.add("active");
+    }
+
+    // ---- Benchmark rendering ----
+    function renderBenchmark() {
+      const data = EMBEDDED_DATA.benchmark;
+      if (!data) return;
+
+      // Show the tabs
+      document.getElementById("view-tabs").style.display = "flex";
+
+      const container = document.getElementById("benchmark-content");
+      const summary = data.run_summary || {};
+      const metadata = data.metadata || {};
+      const notes = data.notes || [];
+
+      let html = "";
+
+      // Header
+      html += "<h2 style='font-family: Poppins, sans-serif; margin-bottom: 0.5rem;'>Benchmark Results</h2>";
+      html += "<p style='color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1.25rem;'>";
+      if (metadata.skill_name) html += "<strong>" + escapeHtml(metadata.skill_name) + "</strong> &mdash; ";
+      if (metadata.timestamp) html += metadata.timestamp + " &mdash; ";
+      if (metadata.evals_run) html += "Evals: " + metadata.evals_run.join(", ") + " &mdash; ";
+      html += (metadata.runs_per_configuration || "?") + " runs per configuration";
+      html += "</p>";
+
+      // Summary table
+      html += '<table class="benchmark-table">';
+
+      function fmtStat(stat, pct) {
+        if (!stat) return "—";
+        const suffix = pct ? "%" : "";
+        const m = pct ? (stat.mean * 100).toFixed(0) : stat.mean.toFixed(1);
+        const s = pct ? (stat.stddev * 100).toFixed(0) : stat.stddev.toFixed(1);
+        return m + suffix + " ± " + s + suffix;
+      }
+
+      function deltaClass(val) {
+        if (!val) return "";
+        const n = parseFloat(val);
+        if (n > 0) return "benchmark-delta-positive";
+        if (n < 0) return "benchmark-delta-negative";
+        return "";
+      }
+
+      // Discover config names dynamically (everything except "delta")
+      const configs = Object.keys(summary).filter(k => k !== "delta");
+      const configA = configs[0] || "config_a";
+      const configB = configs[1] || "config_b";
+      const labelA = configA.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+      const labelB = configB.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+      const a = summary[configA] || {};
+      const b = summary[configB] || {};
+      const delta = summary.delta || {};
+
+      html += "<thead><tr><th>Metric</th><th>" + escapeHtml(labelA) + "</th><th>" + escapeHtml(labelB) + "</th><th>Delta</th></tr></thead>";
+      html += "<tbody>";
+
+      html += "<tr><td><strong>Pass Rate</strong></td>";
+      html += "<td>" + fmtStat(a.pass_rate, true) + "</td>";
+      html += "<td>" + fmtStat(b.pass_rate, true) + "</td>";
+      html += '<td class="' + deltaClass(delta.pass_rate) + '">' + (delta.pass_rate || "—") + "</td></tr>";
+
+      // Time (only show row if data exists)
+      if (a.time_seconds || b.time_seconds) {
+        html += "<tr><td><strong>Time (s)</strong></td>";
+        html += "<td>" + fmtStat(a.time_seconds, false) + "</td>";
+        html += "<td>" + fmtStat(b.time_seconds, false) + "</td>";
+        html += '<td class="' + deltaClass(delta.time_seconds) + '">' + (delta.time_seconds ? delta.time_seconds + "s" : "—") + "</td></tr>";
+      }
+
+      // Tokens (only show row if data exists)
+      if (a.tokens || b.tokens) {
+        html += "<tr><td><strong>Tokens</strong></td>";
+        html += "<td>" + fmtStat(a.tokens, false) + "</td>";
+        html += "<td>" + fmtStat(b.tokens, false) + "</td>";
+        html += '<td class="' + deltaClass(delta.tokens) + '">' + (delta.tokens || "—") + "</td></tr>";
+      }
+
+      html += "</tbody></table>";
+
+      // Per-eval breakdown (if runs data available)
+      const runs = data.runs || [];
+      if (runs.length > 0) {
+        const evalIds = [...new Set(runs.map(r => r.eval_id))].sort((a, b) => a - b);
+
+        html += "<h3 style='font-family: Poppins, sans-serif; margin-bottom: 0.75rem;'>Per-Eval Breakdown</h3>";
+
+        const hasTime = runs.some(r => r.result && r.result.time_seconds != null);
+        const hasErrors = runs.some(r => r.result && r.result.errors > 0);
+
+        for (const evalId of evalIds) {
+          const evalRuns = runs.filter(r => r.eval_id === evalId);
+          const evalName = evalRuns[0] && evalRuns[0].eval_name ? evalRuns[0].eval_name : "Eval " + evalId;
+
+          html += "<h4 style='font-family: Poppins, sans-serif; margin: 1rem 0 0.5rem; color: var(--text);'>" + escapeHtml(evalName) + "</h4>";
+          html += '<table class="benchmark-table">';
+          html += "<thead><tr><th>Config</th><th>Run</th><th>Pass Rate</th>";
+          if (hasTime) html += "<th>Time (s)</th>";
+          if (hasErrors) html += "<th>Crashes During Execution</th>";
+          html += "</tr></thead>";
+          html += "<tbody>";
+
+          // Group by config and render with average rows
+          const configGroups = [...new Set(evalRuns.map(r => r.configuration))];
+          for (let ci = 0; ci < configGroups.length; ci++) {
+            const config = configGroups[ci];
+            const configRuns = evalRuns.filter(r => r.configuration === config);
+            if (configRuns.length === 0) continue;
+
+            const rowClass = ci === 0 ? "benchmark-row-with" : "benchmark-row-without";
+            const configLabel = config.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+
+            for (const run of configRuns) {
+              const r = run.result || {};
+              const prClass = r.pass_rate >= 0.8 ? "benchmark-delta-positive" : r.pass_rate < 0.5 ? "benchmark-delta-negative" : "";
+              html += '<tr class="' + rowClass + '">';
+              html += "<td>" + configLabel + "</td>";
+              html += "<td>" + run.run_number + "</td>";
+              html += '<td class="' + prClass + '">' + ((r.pass_rate || 0) * 100).toFixed(0) + "% (" + (r.passed || 0) + "/" + (r.total || 0) + ")</td>";
+              if (hasTime) html += "<td>" + (r.time_seconds != null ? r.time_seconds.toFixed(1) : "—") + "</td>";
+              if (hasErrors) html += "<td>" + (r.errors || 0) + "</td>";
+              html += "</tr>";
+            }
+
+            // Average row
+            const rates = configRuns.map(r => (r.result || {}).pass_rate || 0);
+            const avgRate = rates.reduce((a, b) => a + b, 0) / rates.length;
+            const avgPrClass = avgRate >= 0.8 ? "benchmark-delta-positive" : avgRate < 0.5 ? "benchmark-delta-negative" : "";
+            html += '<tr class="benchmark-row-avg ' + rowClass + '">';
+            html += "<td>" + configLabel + "</td>";
+            html += "<td>Avg</td>";
+            html += '<td class="' + avgPrClass + '">' + (avgRate * 100).toFixed(0) + "%</td>";
+            if (hasTime) {
+              const times = configRuns.map(r => (r.result || {}).time_seconds).filter(t => t != null);
+              html += "<td>" + (times.length ? (times.reduce((a, b) => a + b, 0) / times.length).toFixed(1) : "—") + "</td>";
+            }
+            if (hasErrors) html += "<td></td>";
+            html += "</tr>";
+          }
+          html += "</tbody></table>";
+
+          // Per-assertion detail for this eval
+          const runsWithExpectations = {};
+          for (const config of configGroups) {
+            runsWithExpectations[config] = evalRuns.filter(r => r.configuration === config && r.expectations && r.expectations.length > 0);
+          }
+          const hasAnyExpectations = Object.values(runsWithExpectations).some(runs => runs.length > 0);
+          if (hasAnyExpectations) {
+            // Collect all unique assertion texts across all configs
+            const allAssertions = [];
+            const seen = new Set();
+            for (const config of configGroups) {
+              for (const run of runsWithExpectations[config]) {
+                for (const exp of (run.expectations || [])) {
+                  if (!seen.has(exp.text)) {
+                    seen.add(exp.text);
+                    allAssertions.push(exp.text);
+                  }
+                }
+              }
+            }
+
+            html += '<table class="benchmark-table" style="margin-top: 0.5rem;">';
+            html += "<thead><tr><th>Assertion</th>";
+            for (const config of configGroups) {
+              const label = config.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+              html += "<th>" + escapeHtml(label) + "</th>";
+            }
+            html += "</tr></thead><tbody>";
+
+            for (const assertionText of allAssertions) {
+              html += "<tr><td>" + escapeHtml(assertionText) + "</td>";
+
+              for (const config of configGroups) {
+                html += "<td>";
+                for (const run of runsWithExpectations[config]) {
+                  const exp = (run.expectations || []).find(e => e.text === assertionText);
+                  if (exp) {
+                    const cls = exp.passed ? "benchmark-delta-positive" : "benchmark-delta-negative";
+                    const icon = exp.passed ? "\u2713" : "\u2717";
+                    html += '<span class="' + cls + '" title="Run ' + run.run_number + ': ' + escapeHtml(exp.evidence || "") + '">' + icon + "</span> ";
+                  } else {
+                    html += "— ";
+                  }
+                }
+                html += "</td>";
+              }
+              html += "</tr>";
+            }
+            html += "</tbody></table>";
+          }
+        }
+      }
+
+      // Notes
+      if (notes.length > 0) {
+        html += '<div class="benchmark-notes">';
+        html += "<h3>Analysis Notes</h3>";
+        html += "<ul>";
+        for (const note of notes) {
+          html += "<li>" + escapeHtml(note) + "</li>";
+        }
+        html += "</ul></div>";
+      }
+
+      container.innerHTML = html;
+    }
+
+    // ---- Start ----
+    init();
+    renderBenchmark();
+  </script>
+</body>
+</html>
